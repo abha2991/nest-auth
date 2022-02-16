@@ -38,7 +38,7 @@ import { GoogleOauthModule } from './google-oauth/google-oauth.module';
     TypeOrmModule.forFeature([User]),
     JwtModule.register({
       secret: 'asdqwertyuijhnbvgfcdsxertyuioplk',
-      signOptions: { expiresIn: '1d' },
+      signOptions: { expiresIn: '90d' },
     }),
     // UserModule,
     // AuthModule,
