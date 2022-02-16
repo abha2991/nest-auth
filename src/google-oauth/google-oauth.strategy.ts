@@ -2,6 +2,8 @@ import { PassportStrategy } from '@nestjs/passport';
 import { Profile, Strategy } from 'passport-google-oauth20';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
+import { async } from "rxjs";
+
 
 @Injectable()
 export class GoogleOauthStrategy extends PassportStrategy(Strategy, 'google') {
@@ -10,11 +12,11 @@ export class GoogleOauthStrategy extends PassportStrategy(Strategy, 'google') {
     //private readonly usersService: UsersService,
   ) {
     super({
-      // Put config in `.env`
-      clientID: "1092159502728-e2mafa2ftgflcnv5snc7h3577p786380.apps.googleusercontent.com",
-      clientSecret: "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",
-      callbackURL: 'http://localhost:3000/google/redirect',
-      scope: ['email', 'profile'],
+        // Put config in `.env`
+        clientID: "1092159502728-e2mafa2ftgflcnv5snc7h3577p786380.apps.googleusercontent.com",
+        clientSecret: "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",
+        callbackURL: 'http://localhost:3000/google/redirect',
+        scope: ['email', 'profile'],
     });
   }
 

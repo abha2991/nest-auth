@@ -7,7 +7,7 @@ import {JwtService} from "@nestjs/jwt";
 import {Response, Request} from 'express';
 import { AuthGuard } from '@nestjs/passport';
 
-@Controller('api')
+@Controller()
 export class AppController {
   constructor(
     private readonly appService: AppService,
@@ -88,38 +88,28 @@ export class AppController {
       message: 'success'
     }
 
-
-  // @Get("/facebook")
-  // @UseGuards(AuthGuard("facebook"))
-  // async facebookLogin() : Promise<any> {
-  //     return HttpStatus.OK;
-  //   }
-  //
-  // @Get("/facebook/redirect")
-  // @UseGuards(AuthGuard("facebook"))
-  // async facebookLoginRedirect(@Req() req: Request): Promise<any> {
-  //     return {
-  //       statusCode: HttpStatus.OK,
-  //       data: req.user,
-  //     };
-  //   }
-
-
-
-
   }
 
 
-  //
-  // @Get()
-  // @UseGuards(AuthGuard('google'))
-  // async googleAuth(@Req() req) {}
-  //
-  // @Get('redirect')
-  // @UseGuards(AuthGuard('google'))
-  // googleAuthRedirect(@Req() req) {
-  //   return this.appService.googleLogin(req)
-  // }
+
 
 
 }
+
+
+
+
+// import { Controller, Get, Post, Body } from '@nestjs/common';
+// import { AppService } from './app.service';
+//
+// @Controller()
+// export class AppController {
+//   constructor(private readonly appService: AppService) {}
+//
+//
+//   @Get()
+//   getHello(): string {
+//     return this.appService.getHello();
+//   }
+//
+// }
