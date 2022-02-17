@@ -10,9 +10,11 @@ import Register from "../Login/Registration"
 function Home() {
   return (
     <>
+       <div className="container-box center"  >
       <h2>Login</h2>
 
-
+  </div>
+    
   <ul>
     <Link to="/Register"><li>Register</li></Link>
    <Link to="/Login"><li>Login</li></Link>
