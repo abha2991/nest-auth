@@ -15,6 +15,8 @@ import { GoogleOauthModule } from './google-oauth/google-oauth.module';
 //import { UserModule } from './users/users.module';
 //import { AuthModule } from './auth/auth.module';
 
+import { FacebookModule } from "./facebook/facebook.module";
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -43,9 +45,10 @@ import { GoogleOauthModule } from './google-oauth/google-oauth.module';
     // UserModule,
     // AuthModule,
     GoogleOauthModule,
+    FacebookModule
   ],
   controllers: [AppController],
-  providers: [AppService, FacebookStrategy],
+  providers: [AppService],
   //, FacebookStrategy
 })
 export class AppModule {}

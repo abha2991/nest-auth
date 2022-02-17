@@ -19,7 +19,27 @@ export class AppService {
   async findOne(condition: any): Promise<User> {
     return this.userRepository.findOne(condition);
   }
+
 }
+//   async findOrCreate(profile): Promise<User> {
+//     const user = await this.userRepository
+//       .findOne({ email: profile.emails[0].value })
+//       //.exec();
+//     if (user) {
+//       return user;
+//     }
+//     return this.userRepository.save({
+//       email: profile.emails[0].value,
+//       firstName: profile.name.givenName,
+//       lastName: profile.name.familyName,
+//       Facebook: {
+//         id: profile.id,
+//         avatar: profile.photos[0].value,
+//       },
+//     });
+//
+//   }
+// }
 
 
 
