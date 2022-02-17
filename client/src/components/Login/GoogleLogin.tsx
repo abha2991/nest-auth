@@ -3,13 +3,13 @@ import axios from "axios";
 import React,{useState} from 'react';
 
 
-function FaceBookLogin() {
+function GoogleLogin() {
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
 
 
 
-    const { data } = await axios.get("http://localhost:3001/facebook/facebook");
+    const { data } = await axios.get("http://localhost:3001/auth/google");
 
     console.log({data})
 
@@ -21,11 +21,11 @@ function FaceBookLogin() {
   };
 
   return (
-   <>
- <button  onClick={handleSubmit}>Login With Facebook</button>
+    <>
+<button  onClick={handleSubmit}>Login With Google</button>
 
    </>
   );
 }
 
-export default FaceBookLogin;
+export default GoogleLogin;

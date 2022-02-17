@@ -2,6 +2,10 @@
 
 import React from 'react';
 import { Link } from "react-router-dom";
+import GoogleLogin from "../Login/GoogleLogin";
+import FaceBookLogin from "../Login/FaceBookLogin";
+import Login from "../Login/Login";
+import Register from "../Login/Registration"
 
 function Home() {
   return (
@@ -10,10 +14,10 @@ function Home() {
 
 
   <ul>
-    <Link to="/Login"><li>Login</li></Link>
-    <Link to="/FaceBookLogin"><li>Login With Facebook</li></Link>
-
-    <li>Login With Google</li>
+    <Link to="/Register"><li>Register</li></Link>
+   <Link to="/Login"><li>Login</li></Link>
+    <li><FaceBookLogin/></li>
+    <li><GoogleLogin/></li>
   </ul>
 
 

@@ -31,7 +31,7 @@ export class AppController {
 
     delete user.password;
 
-    return user;
+    return { status:201,message:"Registered Successfully"};
   }
 
   @Post('login')
@@ -44,10 +44,14 @@ export class AppController {
 
     if (!user) {
       throw new BadRequestException('invalid credentials');
+      // return {status:400,
+      //   message: 'Invalid Credentials'}
     }
 
     if (!await bcrypt.compare(password, user.password)) {
       throw new BadRequestException('invalid credentials');
+      // return {status:400,
+      //   message: 'Invalid Credentials'}
     }
 
     const jwt = await this.jwtService.signAsync({id: user.id});
@@ -55,7 +59,8 @@ export class AppController {
     response.cookie('jwt', jwt, {httpOnly: true});
 
     return {
-      message: 'success'
+      status:201,
+      message: 'Success'
     };
   }
 
@@ -85,6 +90,7 @@ export class AppController {
     response.clearCookie('jwt');
 
     return {
+      status:201,
       message: 'success'
     }
 
