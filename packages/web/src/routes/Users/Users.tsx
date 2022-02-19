@@ -15,7 +15,6 @@ import Loading from '../../components/Loading'
 
 const Users: FC = () => {
   const { isLoading, data: users } = useUsersApi()
-  console.log({ users })
   if (isLoading) {
     return <Loading />
   }

@@ -16,8 +16,6 @@ const useAxiosInterceptors = () => {
     const responseInterceptor = axios.interceptors.response.use(
       (response) => response.data,
       (error) => {
-        // Todo: Add error message here
-        console.log(error.response)
         if (error?.response?.status === 401) {
           queryClient.invalidateQueries()
         } else if (error?.response?.data?.message) {

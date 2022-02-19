@@ -19,7 +19,6 @@ export class FacebookStrategy extends PassportStrategy(Strategy, 'facebook') {
 
   async validate(accessToken: string, refreshToken: string, profile: Profile): Promise<Partial<CreateUserDto>> {
     const { name, emails, photos } = profile
-    console.log({ profile })
     return {
       email: emails[0].value,
       firstName: name.givenName,
