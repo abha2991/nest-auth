@@ -19,6 +19,7 @@ export class FacebookController {
   @Get("/facebook")
   @UseGuards(AuthGuard("facebook"))
   async facebookLogin(): Promise<any> {
+
     return HttpStatus.OK;
   }
 
@@ -35,7 +36,7 @@ export class FacebookController {
   @UseGuards(AuthGuard("facebook"))
   async facebookLoginRedirect(@Req() req: Request, @Res() res: Response) {
 
-    console.log("jwt")
+
 
     const { accessToken } = this.jwtAuthService.login(req.user);
     res.cookie('jwt', accessToken);
