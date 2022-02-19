@@ -11,9 +11,13 @@ async function bootstrap() {
   const appConfig = app.get(ConfigService).get<AppConfig>('app')
   app.useGlobalPipes(new ValidationPipe())
   app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)))
+  app.setGlobalPrefix('api')
   app.use(cookieParser())
   if (appConfig.isDevelopment) {
-    app.enableCors()
+    app.enableCors({
+      credentials: true,
+      origin: true
+    })
   } else {
     // @ts-ignore
     app.use(helmet())

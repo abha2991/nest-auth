@@ -17,7 +17,10 @@ export class User {
   email: string
 
   @Column({ nullable: true })
-  phone?: string
+  phoneNumber?: string
+
+  @Column({ nullable: true })
+  profileImage?: string
 
   @Column({ type: 'boolean', default: false })
   active: boolean

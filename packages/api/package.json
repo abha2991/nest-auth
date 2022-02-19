@@ -28,12 +28,14 @@
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "passport": "^0.5.2",
+    "passport-facebook": "^3.0.0",
+    "passport-google-oauth20": "^2.0.0",
     "passport-jwt": "^4.0.0",
     "pg": "^8.7.3",
     "proper-url-join": "^2.1.1",
     "reflect-metadata": "^0.1.13",
-    "typeorm": "^0.2.43",
-    "rxjs": "^7.5.4"
+    "rxjs": "^7.5.4",
+    "typeorm": "^0.2.43"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
@@ -41,6 +43,8 @@
     "@types/lodash": "^4.14.178",
     "@types/node": "^17.0.18",
     "@types/passport": "^1.0.7",
+    "@types/passport-facebook": "^2.1.11",
+    "@types/passport-google-oauth20": "^2.0.11",
     "@types/passport-jwt": "^3.0.6",
     "@types/proper-url-join": "^2.1.1",
     "rimraf": "^3.0.2",

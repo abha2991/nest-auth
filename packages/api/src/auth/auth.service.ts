@@ -21,6 +21,14 @@ export class AuthService {
     return this.createToken(user)
   }
 
+  async socialLogin(createUserDto: CreateUserDto) {
+    let user = await this.usersService.findByEmail(createUserDto.email)
+    if (!user) {
+      user = await this.usersService.create(createUserDto)
+    }
+    return this.createToken(user)
+  }
+
   private createToken(user: User): LoginResponseDto {
     const payload: TokenPayload = { sub: user.id.toString(), email: user.email }
     const accessToken = this.jwtService.sign(payload)

@@ -11,3 +11,4 @@ npm-debug.*
 
 # macOS
 .DS_Store
+tsconfig.tsbuildinfo
