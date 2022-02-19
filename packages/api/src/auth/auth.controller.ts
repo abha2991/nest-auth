@@ -7,6 +7,7 @@ import { Public } from 'src/common/decorators/public.decorator'
 import { AppConfig } from 'src/config/app'
 import { CreateUserDto } from 'src/users/dto/create-user.dto'
 import { UsersService } from 'src/users/users.service'
+import { User } from 'src/users/entities/user.entity'
 import { LoggedInUser } from './auth.interface'
 import { AuthService } from './auth.service'
 import { LoginDto, LoginResponseDto } from './dto/login.dto'
@@ -66,7 +67,7 @@ export class AuthController {
   @Get('google/callback')
   @UseGuards(AuthGuard('google'))
   async googleAuthCallback(@Req() req, @Res({ passthrough: true }) response: Response) {
-    const data = await this.authService.socialLogin(req.user as CreateUserDto)
+    const data = await this.authService.socialLogin(req.user as Partial<User>)
     AuthController.loginResponse(data, response)
     response.redirect(302, this.appConfig.appUrl)
   }
@@ -80,7 +81,7 @@ export class AuthController {
   @Get('facebook/callback')
   @UseGuards(AuthGuard('facebook'))
   async facebookAuthCallback(@Req() req, @Res({ passthrough: true }) response: Response) {
-    const data = await this.authService.socialLogin(req.user as CreateUserDto)
+    const data = await this.authService.socialLogin(req.user as Partial<User>)
     AuthController.loginResponse(data, response)
     response.redirect(302, this.appConfig.appUrl)
   }

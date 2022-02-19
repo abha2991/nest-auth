@@ -21,10 +21,10 @@ export class AuthService {
     return this.createToken(user)
   }
 
-  async socialLogin(createUserDto: CreateUserDto) {
-    let user = await this.usersService.findByEmail(createUserDto.email)
+  async socialLogin(socialUser: Partial<User>) {
+    let user = await this.usersService.findByEmail(socialUser.email)
     if (!user) {
-      user = await this.usersService.create(createUserDto)
+      user = await this.usersService.create(socialUser)
     }
     return this.createToken(user)
   }

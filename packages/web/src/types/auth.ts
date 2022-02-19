@@ -4,6 +4,7 @@ export interface IRegisterRequest {
   firstName: string
   lastName?: string
   phoneNumber?: string
+  provider?: string
   profileImage?: string
   email: string
   password: string

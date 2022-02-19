@@ -29,6 +29,9 @@ export class User {
   @Exclude()
   password?: string
 
+  @Column({ nullable: true })
+  provider?: string
+
   @CreateDateColumn()
   createdAt: Date
 

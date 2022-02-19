@@ -4,7 +4,7 @@ import { PassportStrategy } from '@nestjs/passport'
 import { Profile, Strategy } from 'passport-facebook'
 import { AppConfig } from 'src/config/app'
 import { FacebookConfig } from 'src/config/facebook'
-import { CreateUserDto } from 'src/users/dto/create-user.dto'
+import { User } from 'src/users/entities/user.entity'
 
 @Injectable()
 export class FacebookStrategy extends PassportStrategy(Strategy, 'facebook') {
@@ -17,13 +17,14 @@ export class FacebookStrategy extends PassportStrategy(Strategy, 'facebook') {
     })
   }
 
-  async validate(accessToken: string, refreshToken: string, profile: Profile): Promise<Partial<CreateUserDto>> {
+  async validate(accessToken: string, refreshToken: string, profile: Profile): Promise<Partial<User>> {
     const { name, emails, photos } = profile
     return {
       email: emails[0].value,
       firstName: name.givenName,
       lastName: name.familyName,
-      profileImage: photos[0].value
+      profileImage: photos[0].value,
+      provider: 'Facebook'
     }
   }
 }

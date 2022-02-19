@@ -34,9 +34,9 @@ export class UsersService {
     return this.usersRepository.find({ relations })
   }
 
-  async create(createUserDto: CreateUserDto) {
+  async create(user: Partial<User>) {
     try {
-      const createdUser = this.usersRepository.create(createUserDto)
+      const createdUser = this.usersRepository.create(user)
       return await this.usersRepository.save(createdUser)
     } catch (e) {
       throw new HttpException(e.message, HttpStatus.BAD_REQUEST)

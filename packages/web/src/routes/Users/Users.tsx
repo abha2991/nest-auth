@@ -29,6 +29,7 @@ const Users: FC = () => {
               <TableCell>Name</TableCell>
               <TableCell>Email</TableCell>
               <TableCell>Phone Number</TableCell>
+              <TableCell>Provider</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -42,6 +43,7 @@ const Users: FC = () => {
                 </TableCell>
                 <TableCell>{user.email}</TableCell>
                 <TableCell>{user.phoneNumber}</TableCell>
+                <TableCell>{user.provider}</TableCell>
               </TableRow>
             ))}
           </TableBody>
