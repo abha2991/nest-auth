@@ -13,6 +13,7 @@ import app, { AppConfig } from './config/app'
 import { DatabaseConfig } from './config/database'
 import { ThrottleConfig } from './config/throttle'
 import { UsersModule } from './users/users.module'
+import {CardModule} from './card/card.module'
 // import { AuthModule } from './auth/auth.module'
 // import { UserModule } from './user/user.module'
 
@@ -56,11 +57,13 @@ import { UsersModule } from './users/users.module'
           migrations: [__dirname + '/src/**/*.migration.ts'],
           subscribers: [__dirname + '/src/**/*.subscriber.ts'],
           autoLoadEntities: true,
+
+
           ...(appConfig.isDevelopment
             ? {
                 synchronize: true,
-                logging: true
-                // dropSchema: true
+                logging: true,
+               // dropSchema: true
               }
             : {})
         }
@@ -70,7 +73,8 @@ import { UsersModule } from './users/users.module'
 
     // Custom Modules
     UsersModule,
-    AuthModule
+    AuthModule,
+      CardModule
   ],
   controllers: [AppController],
   providers: [

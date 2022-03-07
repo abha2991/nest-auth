@@ -7,7 +7,7 @@ import useAxiosInterceptors from './hooks/useAxiosInterceptor'
 
 const Login = lazy(() => import('./routes/Login'))
 const Register = lazy(() => import('./routes/Register'))
-
+const Card = lazy(() => import('./routes/Card'))
 const Shell = lazy(() => import('./routes/Shell'))
 const Dashboard = lazy(() => import('./routes/Dashboard'))
 const NotFound = lazy(() => import('./routes/NotFound'))
@@ -39,6 +39,8 @@ const App: FC = () => {
           <Route path="*" element={<NotFound />} />
         </Route>
         <Route path="login" element={<Login />} />
+         <Route path="card" element={<Card />} />
+
         <Route path="register" element={<Register />} />
       </Routes>
     </Suspense>
