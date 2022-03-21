@@ -3,5 +3,12 @@
   "sourceRoot": "src",
   "generateOptions": {
     "spec": false
+  },
+  "compilerOptions": {
+    "assets": [
+      {
+        "include": "**/*.{aep,ttf,fnt}"
+      }
+    ]
   }
 }

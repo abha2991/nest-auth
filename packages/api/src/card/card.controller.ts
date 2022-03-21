@@ -21,25 +21,5 @@ export class CardController {
     create(@Body() cardDto: CardDto) {
         return this.cardservice.Card(cardDto)
     }
-    //
-    // ping(): string {
-    //
-    //     const execute = async (caption: Caption) => {
-    //         const image = await Jimp.read(resolve('src','card','assets', caption.file))
-    //
-    //         for (let i = 0; i < caption.captions.length; i++) {
-    //             const capt = caption.captions[i]
-    //             const font = await Jimp.loadFont(capt.font)
-    //           // const font1 = await Jimp.loadFont(Jimp.FONT_SANS_32_BLACK);
-    //             await image.print(font, capt.x, capt.y, capt.text)
-    //         }
-    //
-    //         const newFileName = `${caption.file.replace(path.extname(caption.file), '')}-${Date.now()}${path.extname(caption.file)}`
-    //         await image.writeAsync(resolve('src','card','generated', newFileName))
-    //     }
-    //
-    //     execute(captions[0])
-    //
-    //     return "Card"
-   // }
+
 }

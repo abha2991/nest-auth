@@ -1,4 +1,4 @@
-import {Caption} from './card'
+import {Caption} from './card.service'
 import path from 'path'
 import { join, resolve } from 'path'
 
@@ -12,32 +12,32 @@ const captions: Caption[] = [
             {
                 x: 1000,
                 y: 1500,
-                text: 'Harish',
-                font: resolve(__dirname, 'fonts', 'bMrSrDk9AWeDkBK83X7_mF1G.ttf.fnt')
+
+                font: resolve(__dirname, 'fonts', 'n2PLJ8CWxtCEJwCG6cN2Sz70.ttf.fnt')
             },
             {
                 x: 1000,
                 y: 1700,
-                text: 'Weds',
-                font: resolve(__dirname, 'fonts', 'bMrSrDk9AWeDkBK83X7_mF1G.ttf.fnt')
+
+                font: resolve(__dirname, 'fonts', 'n2PLJ8CWxtCEJwCG6cN2Sz70.ttf.fnt')
             },
             {
                 x: 1000,
                 y: 1900,
-                text: 'Cheena',
-                font: resolve(__dirname, 'fonts', 'bMrSrDk9AWeDkBK83X7_mF1G.ttf.fnt')
+
+                font: resolve(__dirname, 'fonts', 'n2PLJ8CWxtCEJwCG6cN2Sz70.ttf.fnt')
             },
             {
                 x: 1000,
                 y: 2500,
-                text: 'Cheena',
-                font: resolve(__dirname, 'fonts', 'bMrSrDk9AWeDkBK83X7_mF1G.ttf.fnt')
+
+                font: resolve(__dirname, 'fonts', 'n2PLJ8CWxtCEJwCG6cN2Sz70.ttf.fnt')
             },
             {
                 x: 1000,
                 y: 2700,
-                text: 'Cheena',
-                font: resolve(__dirname, 'fonts', 'bMrSrDk9AWeDkBK83X7_mF1G.ttf.fnt')
+
+                font: resolve(__dirname, 'fonts', 'n2PLJ8CWxtCEJwCG6cN2Sz70.ttf.fnt')
             },
         ]
     },
@@ -49,21 +49,21 @@ const captions: Caption[] = [
         captions: [
             {
                 x: 1000,
-                y: 500,
-                text: 'Harish',
-                font: resolve(__dirname, 'fonts', 'bMrSrDk9AWeDkBK83X7_mF1G.ttf.fnt')
+                y: 1500,
+
+                font: resolve(__dirname, 'fonts', 'n2PLJ8CWxtCEJwCG6cN2Sz70.ttf.fnt')
             },
             {
                 x: 1000,
-                y: 700,
-                text: 'Weds',
-                font: resolve(__dirname, 'fonts', 'bMrSrDk9AWeDkBK83X7_mF1G.ttf.fnt')
+                y: 1700,
+
+                font: resolve(__dirname, 'fonts', 'n2PLJ8CWxtCEJwCG6cN2Sz70.ttf.fnt')
             },
             {
                 x: 1000,
-                y: 900,
-                text: 'Cheena',
-                font: resolve(__dirname, 'fonts', 'bMrSrDk9AWeDkBK83X7_mF1G.ttf.fnt')
+                y: 1900,
+
+                font: resolve(__dirname, 'fonts', 'n2PLJ8CWxtCEJwCG6cN2Sz70.ttf.fnt')
             },
         ]
     },
@@ -74,79 +74,79 @@ const captions: Caption[] = [
             {
                 x: 1000,
                 y: 500,
-                text: 'Harish',
-                font: resolve(__dirname, 'fonts', 'bMrSrDk9AWeDkBK83X7_mF1G.ttf.fnt')
+
+                font: resolve(__dirname, 'fonts', 'hzfLCQDLC7Ep8554dYTuy2p0.ttf.fnt')
             },
             {
                 x: 1000,
                 y: 700,
-                text: 'Weds',
-                font: resolve(__dirname, 'fonts', 'bMrSrDk9AWeDkBK83X7_mF1G.ttf.fnt')
+
+                font: resolve(__dirname, 'fonts', 'hzfLCQDLC7Ep8554dYTuy2p0.ttf.fnt')
             },
             {
                 x: 1000,
                 y: 900,
-                text: 'Cheena',
-                font: resolve(__dirname, 'fonts', 'bMrSrDk9AWeDkBK83X7_mF1G.ttf.fnt')
+
+                font: resolve(__dirname, 'fonts', 'hzfLCQDLC7Ep8554dYTuy2p0.ttf.fnt')
             },
 
             {
                 x: 1000,
                 y: 1500,
-                text: 'Save The Date',
-                font: resolve(__dirname, 'fonts', 'bMrSrDk9AWeDkBK83X7_mF1G.ttf.fnt')
+
+                font: resolve(__dirname, 'fonts', 'hzfLCQDLC7Ep8554dYTuy2p0.ttf.fnt')
             },
 
             {
                 x: 1000,
                 y: 1700,
-                text: '09-09-2009',
-                font: resolve(__dirname, 'fonts', 'bMrSrDk9AWeDkBK83X7_mF1G.ttf.fnt')
+
+                font: resolve(__dirname, 'fonts', 'hzfLCQDLC7Ep8554dYTuy2p0.ttf.fnt')
             },
         ]
     },
-
-
-
-
     {
-        file: '1.jpg',
+        file: 'four.png',
 
         captions: [
             {
-                x: 1000,
+                x: 800,
                 y: 500,
-                text: 'Harish',
-                font: resolve(__dirname, 'fonts', 'bMrSrDk9AWeDkBK83X7_mF1G.ttf.fnt')
+
+                font: resolve(__dirname, 'fonts', 'ypnCq_ASTYGUUQLtJsBRqa5r.ttf.fnt')
             },
             {
-                x: 1000,
+                x: 800,
                 y: 700,
-                text: 'Weds',
-                font: resolve(__dirname, 'fonts', 'bMrSrDk9AWeDkBK83X7_mF1G.ttf.fnt')
+
+                font: resolve(__dirname, 'fonts', 'ypnCq_ASTYGUUQLtJsBRqa5r.ttf.fnt')
             },
             {
-                x: 1000,
+                x: 800,
                 y: 900,
-                text: 'Cheena',
-                font: resolve(__dirname, 'fonts', 'bMrSrDk9AWeDkBK83X7_mF1G.ttf.fnt')
+
+                font: resolve(__dirname, 'fonts', 'ypnCq_ASTYGUUQLtJsBRqa5r.ttf.fnt')
             },
 
             {
-                x: 1000,
+                x: 800,
                 y: 1500,
-                text: 'Save The Date',
-                font: resolve(__dirname, 'fonts', 'bMrSrDk9AWeDkBK83X7_mF1G.ttf.fnt')
+
+                font: resolve(__dirname, 'fonts', 'ypnCq_ASTYGUUQLtJsBRqa5r.ttf.fnt')
             },
 
             {
-                x: 1000,
+                x: 800,
                 y: 1700,
-                text: '09-09-2009',
-                font: resolve(__dirname, 'fonts', 'bMrSrDk9AWeDkBK83X7_mF1G.ttf.fnt')
+
+                font: resolve(__dirname, 'fonts', 'ypnCq_ASTYGUUQLtJsBRqa5r.ttf.fnt')
             },
         ]
     },
+
+
+
+
 
 
 ]

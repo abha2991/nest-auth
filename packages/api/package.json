@@ -9,6 +9,7 @@
     "build": "nest build"
   },
   "dependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
     "@nestjs/common": "^8.3.1",
     "@nestjs/config": "^1.2.0",
     "@nestjs/core": "^8.3.1",
@@ -19,6 +20,9 @@
     "@nestjs/serve-static": "^2.2.2",
     "@nestjs/throttler": "^2.0.0",
     "@nestjs/typeorm": "^8.0.3",
+    "@nexrender/action-copy": "^1.38.0",
+    "@nexrender/action-encode": "^1.38.0",
+    "@nexrender/core": "^1.38.0",
     "bcrypt": "^5.0.1",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.13.2",

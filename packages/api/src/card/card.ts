@@ -3,6 +3,10 @@ import path from 'path'
 import captions from './captions'
 
 
+
+
+
+
 export interface Caption {
     file: string
     captions: Array<{
@@ -31,4 +35,4 @@ const execute = async (caption: Caption) => {
     await image.writeAsync(path.resolve('src','card','generated', caption.file))
 }
 
-execute(captions[0])
+//execute(captions[0])

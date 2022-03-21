@@ -1,6 +1,7 @@
 
 
 export class CardDto {
+    id:number;
     cardno:number[];
     text:string[];
     text1:string[];

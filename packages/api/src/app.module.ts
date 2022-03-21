@@ -14,8 +14,10 @@ import { DatabaseConfig } from './config/database'
 import { ThrottleConfig } from './config/throttle'
 import { UsersModule } from './users/users.module'
 import {CardModule} from './card/card.module'
+import {CardModule1} from './card1/card.module'
 // import { AuthModule } from './auth/auth.module'
 // import { UserModule } from './user/user.module'
+import { VideoModule } from './video/video.module';
 
 @Module({
   imports: [
@@ -74,7 +76,9 @@ import {CardModule} from './card/card.module'
     // Custom Modules
     UsersModule,
     AuthModule,
-      CardModule
+      CardModule,
+    CardModule1,
+    VideoModule
   ],
   controllers: [AppController],
   providers: [

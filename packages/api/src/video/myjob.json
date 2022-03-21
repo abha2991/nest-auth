@@ -1,0 +1,22 @@
+{
+  "template": {
+    "src": "Users/abha/WebstormProjects/HeartEnvit/packages/api/build/video/assets/Clean.aep",
+    "composition": "BLANK_COMP"
+  },
+  "parameters" : [
+    {
+      "key" : "first lastname",
+      "value": "John Doe"
+    }
+  ],
+  "actions":{
+    "postrender": [
+      {
+        "module": "@nexrender/action-encode",
+        "preset": "mp4",
+        "output": "encoded.mp4"
+      }
+
+    ]
+  }
+}
