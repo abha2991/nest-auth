@@ -15,11 +15,11 @@ const Shell: FC = () => {
   return (
     <>
       <Header />
-      <Sidebar>
+      {/*<Sidebar>*/}
         <Suspense fallback={<Loading />}>
           <Outlet />
         </Suspense>
-      </Sidebar>
+      {/*</Sidebar>*/}
     </>
   )
 }

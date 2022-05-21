@@ -1,27 +1,56 @@
-import {Body, Controller, Get, Post} from '@nestjs/common'
+import {Body, Controller, Get, Param, Post, Delete, Patch} from '@nestjs/common'
+import {join} from 'path'
 //import Jimp from 'jimp'
-import {resolve} from 'path'
-import {CreateUserDto} from '../users/dto/create-user.dto'
-import captions from './captions'
-//import {read,loadFont} from 'jimp'
+
+
 const Jimp = require('jimp');
 const path=require('path');
 import { Public } from 'src/common/decorators/public.decorator'
+import {LoggedInUser} from '../auth/auth.interface'
+import {UpdateCardUserDto} from './dto/update-carduser.dto'
 
 
 import {Caption, CardService} from './card.service'
 import {CardDto} from './dto/card.dto'
+import {UserCardDto} from './dto/carduser.dto'
+import CurrentUser from '../common/decorators/current-user.decorator'
 
-
-@Public()
 @Controller('card1')
 export class CardController {
     constructor(private readonly cardservice: CardService) {}
     @Post('create')
-    create(@Body() cardDto: CardDto) {
-        return this.cardservice.Card(cardDto)
-    }
+
+    // Card(@Body() cardDto: CardDto,@CurrentUser() currentUser: LoggedInUser) {
+    //     let email=currentUser.email;
+    //     cardDto.email=email;
+    //     return this.cardservice.Card(cardDto)
     //
+    // }
+
+
+// @Public()
+//     Card(@Body() cardDto: CardDto) {
+//       console.log({cardDto})
+//         return this.cardservice.Card(cardDto)
+//
+//     }
+
+    @Public()
+    Card(@Body() cardDto: CardDto) {
+        console.log({cardDto})
+        return this.cardservice.Card(cardDto)
+
+    }
+
+
+   //
+   //  @Post('createusercard')
+   // createUserCard(@Body() usercarddto: UserCardDto) {
+   //      return this.cardservice.create(usercarddto.CardName,usercarddto.CardId,usercarddto.UserEmail)
+   //  }
+
+
+
     // ping(): string {
     //
     //     const execute = async (caption: Caption) => {
@@ -42,4 +71,64 @@ export class CardController {
     //
     //     return "Card"
    // }
+@Public()
+    @Get('getall')
+    findAll() {
+        return this.cardservice.findAll()
+    }
+
+    @Public()
+    @Patch(':id')
+    updatepaymentstatus(@Param('id') id: string, @Body() updateUserDto: UpdateCardUserDto) {
+        console.log({updateUserDto})
+        return this.cardservice.updatepaymentstatus(id, updateUserDto)
+    }
+
+// @Public()
+//     @Post('getbyemail')
+//     async findByEmail(@Body('email') email: string) {
+//         return this.cardservice.findByEmail(email)
+//     }
+
+
+@Public()
+// @Post('getbyuserid')
+// async findOne(@Body('id') UserId:string)
+// {
+//
+//     console.log({UserId})
+//     return this.cardservice.findOne(UserId)
+// }
+
+    @Get(':UserId')
+    async find(@Param('UserId') UserId: string) {
+        console.log({UserId})
+    //console.log(join(__dirname, '..','src', 'card1','generated'))
+
+        return this.cardservice.find(UserId);
+    }
+
+
+    @Public()
+    @Get('getCard/:id')
+    findOne(@Param('id') id:string) {
+        return this.cardservice.findOne(id);
+    }
+
+
+    @Public()
+    @Post('findCardById')
+    findById(@Body('id') id:string) {
+        console.log({id})
+        return this.cardservice.findById(id);
+    }
+
+
+@Public()
+    @Delete(':id')
+    remove(@Param('id') id:string) {
+        return this.cardservice.remove(id);
+    }
+
+
 }

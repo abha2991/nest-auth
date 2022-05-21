@@ -9,3 +9,6 @@ export interface IUser {
   updatedAt: string
   provider:string
 }
+
+
+

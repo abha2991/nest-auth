@@ -12,7 +12,11 @@
     "packages/*"
   ],
   "dependencies": {
-    "lerna": "^4.0.0"
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@fortawesome/react-fontawesome": "^0.1.18",
+    "lerna": "^4.0.0",
+    "react-owl-carousel2": "^0.3.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.2.1",

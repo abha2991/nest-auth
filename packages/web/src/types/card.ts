@@ -18,3 +18,31 @@ export interface GroomDetails {
     grandMotherName?: string
 
 }
+
+export interface CardUserDetails {
+
+   id: string
+
+
+}
+export interface ICardUser {
+    id: string
+    PaymentStatus: string
+    CardId: string
+    UserId: string
+
+}
+
+
+
+export interface IGetCardUser {
+    id: string
+    PaymentStatus: string
+    CardId: string
+    UserId: string
+    CardType:string
+    CardNames:string[]
+    Text:string[]
+
+
+}

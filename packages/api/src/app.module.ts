@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { APP_GUARD } from '@nestjs/core'
+
 import { ServeStaticModule } from '@nestjs/serve-static'
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler'
 import { TypeOrmModule } from '@nestjs/typeorm'
@@ -13,11 +14,17 @@ import app, { AppConfig } from './config/app'
 import { DatabaseConfig } from './config/database'
 import { ThrottleConfig } from './config/throttle'
 import { UsersModule } from './users/users.module'
-import {CardModule} from './card/card.module'
-import {CardModule1} from './card1/card.module'
+import { CardModule } from './card/card.module'
+import { CardModule1 } from './card1/card.module'
+import {CardcaptiondetailsModule} from './cardcaptiondetails/cardcaptiondetails.module'
 // import { AuthModule } from './auth/auth.module'
 // import { UserModule } from './user/user.module'
-import { VideoModule } from './video/video.module';
+import { VideoModule } from './video/video.module'
+import { BullModule } from '@nestjs/bull'
+import { VideoredisModule } from './videoredis/videoredis.module'
+import { CardetailsModule } from './cardetails/cardetails.module';
+
+import { PaymentgatewayModule } from './paymentgateway/paymentgateway.module';
 
 @Module({
   imports: [
@@ -47,6 +54,17 @@ import { VideoModule } from './video/video.module';
       },
       inject: [ConfigService]
     }),
+
+    ServeStaticModule.forRoot({
+
+      rootPath: join(__dirname, '..', 'src','card1','generated'),exclude: ['/api'] ,
+      //serveRoot: 'data',
+
+
+    }),
+
+
+
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => {
@@ -60,25 +78,37 @@ import { VideoModule } from './video/video.module';
           subscribers: [__dirname + '/src/**/*.subscriber.ts'],
           autoLoadEntities: true,
 
-
           ...(appConfig.isDevelopment
             ? {
                 synchronize: true,
                 logging: true,
-               // dropSchema: true
+                //dropSchema: true
               }
             : {})
         }
       },
       inject: [ConfigService]
     }),
-
+    // BullModule.forRoot({
+    //   redis:{
+    //     host:'localhost',
+    //     port:6379
+    //   },
+    // }),
+    //       BullModule.registerQueue({
+    //         name:'video-queue'
+    //       }),
     // Custom Modules
     UsersModule,
     AuthModule,
-      CardModule,
+    CardModule,
     CardModule1,
-    VideoModule
+    VideoModule,
+    VideoredisModule,
+    CardetailsModule,
+    CardcaptiondetailsModule,
+
+    PaymentgatewayModule
   ],
   controllers: [AppController],
   providers: [

@@ -9,11 +9,17 @@ export type AuthRouteProps = {
 
 const AuthRoute: FC<AuthRouteProps> = ({ children, redirectTo = '/login' }) => {
   const { data: profile, status } = useProfileApi()
+
   const location = useLocation()
+
+  console.log({location})
   if (status === 'loading') {
     return <Loading />
   }
-  return profile && status === 'success' ? <>{children}</> : <Navigate to={redirectTo} state={{ from: location }} />
+
+
+
+  return profile && status === 'success'  ? <>{children}</> : <Navigate to={redirectTo} state={{ from: location }} />
 }
 
 export default AuthRoute

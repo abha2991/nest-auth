@@ -8,6 +8,7 @@ import { RecoilRoot } from 'recoil'
 import App from './App'
 import queryClient from './utils/queryClient'
 import theme from './utils/theme'
+import './index.css';
 
 const globalStyles = (
   <GlobalStyles

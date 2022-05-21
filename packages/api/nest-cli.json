@@ -7,7 +7,7 @@
   "compilerOptions": {
     "assets": [
       {
-        "include": "**/*.{aep,ttf,fnt}"
+        "include": "**/*.{aep,ttf,fnt,mp4,png}"
       }
     ]
   }

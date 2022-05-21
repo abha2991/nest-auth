@@ -20,6 +20,7 @@ const ProfileMenu: FC<PopupState> = ({ children, ...popupState }) => {
     mutateAsync()
   }
   return (
+
     <Menu {...bindMenu(popupState)}>
       <MenuItem onClick={() => handleNavLink('/profile')} dense>
         <ListItemIcon>
