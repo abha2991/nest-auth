@@ -1,6 +1,4 @@
 import { Captions } from './video.service'
-import path from 'path'
-import { join, resolve } from 'path'
 
 const captions: Captions[] = [
   {

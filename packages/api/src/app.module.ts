@@ -8,23 +8,20 @@ import { TypeOrmModule } from '@nestjs/typeorm'
 import { join, resolve } from 'path'
 import { AppController } from './app.controller'
 import { AuthModule } from './auth/auth.module'
+import { CardModule } from './card/card.module'
+import { CardModule1 } from './card1/card.module'
+import { CardcaptiondetailsModule } from './cardcaptiondetails/cardcaptiondetails.module'
+import { CardetailsModule } from './cardetails/cardetails.module'
 import { JwtAuthGuard } from './common/guards/jwt-auth.guard'
 import config from './config'
 import app, { AppConfig } from './config/app'
 import { DatabaseConfig } from './config/database'
 import { ThrottleConfig } from './config/throttle'
-import { UsersModule } from './users/users.module'
-import { CardModule } from './card/card.module'
-import { CardModule1 } from './card1/card.module'
-import {CardcaptiondetailsModule} from './cardcaptiondetails/cardcaptiondetails.module'
-// import { AuthModule } from './auth/auth.module'
-// import { UserModule } from './user/user.module'
-import { VideoModule } from './video/video.module'
-import { BullModule } from '@nestjs/bull'
-import { VideoredisModule } from './videoredis/videoredis.module'
-import { CardetailsModule } from './cardetails/cardetails.module';
 
-import { PaymentgatewayModule } from './paymentgateway/paymentgateway.module';
+import { PaymentgatewayModule } from './paymentgateway/paymentgateway.module'
+import { UsersModule } from './users/users.module'
+import { VideoModule } from './video/video.module'
+import { VideoredisModule } from './videoredis/videoredis.module'
 
 @Module({
   imports: [
@@ -54,17 +51,10 @@ import { PaymentgatewayModule } from './paymentgateway/paymentgateway.module';
       },
       inject: [ConfigService]
     }),
-
     ServeStaticModule.forRoot({
-
-      rootPath: join(__dirname, '..', 'src','card1','generated'),exclude: ['/api'] ,
-      //serveRoot: 'data',
-
-
+      rootPath: join(__dirname, '..', 'src', 'card1', 'generated'),
+      exclude: ['/api']
     }),
-
-
-
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => {
@@ -81,8 +71,8 @@ import { PaymentgatewayModule } from './paymentgateway/paymentgateway.module';
           ...(appConfig.isDevelopment
             ? {
                 synchronize: true,
-                logging: true,
-                //dropSchema: true
+                logging: true
+                // dropSchema: true
               }
             : {})
         }

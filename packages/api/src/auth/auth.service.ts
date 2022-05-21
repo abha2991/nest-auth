@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common'
 import { JwtService } from '@nestjs/jwt'
 import * as moment from 'moment'
-import { UsersService } from 'src/users/users.service'
 import { CreateUserDto } from 'src/users/dto/create-user.dto'
 import { User } from 'src/users/entities/user.entity'
+import { UsersService } from 'src/users/users.service'
 import { TokenPayload } from './auth.interface'
 import { LoginDto, LoginResponseDto } from './dto/login.dto'
 

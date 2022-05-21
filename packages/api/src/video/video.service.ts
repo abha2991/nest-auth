@@ -1,11 +1,12 @@
 import { Body, Injectable } from '@nestjs/common'
+import { exec } from 'child_process'
 
-import { extname, resolve } from 'path'
+import * as path from 'path'
+import { extname } from 'path'
+import captions from './captions'
 
 import { VideoDto } from './dto/create-video.dto'
-import { exec } from 'child_process'
-import captions from './captions'
-import * as path from 'path'
+
 const { render } = require('@nexrender/core')
 
 export interface Caption {
@@ -163,6 +164,7 @@ export class VideoService {
 
     main()
   }
+
   // create(createVideoDto: CreateVideoDto) {
   //   return 'This action adds a new video';
   // }

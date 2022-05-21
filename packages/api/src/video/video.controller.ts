@@ -1,23 +1,17 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-
-import {CardDto} from '../card/dto/card.dto'
-import {Public} from '../common/decorators/public.decorator'
-import { VideoService } from './video.service';
-import { VideoDto } from './dto/create-video.dto';
-
+import { Body, Controller, Post } from '@nestjs/common'
+import { Public } from '../common/decorators/public.decorator'
+import { VideoDto } from './dto/create-video.dto'
+import { VideoService } from './video.service'
 
 @Public()
 @Controller('video')
-
-
 export class VideoController {
   constructor(private readonly videoService: VideoService) {}
+
   @Post('create')
   create(@Body() videoDto: VideoDto) {
     return this.videoService.Video(videoDto)
   }
-
-
 }
 
 // export class VideoController {

@@ -1,42 +1,32 @@
-import { Entity, PrimaryGeneratedColumn, Column,OneToOne,JoinColumn } from 'typeorm';
-import {CardcaptionEntity} from '../../cardcaptiondetails/entities/cardcaption.entity'
-
-
-
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm'
+import { CardcaptionEntity } from '../../cardcaptiondetails/entities/cardcaption.entity'
 
 @Entity()
 export class CardEntity {
-    @PrimaryGeneratedColumn()
-    @OneToOne(() => CardcaptionEntity, card_id => card_id.CardId)
-    id: number;
+  @PrimaryGeneratedColumn()
+  id: number
 
+  @Column()
+  CardName?: string
 
+  @Column()
+  CardCategory: string
 
-    // @Column()
-    //
-    // card_id:number
+  @Column('text', { array: true })
+  CardDetails: string[]
 
-    @Column()
-    CardName?: string;
+  @Column()
+  CardTotalPrice: number
 
-    @Column()
-   CardCategory: string;
+  @Column()
+  CardSalePrice?: number
 
-    @Column("text", { array: true })
-    CardDetails: string[];
+  @Column()
+  NoOfPages: number
 
-    @Column()
-    CardTotalPrice: number;
-
-
-    @Column()
-    CardSalePrice?: number;
-
-    @Column()
-    NoOfPages:number;
-
-
-
+  @OneToOne(() => CardcaptionEntity, (caption) => caption.Card, {
+    eager: true,
+    cascade: true
+  })
+  Caption: CardcaptionEntity
 }
-
-

@@ -1,6 +1,4 @@
 import { Caption } from './videoredis.processor'
-import path from 'path'
-import { join, resolve } from 'path'
 
 const captions: Caption[] = [
   {

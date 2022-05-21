@@ -1,39 +1,18 @@
-import {
-    IsArray,
-    IsEmail,
-    IsJSON,
-    IsNotEmpty,
-    IsNumber,
-    IsOptional,
-    IsString,
-    MaxLength,
-    MinLength
-} from 'class-validator'
-
-
+import { IsArray, IsNotEmpty, IsNumber } from 'class-validator'
 
 export class CardsCaptionDto {
+  @IsNotEmpty()
+  @IsNumber()
+  CardId: number
 
-
-
-    @IsNotEmpty()
-    @IsNumber()
-
-    CardId: number
-
-    @IsNotEmpty()
-    @IsArray()
-    Caption: [{
-        x: number,
-        y: number,
-        font: string,
-        text: string,
-    }]
-
-
-
-
-
-
-
+  @IsNotEmpty()
+  @IsArray()
+  Caption: [
+    {
+      x: number
+      y: number
+      font: string
+      text: string
+    }
+  ]
 }

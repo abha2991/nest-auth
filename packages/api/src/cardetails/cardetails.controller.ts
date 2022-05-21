@@ -1,9 +1,9 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { CardetailsService } from './cardetails.service';
-
-import { CreateCardetailDto } from './dto/create-cardetail.dto';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common'
 
 import { Public } from 'src/common/decorators/public.decorator'
+import { CardetailsService } from './cardetails.service'
+
+import { CreateCardetailDto } from './dto/create-cardetail.dto'
 
 @Controller('cardetails')
 export class CardetailsController {
@@ -12,18 +12,14 @@ export class CardetailsController {
   @Public()
   @Post()
   create(@Body() createCardetailDto: CreateCardetailDto) {
-    return this.cardetailsService.create(createCardetailDto);
+    return this.cardetailsService.create(createCardetailDto)
   }
-
-
-
 
   @Public()
   @Get('cardetails')
   findAll() {
-    return this.cardetailsService.findAll();
+    return this.cardetailsService.findAll()
   }
-
 
   // @Public()
   // @Get(':id')
@@ -33,14 +29,12 @@ export class CardetailsController {
 
   @Public()
   @Get()
-  findOne()  {
-    return this.cardetailsService.findOne();
+  findOne() {
+    return this.cardetailsService.findOne()
   }
-
-
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.cardetailsService.remove(+id);
+    return this.cardetailsService.remove(+id)
   }
 }

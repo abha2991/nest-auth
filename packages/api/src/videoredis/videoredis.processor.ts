@@ -1,12 +1,10 @@
 import { Process, Processor } from '@nestjs/bull'
-import { InjectRepository } from '@nestjs/typeorm'
 import { Job } from 'bull'
-
-import { Repository } from 'typeorm'
 import * as path from 'path'
-import { CreateVideorediDto } from './dto/create-videoredi.dto'
-const { render } = require('@nexrender/core')
 import captions from './caption'
+import { CreateVideorediDto } from './dto/create-videoredi.dto'
+
+const { render } = require('@nexrender/core')
 
 export interface Caption {
   id: number
@@ -23,7 +21,7 @@ export class VideoredisProcessor {
   @Process()
   async main(job: Job<CreateVideorediDto>) {
     console.log(job)
-     console.log(job.progress)
+    console.log(job.progress)
 
     // @ts-ignore
     var details = await captions.filter((x) => x.id === job.data)

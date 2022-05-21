@@ -1,35 +1,31 @@
-import {CardId} from './card.service'
+import { CardId } from './card.service'
 
 const cardids: CardId[] = [
-    {
-        userCardId:1234,
-        id: 1,
+  {
+    userCardId: 1234,
+    id: 1,
 
-        card: 'one.png'
-    },
+    card: 'one.png'
+  },
 
+  {
+    userCardId: 1234,
+    id: 1,
 
-    {
-        userCardId:1234,
-       id: 1,
+    card: 'two.png'
+  },
+  {
+    userCardId: 1234,
+    id: 1,
 
-        card: 'two.png'
-    },
-    {
-        userCardId:1234,
-        id: 1,
+    card: 'three.png'
+  },
+  {
+    userCardId: 1234,
+    id: 1,
 
-        card: 'three.png'
-    },
-    {
-        userCardId:1234,
-        id: 1,
-
-        card: 'four.png'
-    },
-
-
-
+    card: 'four.png'
+  }
 ]
 
 export default cardids
