@@ -52,8 +52,12 @@ import { VideoredisModule } from './videoredis/videoredis.module'
       inject: [ConfigService]
     }),
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'src', 'card1', 'generated'),
-      exclude: ['/api']
+      rootPath: join(__dirname, 'card1', 'generated'),
+      serveRoot: '/generated/'
+    }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, 'card1', 'assets'),
+      serveRoot: '/assets/'
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
