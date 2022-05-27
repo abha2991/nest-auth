@@ -58,12 +58,14 @@ import { PaymentgatewayModule } from './paymentgateway/paymentgateway.module';
     ServeStaticModule.forRoot({
 
       rootPath: join(__dirname, '..', 'src','card1','generated'),exclude: ['/api'] ,
-      //serveRoot: 'data',
+      serveRoot: '/generated/',
 
 
     }),
-
-
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname,'..', 'src', 'card1', 'assets'),exclude: ['/api'] ,
+      serveRoot: '/assets/'
+    }),
 
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
@@ -82,7 +84,7 @@ import { PaymentgatewayModule } from './paymentgateway/paymentgateway.module';
             ? {
                 synchronize: true,
                 logging: true,
-                //dropSchema: true
+               //dropSchema: true
               }
             : {})
         }

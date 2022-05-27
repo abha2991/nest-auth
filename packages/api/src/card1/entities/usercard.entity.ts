@@ -25,6 +25,13 @@ export class UserCardEntity {
     @Column("text", { array: true })
     Text:string[];
 
+    @Column()
+    CardTotalPrice: number;
+    @Column()
+    CardSalePrice: number;
+    @Column()
+    NoOfPages: number;
+
 
 
     // @Column()

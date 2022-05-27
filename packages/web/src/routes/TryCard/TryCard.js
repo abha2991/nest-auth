@@ -20,35 +20,60 @@ console.log({profile})
     console.log({status})
 
   const [brideData, setBrideData] = useState({
-    BrideName: "",
-    BrideFatherName: "",
-    BrideMotherName: "",
+    BrideName: "Anamika",
+    BrideFatherName: "Sandeep",
+    BrideMotherName: "17TH July 2022",
 
 
 
   });
   const [groomData, setGroomData] = useState({
-    GroomName: "",
-    GroomFatherName: "",
-    GroomMotherName: "",
-    GroomGrandFatherName: "",
+    GroomName: "Anamika Agrawal",
+    GroomFatherName: "Mr. Shubham agrawal",
+    GroomMotherName: "Mrs. Monika Agrawal",
+    GroomGrandFatherName: "Sandeep Rawat",
 
-    GroomGrandMotherName: "",
-    Grrom:""
+    GroomGrandMotherName: "Mr. Shubham agrawal",
+    Grrom:"Mrs. Monika Agrawal"
 
 
   });
 
 
   const [rsvpData, setRsvpData] = useState({
-    ProgramName: "",
-    _Date:"",
+    ProgramName: "Waiting to meet you all in the wedding",
+    _Date:"Sunday, 17th July 2022",
 
-    Venue:"",
+    Venue:"Hotel Brooklyn, Rajpur Road, Delhi",
 
 
 
   });
+
+
+const reset=()=>{
+
+  setRsvpData({...rsvpData,_Date:"Sunday, 17th July 2022",Venue:"Hotel Brooklyn, Rajpur Road, Delhi",ProgramName: "Waiting to meet you all in the wedding"})
+}
+
+
+  const reset1=()=>{
+
+    setBrideData({...brideData,BrideName: "Anamika",
+      BrideFatherName: "Sandeep",
+      BrideMotherName: "17TH July 2022"})
+  }
+
+  const reset2=()=>{
+
+    setGroomData({...groomData,GroomName: "Anamika Agrawal",
+      GroomFatherName: "Mr. Shubham agrawal",
+      GroomMotherName: "Mrs. Monika Agrawal",
+      GroomGrandFatherName: "Sandeep Rawat",
+
+      GroomGrandMotherName: "Mr. Shubham agrawal",
+      Grrom:"Mrs. Monika Agrawal"})
+  }
   const handleInputs = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -67,7 +92,16 @@ console.log({profile})
   };
 
   const [cardData, setCardData] = useState();
+  function useHover(styleOnHover, styleOnNotHover = {})
+  {
+    const [style, setStyle] = React.useState(styleOnNotHover);
 
+    const onMouseEnter = () => setStyle(styleOnHover)
+    const onMouseLeave = () => setStyle(styleOnNotHover)
+
+    return {style, onMouseEnter, onMouseLeave}
+  }
+  const hover = useHover({color: "orange"})
   const PostData = async (e) => {
     e.preventDefault();
     let bridename = brideData.BrideName;
@@ -138,6 +172,9 @@ console.log({profile})
   };
 
 
+
+
+
   return (
       <>
             <Header />
@@ -148,11 +185,12 @@ console.log({profile})
                             <div style={{
                               background: `url(${card1}) no-repeat center/cover`,textAlign: "center", width: "100%", fontFamily: 'Lora', color: "#7132A1", height: "100%", padding: "100px 0"
                             }}>
-                                <h2 data-bs-toggle="modal" data-bs-target="#id1" style={{ paddingTop: "105px" }}>ANAMIKA</h2>
+                                <h2 data-bs-toggle="modal" data-bs-target="#id1" style={{ paddingTop: "105px" }}
+                               > {brideData.BrideName}</h2>
                                 <p style={{ color: "#CC8935" }}>Weds</p>
-                                <h2  data-bs-toggle="modal" data-bs-target="#id2">SANDEEP</h2>
+                                <h2  data-bs-toggle="modal" data-bs-target="#id2">{brideData.BrideFatherName}</h2>
                                 <p className="mb-0 mt-3" style={{ fontSize: "small" }}><strong>WEDDING INVITAION</strong></p>
-                                <p data-bs-toggle="modal" data-bs-target="#id3" style={{ fontSize: "small" }}>17TH JULY 2022</p>
+                                <p data-bs-toggle="modal" data-bs-target="#id3" style={{ fontSize: "small" }}>{brideData.BrideMotherName}</p>
                             </div>
                         </div>
                     </div>
@@ -162,13 +200,14 @@ console.log({profile})
                               background: `url(${card2}) no-repeat center/cover`,
                               textAlign: "center", width: "100%", fontFamily: 'Lora', color: "#7132A1", height: "100%", padding: "100px 0"
                             }}>
-                                <h4 data-bs-toggle="modal" data-bs-target="#id4" style={{ paddingTop: "75px" }}>Anamika Agrawal</h4>
-                                <p  style={{ color: "#CC8935", fontSize: "10px", marginBottom: "0" }}>Daughter of <br /><span  data-bs-toggle="modal" data-bs-target="#id5">Mr. Shubham agrawal</span> & <span  data-bs-toggle="modal" data-bs-target="#id6">Mrs. Monika Agrawal</span></p>
+                                <h4 data-bs-toggle="modal" data-bs-target="#id4" style={{ paddingTop: "75px" }}>{groomData.GroomName}</h4>
+                                <p  style={{ color: "#CC8935", fontSize: "10px", marginBottom: "0" }}>Daughter of <br /><span  data-bs-toggle="modal" data-bs-target="#id5">{groomData.GroomFatherName}</span> & <span  data-bs-toggle="modal" data-bs-target="#id6">{groomData.GroomMotherName}</span></p>
                                 <p style={{ color: "#CC8935", marginTop: "10px", marginBottom: "5px" }}>With</p>
-                                <h4 data-bs-toggle="modal" data-bs-target="#id7" className="mb-0">Sandeep Rawat</h4>
-                                <p  style={{ color: "#CC8935", fontSize: "10px", marginBottom: "0" }}>Daughter of <br /><span  data-bs-toggle="modal" data-bs-target="#id8">Mr. Shubham agrawal</span> & <span  data-bs-toggle="modal" data-bs-target="#id9">Mrs. Monika Agrawal</span></p>
+                                <h4 data-bs-toggle="modal" data-bs-target="#id7" className="mb-0">{groomData.GroomGrandFatherName}</h4>
+                                <p  style={{ color: "#CC8935", fontSize: "10px", marginBottom: "0" }}>Daughter of <br /><span  data-bs-toggle="modal" data-bs-target="#id8">{groomData.GroomGrandMotherName}</span> & <span  data-bs-toggle="modal" data-bs-target="#id9">{groomData.Grrom}</span></p>
                                 <p className="mb-0 mt-3" style={{ color: "#CC8935", fontSize: "small" }}>TOGETHER WITH THEIR</p>
                                 <p style={{ color: "#CC8935", fontSize: "small" }}>FAMILY AND FRIENDS</p>
+
                             </div>
                         </div>
                     </div>
@@ -179,10 +218,10 @@ console.log({profile})
                               textAlign: "center", width: "100%", fontFamily: 'Lora', color: "#7132A1", height: "100%", padding: "100px 0"
                             }}>
                                 <h4 style={{ paddingTop: "75px" }}>RSVP</h4>
-                                <p data-bs-toggle="modal" data-bs-target="#id10" style={{ color: "#CC8935", fontSize: "12px" }}>Waiting to meet you all in the wedding</p>
+                                <p data-bs-toggle="modal" data-bs-target="#id10" style={{ color: "#CC8935", fontSize: "12px" }}>{rsvpData.ProgramName}</p>
                                 <h4>Venue</h4>
-                                <p data-bs-toggle="modal" data-bs-target="#id11" style={{ color: "#CC8935", fontSize: "12px" }}>Hotel Brooklyn, Rajpur Road, Delhi</p>
-                                <p data-bs-toggle="modal" data-bs-target="#id12" className="mb-0 mt-3" style={{ color: "#CC8935", fontSize: "small" }}>Sunday, 17th July 2022</p>
+                                <p data-bs-toggle="modal" data-bs-target="#id11" style={{ color: "#CC8935", fontSize: "12px" }}>{rsvpData.Venue}</p>
+                                <p data-bs-toggle="modal" data-bs-target="#id12" className="mb-0 mt-3" style={{ color: "#CC8935", fontSize: "small" }}>{rsvpData._Date}</p>
                             </div>
                         </div>
                     </div>
@@ -200,8 +239,9 @@ console.log({profile})
                                 <input type="text" name="BrideName"
                                        placeholder="Bride Name" value={brideData.BrideName} onChange={handleInputs} className="form-control mb-3" />
                                 <div className="d-flex justify-content-between text-center">
-                                    <button type="button" className="btn btn-primary" value={brideData.BrideName} onChange={handleInputs}>Save</button>
-                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" className="btn btn-primary" data-bs-dismiss="modal" >Save</button>
+                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal"
+                                            onClick={()=>reset1()}>Close</button>
                                 </div>
                             </form>
                         </div>
@@ -218,8 +258,9 @@ console.log({profile})
                                        placeholder="Groom Name"
                                      value={brideData.BrideFatherName} onChange={handleInputs} className="form-control mb-3" />
                                 <div className="d-flex justify-content-between text-center">
-                                    <button type="button" className="btn btn-primary">Save</button>
-                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" className="btn btn-primary" data-bs-dismiss="modal">Save</button>
+                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal"
+                                            onClick={()=>reset1()}>Close</button>
                                 </div>
                             </form>
                         </div>
@@ -235,8 +276,9 @@ console.log({profile})
                                 <input type="text" name="BrideMotherName"
                                        placeholder="Wedding Date" value={brideData.BrideMotherName} onChange={handleInputs} className="form-control mb-3" />
                                 <div className="d-flex justify-content-between text-center">
-                                    <button type="button" className="btn btn-primary">Save</button>
-                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" className="btn btn-primary" data-bs-dismiss="modal">Save</button>
+                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal"
+                                            onClick={()=>reset1()}>Close</button>
                                 </div>
                             </form>
                         </div>
@@ -250,10 +292,11 @@ console.log({profile})
                         <div className="modal-body">
                             <form>
                                 <input type="text" name="GroomName"
-                                       placeholder="Bride Name" value={brideData.GroomName} onChange={handleInputs1} className="form-control mb-3" />
+                                       placeholder="Bride Name" value={groomData.GroomName} onChange={handleInputs1} className="form-control mb-3" />
                                 <div className="d-flex justify-content-between text-center">
-                                    <button type="button" className="btn btn-primary">Save</button>
-                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" className="btn btn-primary" data-bs-dismiss="modal">Save</button>
+                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal"
+                                            onClick={()=>reset2()}>Close</button>
                                 </div>
                             </form>
                         </div>
@@ -266,11 +309,12 @@ console.log({profile})
                     <div className="modal-content">
                         <div className="modal-body">
                             <form>
-                                <input type="text" name="GroomMotherName"
-                                       placeholder="Bride Father Name" value={brideData.GroomMotherName} onChange={handleInputs1} className="form-control mb-3" />
+                                <input type="text" name="GroomFatherName"
+                                       placeholder="Bride Father Name"  value={groomData.GroomFatherName} onChange={handleInputs1} className="form-control mb-3" />
                                 <div className="d-flex justify-content-between text-center">
-                                    <button type="button" className="btn btn-primary">Save</button>
-                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" className="btn btn-primary" data-bs-dismiss="modal">Save</button>
+                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal"
+                                            onClick={()=>reset2()}>Close</button>
                                 </div>
                             </form>
                         </div>
@@ -283,11 +327,12 @@ console.log({profile})
                     <div className="modal-content">
                         <div className="modal-body">
                             <form>
-                                <input type="text" name="GroomFatherName"
-                                       placeholder="Bride's Mother Name" value={brideData.GroomFatherName} onChange={handleInputs1} className="form-control mb-3" />
+                                <input type="text"  name="GroomMotherName"
+                                       placeholder="Bride's Mother Name" value={groomData.GroomMotherName} onChange={handleInputs1} className="form-control mb-3" />
                                 <div className="d-flex justify-content-between text-center">
-                                    <button type="button" className="btn btn-primary">Save</button>
-                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" className="btn btn-primary" data-bs-dismiss="modal">Save</button>
+                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal"
+                                            onClick={()=>reset2()}>Close</button>
                                 </div>
                             </form>
                         </div>
@@ -301,10 +346,11 @@ console.log({profile})
                         <div className="modal-body">
                             <form>
                                 <input type="text" name="GroomGrandFatherName"
-                                       placeholder="Groom Name" value={brideData.GroomGrandFatherName} onChange={handleInputs1} className="form-control mb-3" />
+                                       placeholder="Groom Name" value={groomData.GroomGrandFatherName} onChange={handleInputs1} className="form-control mb-3" />
                                 <div className="d-flex justify-content-between text-center">
-                                    <button type="button" className="btn btn-primary">Save</button>
-                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" className="btn btn-primary" data-bs-dismiss="modal">Save</button>
+                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal"
+                                            onClick={()=>reset2()}>Close</button>
                                 </div>
                             </form>
                         </div>
@@ -318,44 +364,47 @@ console.log({profile})
                         <div className="modal-body">
                             <form>
                                 <input type="text" name="GroomGrandMotherName"
-                                       placeholder="Groom's Father Name" value={brideData.GroomGrandMotherName} onChange={handleInputs1} className="form-control mb-3" />
+                                       placeholder="Groom's Father Name" value={groomData.GroomGrandMotherName} onChange={handleInputs1} className="form-control mb-3" />
                                 <div className="d-flex justify-content-between text-center">
-                                    <button type="button" className="btn btn-primary">Save</button>
-                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" className="btn btn-primary" data-bs-dismiss="modal">Save</button>
+                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal"
+                                            onClick={()=>reset2()}>Close</button>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-        {/* Modal  */}
-        <div className="modal fade" id="id9" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="id9" aria-hidden="true">
+
+         <div className="modal fade" id="id9" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="id8" aria-hidden="true">
                 <div className="modal-dialog modal-dialog-centered">
                     <div className="modal-content">
                         <div className="modal-body">
                             <form>
-                                <input type="text" name="ProgramName"
-                                       placeholder="Groom's Mother Name" value={brideData.ProgramName} onChange={handleInputs1} className="form-control mb-3" />
+                                <input type="text" name="Grrom"
+                                       placeholder="Groom's Father Name" value={groomData.Grrom} onChange={handleInputs1} className="form-control mb-3" />
                                 <div className="d-flex justify-content-between text-center">
-                                    <button type="button" className="btn btn-primary">Save</button>
-                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" className="btn btn-primary" data-bs-dismiss="modal">Save</button>
+                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal"
+                                            onClick={()=>reset2()}>Close</button>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-        {/* Modal  */}
+
         <div className="modal fade" id="id10" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="id10" aria-hidden="true">
                 <div className="modal-dialog modal-dialog-centered">
                     <div className="modal-content">
                         <div className="modal-body">
                             <form>
-                                <input type="text" name="Date"
-                                       placeholder="Message" value={brideData.Date} onChange={handleInputs2} className="form-control mb-3" />
+                                <input type="text" name="ProgramName"
+                                       placeholder="Message" value={rsvpData.ProgramName} onChange={handleInputs2} className="form-control mb-3" />
                                 <div className="d-flex justify-content-between text-center">
-                                    <button type="button" className="btn btn-primary">Save</button>
-                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" className="btn btn-primary" data-bs-dismiss="modal">Save</button>
+                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal"
+                                            onClick={()=>reset()}>Close</button>
                                 </div>
                             </form>
                         </div>
@@ -369,10 +418,11 @@ console.log({profile})
                         <div className="modal-body">
                             <form>
                                 <input type="text" name="Venue"
-                                       placeholder="Venue" value={brideData.Venue} onChange={handleInputs2} className="form-control mb-3" />
+                                       placeholder="Venue" value={rsvpData.Venue} onChange={handleInputs2} className="form-control mb-3" />
                                 <div className="d-flex justify-content-between text-center">
-                                    <button type="button" className="btn btn-primary">Save</button>
-                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" className="btn btn-primary" data-bs-dismiss="modal">Save</button>
+                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal"
+                                            onClick={()=>reset()}>Close</button>
                                 </div>
                             </form>
                         </div>
@@ -386,10 +436,11 @@ console.log({profile})
                         <div className="modal-body">
                             <form>
                                 <input type="text" name="_Date"
-                                       placeholder="Wedding Date" value={brideData._Date} onChange={handleInputs2} className="form-control mb-3" />
+                                       placeholder="Wedding Date" value={rsvpData._Date} onChange={handleInputs2} className="form-control mb-3" />
                                 <div className="d-flex justify-content-between text-center">
-                                    <button type="button" className="btn btn-primary">Save</button>
-                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" className="btn btn-primary" data-bs-dismiss="modal">Save</button>
+                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal"
+                                    onClick={()=>reset()}>Close</button>
                                 </div>
                             </form>
                         </div>
@@ -397,7 +448,7 @@ console.log({profile})
                 </div>
             </div>
 
-        <div className="col-md-12 text-center">
+        <div className="col-md-12 text-center mt-4">
                     <button  onClick={PostData} className="btn" style={{
                       borderRadius: "50px", background: "#FF3767",
                       color: "#fff", padding: "10px 20px"

@@ -169,58 +169,81 @@ const navigate=useNavigate()
 
   if(status==="success") {
     return (
-        <div className="container">
-            <nav className="navbar navbar-light bg-light">
-  <div className="d-flex w-100">
-    <div>
-    <a className="navbar-brand" href="./home">
-        <img src={logo} className="img-fluid"/>
+
+    <>
+      <div className="container">
+      <nav className="navbar navbar-light bg-light">
+  <div className="w-100 d-flex align-items-center">
+    <div className="w-100">
+    <a className="navbar-brand" href="./">
+    <img src={logo} className="img-fluid" alt="logo"/>
     </a>
     </div>
+
     <div className="w-100 navbar-expand">
-    <ul className="navbar-nav mb-2 mb-lg-0 justify-content-end">
-        <li className="nav-item">
+    <ul className="navbar-nav mb-2 mb-lg-0 justify-content-end align-items-center">
+        <li className="nav-item d-sm-block d-none">
           <a className="nav-link nav-btn" aria-current="page" href="#">
-              <img src={play}/>
+              <img src={play} alt="play store"/>
               Try Our App
           </a>
         </li>
-        <li className="nav-item">
+      {/* <li className="nav-item">
           <a className="nav-link" href="#">
-              <img src={translate}/>
+              <img src={translate} alt="translate" />
+          </a>
+        </li> */}
+      <li className="nav-item">
+          <a className="nav-link" href="#">
+          <FontAwesomeIcon icon={faMagnifyingGlass} />
           </a>
         </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#">
-          <FontAwesomeIcon icon={faMagnifyingGlass}/>
-          </a>
-        </li>
-
       </ul>
     </div>
-    <div>
-
-    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-
-      <span className="navbar-toggler-icon">
-
-      </span>
+      <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span className="navbar-toggler-icon"></span>
     </button>
-    <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
- <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-   <li className="nav-item">
-          {/*<a className="nav-link active" aria-current="page" href="./login">Logout</a>*/}
-     {/*<Logout/>*/}
+    </div>
 
-
-     <button onClick={()=>handleLogout()}>Logout</button>
+    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+        <li className="nav-item">
+          <a className="nav-link" aria-current="page" href="/drafts">My Drafts</a>
         </li>
-          </ul>
+        <li className="nav-item">
+          <a className="nav-link" href="/purchased">My Purchases</a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link" href="#">Favourites</a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link" href="#">FAQ</a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link" href="#">Contact Us</a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link" href="#">About Us</a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link" href="#">Privacy Policy</a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link" style={{cursor:"pointer"}} onClick={()=>handleLogout()}>Logout</a>
+        </li>
+        <li className="nav-item d-sm-none d-block">
+          <a className="nav-link nav-btn" aria-current="page" href="#">
+              <img src={play} alt="play store"/>
+              Try Our App
+          </a>
+        </li>
+      </ul>
     </div>
-    </div>
-  </div>
 </nav>
-        </div>
+</div>
+
+       <hr/>
+</>
 
 
     )
@@ -229,58 +252,80 @@ const navigate=useNavigate()
   else
   {
     return (
-        <div className="container">
-            <nav className="navbar navbar-light bg-light">
-  <div className="d-flex w-100">
-    <div>
-    <a className="navbar-brand" href="./home">
-        <img src={logo} className="img-fluid"/>
+        <>
+      <div className="container">
+      <nav className="navbar navbar-light bg-light">
+  <div className="w-100 d-flex align-items-center">
+    <div className="w-100">
+    <a className="navbar-brand" href="./">
+    <img src={logo} className="img-fluid" alt="logo"/>
     </a>
     </div>
+
     <div className="w-100 navbar-expand">
-    <ul className="navbar-nav mb-2 mb-lg-0 justify-content-end">
-        <li className="nav-item">
+    <ul className="navbar-nav mb-2 mb-lg-0 justify-content-end align-items-center">
+        <li className="nav-item d-sm-block d-none">
           <a className="nav-link nav-btn" aria-current="page" href="#">
-              <img src={play}/>
+              <img src={play} alt="play store"/>
               Try Our App
           </a>
         </li>
-        <li className="nav-item">
+      {/* <li className="nav-item">
           <a className="nav-link" href="#">
-              <img src={translate}/>
+              <img src={translate} alt="translate" />
+          </a>
+        </li> */}
+      <li className="nav-item">
+          <a className="nav-link" href="#">
+          <FontAwesomeIcon icon={faMagnifyingGlass} />
           </a>
         </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#">
-          <FontAwesomeIcon icon={faMagnifyingGlass}/>
-          </a>
-        </li>
-
-
       </ul>
     </div>
-    <div>
-
-    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-
-      <span className="navbar-toggler-icon">
-
-      </span>
+      <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span className="navbar-toggler-icon"></span>
     </button>
-    <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
- <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-   <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="./login">Login</a>
+    </div>
 
+    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+        <li className="nav-item">
+          <a className="nav-link" aria-current="page" href="#">My Drafts</a>
         </li>
-
-          </ul>
+        <li className="nav-item">
+          <a className="nav-link" href="#">My Purchases</a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link" href="#">Favourites</a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link" href="#">FAQ</a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link" href="#">Contact Us</a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link" href="#">About Us</a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link" href="#">Privacy Policy</a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link" href="/login">Login</a>
+        </li>
+        <li className="nav-item d-sm-none d-block">
+          <a className="nav-link nav-btn" aria-current="page" href="#">
+              <img src={play} alt="play store"/>
+              Try Our App
+          </a>
+        </li>
+      </ul>
     </div>
-    </div>
-  </div>
 </nav>
-        </div>
+</div>
 
+       <hr/>
+</>
 
     )
   }

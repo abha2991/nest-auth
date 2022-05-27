@@ -1,17 +1,15 @@
 import { Module } from '@nestjs/common';
 import {TypeOrmModule} from '@nestjs/typeorm'
 
-import { CardetailsService } from './cardetails.service';
-import { CardetailsController } from './cardetails.controller';
-import {CardEntity} from './entities/card.entity'
-import {CardcaptionEntity} from '../cardcaptiondetails/entities/cardcaption.entity'
-import {CardcaptiondetailsModule} from '../cardcaptiondetails/cardcaptiondetails.module'
+import { CardetailsController } from './cardetails.controller'
 
+import { CardetailsService } from './cardetails.service'
+import { CardEntity } from './entities/card.entity'
 
 @Module({
-  imports: [TypeOrmModule.forFeature([CardEntity,CardcaptionEntity])],
+  imports: [TypeOrmModule.forFeature([CardEntity])],
   controllers: [CardetailsController],
   providers: [CardetailsService],
-  exports:[CardetailsService]
+  exports: [CardetailsService]
 })
 export class CardetailsModule {}

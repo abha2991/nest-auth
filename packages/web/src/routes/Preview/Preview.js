@@ -16,22 +16,22 @@ import useQueryParams from '../../hooks/useQueryParams'
 
 import useProfileApi from '../../api/useProfileApi'
 import useCardUserApi from '../../api/useCardUserApi';
-
+import Carousel from 'carousel-react-rcdev'
 
 const Preview = () => {
-    const navigate= useNavigate();
-    const { data: profile, status } = useProfileApi()
+    const navigate = useNavigate();
+    const {data: profile, status} = useProfileApi()
     //console.log({status})
-    const id=useQueryParams();
-    const { pay } = useRazorpay();
-    const[cardname,setCardName]=useState();
-    const[userdata,setUserData]=useState();
+    const id = useQueryParams();
+    const {pay} = useRazorpay();
+    const [cardname, setCardName] = useState();
+    const [userdata, setUserData] = useState();
 
     const {id: id2} = id
-    const getCardsOfUser= async (e) => {
+    const getCardsOfUser = async (e) => {
 
 
-        const res = await fetch(`http://localhost:3001/api/card1/getCard/${id2}`,{
+        const res = await fetch(`http://localhost:3001/api/card1/getCard/${id2}`, {
             method: "GET",
             credentials: "include",
             headers: {
@@ -43,10 +43,10 @@ const Preview = () => {
             // }),
         });
 
-        const data= await res.json();
-//console.log(data)
+        const data = await res.json();
+console.log(data)
         //console.log(data.CardNames)
-   setCardName(data.CardNames)
+        setCardName(data.CardNames)
         setUserData(data.id)
 
     };
@@ -55,7 +55,7 @@ const Preview = () => {
     }, [id2]);
 
 
-let cardId=userdata;
+    let cardId = userdata;
 
     // const filePath= async (filename) => {
     //
@@ -76,8 +76,6 @@ let cardId=userdata;
     // }, []);
 
 
-
-
     const options = {
         loop: true,
         margin: 20,
@@ -91,25 +89,22 @@ let cardId=userdata;
                 items: 1,
             },
             768: {
-                items: 2,
+                items: 1,
             },
             992: {
-                items: 3,
+                items: 1,
             }
         }
     };
 
 
-
-
-
-    const Pay = async (price,cardId) => {
+    const Pay = async (price, cardId) => {
         //console.log("in Preview")
 
         try {
 
-            console.log({price,cardId})
-            let result=await pay(price,cardId);
+            console.log({price, cardId})
+            let result = await pay(price, cardId);
 
             console.log({result})
             //navigate('/download')
@@ -125,53 +120,67 @@ let cardId=userdata;
 
 
 
-    return (
-        <>
-            <Header />
+    if (!cardname) {
+return(
+    <>
+        <div></div></>
+)
+    } else {
 
-            <div className="container" >
+        return (
+            <>
+            <Header/>
+
+            <div className="container">
                 <div className="d-flex justify-content-between align-items-center my-5">
                     <button type="button" className="btn" data-bs-dismiss="modal" aria-label="Close">
-                        <FontAwesomeIcon icon={faArrowLeft} />
-                        &nbsp;Back
+                        <FontAwesomeIcon icon={faArrowLeft}/>&nbsp;Back
                     </button>
-                    <a href="#" style={{ textDecoration: "none" }}>
-                        <FontAwesomeIcon icon={faShareNodes} />
-                        &nbsp;Share
+                    <a href="#" style={{textDecoration: "none"}}>
+                        <FontAwesomeIcon icon={faShareNodes}/>&nbsp;Share
                     </a>
                 </div>
                 <div>
                     <OwlCarousel className='owl-carousel owl-theme wedding-carousel' options={options}>
+                        {cardname?.map((val) => {
 
-                        {cardname?.map((val,index)=> {
-                            return(
+                                if (!val) return null
 
-    <>
+                                return (
+
+                                    <>
  <div className="item">
-       <div style={{position:"relative"}}>
-            <img src={"http://localhost:3001/" + val} className="img-fluid" alt="Invitations" style={{
+       <div style={{position: "relative"}}>
+            <img src={"http://localhost:3001/generated/" + val} className="img-fluid" alt="Invitations" style={{
                 maxWidth: "300px",
                 margin: "auto"
             }}/>
-           <div  style={{position:"absolute",top:"45%",left:"auto",right:"auto",width:"100%",textAlign:"center",opacity:"0.2"}}>
-               <img src={logo} style={{maxWidth:"150px",margin:"auto"}}/>
+           <div style={{
+               position: "absolute",
+               top: "45%",
+               left: "auto",
+               right: "auto",
+               width: "100%",
+               textAlign: "center",
+               opacity: "0.2"
+           }}>
+               <img src={logo} style={{maxWidth: "150px", margin: "auto"}}/>
            </div>
        </div>
        </div>
                             </>
-                            )
+                                )
                             }
                         )}
-
                     </OwlCarousel>
                 </div>
                 <div className="d-md-flex justify-content-center pay-btn my-5">
-                    <a href="#"><FontAwesomeIcon icon={faPen} /> Edit this Page</a>
-                    <a style={{cursor:"pointer"}} onClick={() => Pay(500,cardId)}>Pay 1,200 & Download</a>
+                    <a href="#"><FontAwesomeIcon icon={faPen}/> Edit this Page</a>
+                    <a style={{cursor: "pointer"}} onClick={() => Pay(500, cardId)}>Pay 1,200 & Download</a>
                 </div>
             </div>
         </>
-    )
+        )
+    }
 }
-
 export default Preview

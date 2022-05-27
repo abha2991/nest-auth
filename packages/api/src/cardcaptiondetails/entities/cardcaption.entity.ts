@@ -1,35 +1,22 @@
-import { Entity, PrimaryGeneratedColumn, Column,OneToOne,JoinColumn } from 'typeorm';
-import {CardEntity} from '../../cardetails/entities/card.entity'
-
-
-
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm'
+import { CardEntity } from '../../cardetails/entities/card.entity'
 
 @Entity()
 export class CardcaptionEntity {
     @PrimaryGeneratedColumn()
-    id: number;
+    id: number
 
-
-    // @OneToOne(() => CardEntity)
-    // @JoinColumn()
-  // @Column()
-
-
-    @OneToOne(() => CardEntity, CardId => CardId.id) // specify inverse side as a second parameter
+    @OneToOne(() => CardEntity, (Card) => Card.Caption)
     @JoinColumn()
-   CardId: number;
+    Card: CardEntity
 
-    @Column("simple-json")
-
-    Caption:[{
-        x:number,
-        y:number,
-        font:string,
-        text:string,
-    }]
-
-
+    @Column('simple-json')
+    Caption: [
+        {
+            x: number
+            y: number
+            font: string
+            //text: string
+        }
+    ]
 }
-
-
-

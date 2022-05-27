@@ -19,13 +19,13 @@ const cardids: CardId[] = [
         userCardId:1234,
         id: 1,
 
-        card: 'three.png'
+        card: 'two.png'
     },
     {
         userCardId:1234,
         id: 1,
 
-        card: 'four.png'
+        card: 'three.png'
     },
 
 

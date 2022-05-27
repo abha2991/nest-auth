@@ -407,10 +407,14 @@ import Engagement from "../img/Engagement.png";
 import Birthday from "../img/Birthday.png";
 import SaveTheDate from "../img/Save the date.png";
 import Wedding1 from "../img/3 1.png";
-
+import card5 from "../img/42241481.png";
 import one011 from "../img/one-011.png";
 import {useNavigate} from 'react-router';
+import card1 from "../img/AnamikaCard1.jpeg";
+import card2 from "../img/AnamikaCard2.jpeg";
+import card3 from "../img/AnamikaCard3.jpeg";
 import useLogoutApi from '../../api/useLogoutApi';
+import Fancybox from "../../fancybox"
 
 const Home = () => {
 const navigate=useNavigate();
@@ -427,7 +431,8 @@ const navigate=useNavigate();
 
         if(status==="success")
         {
-            navigate(`/TryCard?id=${id}`)
+            // navigate(`/TryCard?id=${id}`)
+            navigate(`/card${id}?id=${id}`)
         }
 
         else
@@ -442,6 +447,7 @@ const navigate=useNavigate();
         const res = await fetch(`http://localhost:3001/api/cardetails/cardetails`);
 
         const casedetail = await res.json();
+        //console.log(casedetail)
         setCasedetail(casedetail);
 
     };
@@ -454,7 +460,6 @@ const navigate=useNavigate();
     const options = {
     loop: true,
     items: 4,
-    margin: 20,
     rewind: true,
     autoplay: true,
     autoplayTimeout: 2000,
@@ -480,7 +485,6 @@ const navigate=useNavigate();
   const options1 = {
     loop: true,
     items: 1,
-    margin: 20,
     rewind: true,
     autoplay: true,
     autoplayTimeout: 2000,
@@ -493,7 +497,7 @@ const navigate=useNavigate();
     loop: true,
     center: true,
     items: 2,
-    margin: 20,
+      margin:20,
     rewind: true,
     autoplay: true,
     autoplayTimeout: 2000,
@@ -505,8 +509,6 @@ const navigate=useNavigate();
 
     const[cardInfo,setCardInfo]=useState();
     const getCardsOfUser= async (e) => {
-
-
         const res = await fetch(`http://localhost:3001/api/cardetails/cardetails`,{
             method: "GET",
             credentials: "include",
@@ -533,6 +535,8 @@ const navigate=useNavigate();
 
 
 console.log({cardInfo})
+
+    let url="../img/"
 
   return (
       <>
@@ -639,9 +643,13 @@ console.log({cardInfo})
                 </OwlCarousel>
 
 
-                <div className="d-flex justify-content-between mt-5">
+                <div className="my-5">
+                    <hr/>
+                    <div className="d-flex justify-content-between">
                     <h4>Categories</h4>
-                    <a href="./cards" style={{ color: "#9505F9", textDecoration: "none", fontWeight: "bold" }}>See All</a>
+                    <a href="./card" style={{ color: "#9505F9", textDecoration: "none", fontWeight: "bold" }}>See All</a>
+                </div>
+                    <hr />
                 </div>
                 <div className="row">
 
@@ -665,16 +673,6 @@ console.log({cardInfo})
                         </a>
                     </div>
 
-
-
-                    {/*{data.map((val,index)=>{*/}
-                    {/*    <div className="col-md-3 text-center">*/}
-                    {/*    <a href="#" style={{ textDecoration: "none" }}>*/}
-                    {/*        <img src={SaveTheDate} className="img-fluid" alt="Categories" />*/}
-                    {/*        <h6 style={{ color: "#000" }}>{val.CardName}</h6>*/}
-                    {/*    </a>*/}
-                    {/*</div>*/}
-                    {/*})}*/}
                     <div className="col-md-3 text-center">
                         <a href="#" style={{ textDecoration: "none" }}>
                             <img src={SaveTheDate} className="img-fluid" alt="Categories" />
@@ -682,103 +680,272 @@ console.log({cardInfo})
                         </a>
                     </div>
                 </div>
-                <div className="d-flex justify-content-between mt-5">
+                <div className="my-5">
+                    <hr />
+                    <div className="d-flex justify-content-between">
                     <h4>Wedding Invitations</h4>
-                    <a href="./cards" style={{ color: "#9505F9", textDecoration: "none", fontWeight: "bold" }}>See All</a>
+                    <a href="./card" style={{ color: "#9505F9", textDecoration: "none", fontWeight: "bold" }}>See All</a>
+                </div>
+                    <hr />
                 </div>
 
                 <div className="row">
-                    <OwlCarousel className='owl-carousel owl-theme wedding-carousel' options={options}>
-                        <div className='item'>
+
+
+
+
+
+                     {casedetail?.map((val, index) => {
+                         if(val.CardCategory==="WeddingInvitation") {
+                             return (
+                                 <>
+                     <div className='col-md-3'>
                             <div className="wedding-box">
-                                <a href="#staticBackdrop" data-bs-toggle="modal">
-                                    <img src={Wedding1} className="img-fluid" alt="Invitations" />
+
+                                <a href={"#id"+index} data-bs-toggle="modal">
+                                  <img src={"http://localhost:3001/assets/" + val.CardTemplates[0]} className="img-fluid"/>
                                 </a>
                                 <div className="inner">
                                     <div className="triangle-right"></div>
-                                    <h4>4</h4>
+                                    <h4>{val.NoOfPages}</h4>
                                     <p>Pages</p>
                                 </div>
-                                <strong><span>₹1,200</span></strong>
-                                <del>₹1,500</del>
+                                <div className="price"><strong><span>₹{val.CardSalePrice}</span></strong><del>₹{val.CardTotalPrice}</del></div>
+                                {/*<button onClick={()=>preview(val.id)}>Click</button>*/}
                             </div>
+
                         </div>
-                        <div className='item'>
-                            <div className="wedding-box">
-                                <a href="#staticBackdrop" data-bs-toggle="modal">
-                                    <img src={Wedding1} className="img-fluid" alt="Invitations" />
-                                </a>
-                                <div className="inner">
-                                    <div className="triangle-right"></div>
-                                    <h4>4</h4>
-                                    <p>Pages</p>
-                                </div>
-                                <strong><span>₹1,200</span></strong>
-                                <del>₹1,500</del>
+
+                           <div className="modal fade" id={"id"+index} data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <button type="button" className="btn" data-bs-dismiss="modal" aria-label="Close">
+                                <FontAwesomeIcon icon={faArrowLeft} />
+                                &nbsp;Back
+                            </button>
+                            <a href="#" style={{ textDecoration: "none" }}>
+                                <FontAwesomeIcon icon={faShareNodes} />
+                                &nbsp;Share
+                            </a>
+                        </div>
+                        <div className="modal-body">
+                           <Fancybox>
+                                <OwlCarousel className='owl-carousel owl-theme wedding-carousel' options={options2}>
+                                 {val.CardTemplates.map((card1,ind)=>{
+                                     return(
+                                         <>
+                                    <div className='item'>
+
+                                        <a data-fancybox="gallery" href={"http://localhost:3001/assets/" + card1}>
+                                            <img src={"http://localhost:3001/assets/" + card1} className="img-fluid" alt="Invitations" style={{ maxWidth: "300px", margin: "auto" }} />
+                                        </a>
+
+                                    </div>
+                                    </>
+                                     )
+
+                                 })}
+
+
+                                </OwlCarousel>
+                            </Fancybox>
+                        </div>
+                        <div className="modal-footer justify-content-between">
+                            <div className="d-flex align-items-center">
+                               <div className="price"><strong><span>₹{val.CardSalePrice}</span></strong><del>₹{val.CardTotalPrice}</del></div>
                             </div>
-                        </div>
-                        <div className='item'>
-                            <div className="wedding-box">
-                                <a href="#staticBackdrop" data-bs-toggle="modal">
-                                    <img src={Wedding1} className="img-fluid" alt="Invitations" />
-                                </a>
-                                <div className="inner">
-                                    <div className="triangle-right"></div>
-                                    <h4>4</h4>
-                                    <p>Pages</p>
-                                </div>
-                                <strong><span>₹1,200</span></strong>
-                                <del>₹1,500</del>
-                            </div>
-                        </div>
-                        <div className='item'>
-                            <div className="wedding-box">
-                                <a href="#staticBackdrop" data-bs-toggle="modal">
-                                    <img src={Wedding1} className="img-fluid" alt="Invitations" />
-                                </a>
-                                <div className="inner">
-                                    <div className="triangle-right"></div>
-                                    <h4>4</h4>
-                                    <p>Pages</p>
-                                </div>
-                                <strong><span>₹1,200</span></strong>
-                                <del>₹1,500</del>
-                            </div>
-                        </div>
-                        <div className='item'>
-                            <div className="wedding-box">
-                                <a href="#staticBackdrop" data-bs-toggle="modal">
-                                    <img src={Wedding1} className="img-fluid" alt="Invitations" />
-                                </a>
-                                <div className="inner">
-                                    <div className="triangle-right"></div>
-                                    <h4>4</h4>
-                                    <p>Pages</p>
-                                </div>
-                                <strong><span>₹1,200</span></strong>
-                                <del>₹1,500</del>
-                            </div>
-                        </div>
-                        <div className='item'>
-                            <div className="wedding-box">
-                                <a href="#staticBackdrop" data-bs-toggle="modal">
-                                    <img src={Wedding1} className="img-fluid" alt="Invitations" />
-                                </a>
-                                <div className="inner">
-                                    <div className="triangle-right"></div>
-                                    <h4>4</h4>
-                                    <p>Pages</p>
-                                </div>
-                                <strong><span>₹1,200</span></strong>
-                                <del>₹1,500</del>
+                            <div>
+
+
+
+
+                                <button className="btn btn-primary" onClick={()=>EditCard(val.id)}
+
+                                >Try This Card</button>
                             </div>
                         </div>
 
-                    </OwlCarousel>
+
+                        {/*        {casedetail.map((val,index)=>{*/}
+                        {/*            <div className="d-flex justify-content-between mt-5">*/}
+                        {/*    <h4>{val.CardName}</h4>*/}
+                        {/*     <h4>{val.CardCategory}</h4>*/}
+                        {/*</div>*/}
+                        {/*        })}*/}
+                    </div>
                 </div>
-                <div className="d-flex justify-content-between mt-5">
+            </div>
+
+
+                     </>
+                             )
+                         }
+                     })
+                     }
+
+
+{/*                    <OwlCarousel className='owl-carousel owl-theme wedding-carousel' options={options}>*/}
+
+{/*                        {casedetail?.map((val,index)=>{*/}
+
+{/*return(*/}
+
+{/*    <>*/}
+{/*                        <div className='item'>*/}
+{/*                            <div className="wedding-box">*/}
+{/*                                <a href={"#id"+index} data-bs-toggle="modal">*/}
+{/*                                    <img src={"http://localhost:3001/assets/" + val.CardTemplates[0]} className="img-fluid" alt="Invitations" />*/}
+
+{/*                                </a>*/}
+{/*                                <div className="inner">*/}
+{/*                                    <div className="triangle-right"></div>*/}
+{/*                                    <h4>{val.NoOfPages}</h4>*/}
+{/*                                    <p>Pages</p>*/}
+{/*                                </div>*/}
+{/*                                <div className="price"><strong><span>{val.CardSalePrice}</span></strong><del>{val.CardTotalPrice}</del></div>*/}
+{/*                            </div>*/}
+{/*                        </div>*/}
+
+
+
+{/*        <div className="modal fade" id={"id"+index} data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">*/}
+{/*                <div className="modal-dialog">*/}
+{/*                    <div className="modal-content">*/}
+{/*                        <div className="modal-header">*/}
+{/*                            <button type="button" className="btn" data-bs-dismiss="modal" aria-label="Close">*/}
+{/*                                <FontAwesomeIcon icon={faArrowLeft} />*/}
+{/*                                &nbsp;Back*/}
+{/*                            </button>*/}
+{/*                            <a href="#" style={{ textDecoration: "none" }}>*/}
+{/*                                <FontAwesomeIcon icon={faShareNodes} />*/}
+{/*                                &nbsp;Share*/}
+{/*                            </a>*/}
+{/*                        </div>*/}
+{/*                        <div className="modal-body">*/}
+{/*                           <Fancybox>*/}
+{/*                                <OwlCarousel className='owl-carousel owl-theme wedding-carousel' options={options2}>*/}
+{/*                                 {val.CardTemplates.map((card1,ind)=>{*/}
+{/*                                     return(*/}
+{/*                                         <>*/}
+{/*                                    <div className='item'>*/}
+
+{/*                                        <a data-fancybox="gallery" href={"http://localhost:3001/assets/" + card1}>*/}
+{/*                                            <img src={"http://localhost:3001/assets/" + card1} className="img-fluid" alt="Invitations" style={{ maxWidth: "300px", margin: "auto" }} />*/}
+{/*                                        </a>*/}
+
+{/*                                    </div>*/}
+{/*                                    </>*/}
+{/*                                     )*/}
+
+{/*                                 })}*/}
+
+
+{/*                                </OwlCarousel>*/}
+{/*                            </Fancybox>*/}
+{/*                        </div>*/}
+{/*                        <div className="modal-footer justify-content-between">*/}
+{/*                            <div className="d-flex align-items-center">*/}
+{/*                               <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>*/}
+{/*                            </div>*/}
+{/*                            <div>*/}
+
+{/*                                <button className="btn btn-primary" onClick={()=>preview(val.id)}*/}
+
+{/*                                >Download This Card</button>*/}
+{/*                            </div>*/}
+{/*                        </div>*/}
+{/*                    </div>*/}
+{/*                </div>*/}
+{/*            </div>*/}
+
+
+
+
+
+
+
+
+{/*                        </>*/}
+
+
+{/*)*/}
+{/*                        })}*/}
+{/*                        /!*<div className='item'>*!/*/}
+{/*                        /!*    <div className="wedding-box">*!/*/}
+{/*                        /!*        <a href="#staticBackdrop" data-bs-toggle="modal">*!/*/}
+{/*                        /!*            <img src={card1} className="img-fluid" alt="Invitations" />*!/*/}
+{/*                        /!*        </a>*!/*/}
+{/*                        /!*        <div className="inner">*!/*/}
+{/*                        /!*            <div className="triangle-right"></div>*!/*/}
+{/*                        /!*            <h4>4</h4>*!/*/}
+{/*                        /!*            <p>Pages</p>*!/*/}
+{/*                        /!*        </div>*!/*/}
+{/*                        /!*       <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>*!/*/}
+{/*                        /!*    </div>*!/*/}
+{/*                        /!*</div>*!/*/}
+{/*                        /!*<div className='item'>*!/*/}
+{/*                        /!*    <div className="wedding-box">*!/*/}
+{/*                        /!*        <a href="#staticBackdrop" data-bs-toggle="modal">*!/*/}
+{/*                        /!*            <img src={card1} className="img-fluid" alt="Invitations" />*!/*/}
+{/*                        /!*        </a>*!/*/}
+{/*                        /!*        <div className="inner">*!/*/}
+{/*                        /!*            <div className="triangle-right"></div>*!/*/}
+{/*                        /!*            <h4>4</h4>*!/*/}
+{/*                        /!*            <p>Pages</p>*!/*/}
+{/*                        /!*        </div>*!/*/}
+{/*                        /!*        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>*!/*/}
+{/*                        /!*    </div>*!/*/}
+{/*                        /!*</div>*!/*/}
+{/*                        /!*<div className='item'>*!/*/}
+{/*                        /!*    <div className="wedding-box">*!/*/}
+{/*                        /!*        <a href="#staticBackdrop" data-bs-toggle="modal">*!/*/}
+{/*                        /!*            <img src={card1} className="img-fluid" alt="Invitations" />*!/*/}
+{/*                        /!*        </a>*!/*/}
+{/*                        /!*        <div className="inner">*!/*/}
+{/*                        /!*            <div className="triangle-right"></div>*!/*/}
+{/*                        /!*            <h4>4</h4>*!/*/}
+{/*                        /!*            <p>Pages</p>*!/*/}
+{/*                        /!*        </div>*!/*/}
+{/*                        /!*        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>*!/*/}
+{/*                        /!*    </div>*!/*/}
+{/*                        /!*</div>*!/*/}
+{/*                        /!*<div className='item'>*!/*/}
+{/*                        /!*    <div className="wedding-box">*!/*/}
+{/*                        /!*        <a href="#staticBackdrop" data-bs-toggle="modal">*!/*/}
+{/*                        /!*            <img src={card1} className="img-fluid" alt="Invitations" />*!/*/}
+{/*                        /!*        </a>*!/*/}
+{/*                        /!*        <div className="inner">*!/*/}
+{/*                        /!*            <div className="triangle-right"></div>*!/*/}
+{/*                        /!*            <h4>4</h4>*!/*/}
+{/*                        /!*            <p>Pages</p>*!/*/}
+{/*                        /!*        </div>*!/*/}
+{/*                        /!*        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>*!/*/}
+{/*                        /!*    </div>*!/*/}
+{/*                        /!*</div>*!/*/}
+{/*                        /!*<div className='item'>*!/*/}
+{/*                        /!*    <div className="wedding-box">*!/*/}
+{/*                        /!*        <a href="#staticBackdrop" data-bs-toggle="modal">*!/*/}
+{/*                        /!*            <img src={card1} className="img-fluid" alt="Invitations" />*!/*/}
+{/*                        /!*        </a>*!/*/}
+{/*                        /!*        <div className="inner">*!/*/}
+{/*                        /!*            <div className="triangle-right"></div>*!/*/}
+{/*                        /!*            <h4>4</h4>*!/*/}
+{/*                        /!*            <p>Pages</p>*!/*/}
+{/*                        /!*        </div>*!/*/}
+{/*                        /!*        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>*!/*/}
+{/*                        /!*    </div>*!/*/}
+{/*                        /!*</div>*!/*/}
+
+{/*                    </OwlCarousel>*/}
+                </div>
+                <div className="my-5">
+                    <hr/>
+                    <div className="d-flex justify-content-between">
                     <h4>Engagement Invitations</h4>
                     <a href="./cards" style={{ color: "#9505F9", textDecoration: "none", fontWeight: "bold" }}>See All</a>
+                </div>
+                    <hr/>
                 </div>
                 <div className="row mb-5">
                     <OwlCarousel className='owl-carousel owl-theme wedding-carousel' options={options}>
@@ -792,8 +959,7 @@ console.log({cardInfo})
                                     <h4>4</h4>
                                     <p>Pages</p>
                                 </div>
-                                <strong><span>₹1,200</span></strong>
-                                <del>₹1,500</del>
+                                <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                             </div>
                         </div>
                         <div className='item'>
@@ -806,8 +972,7 @@ console.log({cardInfo})
                                     <h4>4</h4>
                                     <p>Pages</p>
                                 </div>
-                                <strong><span>₹1,200</span></strong>
-                                <del>₹1,500</del>
+                                <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                             </div>
                         </div>
                         <div className='item'>
@@ -820,8 +985,7 @@ console.log({cardInfo})
                                     <h4>4</h4>
                                     <p>Pages</p>
                                 </div>
-                                <strong><span>₹1,200</span></strong>
-                                <del>₹1,500</del>
+                                <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                             </div>
                         </div>
                         <div className='item'>
@@ -834,8 +998,7 @@ console.log({cardInfo})
                                     <h4>4</h4>
                                     <p>Pages</p>
                                 </div>
-                                <strong><span>₹1,200</span></strong>
-                                <del>₹1,500</del>
+                                <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                             </div>
                         </div>
                         <div className='item'>
@@ -848,8 +1011,7 @@ console.log({cardInfo})
                                     <h4>4</h4>
                                     <p>Pages</p>
                                 </div>
-                                <strong><span>₹1,200</span></strong>
-                                <del>₹1,500</del>
+                                <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                             </div>
                         </div>
                         <div className='item'>
@@ -862,8 +1024,7 @@ console.log({cardInfo})
                                     <h4>4</h4>
                                     <p>Pages</p>
                                 </div>
-                                <strong><span>₹1,200</span></strong>
-                                <del>₹1,500</del>
+                                <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                             </div>
                         </div>
 
@@ -872,62 +1033,8 @@ console.log({cardInfo})
             </div>
 
         {/* Modal */}
-        <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <button type="button" className="btn" data-bs-dismiss="modal" aria-label="Close">
-                                <FontAwesomeIcon icon={faArrowLeft} />
-                              &nbsp;Back
-                            </button>
-                            <a href="#" style={{ textDecoration: "none" }}>
-                                <FontAwesomeIcon icon={faShareNodes} />
-                              &nbsp;Share
-                            </a>
-                        </div>
-                        <div className="modal-body">
-                            <OwlCarousel className='owl-carousel owl-theme wedding-carousel' options={options2}>
-                                <div className='item'>
-                                    <img src={one011} className="img-fluid" alt="Invitations" style={{ maxWidth: "300px", margin: "auto" }} />
-                                </div>
-                                <div className='item'>
-                                    <img src={one011} className="img-fluid" alt="Invitations" style={{ maxWidth: "300px", margin: "auto" }} />
-                                </div>
-                                <div className='item'>
-                                    <img src={one011} className="img-fluid" alt="Invitations" style={{ maxWidth: "300px", margin: "auto" }} />
-                                </div>
-
-                            </OwlCarousel>
-                        </div>
-                        <div className="modal-footer justify-content-between">
-                            <div className="d-flex align-items-center">
-                                <h4>₹1,200</h4>&nbsp;
-                              <h6><del>₹1,500</del></h6>
-                            </div>
-                            <div>
-
-                                {/*<a id="edit-card"*/}
-                                {/*   // href="./edit-card" onclick="window.location.href=this.href+'?id='+val;"*/}
-                                {/*    onClick={changeHref(1)}*/}
-                                {/*   style={{ background: "#FF3767", color: "#fff", borderRadius: "10px", textDecoration: "none", padding: "10px 20px" }}>Try This Card</a>*/}
 
 
-                                <button onClick={()=>EditCard(4)}
-                                        style={{ background: "#FF3767", color: "#fff", borderRadius: "10px", textDecoration: "none", padding: "10px 20px" }}
-                                >Try This Card</button>
-                            </div>
-                        </div>
-=
-
-                {/*        {casedetail.map((val,index)=>{*/}
-                {/*            <div className="d-flex justify-content-between mt-5">*/}
-                {/*    <h4>{val.CardName}</h4>*/}
-                {/*     <h4>{val.CardCategory}</h4>*/}
-                {/*</div>*/}
-                {/*        })}*/}
-                    </div>
-                </div>
-            </div>
 
 
 

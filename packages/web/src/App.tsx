@@ -29,7 +29,17 @@ const Users = lazy(() => import('./routes/Users'))
 const TryCard = lazy(() => import('./routes/TryCard'))
 const Profile = lazy(() => import('./routes/Profile'))
 const Progress = lazy(() => import('./routes/ProgressBar'))
+
+
 const DownloadCards=lazy(() => import('./routes/DownloadCards'))
+const Drafts=lazy(() => import('./routes/Drafts'))
+const Purchased=lazy(() => import('./routes/Purchased'))
+const Card1=lazy(() => import('./routes/Cards/Card1'))
+const Card2=lazy(() => import('./routes/Cards/Card2.js'))
+const Card4=lazy(() => import('./routes/Cards/Card4'))
+// import Purchased from './routes/Purchased'
+// import Drafts from './routes/DownloadCards'
+
 
 
 
@@ -97,7 +107,11 @@ const App: FC = () => {
 <Route path="registration" element={<Registration/>}/>
            <Route path="home" element={<Home/>} />
          <Route path="card" element={<Card />} />
-           <Route path="cardetails" element={<CardDetails />} />
+           <Route path="drafts" element={<Drafts />} />
+            <Route path="card1" element={<Card1/>} />
+  <Route path="card2" element={<Card2/>} />
+           <Route path="card4" element={<Card4/>} />
+           <Route path="purchased" element={<Purchased />} />
  <Route path="progress" element={<Progress />} />
 
       </Routes>

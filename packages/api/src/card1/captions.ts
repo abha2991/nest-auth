@@ -71,7 +71,7 @@ const captions: Caption[] = [
     },
     {
         id:9,
-        page: 'three.png',
+        page: 'two.png',
 
         captions: [
             {
@@ -110,7 +110,7 @@ const captions: Caption[] = [
     },
     {
         id:0,
-        page: 'four.png',
+        page: 'three.png',
 
         captions: [
             {
@@ -207,7 +207,7 @@ const captions: Caption[] = [
 
 
     {
-        id:2,
+        id:3,
         page: 'photo.png',
 
         captions: [
@@ -246,7 +246,7 @@ const captions: Caption[] = [
         ]
     },
     {
-        id:2,
+        id:3,
         page: 'download.png',
 
         captions: [
@@ -285,7 +285,7 @@ const captions: Caption[] = [
         ]
     },
     {
-        id:2,
+        id:3,
         page: 'hand.png',
 
         captions: [
@@ -324,7 +324,7 @@ const captions: Caption[] = [
         ]
     },
     {
-        id:2,
+        id:3,
         page: 'old.png',
 
         captions: [
@@ -367,7 +367,7 @@ const captions: Caption[] = [
 
 
     {
-        id:1,
+        id:5,
         page: 'card1.png',
 
         captions: [
@@ -407,7 +407,7 @@ const captions: Caption[] = [
     },
 
     {
-        id:1,
+        id:5,
         page: 'card2.png',
 
         captions: [
@@ -453,7 +453,7 @@ const captions: Caption[] = [
     },
 
     {
-        id:1,
+        id:5,
         page: 'card3.png',
 
         captions: [
@@ -482,27 +482,27 @@ const captions: Caption[] = [
 
 
     {
-        id:4,
+        id:1,
         page: 'card1.png',
 
         captions: [
             {
-                x: 226,
-                y: 307,
+                x:100,
+                y: 150,
 
-                font: resolve(__dirname, 'fonts', 'EZkptTgQitUcka5Zy1w4RUIL.ttf.fnt')
+                font: resolve(__dirname, 'fonts', 'J1c7MMr1oIrMPJC1QWnHBwW4.ttf.fnt')
             },
             {
-                x: 226,
-                y:365,
+                x: 100,
+                y:200,
 
-                font: resolve(__dirname, 'fonts', 'EZkptTgQitUcka5Zy1w4RUIL.ttf.fnt')
+                font: resolve(__dirname, 'fonts', 'J1c7MMr1oIrMPJC1QWnHBwW4.ttf.fnt')
             },
             {
-                x:222,
-                y: 437,
+                x:120,
+                y: 260,
 
-                font: resolve(__dirname, 'fonts', 'cQqCm0NW0au9xxUfCtB9IlHO.ttf.fnt')
+                font: resolve(__dirname, 'fonts', 'Gurtis0TUCFEA36eAE8dyLz9.ttf.fnt')
             },
 
 
@@ -511,46 +511,46 @@ const captions: Caption[] = [
     },
 
     {
-        id:4,
+        id:1,
         page: 'card2.png',
 
         captions: [
             {
-                x: 596,
-                y: 261,
+                x: 120,
+                y: 120,
 
-                font: resolve(__dirname, 'fonts', '0Ffme4GPrxqUaXTM6nGXcjgZ.ttf.fnt')
+                font: resolve(__dirname, 'fonts', 'ToAG1lTehMgrCvhlDcu7QKuM.ttf.fnt')
             },
             {
-                x: 596,
-                y: 297,
+                x: 120,
+                y: 160,
 
                 font: resolve(__dirname, 'fonts', 'e7GcrXQFdnJ7s9WhINchz38W.ttf.fnt')
             },
             {
-                x: 610,
-                y: 900,
-
-                font: resolve(__dirname, 'fonts', 'e7GcrXQFdnJ7s9WhINchz38W.ttf.fnt')
-            },
-
-            {
-                x: 596,
-                y: 352,
-
-                font: resolve(__dirname, 'fonts', '0Ffme4GPrxqUaXTM6nGXcjgZ.ttf.fnt')
-            },
-
-            {
-                x: 600,
-                y: 392,
+                x: 160,
+                y: 160,
 
                 font: resolve(__dirname, 'fonts', 'e7GcrXQFdnJ7s9WhINchz38W.ttf.fnt')
             },
 
             {
-                x: 615,
-                y: 392,
+                x: 120,
+                y: 200,
+
+                font: resolve(__dirname, 'fonts', 'ToAG1lTehMgrCvhlDcu7QKuM.ttf.fnt')
+            },
+
+            {
+                x: 120,
+                y: 240,
+
+                font: resolve(__dirname, 'fonts', 'e7GcrXQFdnJ7s9WhINchz38W.ttf.fnt')
+            },
+
+            {
+                x: 200,
+                y: 240,
 
                 font: resolve(__dirname, 'fonts', 'e7GcrXQFdnJ7s9WhINchz38W.ttf.fnt')
             },
@@ -564,29 +564,113 @@ const captions: Caption[] = [
     },
 
     {
-        id:4,
+        id:1,
         page: 'card3.png',
 
         captions: [
 
             {
-                x: 971,
-                y: 291,
+                x: 800,
+                y:170,
 
                 font: resolve(__dirname, 'fonts', 'e7GcrXQFdnJ7s9WhINchz38W.ttf.fnt')
             },
             {
-                x: 971,
-                y: 356,
+                x: 80,
+                y: 200,
 
                 font: resolve(__dirname, 'fonts', 'e7GcrXQFdnJ7s9WhINchz38W.ttf.fnt')
             },
 
             {
-                x: 977,
-                y: 412,
+                x: 80,
+                y: 240,
 
                 font: resolve(__dirname, 'fonts', 'e7GcrXQFdnJ7s9WhINchz38W.ttf.fnt')
+            },
+        ]
+    },
+
+
+
+
+
+    {
+        id:2,
+        page: '42241481.png',
+
+        captions: [
+
+            {
+                x: 192,
+                y: 132,
+
+                font: resolve(__dirname, 'fonts', 'UvX7UKBee6BYG4SfZ1z5BstL.ttf.fnt')
+            },
+
+            {
+                x: 167,
+                y: 143,
+
+                font: resolve(__dirname, 'fonts', 'UvX7UKBee6BYG4SfZ1z5BstL.ttf.fnt')
+            },
+
+            {
+                x: 148,
+                y:155,
+
+                font: resolve(__dirname, 'fonts', 'xN6IMWJMVdzcIrPYkQfIloS1.ttf.fnt')
+            },
+
+
+
+
+
+            {
+                x: 190,
+                y: 210,
+
+                font: resolve(__dirname, 'fonts', 'F43uqpZCctGqrdWbHkV3oHIT.ttf.fnt')
+            },
+            {
+                x: 148,
+                y: 230,
+
+                font: resolve(__dirname, 'fonts', 'xN6IMWJMVdzcIrPYkQfIloS1.ttf.fnt')
+            },
+
+
+            {
+                x: 153,
+                y: 314,
+
+                font: resolve(__dirname, 'fonts', 'UvX7UKBee6BYG4SfZ1z5BstL.ttf.fnt')
+            },
+
+            {
+                x: 177,
+                y: 325,
+
+                font: resolve(__dirname, 'fonts', 'UvX7UKBee6BYG4SfZ1z5BstL.ttf.fnt')
+            },
+
+            {
+                x: 161,
+                y: 361,
+
+                font: resolve(__dirname, 'fonts', 'F43uqpZCctGqrdWbHkV3oHIT.ttf.fnt')
+            },
+            {
+                x: 156,
+                y: 384,
+
+                font: resolve(__dirname, 'fonts', 'UvX7UKBee6BYG4SfZ1z5BstL.ttf.fnt')
+            },
+            {
+                x: 148,
+                y: 418,
+
+                font: resolve(__dirname, 'fonts', 'UvX7UKBee6BYG4SfZ1z5BstL.ttf.fnt')
             },
         ]
     },

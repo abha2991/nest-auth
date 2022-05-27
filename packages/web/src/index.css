@@ -1,7 +1,220 @@
+/*@import url('https://fonts.googleapis.com/css?family=Hind&display=swap');*/
+/*@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');*/
+/*@import url('https://fonts.googleapis.com/css?family=Baloo&display=swap');*/
+
+/*body {*/
+/*  margin: 0;*/
+/*  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',*/
+/*  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',*/
+/*  sans-serif;*/
+/*  -webkit-font-smoothing: antialiased;*/
+/*  -moz-osx-font-smoothing: grayscale;*/
+/*}*/
+
+/*.modal-backdrop{*/
+/*  display:none;*/
+/*}*/
+
+
+/*code {*/
+/*  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',*/
+/*  monospace;*/
+/*}*/
+
+/*.nav-btn {*/
+/*  background-color: #FF3767;*/
+/*  color: #fff!important;*/
+/*  font-family: 'Hind';*/
+/*  border-radius: 5px;*/
+/*  padding-left: 20px!important;*/
+/*  padding-right: 20px!important;*/
+/*}*/
+/*.nav-btn img {*/
+/*  margin-right: 5px;*/
+/*}*/
+/*@media (max-width:767px) {*/
+/*  .nav-btn {*/
+/*    padding-left: 5px!important;*/
+/*    padding-right: 5px!important;*/
+/*    font-size: 12px;*/
+/*  }*/
+/*  .nav-btn img {*/
+/*    margin-right: 4px;*/
+/*  }*/
+/*}*/
+/*.banner-box {*/
+/*  background: #C59FAC;*/
+/*  margin-top: 1rem;*/
+/*  border-radius: 10px;*/
+/*}*/
+/*.banner-box h3 {*/
+/*  font-family: 'Baloo';*/
+/*}*/
+/*.wedding-box {*/
+/*  position: relative;*/
+/*  border-radius: 5px;*/
+/*}*/
+/*.wedding-box img {*/
+/*  border-radius: 5px;*/
+/*}*/
+/*.wedding-box span {*/
+/*  font-family: 'Lato';*/
+/*  margin: 10px 10px 0 0;*/
+/*}*/
+/*.wedding-box .inner {*/
+/*  position: absolute;*/
+/*  top: 0;*/
+/*  left: 0;*/
+/*  color: #fff;*/
+/*  z-index: 0;*/
+/*  font-family: 'Lato';*/
+/*  padding-left: 10px;*/
+/*  padding-top: 5px;*/
+/*  border-top-left-radius: 5px;*/
+/*}*/
+/*.wedding-box .inner h4 {*/
+/*  margin-bottom: 0;*/
+/*}*/
+/*.wedding-box .inner .triangle-right {*/
+/*  border-left: 105px solid #F450A9;*/
+/*  border-bottom: 105px solid transparent;*/
+/*  position: absolute;*/
+/*  top: 0;*/
+/*  left: 0;*/
+/*  z-index: -1;*/
+/*}*/
+/*.wedding-carousel .owl-nav div {*/
+/*  position: absolute;*/
+/*  top: 45%;*/
+/*  background: rgba(255, 255, 255, 0.8)!important;*/
+/*}*/
+/*.wedding-carousel .owl-nav div.owl-prev {*/
+/*  left: 0;*/
+/*}*/
+/*.wedding-carousel .owl-nav div.owl-next {*/
+/*  right: 0;*/
+/*}*/
+/*.registration-box {*/
+/*  padding: 10%;*/
+/*}*/
+/*@media (max-width:767px) {*/
+/*  .registration-box {*/
+/*    padding: 0%;*/
+/*  }*/
+/*}*/
+/*.social-login {*/
+/*  display: flex;*/
+/*  justify-content: space-between;*/
+/*  align-content: center;*/
+/*  text-align: center;*/
+/*}*/
+/*.social-login a {*/
+/*  border: 1px solid rgba(0, 0, 0, 0.1);*/
+/*  border-radius: 5px;*/
+/*  text-decoration: none;*/
+/*  color: #000;*/
+/*  padding: 5px;*/
+/*  display: block;*/
+/*  margin-bottom: 10px;*/
+/*  background: transparent !important;*/
+/*  width: 100% !important;*/
+/*}*/
+/*.social-login a:nth-child(1) {*/
+/*  margin-right: 3px;*/
+/*}*/
+/*@media (max-width: 767px) {*/
+/*  .social-login a:nth-child(1) {*/
+/*    margin-right: 0px;*/
+/*  }*/
+/*  .social-login {*/
+/*    display: block;*/
+/*  }*/
+/*}*/
+/*@media (max-width:991px) {*/
+/*  .social-login a {*/
+/*    padding: 5px!important;*/
+/*  }*/
+/*  .social-login a img {*/
+/*    margin-right: 5px;*/
+/*  }*/
+/*}*/
+/*#pills-tab.nav-pills .nav-link {*/
+/*  color: #757575;*/
+/*}*/
+/*#pills-tab.nav-pills .nav-link.active {*/
+/*  color: #9505F9;*/
+/*  background-color: transparent;*/
+/*  border-bottom: 3px solid #9505F9;*/
+/*  border-radius: 0;*/
+/*}*/
+/*.owl-theme .owl-dots .owl-dot.active span {*/
+/*  background: #FF3162!important;*/
+/*}*/
+/*.owl-theme .owl-dots .owl-dot:hover span {*/
+/*  background: #FF3162!important;*/
+/*}*/
+/*.btn-primary {*/
+/*  background-color: #FF3162!important;*/
+/*  border-color: #FF3162!important;*/
+/*}*/
+/*.file-drop-zone {*/
+/*  border: 2px dashed #ccc;*/
+/*  border-radius: 5px;*/
+/*  color: #595959;*/
+/*  padding: 15px;*/
+/*  position: relative;*/
+/*  text-align: center;*/
+/*  width: 100%;*/
+/*}*/
+/*.file-drop-zone p {*/
+/*  margin-left: 0;*/
+/*  font-size: 18px;*/
+/*}*/
+/*.file-drop-zone input[type="file"] {*/
+/*  display: none;*/
+/*}*/
+/*.pay-btn a:nth-child(1) {*/
+/*  background: transparent;*/
+/*  color: #FF3767;*/
+/*  border-radius: 10px;*/
+/*  text-decoration: none;*/
+/*  padding: 10px 20px;*/
+/*  border: 1px solid #FF3767;*/
+/*  margin-right: 10px;*/
+/*  margin-bottom: 10px;*/
+/*  display: block;*/
+/*}*/
+/*@media (max-width:767px) {*/
+/*  .pay-btn a:nth-child(1) {*/
+/*    margin-right: 0;*/
+/*  }*/
+/*}*/
+/*.pay-btn a:nth-child(2) {*/
+/*  background: #FF3767;*/
+/*  color: #fff;*/
+/*  border-radius: 10px;*/
+/*  text-decoration: none;*/
+/*  padding: 10px 20px;*/
+/*  border:1px solid #FF3767;*/
+/*  margin-bottom: 10px;*/
+/*  display: block;*/
+/*}*/
+
+
+
 @import url('https://fonts.googleapis.com/css?family=Hind&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Baloo&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lora&display=swap');
 
+@font-face {
+  font-family: cac-champagne;
+  src: url('./font/cac_champagne.ttf');
+}
+@font-face {
+  font-family: JosefinSans;
+  src: url('./font/JosefinSans-Regular.ttf');
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,11 +223,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-.modal-backdrop{
-  display:none;
-}
-
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -53,13 +261,18 @@ code {
 .wedding-box {
   position: relative;
   border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 20px;
 }
 .wedding-box img {
-  border-radius: 5px;
+  border-radius: 5px 5px 0 0;
+  height: 350px;
+  width: 100%;
 }
-.wedding-box span {
-  font-family: 'Lato';
-  margin: 10px 10px 0 0;
+@media (max-width: 767px) {
+  .wedding-box img {
+    height: auto;
+  }
 }
 .wedding-box .inner {
   position: absolute;
@@ -83,6 +296,16 @@ code {
   left: 0;
   z-index: -1;
 }
+.wedding-box .price {
+  text-align: center;
+  padding: 10px;
+}
+.wedding-box .price span {
+  font-family: 'Lato';
+  margin: 10px 10px 0 0;
+  font-size: larger;
+  color: #F450A9;
+}
 .wedding-carousel .owl-nav div {
   position: absolute;
   top: 45%;
@@ -101,12 +324,6 @@ code {
   .registration-box {
     padding: 0%;
   }
-}
-.social-login {
-  display: flex;
-  justify-content: space-between;
-  align-content: center;
-  text-align: center;
 }
 .social-login a {
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -147,6 +364,9 @@ code {
   border-bottom: 3px solid #9505F9;
   border-radius: 0;
 }
+.modal-backdrop{
+  display:none;
+}
 .owl-theme .owl-dots .owl-dot.active span {
   background: #FF3162!important;
 }
@@ -173,6 +393,10 @@ code {
 .file-drop-zone input[type="file"] {
   display: none;
 }
+
+.fancybox__container {
+  z-index: 1111!important;
+}
 .pay-btn a:nth-child(1) {
   background: transparent;
   color: #FF3767;
@@ -197,5 +421,62 @@ code {
   padding: 10px 20px;
   border:1px solid #FF3767;
   margin-bottom: 10px;
+  display: block;
+}
+.card-box {
+  position: relative;
+  height: 100%;
+}
+.card-box .img {
+  text-align: center;
+}
+#navbarSupportedContent {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  z-index: 11;
+  min-width: 150px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+/* #navbarSupportedContent ul li {
+  border-bottom: 1px solid #FF3767;
+}
+#navbarSupportedContent ul li:last-child {
+  border-bottom: none;
+} */
+#navbarSupportedContent ul li a {
+  padding: 10px;
+  color: #FF3767;
+}
+#navbarSupportedContent ul li a.active {
+  background-color: #FF3767;
+  color: #fff;
+}
+#navbarSupportedContent ul li a:hover {
+  background-color: #FF3767;
+  color: #fff;
+}
+.navbar-light .navbar-toggler:focus {
+  box-shadow: none;
+}
+
+
+.editable {
+  position: relative;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  max-width: 200px;
+  margin: auto;
+}
+.editable svg {
+  position: absolute;
+  display: none;
+  top: -10px;
+  right: -10px;
+  font-size: 10px;
+  font-size: 20px;
+}
+.editable:hover svg {
   display: block;
 }

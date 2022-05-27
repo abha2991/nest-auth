@@ -2,8 +2,11 @@ import {Body, Injectable} from '@nestjs/common'
 import {JwtService} from '@nestjs/jwt'
 import {InjectRepository} from '@nestjs/typeorm'
 import {hashSync} from 'bcrypt'
+import {CardEntity} from '../cardetails/entities/card.entity'
 
 import { UserCardEntity } from './entities/usercard.entity'
+import {CardetailsService} from '../cardetails/cardetails.service'
+
 //import Jimp from 'Jimp'
 import path from 'path'
 import {Repository} from 'typeorm'
@@ -41,7 +44,8 @@ export interface Caption {
 @Injectable()
 export class CardService {
 private readonly cardservice: CardService
-   constructor(private readonly usersService: UsersService,@InjectRepository(UserCardEntity) private readonly usersCardRepository: Repository<UserCardEntity>) {}
+   constructor(private readonly usersService: UsersService,@InjectRepository(UserCardEntity) private readonly usersCardRepository: Repository<UserCardEntity>,
+               private readonly cardetailsService: CardetailsService) {}
 
 
 
@@ -49,7 +53,7 @@ private readonly cardservice: CardService
 
 
     async Card(@Body() cardDto: CardDto) {
-console.log({cardDto})
+//console.log({cardDto})
         const generateImage = async (id,Details,userid) => {
             let fileName=[]
             var  image;
@@ -67,7 +71,7 @@ console.log({cardDto})
 
                       const capt = await car[k].captions[i]
 
-                      console.log({capt})
+                      //console.log({capt})
 
                       const font = await Jimp.loadFont(capt.font)
 
@@ -80,10 +84,10 @@ console.log({cardDto})
 //                       console.log(frontPageData)
 
                       let data=Object.values(Details[k]);
-                     console.log({data,Details})
+                     //console.log({data,Details})
 if(data[i]) {
     let b=await image.print(font, capt.x, capt.y, data[i])
-    console.log({b})
+    //console.log({b})
 }
 else
 {
@@ -104,6 +108,11 @@ else
 
               }
 
+
+
+              const details=await this.cardetailsService.find(id)
+            console.log({details})
+
 const user=new UserCardEntity();
               user.UserId=userid;
               user.CardType="WeddingInvitation";
@@ -111,6 +120,9 @@ const user=new UserCardEntity();
 
              user.Text=Details;
              user.CardId=id;
+             user.CardSalePrice=details.CardSalePrice;
+             user.CardTotalPrice=details.CardTotalPrice;
+             user.NoOfPages=details.NoOfPages;
             const createdUser = this.usersCardRepository.create(user)
             console.log({createdUser})
 
@@ -159,7 +171,7 @@ const user=new UserCardEntity();
 
 
     async findOne(id: string) {
-        return await this.usersCardRepository.findOne(id);
+        return await this.usersCardRepository.findOneOrFail(id);
     }
     remove(id: string) {
         return this.usersCardRepository.delete(id)

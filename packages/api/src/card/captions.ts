@@ -68,7 +68,7 @@ const captions: Caption[] = [
         ]
     },
     {
-        file: 'three.png',
+        file: 'two.png',
 
         captions: [
             {
@@ -106,7 +106,7 @@ const captions: Caption[] = [
         ]
     },
     {
-        file: 'four.png',
+        file: 'three.png',
 
         captions: [
             {

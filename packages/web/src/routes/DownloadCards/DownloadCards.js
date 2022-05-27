@@ -8,73 +8,91 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { faShareNodes } from '@fortawesome/free-solid-svg-icons';
 //import { faPen } from '@fortawesome/free-solid-svg-icons';
 //image
-
+import OwlCarousel from 'react-owl-carousel2';
+import 'react-owl-carousel2/lib/styles.css';
+import 'react-owl-carousel2/src/owl.theme.default.css';
 import useProfileApi from '../../api/useProfileApi'
 import Pdf from "react-to-pdf";
 import { jsPDF } from "jspdf";
 import useQueryParams from '../../hooks/useQueryParams'
 import { PDFExport, savePDF } from '@progress/kendo-react-pdf';
 import { Navigate, useLocation } from 'react-router-dom'
+import {
+  EmailShareButton,
+  FacebookShareButton,
+  WhatsappShareButton,
+} from "react-share";
+import { EmailIcon, FacebookIcon, WhatsappIcon } from "react-share";
 
 
-
-const DownloadCards= () => {
+const DownloadCards = () => {
   const componentRef = createRef();
-  const id=useQueryParams();
+  const id = useQueryParams();
 
   const {id: id2} = id
-console.log("Download")
-console.log({id2})
+  console.log("Download")
+  console.log({id2})
 
 
+  const [cardname, setCardName] = useState();
 
-    const[cardname,setCardName]=useState();
+  const [paymentStatus, setPaymentStatus] = useState();
+  const getCardsOfUser = async () => {
+    try {
+      const response = await fetch(`http://localhost:3001/api/card1/getCard/${id2}`, {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
 
-  const[paymentStatus,setPaymentStatus]=useState();
-    const getCardsOfUser= async () => {
-       try {
-         const response = await fetch(`http://localhost:3001/api/card1/getCard/${id2}`, {
-           method: "GET",
-           credentials: "include",
-           headers: {
-             "Content-Type": "application/json",
-           },
+      });
 
-         });
+      const data1 = await response.json();
 
-         const data1 = await response.json();
-
-         setCardName(data1.CardNames)
+      setCardName(data1.CardNames)
 
 
-         setPaymentStatus(data1.PaymentStatus)
+      setPaymentStatus(data1.PaymentStatus)
 
-       }
-       catch(e)
-       {
-        console.log({e})
-       }
+    } catch (e) {
+      console.log({e})
+    }
 
-    };
-    useEffect( () => {
-        getCardsOfUser().then(r => console.log({r}));
-      // return () => {
-      //   setCardName({});
-      //   setPaymentStatus({})// This worked for me
-      // };
-    }, [id2]);
+  };
+  useEffect(() => {
+    getCardsOfUser().then(r => console.log({r}));
+    // return () => {
+    //   setCardName({});
+    //   setPaymentStatus({})// This worked for me
+    // };
+  }, [id2]);
 
 
   console.log({paymentStatus})
-console.log({cardname})
+  console.log({cardname})
 
 
-
-
-
-
-
-
+  const options = {
+    loop: true,
+    margin: 20,
+    autoplay: true,
+    autoplayTimeout: 2000,
+    autoplayHoverPause: true,
+    dots: true,
+    nav: false,
+    responsive: {
+      0: {
+        items: 1,
+      },
+      768: {
+        items: 2,
+      },
+      992: {
+        items: 3,
+      }
+    }
+  };
 
   //const [zoom,setZoom]=useState({height:0, width:0});
 
@@ -115,16 +133,17 @@ console.log({cardname})
   }
 
 
-  const imageUrls=cardname;
+  const imageUrls = cardname;
+
   //console.log(imageUrls)
 
   async function generatePdf(imageUrls) {
-let len=imageUrls.length;
+    let len = imageUrls.length;
 //console.log(len)
     for (const i of imageUrls) {
 //console.log({i,imageUrls})
-      let url=`http://localhost:3001/${i}`
-     // console.log({url})
+      let url = `http://localhost:3001/generated/${i}`
+      // console.log({url})
       const image = await addImageProcess(url);
       //console.log({image})
       doc.addImage(image, "png", 0, 0, width, height);
@@ -133,7 +152,7 @@ let len=imageUrls.length;
       }
 
       //console.log({doc})
-      doc.deletePage(len+1);
+      doc.deletePage(len + 1);
     }
     return doc;
   }
@@ -149,6 +168,7 @@ let len=imageUrls.length;
     // save PDF (blocked in iFrame in chrome)
     multiPng.output("save", "multiPng.pdf");
   }
+
   // const generatePdfFromImages = (images) => {
   //   // Default export is A4 paper, portrait, using millimeters for units.
   //
@@ -171,10 +191,18 @@ let len=imageUrls.length;
   // };
 
 
-  let redirectTo=`/preview?id=${id2}`
- // if(paymentStatus==='Success') {
-  return (
-      <>
+  let redirectTo = `/preview?id=${id2}`
+  // if(paymentStatus==='Success') {
+
+
+  if (!cardname || !paymentStatus) {
+    return (
+        <>
+       </>
+    )
+  } else if(paymentStatus==='Success'){
+    return (
+        <>
             <Header/>
 
             <div className="container">
@@ -182,13 +210,68 @@ let len=imageUrls.length;
                     <button type="button" className="btn" data-bs-dismiss="modal" aria-label="Close">
                         <FontAwesomeIcon icon={faArrowLeft}/>&nbsp;Back
                     </button>
+
+
                     <a href="#" style={{textDecoration: "none"}}>
+
                         <FontAwesomeIcon icon={faShareNodes}/>&nbsp;Share
                     </a>
                 </div>
 
+
+               {/*<div className="modal-dialog modal-dialog-centered">*/}
+               {/*      <div className="modal-content">*/}
+               {/*        <div className="modal-header">*/}
+               {/*          <h5 className="modal-title" id="staticBackdropLabel">*/}
+               {/*            Share Data Via*/}
+               {/*          </h5>*/}
+               {/*          <button*/}
+               {/*              type="button"*/}
+               {/*              className="btn-close"*/}
+               {/*              data-bs-dismiss="modal"*/}
+               {/*              aria-label="Close"*/}
+               {/*          ></button>*/}
+               {/*        </div>*/}
+               {/*        <div className="modal-body">*/}
+               {/*          <FacebookShareButton*/}
+               {/*              url="https://www.facebook.com"*/}
+               {/*              quote="share"*/}
+               {/*              hashtag="#React"*/}
+               {/*          >*/}
+               {/*            <FacebookIcon*/}
+               {/*                logoFillColor="white"*/}
+               {/*                round={true}*/}
+               {/*            ></FacebookIcon>*/}
+               {/*          </FacebookShareButton>*/}
+               {/*          <WhatsappShareButton*/}
+               {/*              url="https://www.facebook.com"*/}
+               {/*              quote="share"*/}
+               {/*              hashtag="#React"*/}
+               {/*          >*/}
+               {/*            <WhatsappIcon*/}
+               {/*                logoFillColor="white"*/}
+               {/*                round={true}*/}
+               {/*            ></WhatsappIcon>*/}
+               {/*          </WhatsappShareButton>*/}
+               {/*          <EmailShareButton*/}
+               {/*              url="https://www.facebook.com"*/}
+               {/*              quote="share"*/}
+               {/*              hashtag="#React"*/}
+               {/*          >*/}
+               {/*            <EmailIcon*/}
+               {/*                logoFillColor="white"*/}
+               {/*                round={true}*/}
+               {/*            ></EmailIcon>*/}
+               {/*          </EmailShareButton>*/}
+               {/*        </div>*/}
+               {/*      </div>*/}
+               {/*    </div>*/}
+
+
+               <OwlCarousel className='owl-carousel owl-theme wedding-carousel' options={options}>
+
               {/*         <Pdf targetRef={componentRef} filename="code-example.pdf" options={options} scale={0.8}>*/} {/*  {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}*/} {/*</Pdf>*/}
-              <div>
+              {/*<div>*/}
 
 
                         {cardname?.map((val, index) => {
@@ -199,9 +282,11 @@ let len=imageUrls.length;
                                   <>
 
 
- <div className='item' style={{display: "inline", margin: "10px"}}>
+ <div className='item'
+     // style={{display: "inline", margin: "10px"}}
+ >
 
-            <img src={"http://localhost:3001/" + val} className="img-fluid" alt="Invitations" style={{
+            <img src={"http://localhost:3001/generated/" + val} className="img-fluid" alt="Invitations" style={{
               maxWidth: "300px",
               margin: "auto"
             }}/>
@@ -215,7 +300,10 @@ let len=imageUrls.length;
                         )}
 
 
-                </div>
+                {/*</div>*/}
+
+               </OwlCarousel>
+
               {/* <button*/} {/*onClick={savePdf}*/} {/*     className="button"*/}
 
               {/* >*/} {/*         Create PDF*/} {/*        </button>*/}
@@ -223,21 +311,25 @@ let len=imageUrls.length;
 
               <div className="d-md-flex justify-content-center pay-btn my-5">
 
-                    <a onClick={savePdf} style={{cursor: "pointer"}}>Download</a>
+                    <a onClick={savePdf} className="btn" style={{
+                      borderRadius: "50px", background: "#FF3767",
+                      color: "#fff", padding: "10px 20px"
+                    }}>Download</a>
                 </div>
             </div>
         </>
-  )
-//}
+    )
+}
 
-// else
-//  {
-//    return(
-//        <>
-//          <Navigate to={redirectTo}/>
-//        </>
-//    )
-// }
+else if(paymentStatus==='PENDING')
+ {
+   return(
+       <>
+         <Navigate to={redirectTo}/>
+       </>
+   )
+}
+ // }
 }
 
 export default DownloadCards

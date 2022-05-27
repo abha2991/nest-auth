@@ -4,14 +4,14 @@ const cardids: CardId[] = [
     {
         id: 1,
 
-        cards: ['one.png','two.png','three.png','four.png']
+        cards: ['one.png','two.png','two.png','three.png']
     },
 
 
     {
        id: 2,
 
-        cards: ['one.png','two.png','three.png','four.png']
+        cards: ['one.png','two.png','two.png','three.png']
     },
 
 

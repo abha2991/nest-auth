@@ -8,10 +8,12 @@ import {CardService} from './card.service'
 import {UsersService} from '../users/users.service'
 import {UsersModule} from '../users/users.module'
 import { UserCardEntity } from './entities/usercard.entity'
+import {CardEntity} from '../cardetails/entities/card.entity'
+import {CardetailsModule} from '../cardetails/cardetails.module'
 
 @Module({
     //imports: [UsersModule],
-    imports: [TypeOrmModule.forFeature([UserCardEntity]),UsersModule],
+    imports: [TypeOrmModule.forFeature([UserCardEntity]),UsersModule,CardEntity,CardetailsModule],
     controllers: [CardController],
     providers: [CardService],
     exports: [CardService]
