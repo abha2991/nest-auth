@@ -1,36 +1,65 @@
-import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm'
 import { CardcaptionEntity } from '../../cardcaptiondetails/entities/cardcaption.entity'
 
 @Entity()
 export class CardEntity {
-    @PrimaryGeneratedColumn()
-    id: number
+  @PrimaryGeneratedColumn()
+  id: number
 
-    @Column()
-    CardName?: string
+  @Column()
+  cardName?: string
 
-    @Column()
-    CardCategory: string
+  @Column()
+  cardCategory: string
 
-    @Column('text', { array: true })
-    CardDetails: string[]
+  @Column()
+  description: string
 
+  @Column('text', { array: true })
+  cardDetails: string[]
 
-    @Column('text', { array: true })
-    CardTemplates: string[]
+  @Column('text', { array: true })
+  cardTemplates: string[]
 
-    @Column()
-    CardTotalPrice: number
+  @Column()
+  cardTotalPrice: number
 
-    @Column()
-    CardSalePrice?: number
+  @Column()
+  cardSalePrice?: number
 
-    @Column()
-    NoOfPages: number
+  @Column()
+  noOfPages: number
 
-    @OneToOne(() => CardcaptionEntity, (caption) => caption.Card, {
-        eager: true,
-        cascade: true
-    })
-    Caption: CardcaptionEntity
+  @OneToMany(() => CardcaptionEntity, (caption) => caption.Card, {
+    eager: true,
+    cascade: true
+  })
+  Caption: CardcaptionEntity
+
+  // @PrimaryGeneratedColumn()
+  // id: number
+  //
+  // @Column()
+  // CardName?: string
+  //
+  // @Column()
+  // CardCategory: string
+  //
+  // @Column('text', { array: true })
+  // CardDetails: string[]
+  //
+  // @Column()
+  // CardTotalPrice: number
+  //
+  // @Column()
+  // CardSalePrice?: number
+  //
+  // @Column()
+  // NoOfPages: number
+  //
+  // @OneToOne(() => CardcaptionEntity, (caption) => caption.Card, {
+  //   eager: true,
+  //   cascade: true
+  // })
+  // Caption: CardcaptionEntity
 }

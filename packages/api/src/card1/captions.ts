@@ -5,7 +5,7 @@ const captions: Caption[] = [
   {
     id: 9,
     page: 'one.png',
-
+    previewpage: 'one.png',
     captions: [
       {
         x: 1000,
@@ -43,6 +43,7 @@ const captions: Caption[] = [
   {
     id: 9,
     page: 'two.png',
+    previewpage: 'two.png',
 
     captions: [
       {
@@ -68,6 +69,7 @@ const captions: Caption[] = [
   {
     id: 9,
     page: 'three.png',
+    previewpage: 'three.png',
 
     captions: [
       {
@@ -107,6 +109,7 @@ const captions: Caption[] = [
   {
     id: 0,
     page: 'four.png',
+    previewpage: 'four.png',
 
     captions: [
       {
@@ -202,6 +205,7 @@ const captions: Caption[] = [
   {
     id: 2,
     page: 'photo.png',
+    previewpage: 'photo.png',
 
     captions: [
       {
@@ -241,6 +245,7 @@ const captions: Caption[] = [
   {
     id: 2,
     page: 'download.png',
+    previewpage: 'download.png',
 
     captions: [
       {
@@ -280,6 +285,7 @@ const captions: Caption[] = [
   {
     id: 2,
     page: 'hand.png',
+    previewpage: 'hand.png',
 
     captions: [
       {
@@ -319,6 +325,7 @@ const captions: Caption[] = [
   {
     id: 2,
     page: 'old.png',
+    previewpage: 'old.png',
 
     captions: [
       {
@@ -359,6 +366,7 @@ const captions: Caption[] = [
   {
     id: 1,
     page: 'card1.png',
+    previewpage: 'card1.png',
 
     captions: [
       {
@@ -397,6 +405,7 @@ const captions: Caption[] = [
   {
     id: 1,
     page: 'card2.png',
+    previewpage: 'card2.png',
 
     captions: [
       {
@@ -443,6 +452,7 @@ const captions: Caption[] = [
   {
     id: 1,
     page: 'card3.png',
+    previewpage: 'card3.png',
 
     captions: [
       {
@@ -470,6 +480,7 @@ const captions: Caption[] = [
   {
     id: 4,
     page: 'card1.png',
+    previewpage: 'card1.png',
 
     captions: [
       {
@@ -496,6 +507,7 @@ const captions: Caption[] = [
   {
     id: 4,
     page: 'card2.png',
+    previewpage: 'card2.png',
 
     captions: [
       {
@@ -549,6 +561,7 @@ const captions: Caption[] = [
   {
     id: 4,
     page: 'card3.png',
+    previewpage: 'card3.png',
 
     captions: [
       {
