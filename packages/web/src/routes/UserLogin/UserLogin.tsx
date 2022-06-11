@@ -14,6 +14,7 @@ import Login from "../Login"
 import girl1 from "../img/girl 1.png";
 import img31 from "../img/3 1.png";
 import logo from "../img/image 7.png";
+import Footer from "../Footer"
 
 const UserLogin=()=>{
 
@@ -27,6 +28,11 @@ const UserLogin=()=>{
   return(
       <>
         <Header/>
+          <div className="pt-5">
+
+   <h3 className="text-center">Login</h3>
+ </div>
+  <hr/>
         <div className="container">
       <div className="row my-5">
           <div className="col-lg-6">
@@ -61,7 +67,7 @@ const UserLogin=()=>{
           </div>
       </div>
         </div>
-
+<Footer/>
         </>
   )
 }

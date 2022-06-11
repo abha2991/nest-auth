@@ -1,12 +1,9 @@
-import { Injectable } from '@nestjs/common';
+import { InjectQueue } from '@nestjs/bull'
+import { Injectable } from '@nestjs/common'
 
-
-import { Queue } from 'bull';
-import { InjectQueue } from '@nestjs/bull';
+import { Queue } from 'bull'
 
 @Injectable()
 export class VideoredisService {
   constructor(@InjectQueue('video') private videoQueue: Queue) {}
-
-
 }

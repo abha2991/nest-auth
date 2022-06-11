@@ -154,8 +154,38 @@ import {NavLink} from 'react-router-dom';
 import Logout from '../Logout';
 import useLogoutApi from '../../api/useLogoutApi';
 import {useNavigate} from 'react-router';
+import $ from "jquery";
+import {useLocation} from 'react-router-dom';
 
 const Header=()=>{
+  const location = useLocation();
+  const { pathname } = location;
+  const splitLocation = pathname.split("/");
+  console.log(window.location.href)
+  console.log({splitLocation})
+  $(window).scroll(function () {
+    if ($(this).scrollTop() > 40) {
+      $('header').addClass('sticky-top');
+    } else {
+      $('header').removeClass('sticky-top');
+    }
+  });
+
+
+//   $(function(){
+//
+//     var url = window.location.href;
+//
+//     $("#navbarSupportedContent a").each(function() {
+//       // checks if its the same on the address bar
+//       if(url == (this.href)) {
+//         $(this).closest("li").addClass("active");
+//       }
+//     });
+//   });
+// console.log({pathname})
+
+
   const { data: profile, status } = useProfileApi()
   const { mutateAsync } = useLogoutApi()
 
@@ -171,78 +201,167 @@ const navigate=useNavigate()
     return (
 
     <>
+{/*      <div className="container">*/}
+{/*      <nav className="navbar navbar-light bg-light">*/}
+{/*  <div className="w-100 d-flex align-items-center">*/}
+{/*    <div className="w-100">*/}
+{/*    <a className="navbar-brand" href="./">*/}
+{/*    <img src={logo} className="img-fluid" alt="logo"/>*/}
+{/*    </a>*/}
+{/*    </div>*/}
+
+{/*    <div className="w-100 navbar-expand">*/}
+{/*    <ul className="navbar-nav mb-2 mb-lg-0 justify-content-end align-items-center">*/}
+{/*        <li className="nav-item d-sm-block d-none">*/}
+{/*          <a className="nav-link nav-btn" aria-current="page" href="#">*/}
+{/*              <img src={play} alt="play store"/>*/}
+{/*              Try Our App*/}
+{/*          </a>*/}
+{/*        </li>*/}
+{/*      /!* <li className="nav-item">*/}
+{/*          <a className="nav-link" href="#">*/}
+{/*              <img src={translate} alt="translate" />*/}
+{/*          </a>*/}
+{/*        </li> *!/*/}
+{/*      <li className="nav-item">*/}
+{/*          <a className="nav-link" href="#">*/}
+{/*          <FontAwesomeIcon icon={faMagnifyingGlass} />*/}
+{/*          </a>*/}
+{/*        </li>*/}
+{/*      </ul>*/}
+{/*    </div>*/}
+{/*      <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">*/}
+{/*      <span className="navbar-toggler-icon"></span>*/}
+{/*    </button>*/}
+{/*    </div>*/}
+
+{/*    <div className="collapse navbar-collapse" id="navbarSupportedContent">*/}
+{/*      <ul className="navbar-nav me-auto mb-2 mb-lg-0">*/}
+{/*        <li className="nav-item">*/}
+{/*          <a className="nav-link" aria-current="page" href="/drafts">My Drafts</a>*/}
+{/*        </li>*/}
+{/*        <li className="nav-item">*/}
+{/*          <a className="nav-link" href="/purchased">My Purchases</a>*/}
+{/*        </li>*/}
+{/*        /!*<li className="nav-item">*!/*/}
+{/*        /!*  <a className="nav-link" href="#">Favourites</a>*!/*/}
+{/*        /!*</li>*!/*/}
+{/*        /!*<li className="nav-item">*!/*/}
+{/*        /!*  <a className="nav-link" href="#">FAQ</a>*!/*/}
+{/*        /!*</li>*!/*/}
+{/*        <li className="nav-item">*/}
+{/*          <a className="nav-link" href="#">Contact Us</a>*/}
+{/*        </li>*/}
+{/*        <li className="nav-item">*/}
+{/*          <a className="nav-link" href="#">About Us</a>*/}
+{/*        </li>*/}
+{/*        <li className="nav-item">*/}
+{/*          <a className="nav-link" href="#">Privacy Policy</a>*/}
+{/*        </li>*/}
+{/*        <li className="nav-item">*/}
+{/*          <a className="nav-link" style={{cursor:"pointer"}} onClick={()=>handleLogout()}>Logout</a>*/}
+{/*        </li>*/}
+{/*        <li className="nav-item d-sm-none d-block">*/}
+{/*          <a className="nav-link nav-btn" aria-current="page" href="#">*/}
+{/*              <img src={play} alt="play store"/>*/}
+{/*              Try Our App*/}
+{/*          </a>*/}
+{/*        </li>*/}
+{/*      </ul>*/}
+{/*    </div>*/}
+{/*</nav>*/}
+{/*</div>*/}
+
+{/*       <hr/>*/}
+
+
+      <header style={{background:"#FF3767"}}>
       <div className="container">
-      <nav className="navbar navbar-light bg-light">
-  <div className="w-100 d-flex align-items-center">
-    <div className="w-100">
-    <a className="navbar-brand" href="./">
-    <img src={logo} className="img-fluid" alt="logo"/>
-    </a>
-    </div>
+        <nav className="navbar navbar-expand-lg navbar-dark">
+            <a className="navbar-brand" href="./">
+                <img src={logo} className="img-fluid" alt="logo" />
+              </a>
 
-    <div className="w-100 navbar-expand">
-    <ul className="navbar-nav mb-2 mb-lg-0 justify-content-end align-items-center">
-        <li className="nav-item d-sm-block d-none">
-          <a className="nav-link nav-btn" aria-current="page" href="#">
-              <img src={play} alt="play store"/>
-              Try Our App
-          </a>
-        </li>
-      {/* <li className="nav-item">
-          <a className="nav-link" href="#">
-              <img src={translate} alt="translate" />
-          </a>
-        </li> */}
-      <li className="nav-item">
-          <a className="nav-link" href="#">
-          <FontAwesomeIcon icon={faMagnifyingGlass} />
-          </a>
-        </li>
-      </ul>
-    </div>
-      <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon"></span>
-    </button>
-    </div>
+          {/* <div className="w-100 navbar-expand">
+              <ul className="navbar-nav mb-2 mb-lg-0 justify-content-end align-items-center">
+                <li className="nav-item d-sm-block d-none">
+                  <a className="nav-link nav-btn" aria-current="page" href="#">
+                    <img src={play} alt="play store" />
+                    Try Our App
+                  </a>
+                </li>
+              </ul>
+            </div> */}
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
+            </button>
 
-    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-        <li className="nav-item">
-          <a className="nav-link" aria-current="page" href="/drafts">My Drafts</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="/purchased">My Purchases</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#">Favourites</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#">FAQ</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#">Contact Us</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#">About Us</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#">Privacy Policy</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" style={{cursor:"pointer"}} onClick={()=>handleLogout()}>Logout</a>
-        </li>
-        <li className="nav-item d-sm-none d-block">
-          <a className="nav-link nav-btn" aria-current="page" href="#">
-              <img src={play} alt="play store"/>
-              Try Our App
-          </a>
-        </li>
-      </ul>
-    </div>
-</nav>
-</div>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li className={splitLocation[1] === "drafts" ? "active" : ""}>
+                <a className="nav-link"  aria-current="page" href="/drafts">My Drafts</a>
+              </li>
+              <li className={splitLocation[1] === "purchased" ? "active" : ""}>
+                <a className="nav-link" href="/purchased">My Purchases</a>
+              </li>
 
-       <hr/>
+              <li className="nav-item">
+                <a className="nav-link" href="#">Contact Us</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#">About Us</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#">Privacy Policy</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" style={{cursor:"pointer"}} onClick={()=>handleLogout()}>Logout</a>
+              </li>
+              <li className="nav-item">
+              <a className="nav-link nav-btn" aria-current="page" href="#">
+                    {/* <img src={play} alt="play store" /> */}
+                {/* <FontAwesomeIcon icon={faGooglePlay} /> */}
+                <i className="fa-brands fa-google-play"></i>
+                    Try Our App
+                  </a>
+              </li>
+            </ul>
+          </div>
+
+          {/*<div className="collapse navbar-collapse" id="navbarSupportedContent">*/}
+          {/*  <ul className="navbar-nav ms-auto mb-2 mb-lg-0">*/}
+          {/*    <li >*/}
+          {/*      <a className="nav-link"  aria-current="page" href="/drafts">My Drafts</a>*/}
+          {/*    </li>*/}
+          {/*    <li >*/}
+          {/*      <a className="nav-link" href="/purchased">My Purchases</a>*/}
+          {/*    </li>*/}
+
+          {/*    <li className="nav-item">*/}
+          {/*      <a className="nav-link" href="#">Contact Us</a>*/}
+          {/*    </li>*/}
+          {/*    <li className="nav-item">*/}
+          {/*      <a className="nav-link" href="#">About Us</a>*/}
+          {/*    </li>*/}
+          {/*    <li className="nav-item">*/}
+          {/*      <a className="nav-link" href="#">Privacy Policy</a>*/}
+          {/*    </li>*/}
+          {/*    <li className="nav-item">*/}
+          {/*      <a className="nav-link" style={{cursor:"pointer"}} onClick={()=>handleLogout()}>Logout</a>*/}
+          {/*    </li>*/}
+          {/*    <li className="nav-item">*/}
+          {/*    <a className="nav-link nav-btn" aria-current="page" href="#">*/}
+          {/*          /!* <img src={play} alt="play store" /> *!/*/}
+          {/*      /!* <FontAwesomeIcon icon={faGooglePlay} /> *!/*/}
+          {/*      <i className="fa-brands fa-google-play"></i>*/}
+          {/*          Try Our App*/}
+          {/*        </a>*/}
+          {/*    </li>*/}
+          {/*  </ul>*/}
+          {/*</div>*/}
+        </nav>
+      </div>
+</header>
 </>
 
 
@@ -253,78 +372,66 @@ const navigate=useNavigate()
   {
     return (
         <>
+     <header style={{background:"#FF3767"}}>
       <div className="container">
-      <nav className="navbar navbar-light bg-light">
-  <div className="w-100 d-flex align-items-center">
-    <div className="w-100">
-    <a className="navbar-brand" href="./">
-    <img src={logo} className="img-fluid" alt="logo"/>
-    </a>
-    </div>
+        <nav className="navbar navbar-expand-lg navbar-dark">
+            <a className="navbar-brand" href="./">
+                <img src={logo} className="img-fluid" alt="logo" />
+              </a>
 
-    <div className="w-100 navbar-expand">
-    <ul className="navbar-nav mb-2 mb-lg-0 justify-content-end align-items-center">
-        <li className="nav-item d-sm-block d-none">
-          <a className="nav-link nav-btn" aria-current="page" href="#">
-              <img src={play} alt="play store"/>
-              Try Our App
-          </a>
-        </li>
-      {/* <li className="nav-item">
-          <a className="nav-link" href="#">
-              <img src={translate} alt="translate" />
-          </a>
-        </li> */}
-      <li className="nav-item">
-          <a className="nav-link" href="#">
-          <FontAwesomeIcon icon={faMagnifyingGlass} />
-          </a>
-        </li>
-      </ul>
-    </div>
-      <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon"></span>
-    </button>
-    </div>
+          {/* <div className="w-100 navbar-expand">
+              <ul className="navbar-nav mb-2 mb-lg-0 justify-content-end align-items-center">
+                <li className="nav-item d-sm-block d-none">
+                  <a className="nav-link nav-btn" aria-current="page" href="#">
+                    <img src={play} alt="play store" />
+                    Try Our App
+                  </a>
+                </li>
+              </ul>
+            </div> */}
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
+            </button>
 
-    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-        <li className="nav-item">
-          <a className="nav-link" aria-current="page" href="#">My Drafts</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#">My Purchases</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#">Favourites</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#">FAQ</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#">Contact Us</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#">About Us</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#">Privacy Policy</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="/login">Login</a>
-        </li>
-        <li className="nav-item d-sm-none d-block">
-          <a className="nav-link nav-btn" aria-current="page" href="#">
-              <img src={play} alt="play store"/>
-              Try Our App
-          </a>
-        </li>
-      </ul>
-    </div>
-</nav>
-</div>
-
-       <hr/>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+              {/*<li className="nav-item">*/}
+              {/*  <a className="nav-link" aria-current="page" href="#">My Drafts</a>*/}
+              {/*</li>*/}
+              {/*<li className="nav-item">*/}
+              {/*  <a className="nav-link" href="#">My Purchases</a>*/}
+              {/*</li>*/}
+              {/*<li className="nav-item">*/}
+              {/*  <a className="nav-link" href="#">Favourites</a>*/}
+              {/*</li>*/}
+              {/*<li className="nav-item">*/}
+              {/*  <a className="nav-link" href="#">FAQ</a>*/}
+              {/*</li>*/}
+              <li className="nav-item">
+                <a className="nav-link" href="#">Contact Us</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#">About Us</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#">Privacy Policy</a>
+              </li>
+              <li className={splitLocation[1] === "login" ? "active" : ""}>
+                <a className="nav-link" href="/login">Login</a>
+              </li>
+              <li className="nav-item">
+              <a className="nav-link nav-btn" aria-current="page" href="#">
+                    {/* <img src={play} alt="play store" /> */}
+                {/* <FontAwesomeIcon icon={faGooglePlay} /> */}
+                <i className="fa-brands fa-google-play"></i>
+                    Try Our App
+                  </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+</header>
 </>
 
     )

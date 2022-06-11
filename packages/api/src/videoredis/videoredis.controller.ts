@@ -1,10 +1,8 @@
 import { InjectQueue } from '@nestjs/bull'
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common'
-import { Public } from '../common/decorators/public.decorator'
+import { Body, Controller, Post } from '@nestjs/common'
 import { Queue } from 'bull'
-import { Job } from 'bull'
+import { Public } from '../common/decorators/public.decorator'
 import { CreateVideorediDto } from './dto/create-videoredi.dto'
-import captions from './caption'
 
 @Public()
 @Controller('videoredis')
@@ -14,6 +12,5 @@ export class VideoredisController {
   @Post('video')
   VideoQueue(@Body() body: CreateVideorediDto) {
     this.videoQueue.add(body.videoid)
-
   }
 }

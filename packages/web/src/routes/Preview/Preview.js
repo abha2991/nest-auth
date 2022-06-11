@@ -17,13 +17,16 @@ import useQueryParams from '../../hooks/useQueryParams'
 import useProfileApi from '../../api/useProfileApi'
 import useCardUserApi from '../../api/useCardUserApi';
 import Carousel from 'carousel-react-rcdev'
+import Loading from '../../components/Loading';
 
+import Footer from "../Footer"
 const Preview = () => {
     const navigate = useNavigate();
     const {data: profile, status} = useProfileApi()
     //console.log({status})
     const id = useQueryParams();
     const {pay} = useRazorpay();
+    const [cardData, setCardData] = useState();
     const [cardname, setCardName] = useState();
     const [userdata, setUserData] = useState();
 
@@ -44,9 +47,11 @@ const Preview = () => {
         });
 
         const data = await res.json();
-console.log(data)
+
+        setCardData(data)
         //console.log(data.CardNames)
-        setCardName(data.CardNames)
+
+        setCardName(data.PreviewCardNames)
         setUserData(data.id)
 
     };
@@ -98,13 +103,13 @@ console.log(data)
     };
 
 
-    const Pay = async (price, cardId) => {
+    const Pay = async (Price, cardId) => {
         //console.log("in Preview")
 
         try {
 
-            console.log({price, cardId})
-            let result = await pay(price, cardId);
+            console.log({Price, cardId})
+            let result = await pay(Price, cardId);
 
             console.log({result})
             //navigate('/download')
@@ -118,18 +123,26 @@ console.log(data)
         }
     }
 
-
+console.log({cardData})
+let cardid=cardData?.CardId ?? ""
 
     if (!cardname) {
 return(
-    <>
-        <div></div></>
+    <Loading/>
+    // <>
+    //     <div></div></>
 )
     } else {
 
         return (
             <>
             <Header/>
+
+                <div className="pt-5">
+
+   <h3 className="text-center">Preview</h3>
+ </div>
+  <hr/>
 
             <div className="container">
                 <div className="d-flex justify-content-between align-items-center my-5">
@@ -155,17 +168,17 @@ return(
                 maxWidth: "300px",
                 margin: "auto"
             }}/>
-           <div style={{
-               position: "absolute",
-               top: "45%",
-               left: "auto",
-               right: "auto",
-               width: "100%",
-               textAlign: "center",
-               opacity: "0.2"
-           }}>
-               <img src={logo} style={{maxWidth: "150px", margin: "auto"}}/>
-           </div>
+           {/*<div style={{*/}
+           {/*    position: "absolute",*/}
+           {/*    top: "45%",*/}
+           {/*    left: "auto",*/}
+           {/*    right: "auto",*/}
+           {/*    width: "100%",*/}
+           {/*    textAlign: "center",*/}
+           {/*    opacity: "0.2"*/}
+           {/*}}>*/}
+           {/*    <img src={logo} style={{maxWidth: "150px", margin: "auto"}}/>*/}
+           {/*</div>*/}
        </div>
        </div>
                             </>
@@ -175,10 +188,12 @@ return(
                     </OwlCarousel>
                 </div>
                 <div className="d-md-flex justify-content-center pay-btn my-5">
-                    <a href="#"><FontAwesomeIcon icon={faPen}/> Edit this Page</a>
-                    <a style={{cursor: "pointer"}} onClick={() => Pay(500, cardId)}>Pay 1,200 & Download</a>
+                    <a href={`/edit-card${cardid}?id=${id2}`}><FontAwesomeIcon icon={faPen}/> Edit this Page</a>
+                    <a style={{cursor: "pointer"}} onClick={() => Pay(cardData.CardSalePrice, cardId)}>Pay {cardData.CardSalePrice} & Download</a>
                 </div>
             </div>
+
+                <Footer/>
         </>
         )
     }

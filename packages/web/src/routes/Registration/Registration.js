@@ -1,7 +1,7 @@
 import React,{useState} from "react";
 import Header from "../Header";
 import * as yup from 'yup'
-
+import Footer from "../Footer"
 import Register from '../Register';
 //images
 import one01 from "../img/one-01.png";
@@ -45,6 +45,11 @@ const Registration=()=>{
     return(
         <>
         <Header/>
+            <div className="pt-5">
+
+   <h3 className="text-center">Registration</h3>
+ </div>
+  <hr/>
         <div className="container">
       <div className="row my-5">
           <div className="col-lg-6">
@@ -112,6 +117,7 @@ const Registration=()=>{
       </div>
         </div>
             {/*<Register/>*/}
+            <Footer/>
         </>
     )
 }

@@ -1,8 +1,7 @@
+import { BullModule } from '@nestjs/bull'
 import { Module } from '@nestjs/common'
-import { VideoredisService } from './videoredis.service'
 import { VideoredisController } from './videoredis.controller'
 import { VideoredisProcessor } from './videoredis.processor'
-import { BullModule } from '@nestjs/bull'
 
 @Module({
   controllers: [VideoredisController],

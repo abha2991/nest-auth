@@ -17,10 +17,10 @@ const globalStyles = (
         backgroundColor: palette.mode === 'dark' ? palette.background.default : palette.grey['50']
       },
       '#root': {
-        position: 'absolute',
+       position: 'absolute',
         width: '100%',
         height: '100%',
-        overflow: 'auto',
+      //overflow: 'auto',
         left: 0,
         top: 0,
         right: 0,

@@ -1,9 +1,9 @@
 import appConfig, { AppConfig } from './app'
 import authConfig, { AuthConfig } from './auth'
 import databaseConfig, { DatabaseConfig } from './database'
-import throttleConfig, { ThrottleConfig } from './throttle'
-import googleConfig, { GoogleConfig } from './google'
 import facebookConfig, { FacebookConfig } from './facebook'
+import googleConfig, { GoogleConfig } from './google'
+import throttleConfig, { ThrottleConfig } from './throttle'
 
 export interface Config {
   app: AppConfig

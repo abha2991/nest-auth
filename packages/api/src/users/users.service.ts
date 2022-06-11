@@ -1,8 +1,7 @@
-import { HttpException, HttpStatus, Injectable, UnauthorizedException } from '@nestjs/common'
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { compare, hashSync } from 'bcrypt'
 import { Repository } from 'typeorm'
-import { CreateUserDto } from './dto/create-user.dto'
 import { User } from './entities/user.entity'
 
 @Injectable()
@@ -16,6 +15,12 @@ export class UsersService {
   findByEmail(email: string, relations: string[] = []) {
     return this.usersRepository.findOne({ email }, { relations })
   }
+
+
+  // find(value: string, relations: string[] = []) {
+  //   return this.usersRepository.find("", { relations })
+  // }
+
 
   async findByCredentials(email: string, password: string, relations: string[] = []) {
     const user = await this.findByEmail(email, relations)

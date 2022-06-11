@@ -30,12 +30,11 @@ const DownloadCards = () => {
   const id = useQueryParams();
 
   const {id: id2} = id
-  console.log("Download")
-  console.log({id2})
+
 
 
   const [cardname, setCardName] = useState();
-
+  const [cardData, setCardData] = useState();
   const [paymentStatus, setPaymentStatus] = useState();
   const getCardsOfUser = async () => {
     try {
@@ -51,10 +50,10 @@ const DownloadCards = () => {
       const data1 = await response.json();
 
       setCardName(data1.CardNames)
-
+setCardData(data1)
 
       setPaymentStatus(data1.PaymentStatus)
-
+console.log(cardData.NoOfPages)
     } catch (e) {
       console.log({e})
     }
@@ -69,8 +68,8 @@ const DownloadCards = () => {
   }, [id2]);
 
 
-  console.log({paymentStatus})
-  console.log({cardname})
+
+console.log(cardname)
 
 
   const options = {
@@ -204,7 +203,11 @@ const DownloadCards = () => {
     return (
         <>
             <Header/>
+<div className="pt-5">
 
+   <h3 className="text-center">Download Card</h3>
+ </div>
+  <hr/>
             <div className="container">
                 <div className="d-flex justify-content-between align-items-center my-5">
                     <button type="button" className="btn" data-bs-dismiss="modal" aria-label="Close">
@@ -217,73 +220,16 @@ const DownloadCards = () => {
                         <FontAwesomeIcon icon={faShareNodes}/>&nbsp;Share
                     </a>
                 </div>
+              {cardData.NoOfPages === 1 ?
 
+                  cardname?.map((val, ind) => {
+                    return (
 
-               {/*<div className="modal-dialog modal-dialog-centered">*/}
-               {/*      <div className="modal-content">*/}
-               {/*        <div className="modal-header">*/}
-               {/*          <h5 className="modal-title" id="staticBackdropLabel">*/}
-               {/*            Share Data Via*/}
-               {/*          </h5>*/}
-               {/*          <button*/}
-               {/*              type="button"*/}
-               {/*              className="btn-close"*/}
-               {/*              data-bs-dismiss="modal"*/}
-               {/*              aria-label="Close"*/}
-               {/*          ></button>*/}
-               {/*        </div>*/}
-               {/*        <div className="modal-body">*/}
-               {/*          <FacebookShareButton*/}
-               {/*              url="https://www.facebook.com"*/}
-               {/*              quote="share"*/}
-               {/*              hashtag="#React"*/}
-               {/*          >*/}
-               {/*            <FacebookIcon*/}
-               {/*                logoFillColor="white"*/}
-               {/*                round={true}*/}
-               {/*            ></FacebookIcon>*/}
-               {/*          </FacebookShareButton>*/}
-               {/*          <WhatsappShareButton*/}
-               {/*              url="https://www.facebook.com"*/}
-               {/*              quote="share"*/}
-               {/*              hashtag="#React"*/}
-               {/*          >*/}
-               {/*            <WhatsappIcon*/}
-               {/*                logoFillColor="white"*/}
-               {/*                round={true}*/}
-               {/*            ></WhatsappIcon>*/}
-               {/*          </WhatsappShareButton>*/}
-               {/*          <EmailShareButton*/}
-               {/*              url="https://www.facebook.com"*/}
-               {/*              quote="share"*/}
-               {/*              hashtag="#React"*/}
-               {/*          >*/}
-               {/*            <EmailIcon*/}
-               {/*                logoFillColor="white"*/}
-               {/*                round={true}*/}
-               {/*            ></EmailIcon>*/}
-               {/*          </EmailShareButton>*/}
-               {/*        </div>*/}
-               {/*      </div>*/}
-               {/*    </div>*/}
-
-
-               <OwlCarousel className='owl-carousel owl-theme wedding-carousel' options={options}>
-
-              {/*         <Pdf targetRef={componentRef} filename="code-example.pdf" options={options} scale={0.8}>*/} {/*  {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}*/} {/*</Pdf>*/}
-              {/*<div>*/}
-
-
-                        {cardname?.map((val, index) => {
-
-
-                              return (
-
-                                  <>
+                        <>
 
 
  <div className='item'
-     // style={{display: "inline", margin: "10px"}}
+
  >
 
             <img src={"http://localhost:3001/generated/" + val} className="img-fluid" alt="Invitations" style={{
@@ -293,20 +239,51 @@ const DownloadCards = () => {
 
 
        </div>
-                                    {/*      <button onClick={() => exportComponentAsPNG(componentRef)}>*/} {/*  Export As PDF*/} {/*</button>*/}
+
                             </>
-                              )
-                            }
-                        )}
+                    )
+
+                  })
+
+                  :
 
 
-                {/*</div>*/}
+                  <OwlCarousel className='owl-carousel owl-theme wedding-carousel' options={options}>
+
+              {/*         <Pdf targetRef={componentRef} filename="code-example.pdf" options={options} scale={0.8}>*/} {/*  {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}*/} {/*</Pdf>*/} {/*<div>*/}
+
+
+                    {cardname?.map((val, index) => {
+
+
+                          return (
+
+                              <>
+
+
+ <div className='item'
+
+ >
+
+            <img src={"http://localhost:3001/generated/" + val} className="img-fluid" alt="Invitations" style={{
+              maxWidth: "300px",
+              margin: "auto"
+            }}/>
+
+
+       </div>
+
+                            </>
+                          )
+                        }
+                    )}
+
+
+                    {/*</div>*/}
 
                </OwlCarousel>
 
-              {/* <button*/} {/*onClick={savePdf}*/} {/*     className="button"*/}
-
-              {/* >*/} {/*         Create PDF*/} {/*        </button>*/}
+              }
 
 
               <div className="d-md-flex justify-content-center pay-btn my-5">

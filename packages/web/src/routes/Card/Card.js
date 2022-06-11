@@ -18,6 +18,8 @@ import one011 from "../img/one-011.png";
 
 const Card = () => {
 
+
+
   const options = {
     loop: true,
     center: true,
@@ -38,23 +40,46 @@ const Card = () => {
                 <div className="row my-5">
                     <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
                         <li className="nav-item" role="presentation">
-                            <button className="nav-link active" id="wedding-cards-tab" data-bs-toggle="pill" data-bs-target="#wedding-cards" type="button" role="tab" aria-controls="wedding-cards" aria-selected="true">Wedding Cards</button>
+                            <a className="nav-link active" id="wedding-cards-tab" data-bs-toggle="pill" href="#wedding-cards"  role="tab" aria-controls="wedding-cards" aria-selected="true" >Wedding Cards</a>
                         </li>
                         <li className="nav-item" role="presentation">
-                            <button className="nav-link" id="wedding-videos-tab" data-bs-toggle="pill" data-bs-target="#wedding-videos" type="button" role="tab" aria-controls="wedding-videos" aria-selected="false">Wedding Videos</button>
+                            <a className="nav-link" id="wedding-videos-tab" data-bs-toggle="pill" href="#wedding-videos"  role="tab" aria-controls="wedding-videos" aria-selected="false">Wedding Videos</a>
                         </li>
                         <li className="nav-item" role="presentation">
-                            <button className="nav-link" id="engagement-cards-tab" data-bs-toggle="pill" data-bs-target="#engagement-cards" type="button" role="tab" aria-controls="engagement-cards" aria-selected="false">Engagement Cards</button>
+                            <button className="nav-link" id="engagement-cards-tab" data-bs-toggle="pill" data-bs-target="#engagement-cards"  role="tab" aria-controls="engagement-cards" aria-selected="false">Engagement Cards</button>
                         </li>
                         <li className="nav-item" role="presentation">
-                            <button className="nav-link" id="engagement-videos-tab" data-bs-toggle="pill" data-bs-target="#engagement-videos" type="button" role="tab" aria-controls="engagement-videos" aria-selected="false">Engagement Videos</button>
+                            <button className="nav-link" id="engagement-videos-tab" data-bs-toggle="pill" data-bs-target="#engagement-videos"  role="tab" aria-controls="engagement-videos" aria-selected="false">Engagement Videos</button>
                         </li>
                         <li className="nav-item" role="presentation">
-                            <button className="nav-link" id="mehandi-cards-tab" data-bs-toggle="pill" data-bs-target="#mehandi-cards" type="button" role="tab" aria-controls="mehandi-cards" aria-selected="false">Mehandi Cards</button>
+                            <button className="nav-link" id="mehandi-cards-tab" data-bs-toggle="pill" data-bs-target="#mehandi-cards"  role="tab" aria-controls="mehandi-cards" aria-selected="false">Mehandi Cards</button>
                         </li>
                         <li className="nav-item" role="presentation">
-                            <button className="nav-link" id="haldi-cards-tab" data-bs-toggle="pill" data-bs-target="#haldi-cards" type="button" role="tab" aria-controls="haldi-cards" aria-selected="false">Haldi Cards</button>
+                            <button className="nav-link" id="haldi-cards-tab" data-bs-toggle="pill" data-bs-target="#haldi-cards"  role="tab" aria-controls="haldi-cards" aria-selected="false">Haldi Cards</button>
                         </li>
+
+                {/*        <li className="nav-item" role="presentation">*/}
+                {/*        <a className="nav-link active" id="wedding-cards-tab" data-bs-toggle="pill" href="#wedding-cards" role="tab"*/}
+                {/*           aria-controls="v-pills-home" aria-selected="true">Wedding Cards</a></li>*/}
+                {/*        <li className="nav-item" role="presentation">*/}
+                {/*<a className="nav-link" id="wedding-videos-tab" data-bs-toggle="pill" href="#wedding-videos" role="tab"*/}
+                {/*   aria-controls="v-pills-profile" aria-selected="false">Wedding Videos</a></li>*/}
+                {/*        <li className="nav-item" role="presentation">*/}
+                {/*<a className="nav-link" id="engagement-cards-tab" data-bs-toggle="pill" href="#engagement-cards" role="tab"*/}
+                {/*   aria-controls="v-pills-messages" aria-selected="false">Engagement Cards</a></li>*/}
+                {/*        <li className="nav-item" role="presentation">*/}
+                {/*<a className="nav-link" id="engagement-videos-tab" data-bs-toggle="pill" href="#engagement-videos" role="tab"*/}
+                {/*   aria-controls="v-pills-settings" aria-selected="false">Engagement Videos</a></li>*/}
+                {/*        <li className="nav-item" role="presentation">*/}
+                {/*         <a className="nav-link" id="mehandi-cards-tab" data-bs-toggle="pill" href="#mehandi-cards" role="tab"*/}
+                {/*            aria-controls="v-pills-settings" aria-selected="false">Mehandi Cards</a></li>*/}
+                {/*        <li className="nav-item" role="presentation">*/}
+
+                {/*  <a className="nav-link" id="haldi-cards-tab" data-bs-toggle="pill" href="#haldi-cards" role="tab"*/}
+                {/*     aria-controls="v-pills-settings" aria-selected="false">Haldi Cards</a></li>*/}
+
+
+
                     </ul>
 
                     <div className="tab-content" id="pills-tabContent">
@@ -76,13 +101,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={page11} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -91,12 +115,11 @@ const Card = () => {
                                             <img src={Wedding3} className="img-fluid" alt="Cards" />
                                         </a>
                                         <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -105,12 +128,63 @@ const Card = () => {
                                             <img src={img31} className="img-fluid" alt="Cards" />
                                         </a>
                                         <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
+                                    </div>
+                                </div>
+                                <div className="col-md-3 mb-5">
+                                    <div className="wedding-box">
+                                        <a href="#staticBackdrop" data-bs-toggle="modal">
+                                            <img src={page11} className="img-fluid" alt="Cards" />
+                                        </a>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
+                                    </div>
+                                </div>
+                                <div className="col-md-3 mb-5">
+                                    <div className="wedding-box">
+                                        <a href="#staticBackdrop" data-bs-toggle="modal">
+                                            <img src={page11} className="img-fluid" alt="Cards" />
+                                        </a>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
+                                    </div>
+                                </div>
+                                <div className="col-md-3 mb-5">
+                                    <div className="wedding-box">
+                                        <a href="#staticBackdrop" data-bs-toggle="modal">
+                                            <img src={Wedding3} className="img-fluid" alt="Cards" />
+                                        </a>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
+                                    </div>
+                                </div>
+                                <div className="col-md-3 mb-5">
+                                    <div className="wedding-box">
+                                        <a href="#staticBackdrop" data-bs-toggle="modal">
+                                            <img src={img31} className="img-fluid" alt="Cards" />
+                                        </a>
+                                        <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -119,12 +193,11 @@ const Card = () => {
                                             <img src={page11} className="img-fluid" alt="Cards" />
                                         </a>
                                         <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -132,13 +205,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={page11} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -147,12 +219,11 @@ const Card = () => {
                                             <img src={Wedding3} className="img-fluid" alt="Cards" />
                                         </a>
                                         <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -161,12 +232,11 @@ const Card = () => {
                                             <img src={img31} className="img-fluid" alt="Cards" />
                                         </a>
                                         <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -174,69 +244,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={page11} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
-                                    </div>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
                                 </div>
-                                <div className="col-md-3 mb-5">
-                                    <div className="wedding-box">
-                                        <a href="#staticBackdrop" data-bs-toggle="modal">
-                                            <img src={page11} className="img-fluid" alt="Cards" />
-                                        </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
-                                    </div>
-                                </div>
-                                <div className="col-md-3 mb-5">
-                                    <div className="wedding-box">
-                                        <a href="#staticBackdrop" data-bs-toggle="modal">
-                                            <img src={Wedding3} className="img-fluid" alt="Cards" />
-                                        </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
-                                    </div>
-                                </div>
-                                <div className="col-md-3 mb-5">
-                                    <div className="wedding-box">
-                                        <a href="#staticBackdrop" data-bs-toggle="modal">
-                                            <img src={img31} className="img-fluid" alt="Cards" />
-                                        </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
-                                    </div>
-                                </div>
-                                <div className="col-md-3 mb-5">
-                                    <div className="wedding-box">
-                                        <a href="#staticBackdrop" data-bs-toggle="modal">
-                                            <img src={page11} className="img-fluid" alt="Cards" />
-                                        </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                             </div>
@@ -260,13 +273,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={page11} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -275,12 +287,11 @@ const Card = () => {
                                             <img src={Wedding3} className="img-fluid" alt="Cards" />
                                         </a>
                                         <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -288,13 +299,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={img31} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5 ">
@@ -303,12 +313,11 @@ const Card = () => {
                                             <img src={page11} className="img-fluid" alt="Cards" />
                                         </a>
                                         <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                             </div>
@@ -332,12 +341,11 @@ const Card = () => {
                                             <img src={page11} className="img-fluid" alt="Cards" />
                                         </a>
                                         <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -346,12 +354,11 @@ const Card = () => {
                                             <img src={Wedding3} className="img-fluid" alt="Cards" />
                                         </a>
                                         <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -359,13 +366,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={img31} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -373,13 +379,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={page11} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -387,13 +392,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={page11} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -401,13 +405,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={Wedding3} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -415,13 +418,25 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={img31} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
+                                    </div>
+                                </div>
+                                <div className="col-md-3 mb-5">
+                                    <div className="wedding-box">
+                                        <a href="#staticBackdrop" data-bs-toggle="modal">
+                                            <img src={page11} className="img-fluid" alt="Cards" />
+                                        </a>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -430,26 +445,11 @@ const Card = () => {
                                             <img src={page11} className="img-fluid" alt="Cards" />
                                         </a>
                                         <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
-                                    </div>
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
                                 </div>
-                                <div className="col-md-3 mb-5">
-                                    <div className="wedding-box">
-                                        <a href="#staticBackdrop" data-bs-toggle="modal">
-                                            <img src={page11} className="img-fluid" alt="Cards" />
-                                        </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -457,13 +457,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={Wedding3} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -472,12 +471,11 @@ const Card = () => {
                                             <img src={img31} className="img-fluid" alt="Cards" />
                                         </a>
                                         <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -485,13 +483,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={page11} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                             </div>
@@ -515,13 +512,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={page11} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -529,13 +525,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={Wedding3} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -543,13 +538,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={img31} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5 ">
@@ -558,12 +552,11 @@ const Card = () => {
                                             <img src={page11} className="img-fluid" alt="Cards" />
                                         </a>
                                         <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                             </div>
@@ -586,13 +579,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={page11} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -600,13 +592,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={Wedding3} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -615,12 +606,11 @@ const Card = () => {
                                             <img src={img31} className="img-fluid" alt="Cards" />
                                         </a>
                                         <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -629,12 +619,11 @@ const Card = () => {
                                             <img src={page11} className="img-fluid" alt="Cards" />
                                         </a>
                                         <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -642,13 +631,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={page11} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -657,12 +645,11 @@ const Card = () => {
                                             <img src={Wedding3} className="img-fluid" alt="Cards" />
                                         </a>
                                         <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -670,13 +657,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={img31} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                      <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -685,12 +671,11 @@ const Card = () => {
                                             <img src={page11} className="img-fluid" alt="Cards" />
                                         </a>
                                         <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -698,13 +683,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={page11} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -712,13 +696,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={Wedding3} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                      <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -726,13 +709,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={img31} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                      <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -740,13 +722,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={page11} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                             </div>
@@ -784,13 +765,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={Wedding3} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -798,13 +778,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={img31} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5 ">
@@ -812,13 +791,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={page11} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                             </div>
@@ -841,13 +819,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={page11} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -855,13 +832,64 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={Wedding3} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
+                                    </div>
+                                </div>
+                                <div className="col-md-3 mb-5">
+                                    <div className="wedding-box">
+                                        <a href="#staticBackdrop" data-bs-toggle="modal">
+                                            <img src={img31} className="img-fluid" alt="Cards" />
+                                        </a>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
+                                    </div>
+                                </div>
+                                <div className="col-md-3 mb-5">
+                                    <div className="wedding-box">
+                                        <a href="#staticBackdrop" data-bs-toggle="modal">
+                                            <img src={page11} className="img-fluid" alt="Cards" />
+                                        </a>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
+                                    </div>
+                                </div>
+                                <div className="col-md-3 mb-5">
+                                    <div className="wedding-box">
+                                        <a href="#staticBackdrop" data-bs-toggle="modal">
+                                            <img src={page11} className="img-fluid" alt="Cards" />
+                                        </a>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
+                                    </div>
+                                </div>
+                                <div className="col-md-3 mb-5">
+                                    <div className="wedding-box">
+                                        <a href="#staticBackdrop" data-bs-toggle="modal">
+                                            <img src={Wedding3} className="img-fluid" alt="Cards" />
+                                        </a>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -870,12 +898,11 @@ const Card = () => {
                                             <img src={img31} className="img-fluid" alt="Cards" />
                                         </a>
                                         <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -883,13 +910,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={page11} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                      <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -897,13 +923,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={page11} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -911,13 +936,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={Wedding3} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -925,13 +949,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={img31} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -940,68 +963,11 @@ const Card = () => {
                                             <img src={page11} className="img-fluid" alt="Cards" />
                                         </a>
                                         <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
-                                    </div>
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
                                 </div>
-                                <div className="col-md-3 mb-5">
-                                    <div className="wedding-box">
-                                        <a href="#staticBackdrop" data-bs-toggle="modal">
-                                            <img src={page11} className="img-fluid" alt="Cards" />
-                                        </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
-                                    </div>
-                                </div>
-                                <div className="col-md-3 mb-5">
-                                    <div className="wedding-box">
-                                        <a href="#staticBackdrop" data-bs-toggle="modal">
-                                            <img src={Wedding3} className="img-fluid" alt="Cards" />
-                                        </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
-                                    </div>
-                                </div>
-                                <div className="col-md-3 mb-5">
-                                    <div className="wedding-box">
-                                        <a href="#staticBackdrop" data-bs-toggle="modal">
-                                            <img src={img31} className="img-fluid" alt="Cards" />
-                                        </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
-                                    </div>
-                                </div>
-                                <div className="col-md-3 mb-5">
-                                    <div className="wedding-box">
-                                        <a href="#staticBackdrop" data-bs-toggle="modal">
-                                            <img src={page11} className="img-fluid" alt="Cards" />
-                                        </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                             </div>
@@ -1025,13 +991,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={page11} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -1040,12 +1005,11 @@ const Card = () => {
                                             <img src={Wedding3} className="img-fluid" alt="Cards" />
                                         </a>
                                         <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -1053,13 +1017,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={img31} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5 ">
@@ -1067,13 +1030,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={page11} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                             </div>
@@ -1096,13 +1058,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={page11} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -1110,13 +1071,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={Wedding3} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -1124,13 +1084,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={img31} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -1139,12 +1098,11 @@ const Card = () => {
                                             <img src={page11} className="img-fluid" alt="Cards" />
                                         </a>
                                         <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -1153,12 +1111,11 @@ const Card = () => {
                                             <img src={page11} className="img-fluid" alt="Cards" />
                                         </a>
                                         <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -1166,13 +1123,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={Wedding3} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -1180,13 +1136,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={img31} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -1195,12 +1150,11 @@ const Card = () => {
                                             <img src={page11} className="img-fluid" alt="Cards" />
                                         </a>
                                         <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -1208,13 +1162,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={page11} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -1222,13 +1175,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={Wedding3} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -1236,13 +1188,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={img31} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -1250,13 +1201,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={page11} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                             </div>
@@ -1281,12 +1231,11 @@ const Card = () => {
                                             <img src={page11} className="img-fluid" alt="Cards" />
                                         </a>
                                         <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -1294,13 +1243,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={Wedding3} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -1308,13 +1256,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={img31} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5 ">
@@ -1322,13 +1269,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={page11} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                             </div>
@@ -1352,12 +1298,63 @@ const Card = () => {
                                             <img src={page11} className="img-fluid" alt="Cards" />
                                         </a>
                                         <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
+                                    </div>
+                                </div>
+                                <div className="col-md-3 mb-5">
+                                    <div className="wedding-box">
+                                        <a href="#staticBackdrop" data-bs-toggle="modal">
+                                            <img src={Wedding3} className="img-fluid" alt="Cards" />
+                                        </a>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
+                                    </div>
+                                </div>
+                                <div className="col-md-3 mb-5">
+                                    <div className="wedding-box">
+                                        <a href="#staticBackdrop" data-bs-toggle="modal">
+                                            <img src={img31} className="img-fluid" alt="Cards" />
+                                        </a>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
+                                    </div>
+                                </div>
+                                <div className="col-md-3 mb-5">
+                                    <div className="wedding-box">
+                                        <a href="#staticBackdrop" data-bs-toggle="modal">
+                                            <img src={page11} className="img-fluid" alt="Cards" />
+                                        </a>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
+                                    </div>
+                                </div>
+                                <div className="col-md-3 mb-5">
+                                    <div className="wedding-box">
+                                        <a href="#staticBackdrop" data-bs-toggle="modal">
+                                            <img src={page11} className="img-fluid" alt="Cards" />
+                                        </a>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -1366,12 +1363,11 @@ const Card = () => {
                                             <img src={Wedding3} className="img-fluid" alt="Cards" />
                                         </a>
                                         <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -1379,13 +1375,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={img31} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -1393,13 +1388,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={page11} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                      <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -1407,13 +1401,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={page11} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -1421,13 +1414,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={Wedding3} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -1435,13 +1427,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={img31} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -1449,69 +1440,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={page11} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
-                                    </div>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
                                 </div>
-                                <div className="col-md-3 mb-5">
-                                    <div className="wedding-box">
-                                        <a href="#staticBackdrop" data-bs-toggle="modal">
-                                            <img src={page11} className="img-fluid" alt="Cards" />
-                                        </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
-                                    </div>
-                                </div>
-                                <div className="col-md-3 mb-5">
-                                    <div className="wedding-box">
-                                        <a href="#staticBackdrop" data-bs-toggle="modal">
-                                            <img src={Wedding3} className="img-fluid" alt="Cards" />
-                                        </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
-                                    </div>
-                                </div>
-                                <div className="col-md-3 mb-5">
-                                    <div className="wedding-box">
-                                        <a href="#staticBackdrop" data-bs-toggle="modal">
-                                            <img src={img31} className="img-fluid" alt="Cards" />
-                                        </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
-                                    </div>
-                                </div>
-                                <div className="col-md-3 mb-5">
-                                    <div className="wedding-box">
-                                        <a href="#staticBackdrop" data-bs-toggle="modal">
-                                            <img src={page11} className="img-fluid" alt="Cards" />
-                                        </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                             </div>
@@ -1535,13 +1469,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={page11} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -1549,13 +1482,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={Wedding3} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5">
@@ -1563,13 +1495,12 @@ const Card = () => {
                                         <a href="#staticBackdrop" data-bs-toggle="modal">
                                             <img src={img31} className="img-fluid" alt="Cards" />
                                         </a>
-                                        <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                       <div className="inner">
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-5 ">
@@ -1578,12 +1509,11 @@ const Card = () => {
                                             <img src={page11} className="img-fluid" alt="Cards" />
                                         </a>
                                         <div className="inner">
-                                            <div className="triangle-right"></div>
-                                            <h4>4</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                        <strong><span>₹1,200</span></strong>
-                                        <del>₹1,500</del>
+                                    <div className="triangle-right"></div>
+                                    <h4>4</h4>
+                                    <p>Pages</p>
+                                </div>
+                                        <div className="price"><strong><span>₹1,200</span></strong><del>₹1,500</del></div>
                                     </div>
                                 </div>
                             </div>

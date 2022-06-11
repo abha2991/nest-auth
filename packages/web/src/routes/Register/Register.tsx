@@ -13,7 +13,7 @@ import Form from '../../components/forms/Form'
 import FormInput from '../../components/forms/FormInput'
 import config from '../../config'
 import { IRegisterRequest } from '../../types/auth'
-
+import Footer from "../Footer"
 import urlJoin from 'proper-url-join'
 import logo from "../img/image 7.png";
 import FacebookLogo from "../img/1024px-Facebook_Logo_(2019) 1.png";
@@ -69,7 +69,7 @@ const Register: FC = () => {
 
 
       <Card sx={{ maxWidth: "100%" }}>
-        <CardHeader title="Register" />
+        {/*<CardHeader title="Register" />*/}
         <CardContent>
           <Form<IRegisterRequest> validationSchema={schema} defaultValues={defaultValues} onSuccess={handleSubmit}>
             <FormInput name="firstName" label="First Name" />

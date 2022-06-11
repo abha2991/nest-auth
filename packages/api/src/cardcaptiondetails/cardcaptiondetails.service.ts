@@ -31,4 +31,44 @@ export class CardcaptiondetailsService {
   remove(id: number) {
     return `This action removes a #${id} cardetail`
   }
+  async find(id: string) {
+
+    let data=await this.cardsRepository.findOneOrFail(id,
+
+        {
+
+          relations: ['Card']
+
+
+        })
+
+    console.log({data})
+
+
+
+    //let data1=_.orderBy(data,Id=>Id.Caption.Caption.id);
+    //
+    //
+    // console.log(data1)
+    return data
+  }
+
+
+
+  async update(id: string, data: any): Promise<any> {
+    try {
+      console.log({ id, data })
+      await this.cardsRepository.update(id, data)
+
+      return {
+        success: true,
+        message: `Successfully updated ${data}`
+      }
+    } catch (err) {
+      console.log({ err })
+    }
+  }
 }
+
+
+

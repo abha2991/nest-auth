@@ -1,8 +1,5 @@
-
-
 export class VideoDto {
-    id:number;
-    Details:string[];
-    text:string;
-
+  id: number
+  Details: string[]
+  text: string
 }
