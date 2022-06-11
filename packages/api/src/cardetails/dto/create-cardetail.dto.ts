@@ -1,31 +1,59 @@
 import { IsArray, IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator'
 
 export class CreateCardetailDto {
-    @IsNotEmpty()
-    @IsString()
-    CardName: string
+  @IsNotEmpty()
+  @IsString()
+  cardName: string
 
-    @IsNotEmpty()
-    @IsString()
-    CardCategory: string
+  @IsNotEmpty()
+  @IsString()
+  description: string
 
-    @IsNotEmpty()
-    @IsNumber()
-    CardTotalPrice: number
+  @IsNotEmpty()
+  @IsString()
+  cardCategory: string
 
-    @IsNotEmpty()
-    @IsArray()
-    CardDetails: string[]
+  @IsNotEmpty()
+  @IsNumber()
+  cardTotalPrice: number
 
-    @IsNotEmpty()
-    @IsArray()
-    CardTemplates: string[]
+  @IsNotEmpty()
+  @IsArray()
+  cardDetails: string[]
 
-    @IsOptional()
-    @IsNumber()
-    CardSalePrice?: number
+  @IsNotEmpty()
+  @IsArray()
+  cardTemplates: string[]
 
-    @IsNotEmpty()
-    @IsNumber()
-    NoOfPages: number
+  @IsOptional()
+  @IsNumber()
+  cardSalePrice?: number
+
+  @IsNotEmpty()
+  @IsNumber()
+  noOfPages: number
+
+  // @IsNotEmpty()
+  // @IsString()
+  // CardName: string
+  //
+  // @IsNotEmpty()
+  // @IsString()
+  // CardCategory: string
+  //
+  // @IsNotEmpty()
+  // @IsNumber()
+  // CardTotalPrice: number
+  //
+  // @IsNotEmpty()
+  // @IsArray()
+  // CardDetails: string[]
+  //
+  // @IsOptional()
+  // @IsNumber()
+  // CardSalePrice?: number
+  //
+  // @IsNotEmpty()
+  // @IsNumber()
+  // NoOfPages: number
 }

@@ -1,5 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
+import _, {orderBy} from 'lodash'
 import { Repository } from 'typeorm'
 
 import { CardcaptionEntity } from '../cardcaptiondetails/entities/cardcaption.entity'
@@ -24,7 +25,6 @@ export class CardetailsService {
   }
 
 
-
   // async findOne(id: number) {
   //   return await this.cardsRepository.findOne({
   //     where: { id },
@@ -38,15 +38,50 @@ export class CardetailsService {
   // }
 
   async findOne() {
-    return await this.cardsRepository.findOne({
+    return await this.cardsRepository.find({
       relations: ['Caption']
     })
   }
 
+
+
+
   async find(id: string) {
-    return await this.cardsRepository.findOne(id,{
-      relations: ['Caption']
-    })
+
+    let data=await this.cardsRepository.findOneOrFail(id,
+
+        {
+
+          relations: ['Caption']
+
+
+        })
+
+     console.log({data})
+//
+// const data1={...data,Caption:_.orderBy(data.Caption,'id')}
+// console.log({data1})
+    //let data1=_.orderBy(data,Id=>Id.Caption.Caption.id);
+    //
+    //
+    // console.log(data1)
+    return data
+  }
+
+
+
+  async updateCardDetails(id: string, data: any): Promise<any> {
+    try {
+      console.log({ id, data })
+      await this.cardsRepository.update(id, data)
+
+      return {
+        success: true,
+        message: 'Successfully Updated'
+      }
+    } catch (err) {
+      console.log({ err })
+    }
   }
 
 

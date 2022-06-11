@@ -1,9 +1,11 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common'
+import {Body, Controller, Delete, Get, Param, Patch, Post} from '@nestjs/common'
 
 import { Public } from 'src/common/decorators/public.decorator'
+
 import { CardetailsService } from './cardetails.service'
 
 import { CreateCardetailDto } from './dto/create-cardetail.dto'
+import {CardDetailsDto} from "./dto/update-cardDetails.dto"
 
 @Controller('cardetails')
 export class CardetailsController {
@@ -34,13 +36,21 @@ export class CardetailsController {
   }
 
 
+
   @Public()
-  @Get()
+  @Post('getById')
   find(@Body('id') id:string) {
+
+    console.log({id})
     return this.cardetailsService.find(id)
   }
 
-
+  @Public()
+  @Patch(':id')
+  updateCardDetails(@Param('id') id: string, @Body() carddetailsdto: CardDetailsDto) {
+    console.log({ carddetailsdto })
+    return this.cardetailsService.updateCardDetails(id, carddetailsdto)
+  }
 
 
   @Delete(':id')
