@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Header from '../../Header'
-import card1 from '../../img/card31.jpg'
-import card2 from '../../img/card32.jpg'
+import card1 from '../../img/Wedding/card31.jpg'
+import card2 from '../../img/Wedding/card32.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import useProfileApi from '../../../api/useProfileApi'
@@ -247,8 +247,6 @@ const Card4 = () => {
     }
   ]
 
-  console.log({ Details })
-
   const PostData = async (e) => {
     e.preventDefault()
 
@@ -262,7 +260,7 @@ const Card4 = () => {
         id: id2,
         details,
         userId: profile.id,
-        email: email
+        email: profile.email
       })
     })
 

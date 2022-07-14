@@ -10,6 +10,8 @@ import { jsPDF } from 'jspdf'
 import useQueryParams from '../../hooks/useQueryParams'
 import { Navigate } from 'react-router-dom'
 
+import Footer from '../Footer'
+
 const DownloadCards = () => {
   const componentRef = createRef()
   const id = useQueryParams()
@@ -28,24 +30,23 @@ const DownloadCards = () => {
       })
 
       const data1 = await response.json()
-
-      setCardName(data1.CardNames)
+      // console.log(data1)
+      setCardName(data1.cardNames)
       setCardData(data1)
 
-      setPaymentStatus(data1.PaymentStatus)
+      setPaymentStatus(data1.paymentStatus)
     } catch (e) {
-      console.log({ e })
+      //console.log({ e })
     }
   }
   useEffect(() => {
-    getCardsOfUser().then((r) => console.log({ r }))
+    getCardsOfUser()
+    //.then((r) => console.log({ r }))
     // return () => {
     //   setCardName({});
     //   setPaymentStatus({})// This worked for me
     // };
   }, [id2])
-
-  console.log(cardname)
 
   const options = {
     loop: true,
@@ -113,7 +114,7 @@ const DownloadCards = () => {
     //console.log(len)
     for (const i of imageUrls) {
       //console.log({i,imageUrls})
-      let url = `http://localhost:3001/generated/${i}`
+      let url = `http://localhost:3001/generated/${(cardData as any)?.cardCategory}/${i}`
       // console.log({url})
       const image = await addImageProcess(url)
       //console.log({image})
@@ -132,12 +133,12 @@ const DownloadCards = () => {
     const multiPng = await generatePdf(imageUrls)
     //console.log(multiPng)
     // generate dataURLString
-    multiPng.output('dataurlstring', { filename: 'multiPng.pdf' })
+    multiPng.output('dataurlstring', { filename: 'Card.pdf' })
     //console.log(dataURLString);
 
     // save PDF (blocked in iFrame in chrome)
     // @ts-ignore
-    multiPng.output('save', 'multiPng.pdf')
+    multiPng.output('save', 'Card.pdf')
   }
 
   // const generatePdfFromImages = (images) => {
@@ -164,11 +165,11 @@ const DownloadCards = () => {
   let redirectTo = `/preview?id=${id2}`
   // if(paymentStatus==='Success') {
 
-  if (!cardname || !paymentStatus) {
+  if (!cardname || !paymentStatus || !cardData) {
     return null
   }
 
-  if (paymentStatus === 'SUCCESS') {
+  if (paymentStatus === 'SUCCESS' && cardData) {
     return (
       <>
         <Header />
@@ -188,13 +189,13 @@ const DownloadCards = () => {
               &nbsp;Share
             </a>
           </div>
-          {(cardData as any)?.NoOfPages === 1 ? (
+          {(cardData as any)?.noOfPages === 1 ? (
             (cardname as any)?.map((val: any, ind: number) => {
               return (
                 <>
                   <div className="item">
                     <img
-                      src={'http://localhost:3001/generated/' + val}
+                      src={'http://localhost:3001/generated/' + (cardData as any)?.cardCategory + '/' + val}
                       className="img-fluid"
                       alt="Invitations"
                       style={{
@@ -215,7 +216,7 @@ const DownloadCards = () => {
                   <>
                     <div className="item">
                       <img
-                        src={'http://localhost:3001/generated/' + val}
+                        src={'http://localhost:3001/generated/' + (cardData as any)?.cardCategory + '/' + val}
                         className="img-fluid"
                         alt="Invitations"
                         style={{
@@ -246,6 +247,8 @@ const DownloadCards = () => {
             </a>
           </div>
         </div>
+
+        <Footer />
       </>
     )
   }

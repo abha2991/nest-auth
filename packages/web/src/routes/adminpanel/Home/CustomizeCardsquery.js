@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import '../Adminindex.css'
 import AdminHeader from '../Header/AdminHeader'
+import Loading from '../../../components/Loading'
 
 function CustomizeCardsQuery() {
   const [data, setData] = useState([])
 
   const userEnteredData = async (e) => {
-    const res = await fetch(`http://localhost:3001/api/contactus`, {
+    const res = await fetch(`http://localhost:3001/api/customizecardsquery`, {
       method: 'GET',
       credentials: 'include',
       headers: {
@@ -21,6 +22,9 @@ function CustomizeCardsQuery() {
     userEnteredData()
   }, [])
 
+  if (!data) {
+    return <Loading />
+  }
   return (
     <>
       {' '}
@@ -48,7 +52,8 @@ function CustomizeCardsQuery() {
                       <th>Phone Number</th>
                       <th>Email</th>
 
-                      <th>Message</th>
+                      <th>Event</th>
+                      <th>Description</th>
                       <th>Date</th>
                     </tr>
                   </thead>
@@ -61,8 +66,9 @@ function CustomizeCardsQuery() {
                             <td>{val.phoneNumber}</td>
                             <td>{val.email}</td>
 
-                            <td>{val.message}</td>
-                            <td>{val.createdAt}</td>
+                            <td>{val.event}</td>
+                            <td>{val.description}</td>
+                            <td>{new Date(val.createdAt).toDateString()}</td>
 
                             {/*<td><button setcaseid={val._id}*/}
                             {/*    className="viewbtn"*/}

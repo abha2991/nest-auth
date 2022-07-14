@@ -1,8 +1,8 @@
 import React, { useEffect, useState, Suspense } from 'react'
 import Header from '../../Header'
-import card1 from '../../img/card1.png'
-import card2 from '../../img/card2.png'
-import card3 from '../../img/card3.png'
+import card1 from '../../img/Wedding/card1.png'
+import card2 from '../../img/Wedding/card2.png'
+import card3 from '../../img/Wedding/card3.png'
 
 import useQueryParams from '../../../hooks/useQueryParams'
 
@@ -230,7 +230,6 @@ const EditCard1 = () => {
     // let len = Data.length;
 
     let email = profile.email
-    console.log({ email })
 
     // const obj = Object.assign({}, Data);
     // console.log({id})
@@ -255,11 +254,9 @@ const EditCard1 = () => {
       { staticdata8, text, staticdata9, venue, _date }
     ]
 
-    console.log({ Details })
+    console.log(cardData.cardId)
+    let card_id = cardData.cardId
 
-    console.log(cardData.CardId)
-    let card_id = cardData.CardId
-    console.log(profile.id)
     console.log({ card_id })
     const res = await fetch(`http://localhost:3001/api/card1/preview`, {
       method: 'POST',
@@ -268,10 +265,10 @@ const EditCard1 = () => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        id: cardData.CardId,
+        id: cardData.cardId,
         details,
         userId: profile.id,
-        email: email
+        email: profile.email
       })
     })
 

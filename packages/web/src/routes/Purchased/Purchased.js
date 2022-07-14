@@ -13,6 +13,7 @@ import Fancybox from '../../fancybox'
 import one011 from '../img/one-011.png'
 import card2 from '../img/WhatsApp Image 2022-05-12 at 12.15.41 PM (2).jpeg'
 import card3 from '../img/WhatsApp Image 2022-05-12 at 12.15.41 PM (1).jpeg'
+import Loading from '../../components/Loading'
 import Footer from '../Footer'
 
 const Purchased = () => {
@@ -85,7 +86,10 @@ const Purchased = () => {
                     <div className="col-md-3">
                       <div className="wedding-box">
                         <a href={'#id' + index} data-bs-toggle="modal">
-                          <img src={'http://localhost:3001/generated/' + val.cardNames[0]} className="img-fluid" />
+                          <img
+                            src={'http://localhost:3001/generated/' + val?.cardCategory + '/' + val.cardNames[0]}
+                            className="img-fluid"
+                          />
                         </a>
                         <div className="inner">
                           <div className="triangle-right"></div>
@@ -126,11 +130,11 @@ const Purchased = () => {
                                       <div className="item">
                                         <a
                                           data-fancybox={'#id' + index}
-                                          href={'http://localhost:3001/generated/' + card1}
+                                          href={'http://localhost:3001/generated/' + val?.cardCategory + '/' + card1}
                                           style={{ position: 'relative' }}
                                         >
                                           <img
-                                            src={'http://localhost:3001/generated/' + card1}
+                                            src={'http://localhost:3001/generated/' + val?.cardCategory + '/' + card1}
                                             className="img-fluid"
                                             alt="Invitations"
                                             style={{
@@ -160,9 +164,12 @@ const Purchased = () => {
                                     return (
                                       <>
                                         <div className="item">
-                                          <a data-fancybox="gallery" href={'http://localhost:3001/generated/' + card1}>
+                                          <a
+                                            data-fancybox="gallery"
+                                            href={'http://localhost:3001/generated/' + val?.cardCategory + '/' + card1}
+                                          >
                                             <img
-                                              src={'http://localhost:3001/generated/' + card1}
+                                              src={'http://localhost:3001/generated/' + val?.cardCategory + '/' + card1}
                                               className="img-fluid"
                                               alt="Invitations"
                                               style={{
@@ -219,5 +226,7 @@ const Purchased = () => {
         <Footer />
       </>
     )
+
+  return null
 }
 export default Purchased

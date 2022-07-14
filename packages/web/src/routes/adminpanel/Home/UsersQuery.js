@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import '../Adminindex.css'
 import AdminHeader from '../Header/AdminHeader'
+import Loading from '../../../components/Loading'
 
 function UsersQuery() {
   const [data, setData] = useState([])
@@ -15,11 +16,17 @@ function UsersQuery() {
       }
     })
     const data1 = await res.json()
+
+    console.log({ data1 })
     setData(data1)
   }
   useEffect(() => {
     userEnteredData()
   }, [])
+
+  if (!data) {
+    return <Loading />
+  }
 
   return (
     <>
@@ -62,7 +69,7 @@ function UsersQuery() {
                             <td>{val.email}</td>
 
                             <td>{val.message}</td>
-                            <td>{val.createdAt}</td>
+                            <td>{new Date(val.createdAt).toDateString()}</td>
 
                             {/*<td><button setcaseid={val._id}*/}
                             {/*    className="viewbtn"*/}

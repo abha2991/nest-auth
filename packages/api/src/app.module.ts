@@ -13,6 +13,7 @@ import { CardModule1 } from './card1/card.module'
 import { CardcaptiondetailsModule } from './cardcaptiondetails/cardcaptiondetails.module'
 import { CardetailsModule } from './cardetails/cardetails.module'
 import { JwtAuthGuard } from './common/guards/jwt-auth.guard'
+import { RolesGuard } from './common/guards/roles.guard'
 import config from './config'
 import app, { AppConfig } from './config/app'
 import { DatabaseConfig } from './config/database'
@@ -22,6 +23,8 @@ import { PaymentgatewayModule } from './paymentgateway/paymentgateway.module'
 import { UsersModule } from './users/users.module'
 import { VideoModule } from './video/video.module'
 import { VideoredisModule } from './videoredis/videoredis.module'
+import { ContactusModule } from './contactus/contactus.module'
+import { CustomizecardsqueryModule } from './customizecardsquery/customizecardsquery.module'
 
 @Module({
   imports: [
@@ -101,8 +104,9 @@ import { VideoredisModule } from './videoredis/videoredis.module'
     VideoredisModule,
     CardetailsModule,
     CardcaptiondetailsModule,
-
-    PaymentgatewayModule
+    ContactusModule,
+    PaymentgatewayModule,
+    CustomizecardsqueryModule
   ],
   controllers: [AppController],
   providers: [
@@ -113,6 +117,10 @@ import { VideoredisModule } from './videoredis/videoredis.module'
     {
       provide: APP_GUARD,
       useClass: ThrottlerGuard
+    },
+    {
+      provide: APP_GUARD,
+      useClass: RolesGuard
     }
   ]
 })

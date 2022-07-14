@@ -3,4 +3,6 @@ export class CardDto {
   email: string
   details: string[]
   userId: string
+  maxCharsPerLine: number
+  minCharsPerLine: number
 }

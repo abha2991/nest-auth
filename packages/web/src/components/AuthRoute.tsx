@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Navigate, useLocation } from 'react-router-dom'
+import { Navigate, Outlet, useLocation } from 'react-router-dom'
 import useProfileApi from '../api/useProfileApi'
 import Loading from './Loading'
 
@@ -12,14 +12,12 @@ const AuthRoute: FC<AuthRouteProps> = ({ children, redirectTo = '/login' }) => {
 
   const location = useLocation()
 
-  console.log({location})
+  console.log({ location })
   if (status === 'loading') {
     return <Loading />
   }
 
-
-
-  return profile && status === 'success'  ? <>{children}</> : <Navigate to={redirectTo} state={{ from: location }} />
+  return profile && status === 'success' ? <Outlet /> : <Navigate to={redirectTo} state={{ from: location }} />
 }
 
 export default AuthRoute

@@ -95,7 +95,7 @@ const Card2 = () => {
         id: id2,
         details,
         userId: profile.id,
-        email: email
+        email: profile.email
       })
     })
 

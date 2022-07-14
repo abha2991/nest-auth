@@ -7,7 +7,7 @@ export class UserCardEntity {
   id: string
 
   @Column()
-  cardType: string
+  cardCategory: string
 
   @Column()
   description: string

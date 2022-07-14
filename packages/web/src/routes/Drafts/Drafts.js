@@ -12,6 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft, faShareNodes } from '@fortawesome/free-solid-svg-icons'
 import Fancybox from '../../fancybox'
 import logo from '../img/image 7.png'
+import Loading from '../../components/Loading'
 const Drafts = () => {
   const navigate = useNavigate()
   const { data: profile, status } = useProfileApi()
@@ -86,25 +87,29 @@ const Drafts = () => {
           <div className="row my-5">
             {cardData?.map((val, index) => {
               if (val.paymentStatus === 'PENDING') {
+                console.log(val.cardNames[0])
                 return (
                   <>
                     <div className="col-md-3">
                       <div className="wedding-box">
                         <a href={'#id' + index} data-bs-toggle="modal" style={{ position: 'relative' }}>
-                          <img src={'http://localhost:3001/generated/' + val.cardNames[0]} className="img-fluid" />
-                          <div
-                            style={{
-                              position: 'absolute',
-                              top: '45%',
-                              left: 'auto',
-                              right: 'auto',
-                              width: '100%',
-                              textAlign: 'center',
-                              opacity: '0.2'
-                            }}
-                          >
-                            <img src={logo} alt="logo" style={{ maxWidth: '150px', margin: 'auto', height: 'auto' }} />
-                          </div>
+                          <img
+                            src={'http://localhost:3001/generated/' + val.cardCategory + '/' + val.previewCardNames[0]}
+                            className="img-fluid"
+                          />
+                          {/*<div*/}
+                          {/*  style={{*/}
+                          {/*    position: 'absolute',*/}
+                          {/*    top: '45%',*/}
+                          {/*    left: 'auto',*/}
+                          {/*    right: 'auto',*/}
+                          {/*    width: '100%',*/}
+                          {/*    textAlign: 'center',*/}
+                          {/*    opacity: '0.2'*/}
+                          {/*  }}*/}
+                          {/*>*/}
+                          {/*  /!*<img src={logo} alt="logo" style={{ maxWidth: '150px', margin: 'auto', height: 'auto' }} />*!/*/}
+                          {/*</div>*/}
                         </a>
                         <div className="inner">
                           <div className="triangle-right"></div>
@@ -144,16 +149,17 @@ const Drafts = () => {
                             <Fancybox>
                               {val.noOfPages === 1 ? (
                                 val.previewCardNames.map((card1, ind) => {
+                                  console.log({ card1 })
                                   return (
                                     <>
                                       <div className="item">
                                         <a
                                           data-fancybox={'#id' + index}
-                                          href={'http://localhost:3001/generated/' + card1}
+                                          href={'http://localhost:3001/generated/' + val.cardCategory + '/' + card1}
                                           style={{ position: 'relative' }}
                                         >
                                           <img
-                                            src={'http://localhost:3001/generated/' + card1}
+                                            src={'http://localhost:3001/generated/' + val.cardCategory + '/' + card1}
                                             className="img-fluid"
                                             alt="Invitations"
                                             style={{
@@ -185,11 +191,11 @@ const Drafts = () => {
                                         <div className="item">
                                           <a
                                             data-fancybox={'#id' + index}
-                                            href={'http://localhost:3001/generated/' + card1}
+                                            href={'http://localhost:3001/generated/' + val.cardCategory + '/' + card1}
                                             style={{ position: 'relative' }}
                                           >
                                             <img
-                                              src={'http://localhost:3001/generated/' + card1}
+                                              src={'http://localhost:3001/generated/' + val.cardCategory + '/' + card1}
                                               className="img-fluid"
                                               alt="Invitations"
                                               style={{
@@ -257,5 +263,7 @@ const Drafts = () => {
         <Footer />
       </>
     )
+
+  return null
 }
 export default Drafts

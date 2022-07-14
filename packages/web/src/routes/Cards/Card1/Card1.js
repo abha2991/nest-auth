@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import Header from '../../Header'
-import card1 from '../../img/card1.png'
-import card2 from '../../img/card2.png'
-import card3 from '../../img/card3.png'
+import card1 from '../../img/Wedding/card1.png'
+import card2 from '../../img/Wedding/card2.png'
+import card3 from '../../img/Wedding/card3.png'
 import Footer from '../../Footer'
 import useQueryParams from '../../../hooks/useQueryParams'
 

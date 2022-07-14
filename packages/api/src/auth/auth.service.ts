@@ -30,7 +30,7 @@ export class AuthService {
   }
 
   private createToken(user: User): LoginResponseDto {
-    const payload: TokenPayload = { sub: user.id.toString(), email: user.email }
+    const payload: TokenPayload = { sub: user.id.toString(), email: user.email, role: user.role }
     const accessToken = this.jwtService.sign(payload)
     const { exp } = this.jwtService.decode(accessToken) as Record<string, any>
     return { user, accessToken, expiry: moment(exp * 1000).toISOString() }

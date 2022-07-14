@@ -32,7 +32,7 @@ const EditCard2 = () => {
     const data = await res.json()
     setUserCardData(data)
     console.log(data)
-    setTextData(data.Text)
+    setTextData(data.text)
   }
   useEffect(() => {
     getCardsOfUser()

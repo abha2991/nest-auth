@@ -2,7 +2,7 @@ import { IsEmail, IsNotEmpty, IsOptional, IsPhoneNumber, IsString, MaxLength, Mi
 export class CreateContactusDto {
   @IsNotEmpty()
   @IsString()
-  Name: string
+  name: string
 
   @IsNotEmpty()
   @IsString()
@@ -11,7 +11,7 @@ export class CreateContactusDto {
 
   @IsNotEmpty()
   @IsString()
-  Message: string
+  message: string
 
   @IsPhoneNumber()
   @IsString()

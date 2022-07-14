@@ -15,7 +15,6 @@
 /*  display:none;*/
 /*}*/
 
-
 /*code {*/
 /*  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',*/
 /*  monospace;*/
@@ -200,8 +199,6 @@
 /*  display: block;*/
 /*}*/
 
-
-
 @import url('https://fonts.googleapis.com/css?family=Hind&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Baloo&display=swap');
@@ -211,22 +208,194 @@
   font-family: cac-champagne;
   src: url('./font/cac_champagne.ttf');
 }
+
+@font-face {
+  font-family: lucida-fax-demibold-italic;
+  src: url('./font/Lucida Fax Demibold Italic.ttf');
+}
+@font-face {
+  font-family: bell-mt-bold;
+  src: url('./font/BELLB.ttf');
+}
+@font-face {
+  font-family: gadugi-bold;
+  src: url('./font/gadugib.ttf');
+}
+@font-face {
+  font-family: gadugi;
+  src: url('./font/gadugi.ttf');
+}
+@font-face {
+  font-family: lucida-sans-demi;
+  src: url('./font/LSANSD.ttf');
+}
+
+@font-face {
+  font-family: lucida-sans;
+  src: url('./font/Lucida Sans Regular.ttf');
+}
+@font-face {
+  font-family: minion-pro-regular;
+  src: url('./font/MinionPro-Regular.ttf');
+}
+
+@font-face {
+  font-family: minion-pro-semibold;
+  src: url('./font/MinionPro-Semibold.ttf');
+}
+
+@font-face {
+  font-family: ananda-black;
+  src: url('./font/Ananda Black Personal Use.ttf');
+}
+@font-face {
+  font-family: georgia;
+  src: url('./font/Georgia.ttf');
+}
+@font-face {
+  font-family: lucida-fax-demibold;
+  src: url('./font/LucidaFaxDemibold.ttf');
+}
+@font-face {
+  font-family: nirmala-bold;
+  src: url('./font/NirmalaB.ttf');
+}
+
+@font-face {
+  font-family: microsoft-new-tai-lue;
+  src: url('./font/ntailu.ttf');
+}
+
+@font-face {
+  font-family: agaramond-pro-bold;
+  src: url('./font/AGaramondPro-Bold.ttf');
+}
+
+@font-face {
+  font-family: great-vibes;
+  src: url('./font/GreatVibes-Regular.ttf');
+}
+@font-face {
+  font-family: franklin-gothic-regular;
+  src: url('./font/Franklin Gothic Medium Regular.ttf');
+}
+
+@font-face {
+  font-family: copper-plate-gothic-light;
+  src: url('./font/CopperplateGothicLight.ttf');
+}
+@font-face {
+  font-family: nirmala-ui;
+  src: url('./font/Nirmala.ttf');
+}
+
+@font-face {
+  font-family: lucida-handwriting;
+  src: url('./font/Lucida Handwriting Italic.ttf');
+}
 @font-face {
   font-family: JosefinSans;
   src: url('./font/JosefinSans-Regular.ttf');
 }
+@font-face {
+  font-family: pristina-regular;
+  src: url('./font/PRISTINA.ttf');
+}
+
+@font-face {
+  font-family: palatino-linot-bold;
+  src: url('./font/palab.ttf');
+}
+
+@font-face {
+  font-family: segoe-ui-bold;
+  src: url('./font/Segoe-UI-Bold.ttf');
+}
+
+@font-face {
+  font-family: nuevastd-bold;
+  src: url('./font/NuevaStd Bold.ttf');
+}
+@font-face {
+  font-family: nirmala-ui-semibold;
+  src: url('./font/NirmalaS.ttf');
+}
+@font-face {
+  font-family: myriad-pro-semibold;
+  src: url('./font/Myriad Pro Semibold.ttf');
+}
+@font-face {
+  font-family: myriad-pro-bold-italic;
+  src: url('./font/Myriad Pro Bold Italic.ttf');
+}
+@font-face {
+  font-family: myriad-pro-bold;
+  src: url('./font/Myriad Pro Bold.ttf');
+}
+
+@font-face {
+  font-family: romelio;
+  src: url('./font/Romelio.ttf');
+}
+
+@font-face {
+  font-family: lucida-calligraphy;
+  src: url('./font/LCALLIG.ttf');
+}
+@font-face {
+  font-family: monotype-corsiva;
+  src: url('./font/Monotype Corsiva.ttf');
+}
+
+@font-face {
+  font-family: mongolian-baiti-regular;
+  src: url('./font/Mongolian Baiti Regular.ttf');
+}
+
+@font-face {
+  font-family: myriad-pro-condensed;
+  src: url('./font/Myriad Pro Condensed.ttf');
+}
+@font-face {
+  font-family: myriad-pro-light;
+  src: url('./font/Myriad Pro Light.ttf');
+}
+@font-face {
+  font-family: myriad-pro-regular;
+  src: url('./font/Myriad Pro Regular.ttf');
+}
+@font-face {
+  font-family: myriad-pro-bold-semiextended;
+  src: url('./font/Myriad Pro Bold SemiExtended.ttf');
+}
+@font-face {
+  font-family: arial-mt-bold;
+  src: url('./font/arial-mt-bold.ttf');
+}
+
+@font-face {
+  font-family: arial-mt;
+  src: url('./font/ArialMT.ttf');
+}
+@font-face {
+  font-family: bodoni-mt;
+  src: url('./font/BodoniMT.ttf');
+}
+
+@font-face {
+  font-family: bodoni-mt-bold;
+  src: url('./font/BOD_B.ttf');
+}
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-  monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 /*.nav-btn {*/
@@ -251,7 +420,7 @@ code {
 /*  }*/
 /*}*/
 .banner-box {
-  background: #C59FAC;
+  background: #c59fac;
   /*margin-top: 1rem;*/
   /*border-radius: 10px;*/
 }
@@ -264,6 +433,7 @@ code {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin: 20px;
   overflow: hidden;
+  width: 250px;
 }
 .wedding-box img {
   border-radius: 5px 5px 0 0;
@@ -285,12 +455,13 @@ code {
   padding-left: 10px;
   padding-top: 5px;
   border-top-left-radius: 5px;
+  pointer-events: none;
 }
 .wedding-box .inner h4 {
   margin-bottom: 0;
 }
 .wedding-box .inner .triangle-right {
-  border-left: 105px solid #FF3767;
+  border-left: 105px solid #ff3767;
   border-bottom: 105px solid transparent;
   position: absolute;
   top: 0;
@@ -305,12 +476,12 @@ code {
   font-family: 'Lato';
   margin: 10px 10px 0 0;
   font-size: larger;
-  color: #F450A9;
+  color: #f450a9;
 }
 .wedding-carousel .owl-nav div {
   position: absolute;
   top: 45%;
-  background: rgba(255, 255, 255, 0.8)!important;
+  background: rgba(255, 255, 255, 0.8) !important;
 }
 .wedding-carousel .owl-nav div.owl-prev {
   left: 0;
@@ -321,7 +492,7 @@ code {
 .registration-box {
   padding: 10%;
 }
-@media (max-width:767px) {
+@media (max-width: 767px) {
   .registration-box {
     padding: 0%;
   }
@@ -348,9 +519,9 @@ code {
     display: block;
   }
 }
-@media (max-width:991px) {
+@media (max-width: 991px) {
   .social-login a {
-    padding: 5px!important;
+    padding: 5px !important;
   }
   .social-login a img {
     margin-right: 5px;
@@ -360,23 +531,23 @@ code {
   color: #757575;
 }
 #pills-tab.nav-pills .nav-link.active {
-  color: #9505F9;
+  color: #9505f9;
   background-color: transparent;
-  border-bottom: 3px solid #9505F9;
+  border-bottom: 3px solid #9505f9;
   border-radius: 0;
 }
-.modal-backdrop{
-  display:none;
+.modal-backdrop {
+  display: none;
 }
 .owl-theme .owl-dots .owl-dot.active span {
-  background: #FF3162!important;
+  background: #ff3162 !important;
 }
 .owl-theme .owl-dots .owl-dot:hover span {
-  background: #FF3162!important;
+  background: #ff3162 !important;
 }
 .btn-primary {
-  background-color: #FF3162!important;
-  border-color: #FF3162!important;
+  background-color: #ff3162 !important;
+  border-color: #ff3162 !important;
 }
 .file-drop-zone {
   border: 2px dashed #ccc;
@@ -391,36 +562,36 @@ code {
   margin-left: 0;
   font-size: 18px;
 }
-.file-drop-zone input[type="file"] {
+.file-drop-zone input[type='file'] {
   display: none;
 }
 
 .fancybox__container {
-  z-index: 1111!important;
+  z-index: 1111 !important;
 }
 .pay-btn a:nth-child(1) {
   background: transparent;
-  color: #FF3767;
+  color: #ff3767;
   border-radius: 10px;
   text-decoration: none;
   padding: 10px 20px;
-  border: 1px solid #FF3767;
+  border: 1px solid #ff3767;
   margin-right: 10px;
   margin-bottom: 10px;
   display: block;
 }
-@media (max-width:767px) {
+@media (max-width: 767px) {
   .pay-btn a:nth-child(1) {
     margin-right: 0;
   }
 }
 .pay-btn a:nth-child(2) {
-  background: #FF3767;
+  background: #ff3767;
   color: #fff;
   border-radius: 10px;
   text-decoration: none;
   padding: 10px 20px;
-  border:1px solid #FF3767;
+  border: 1px solid #ff3767;
   margin-bottom: 10px;
   display: block;
 }
@@ -438,7 +609,7 @@ code {
 /*  background-color: #fff;*/
 /*  z-index: 11;*/
 /*  min-width: 150px;*/
-/*  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+/*  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.Card19);*/
 /*}*/
 /* #navbarSupportedContent ul li {
   border-bottom: 1px solid #FF3767;
@@ -462,26 +633,27 @@ code {
 /*  box-shadow: none;*/
 /*}*/
 
-
 .nav-btn {
   border: 1px solid #fff;
   background-color: transparent;
   color: #fff;
   font-family: 'Hind';
   border-radius: 5px;
-  padding-left: 20px!important;
-  padding-right: 20px!important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
 }
-.nav-btn img,.nav-btn i {
+.nav-btn img,
+.nav-btn i {
   margin-right: 5px;
 }
-@media (max-width:767px) {
+@media (max-width: 767px) {
   .nav-btn {
-    padding-left: 5px!important;
-    padding-right: 5px!important;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
     /*font-size: 12px;*/
   }
-  .nav-btn img,.nav-btn i {
+  .nav-btn img,
+  .nav-btn i {
     margin-right: 4px;
   }
 }
@@ -505,14 +677,13 @@ code {
   display: block;
 }
 
-
 .sticky-top {
-                        position: fixed;
-                        top: 0;
-                        background-color: #fff;
-                        box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
-  width:100%;
-                      }
+  position: fixed;
+  top: 0;
+  background-color: #fff;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+  width: 100%;
+}
 .table-footer td {
   border: none;
 }
@@ -521,7 +692,7 @@ code {
   text-decoration: none;
 }
 .table-footer td a:hover {
-  color: #FF3767;
+  color: #ff3767;
 }
 .footer-list {
   list-style: none;
@@ -532,7 +703,7 @@ code {
   text-decoration: none;
 }
 .footer-list li a:hover {
-  color: #FF3767;
+  color: #ff3767;
 }
 .back-to-top {
   position: fixed;
@@ -540,7 +711,6 @@ code {
   right: 45px;
   bottom: 45px;
   z-index: 99;
-
 }
 
 #navbarSupportedContent ul li {
@@ -552,43 +722,40 @@ code {
 }
 #navbarSupportedContent ul li a.active {
   background-color: #fff;
-  color: #FF3767;
+  color: #ff3767;
 }
 #navbarSupportedContent ul li a:hover {
   background-color: #fff;
-  color: #FF3767;
+  color: #ff3767;
 }
 .navbar-light .navbar-toggler:focus {
   box-shadow: none;
 }
 
-
-@media (max-width:991px) {
+@media (max-width: 991px) {
   #navbarSupportedContent ul li {
     margin-left: 0;
     margin-bottom: 5px;
   }
 }
 
-
-.active a{
+.active a {
   background-color: white;
-  color: #FF3767!important;
+  color: #ff3767 !important;
 }
-
 
 .nav li.active {
-  background-color:green;
+  background-color: green;
 }
 .nav li.active a {
-  color:#fff;
-  font-weight:bold;
+  color: #fff;
+  font-weight: bold;
 }
 
 .category-carousel .owl-nav div {
   position: absolute;
   top: 30%;
- background: rgba(255, 255, 255, 0.8)!important;
+  background: rgba(255, 255, 255, 0.8) !important;
 }
 .category-carousel .owl-nav div.owl-prev {
   left: 0;
@@ -596,6 +763,8 @@ code {
 .category-carousel .owl-nav div.owl-next {
   right: 0;
 }
-
-
-
+.card12-text {
+  background: -webkit-linear-gradient(315deg, #b67e11, #fff3a5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

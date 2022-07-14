@@ -7,8 +7,6 @@ export interface IUser {
   profileImage?: string
   createdAt: string
   updatedAt: string
-  provider:string
+  provider: string
+  role: string
 }
-
-
-

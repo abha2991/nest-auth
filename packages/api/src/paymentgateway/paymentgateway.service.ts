@@ -19,11 +19,7 @@ export class PaymentgatewayService {
   ) {}
 
   async create(createPaymentgatewayDto: CreatePaymentgatewayDto) {
-    console.log({ createPaymentgatewayDto })
-
     let Price = createPaymentgatewayDto.price
-    console.log({ Price })
-    //console.log(createPaymentgatewayDto.price)
 
     const instance = new Razorpay({
       key_id: 'rzp_test_g5mVREbtx16Zdy',

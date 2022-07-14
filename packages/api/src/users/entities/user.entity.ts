@@ -25,6 +25,9 @@ export class User {
   @Column({ type: 'boolean', default: false })
   active: boolean
 
+  @Column({ default: 'USER' })
+  role: string
+
   @Column({ nullable: true })
   @Exclude()
   password?: string
