@@ -16,7 +16,7 @@ const Card43 = () => {
   const { id: id2 } = id
 
   const { data: profile, status } = useProfileApi()
-
+  const [loading, setLoading] = useState(false)
   function useHover(styleOnHover, styleOnNotHover = {}) {
     const [style, setStyle] = React.useState(styleOnNotHover)
 
@@ -84,10 +84,13 @@ const Card43 = () => {
         maxCharsPerLine: Number(40)
       })
     })
-
+    setLoading(true)
     const card_data = await res.json()
 
-    navigate(`/preview?id=${card_data.id}`)
+    if ((card_data.status = 'Success')) {
+      setLoading(false)
+      navigate(`/preview?id=${card_data.data.id}`)
+    }
   }
 
   return (
@@ -263,15 +266,17 @@ const Card43 = () => {
         <button
           onClick={PostData}
           className="btn"
+          disabled={loading}
           style={{
             borderRadius: '50px',
             background: '#FF3767',
             color: '#fff',
-            padding: '10px 20px',
-            margin: '20px'
+            padding: '10px 20px'
           }}
         >
-          Preview
+          {loading && <i className="fa fa-refresh fa-spin" style={{ marginRight: '5px' }} />}
+          {loading && <span>Loading...</span>}
+          {!loading && <span>Preview</span>}
         </button>
       </div>
 

@@ -10,11 +10,11 @@ import useQueryParams from '../../../../hooks/useQueryParams'
 import Footer from '../../../Footer'
 
 import Modal from '../../../Modal'
-const Card12 = () => {
+const Card13 = () => {
   const navigate = useNavigate()
   const id = useQueryParams()
   const { id: id2 } = id
-  console.log(id2)
+  const [loading, setLoading] = useState(false)
   const { data: profile, status } = useProfileApi()
 
   function useHover(styleOnHover, styleOnNotHover = {}) {
@@ -68,6 +68,7 @@ const Card12 = () => {
       { day, time, venue }
     ]
 
+    setLoading(true)
     const res = await fetch(`http://localhost:3001/api/card1/anniversarycard3`, {
       method: 'POST',
       credentials: 'include',
@@ -84,8 +85,10 @@ const Card12 = () => {
     })
 
     const card_data = await res.json()
-
-    navigate(`/preview?id=${card_data.id}`)
+    if ((card_data.status = 'Success')) {
+      setLoading(false)
+      navigate(`/preview?id=${card_data.data.id}`)
+    }
   }
 
   return (
@@ -241,6 +244,7 @@ const Card12 = () => {
         <button
           onClick={PostData}
           className="btn"
+          disabled={loading}
           style={{
             borderRadius: '50px',
             background: '#FF3767',
@@ -248,7 +252,9 @@ const Card12 = () => {
             padding: '10px 20px'
           }}
         >
-          Preview
+          {loading && <i className="fa fa-refresh fa-spin" style={{ marginRight: '5px' }} />}
+          {loading && <span>Loading...</span>}
+          {!loading && <span>Preview</span>}
         </button>
       </div>
 
@@ -257,4 +263,4 @@ const Card12 = () => {
   )
 }
 
-export default Card12
+export default Card13

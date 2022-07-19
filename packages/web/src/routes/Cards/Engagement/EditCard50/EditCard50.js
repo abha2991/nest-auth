@@ -9,11 +9,12 @@ import Loading from '../../../../components/Loading'
 import Footer from '../../../Footer'
 import Modal from '../../../Modal'
 import card1 from '../../../img/Engagement/Engagement_1_1.png'
+
 const EditCard50 = () => {
   const navigate = useNavigate()
   const id = useQueryParams()
   const { id: id2 } = id
-
+  const [loading, setLoading] = useState(false)
   const { data: profile, status } = useProfileApi()
 
   const [cardData, setCardData] = useState()
@@ -51,7 +52,8 @@ const EditCard50 = () => {
   useEffect(() => {
     if (textdata) {
       setdata({
-        brideOrGroomName: textdata[0]?.babyName ?? '',
+        brideOrGroomName: textdata[0]?.brideOrGroomName ?? '',
+        and: textdata[0]?.and ?? '',
         groomOrBrideName: textdata[0]?.groomOrBrideName ?? '',
         date: textdata[0]?.date ?? '',
         time: textdata[0]?.time ?? '',
@@ -95,6 +97,7 @@ const EditCard50 = () => {
     e.preventDefault()
     let brideOrGroomName = data.brideOrGroomName?.toString() ?? ''
     let groomOrBrideName = data.groomOrBrideName?.toString() ?? ''
+    let and = data.and?.toString() ?? ''
     let date = data.date?.toString() ?? ''
     let time = data.time?.toString() ?? ''
     let venue = data.venue?.toString() ?? ''
@@ -102,10 +105,10 @@ const EditCard50 = () => {
 
     let details
 
-    details = [{ brideOrGroomName, groomOrBrideName, date, time, venue }]
+    details = [{ brideOrGroomName, and, groomOrBrideName, date, time, venue }]
 
     let card_id = cardData.cardId
-
+    setLoading(true)
     const res = await fetch(`http://localhost:3001/api/card1/engagementcard`, {
       method: 'POST',
       credentials: 'include',
@@ -122,10 +125,10 @@ const EditCard50 = () => {
     })
 
     const card_data = await res.json()
-
-    setCardData(card_data.id)
-
-    navigate(`/preview?id=${card_data.id}`)
+    if ((card_data.status = 'Success')) {
+      setLoading(false)
+      navigate(`/preview?id=${card_data.data.id}`)
+    }
   }
 
   if (!textdata) {
@@ -144,34 +147,98 @@ const EditCard50 = () => {
               <div className="card-box">
                 <div
                   style={{
-                    background: `url(${card1}) no-repeat center/cover`,
+                    background: `url(${card1}) no-repeat center/contain`,
                     textAlign: 'center',
                     width: '100%',
-                    fontFamily: 'Lora',
-                    color: '#7132A1',
+
                     height: '100%',
-                    padding: '100px 0'
+                    padding: '100px 0 100px',
+                    backgroundSize: '100% 100%'
                   }}
                 >
-                  <h2 data-bs-toggle="modal" data-bs-target="#id1" style={{ paddingTop: '105px' }}>
-                    {' '}
+                  <h3
+                    data-bs-toggle="modal"
+                    data-bs-target="#id1"
+                    style={{
+                      paddingTop: '100px',
+                      maxWidth: '300px',
+                      margin: 'auto',
+                      color: '#83889c',
+                      fontFamily: 'nirmala-bold',
+                      textAlign: 'center'
+                    }}
+                  >
                     {data.brideOrGroomName}
-                  </h2>
-                  <h2 data-bs-toggle="modal" data-bs-target="#id1" style={{ paddingTop: '105px' }}>
+                  </h3>
+                  <h3
+                    data-bs-toggle="modal"
+                    style={{
+                      paddingTop: '10px',
+                      maxWidth: '300px',
+                      margin: 'auto',
+                      color: '#83889c',
+                      textAlign: 'center',
+                      fontFamily: 'nirmala-bold'
+                    }}
+                  >
+                    AND
+                  </h3>
+                  <h3
+                    data-bs-toggle="modal"
+                    data-bs-target="#id2"
+                    style={{
+                      paddingTop: '10px',
+                      maxWidth: '350px',
+                      margin: 'auto',
+                      color: '#83889c',
+                      fontFamily: 'nirmala-bold'
+                    }}
+                  >
                     {' '}
                     {data.groomOrBrideName}
-                  </h2>
-                  <h4 data-bs-toggle="modal" data-bs-target="#id2" style={{ paddingTop: '105px' }}>
+                  </h3>
+                  <h6
+                    data-bs-toggle="modal"
+                    data-bs-target="#id3"
+                    style={{
+                      paddingTop: '20px',
+                      maxWidth: '350px',
+                      margin: 'auto',
+                      color: '#767c91',
+                      fontFamily: 'nirmala-bold'
+                    }}
+                  >
                     {' '}
                     {data.date}
-                  </h4>
-
-                  <h2 data-bs-toggle="modal" data-bs-target="#id3">
+                  </h6>
+                  <h6
+                    data-bs-toggle="modal"
+                    data-bs-target="#id4"
+                    style={{
+                      paddingTop: '10px',
+                      maxWidth: '350px',
+                      margin: 'auto',
+                      color: '#767c91',
+                      fontFamily: 'nirmala-bold'
+                    }}
+                  >
+                    {' '}
                     {data.time}
-                  </h2>
-                  <h2 data-bs-toggle="modal" data-bs-target="#id4">
+                  </h6>
+                  <h6
+                    data-bs-toggle="modal"
+                    data-bs-target="#id5"
+                    style={{
+                      paddingTop: '20px',
+                      maxWidth: '350px',
+                      margin: 'auto',
+                      color: '#5e6a9c',
+                      fontFamily: 'franklin-gothic-regular'
+                    }}
+                  >
+                    {' '}
                     {data.venue}
-                  </h2>
+                  </h6>
                 </div>
               </div>
             </div>
@@ -205,6 +272,7 @@ const EditCard50 = () => {
           <button
             onClick={PostData}
             className="btn"
+            disabled={loading}
             style={{
               borderRadius: '50px',
               background: '#FF3767',
@@ -212,7 +280,9 @@ const EditCard50 = () => {
               padding: '10px 20px'
             }}
           >
-            Preview
+            {loading && <i className="fa fa-refresh fa-spin" style={{ marginRight: '5px' }} />}
+            {loading && <span>Loading...</span>}
+            {!loading && <span>Preview</span>}
           </button>
         </div>
         <Footer />

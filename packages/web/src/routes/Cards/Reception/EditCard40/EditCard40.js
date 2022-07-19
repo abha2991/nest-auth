@@ -1,7 +1,7 @@
 import React, { useEffect, useState, Suspense } from 'react'
 import Header from '../../../Header'
-import anniversaryCard1 from '../../../img/Reception/Reception_1_1.png'
-import anniversaryCard2 from '../../../img/Reception/Reception_1_2.png'
+import receptionCard1 from '../../../img/Reception/Reception_1_1.png'
+import receptionCard2 from '../../../img/Reception/Reception_1_2.png'
 
 import useQueryParams from '../../../../hooks/useQueryParams'
 
@@ -14,7 +14,7 @@ const EditCard40 = () => {
   const navigate = useNavigate()
   const id = useQueryParams()
   const { id: id2 } = id
-
+  const [loading, setLoading] = useState(false)
   const { data: profile, status } = useProfileApi()
 
   const [cardData, setCardData] = useState()
@@ -99,17 +99,17 @@ const EditCard40 = () => {
 
     let dateAndTime = secondPageData.dateAndTime?.toString() ?? ''
     let venue = secondPageData.venue?.toString() ?? ''
-    //let dateAndTime = date + ' ( ' + time + ' )'
+
     let details
 
     details = [
       { brideAndGroomName, date },
       { brideAndGroomName, dateAndTime, venue }
     ]
-    console.log({ details })
-    let card_id = cardData.cardId
 
-    const res = await fetch(`http://localhost:3001/api/card1/receptioncard`, {
+    let card_id = cardData.cardId
+    setLoading(true)
+    const res = await fetch(`http://localhost:3001/api/card1/receptioncard2`, {
       method: 'POST',
       credentials: 'include',
       headers: {
@@ -126,9 +126,10 @@ const EditCard40 = () => {
 
     const card_data = await res.json()
 
-    setCardData(card_data.id)
-
-    navigate(`/preview?id=${card_data.id}`)
+    if ((card_data.status = 'Success')) {
+      setLoading(false)
+      navigate(`/preview?id=${card_data.data.id}`)
+    }
   }
 
   if (!textdata) {
@@ -144,35 +145,40 @@ const EditCard40 = () => {
               <div className="card-box">
                 <div
                   style={{
-                    background: `url(${anniversaryCard1}) no-repeat center/contain`,
+                    background: `url(${receptionCard1}) no-repeat center/contain`,
                     textAlign: 'center',
                     width: '100%',
                     fontFamily: 'Lora',
-                    color: '#de8aa4',
+                    color: '#000',
                     height: '100%',
-                    padding: '290px 0 50px',
+                    padding: '300px 0 100px',
                     backgroundSize: '100% 100%'
                   }}
                 >
-                  <h4
-                    className="card12-text"
+                  <h3
                     data-bs-toggle="modal"
                     data-bs-target="#id1"
                     style={{
-                      fontSize: '80px',
                       maxWidth: '350px',
                       margin: 'auto',
-                      fontWeight: 'bold'
+                      fontFamily: 'palatino-linot-bold',
+                      color: '#000'
                     }}
                   >
                     {' '}
                     {firstPageData.brideAndGroomName}
-                  </h4>
+                  </h3>
 
                   <h6
                     data-bs-toggle="modal"
                     data-bs-target="#id2"
-                    style={{ paddingTop: '10px', maxWidth: '300px', margin: 'auto', color: '#ebd0ab' }}
+                    style={{
+                      paddingTop: '10px',
+                      maxWidth: '300px',
+                      margin: 'auto',
+                      color: '#ebd0ab',
+                      fontFamily: 'myriad-pro-regular'
+                    }}
                   >
                     {firstPageData.date}
                   </h6>
@@ -184,65 +190,60 @@ const EditCard40 = () => {
               <div className="card-box">
                 <div
                   style={{
-                    background: `url(${anniversaryCard2}) no-repeat center/contain`,
+                    background: `url(${receptionCard2}) no-repeat center/contain`,
                     textAlign: 'center',
                     width: '100%',
                     fontFamily: 'Lora',
-                    color: '#de8aa4',
+
                     height: '100%',
-                    padding: '250px 0 40px',
+                    padding: '250px 0 200px',
                     backgroundSize: '100% 100%'
                   }}
                 >
-                  <h5
+                  <h3
                     className="card12-text"
                     data-bs-toggle="modal"
                     data-bs-target="#id1"
                     style={{
-                      fontSize: '80px',
                       maxWidth: '350px',
                       margin: 'auto',
-                      fontWeight: 'bold'
+                      fontWeight: 'bold',
+                      color: '#d99d6a',
+                      fontFamily: 'palatino-linot-bold'
                     }}
                   >
                     {' '}
                     {firstPageData.brideAndGroomName}
-                  </h5>
+                  </h3>
 
-                  {/*<h5*/}
-                  {/*  className="card12-text"*/}
-                  {/*  data-bs-toggle="modal"*/}
-                  {/*  data-bs-target="#id2"*/}
-                  {/*  style={{*/}
-                  {/*    fontSize: '80px',*/}
-                  {/*    maxWidth: '350px',*/}
-                  {/*    margin: 'auto',*/}
-                  {/*    fontWeight: 'bold'*/}
-                  {/*  }}*/}
-                  {/*>*/}
-                  {/*  {' '}*/}
-                  {/*  {firstPageData.date}*/}
-                  {/*</h5>*/}
-                  <h5
+                  <h6
+                    className="card12-text"
                     data-bs-toggle="modal"
                     data-bs-target="#id3"
                     style={{
-                      paddingTop: '10px',
+                      maxWidth: '350px',
+                      margin: 'auto',
+                      color: '#fff',
+                      fontFamily: 'nirmala-bold'
+                    }}
+                  >
+                    {' '}
+                    {secondPageData.dateAndTime}
+                  </h6>
+
+                  <p
+                    data-bs-toggle="modal"
+                    data-bs-target="#id4"
+                    style={{
+                      paddingTop: '20px',
                       maxWidth: '300px',
                       margin: 'auto',
                       color: '#fff',
-                      fontStyle: 'italic'
+                      fontFamily: 'nirmala-bold'
                     }}
                   >
-                    {secondPageData.dateAndTime}
-                  </h5>
-                  <h5
-                    data-bs-toggle="modal"
-                    data-bs-target="#id4"
-                    style={{ paddingTop: '20px', maxWidth: '300px', margin: 'auto', color: '#fff' }}
-                  >
                     {secondPageData.venue}
-                  </h5>
+                  </p>
                 </div>
               </div>
             </div>
@@ -256,8 +257,6 @@ const EditCard40 = () => {
               onClick={() => {
                 let name = textData1[index]
                 let value = textData1[index + 2]
-
-                console.log({ name, value })
 
                 setFirstPageData({ ...firstPageData, [name]: [value] })
               }}
@@ -281,8 +280,6 @@ const EditCard40 = () => {
                 let name = textData2[index]
                 let value = textData2[index + 2]
 
-                console.log({ name, value })
-
                 setSecondPageData({ ...secondPageData, [name]: [value] })
               }}
               onChange={(e) => {
@@ -300,6 +297,7 @@ const EditCard40 = () => {
           <button
             onClick={PostData}
             className="btn"
+            disabled={loading}
             style={{
               borderRadius: '50px',
               background: '#FF3767',
@@ -307,7 +305,9 @@ const EditCard40 = () => {
               padding: '10px 20px'
             }}
           >
-            Preview
+            {loading && <i className="fa fa-refresh fa-spin" style={{ marginRight: '5px' }} />}
+            {loading && <span>Loading...</span>}
+            {!loading && <span>Preview</span>}
           </button>
         </div>
         <Footer />

@@ -9,13 +9,14 @@ import useProfileApi from '../../../../api/useProfileApi'
 import Loading from '../../../../components/Loading'
 import Footer from '../../../Footer'
 import Modal from '../../../Modal'
+import babyShowerCard from '../../../img/BabyShower/BabyShower_2_1.png'
 const EditCard33 = () => {
   const navigate = useNavigate()
   const id = useQueryParams()
   const { id: id2 } = id
 
   const { data: profile, status } = useProfileApi()
-
+  const [loading, setLoading] = useState(false)
   const [cardData, setCardData] = useState()
   const [cardname, setCardName] = useState()
   const [userdata, setUserData] = useState()
@@ -105,8 +106,8 @@ const EditCard33 = () => {
     details = [{ babyName, date, time, venue }]
 
     let card_id = cardData.cardId
-
-    const res = await fetch(`http://localhost:3001/api/card1/babyshower`, {
+    setLoading(true)
+    const res = await fetch(`http://localhost:3001/api/card1/babyshower3`, {
       method: 'POST',
       credentials: 'include',
       headers: {
@@ -122,10 +123,10 @@ const EditCard33 = () => {
     })
 
     const card_data = await res.json()
-
-    setCardData(card_data.id)
-
-    navigate(`/preview?id=${card_data.id}`)
+    if ((card_data.status = 'Success')) {
+      setLoading(false)
+      navigate(`/preview?id=${card_data.data.id}`)
+    }
   }
 
   if (!textdata) {
@@ -144,30 +145,86 @@ const EditCard33 = () => {
               <div className="card-box">
                 <div
                   style={{
-                    background: `url(${card1}) no-repeat center/cover`,
+                    background: `url(${babyShowerCard}) no-repeat center/contain`,
                     textAlign: 'center',
                     width: '100%',
-                    fontFamily: 'Lora',
-                    color: '#7132A1',
+                    fontFamily: 'nirmala-ui',
+
                     height: '100%',
-                    padding: '100px 0'
+                    padding: '50px 0 200px',
+                    backgroundSize: '100% 100%'
                   }}
                 >
-                  <h2 data-bs-toggle="modal" data-bs-target="#id1" style={{ paddingTop: '105px' }}>
+                  <h4
+                    data-bs-toggle="modal"
+                    data-bs-target="#id1"
+                    style={{
+                      paddingTop: '200px',
+                      maxWidth: '350px',
+                      margin: 'auto',
+                      fontFamily: 'ananda-black',
+
+                      color: '#8d8cab'
+                    }}
+                  >
                     {' '}
                     {data.babyName}
-                  </h2>
-                  <h4 data-bs-toggle="modal" data-bs-target="#id2" style={{ paddingTop: '105px' }}>
-                    {' '}
-                    {data.date}
                   </h4>
 
-                  <h2 data-bs-toggle="modal" data-bs-target="#id3">
+                  <h5
+                    data-bs-toggle="modal"
+                    data-bs-target="#id2"
+                    style={{
+                      paddingTop: '20px',
+                      fontFamily: 'franklin-gothic-regular',
+                      maxWidth: '300px',
+                      margin: 'auto',
+                      color: '#9191af'
+                    }}
+                  >
+                    {data.date}
+                  </h5>
+
+                  <h5
+                    data-bs-toggle="modal"
+                    data-bs-target="#id3"
+                    style={{
+                      maxWidth: '350px',
+                      margin: 'auto',
+
+                      color: '#9191af',
+                      fontFamily: 'franklin-gothic-regular'
+                    }}
+                  >
+                    {' '}
                     {data.time}
-                  </h2>
-                  <h2 data-bs-toggle="modal" data-bs-target="#id4">
+                  </h5>
+                  <h4
+                    data-bs-toggle="modal"
+                    style={{
+                      paddingTop: '20px',
+                      maxWidth: '350px',
+                      margin: 'auto',
+                      fontFamily: 'myriad-pro-bold',
+                      color: '#8b8ba9'
+                    }}
+                  >
+                    {' '}
+                    VENUE
+                  </h4>
+                  <h4
+                    data-bs-toggle="modal"
+                    data-bs-target="#id4"
+                    style={{
+                      maxWidth: '350px',
+                      margin: 'auto',
+                      fontFamily: 'myriad-pro-light',
+                      color: '#465b83'
+                    }}
+                  >
+                    {' '}
                     {data.venue}
-                  </h2>
+                  </h4>
                 </div>
               </div>
             </div>
@@ -201,6 +258,7 @@ const EditCard33 = () => {
           <button
             onClick={PostData}
             className="btn"
+            disabled={loading}
             style={{
               borderRadius: '50px',
               background: '#FF3767',
@@ -208,7 +266,9 @@ const EditCard33 = () => {
               padding: '10px 20px'
             }}
           >
-            Preview
+            {loading && <i className="fa fa-refresh fa-spin" style={{ marginRight: '5px' }} />}
+            {loading && <span>Loading...</span>}
+            {!loading && <span>Preview</span>}
           </button>
         </div>
         <Footer />

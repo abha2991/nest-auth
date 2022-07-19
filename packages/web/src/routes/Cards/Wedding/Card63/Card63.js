@@ -15,7 +15,7 @@ const Card63 = () => {
   const navigate = useNavigate()
   const id = useQueryParams()
   const { id: id2 } = id
-  console.log(id2)
+  const [loading, setLoading] = useState(false)
   const { data: profile, status } = useProfileApi()
 
   function useHover(styleOnHover, styleOnNotHover = {}) {
@@ -62,14 +62,13 @@ const Card63 = () => {
     'time',
     'venue',
     'yours',
-    'family1',
-    'family2',
+    'family',
+
     'ON THE 16TH DEC 2022',
     'FROM 6:00 PM ONWARDS',
     'AT ARMOUR HALL YMCA, NEW DELHI',
     'YOURS',
-    'PETER ALBERTO & FAMILY',
-    'SAMSON ALVES & FAMILY'
+    'PETER ALBERTO & FAMILY  SAMSON ALVES & FAMILY'
   ]
 
   const ThirdPageData = [
@@ -143,7 +142,7 @@ const Card63 = () => {
         date4
       }
     ]
-
+    setLoading(true)
     const res = await fetch(`http://localhost:3001/api/card1/weddingcard2`, {
       method: 'POST',
       credentials: 'include',
@@ -161,7 +160,10 @@ const Card63 = () => {
 
     const card_data = await res.json()
 
-    navigate(`/preview?id=${card_data.id}`)
+    if ((card_data.status = 'Success')) {
+      setLoading(false)
+      navigate(`/preview?id=${card_data.data.id}`)
+    }
   }
 
   return (
@@ -490,6 +492,7 @@ const Card63 = () => {
         <button
           onClick={PostData}
           className="btn"
+          disabled={loading}
           style={{
             borderRadius: '50px',
             background: '#FF3767',
@@ -497,7 +500,9 @@ const Card63 = () => {
             padding: '10px 20px'
           }}
         >
-          Preview
+          {loading && <i className="fa fa-refresh fa-spin" style={{ marginRight: '5px' }} />}
+          {loading && <span>Loading...</span>}
+          {!loading && <span>Preview</span>}
         </button>
       </div>
 

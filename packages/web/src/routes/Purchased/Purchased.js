@@ -116,10 +116,10 @@ const Purchased = () => {
                               <FontAwesomeIcon icon={faArrowLeft} />
                               &nbsp;Back
                             </button>
-                            <a href="#" style={{ textDecoration: 'none' }}>
-                              <FontAwesomeIcon icon={faShareNodes} />
-                              &nbsp;Share
-                            </a>
+                            {/*<a href="#" style={{ textDecoration: 'none' }}>*/}
+                            {/*  <FontAwesomeIcon icon={faShareNodes} />*/}
+                            {/*  &nbsp;Share*/}
+                            {/*</a>*/}
                           </div>
                           <div className="modal-body">
                             <Fancybox>

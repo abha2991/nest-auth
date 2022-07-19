@@ -306,25 +306,29 @@ const Header = () => {
                   </li>
                   <li className={splitLocation[1] === 'purchased' ? 'active' : ''}>
                     <a className="nav-link" href="/purchased">
-                      My Purchases
-                    </a>
-                  </li>
-
-                  <li className="nav-item">
-                    <a className="nav-link" href="#">
-                      Contact Us
+                      My Cards
                     </a>
                   </li>
                   <li className="nav-item">
                     <a className="nav-link" href="#">
-                      About Us
+                      Design Your Card
                     </a>
                   </li>
-                  <li className={splitLocation[1] === 'privacy' ? 'active' : ''}>
-                    <a className="nav-link" href="/privacy">
-                      Privacy Policy
-                    </a>
-                  </li>
+                  {/*<li className="nav-item">*/}
+                  {/*  <a className="nav-link" href="#">*/}
+                  {/*    Contact Us*/}
+                  {/*  </a>*/}
+                  {/*</li>*/}
+                  {/*<li className="nav-item">*/}
+                  {/*  <a className="nav-link" href="#">*/}
+                  {/*    About Us*/}
+                  {/*  </a>*/}
+                  {/*</li>*/}
+                  {/*<li className={splitLocation[1] === 'privacy' ? 'active' : ''}>*/}
+                  {/*  <a className="nav-link" href="/privacy">*/}
+                  {/*    Privacy Policy*/}
+                  {/*  </a>*/}
+                  {/*</li>*/}
                   <li className="nav-item">
                     <a className="nav-link" style={{ cursor: 'pointer' }} onClick={() => handleLogout()}>
                       Logout
@@ -428,16 +432,22 @@ const Header = () => {
                       Contact Us
                     </a>
                   </li>
+
                   <li className="nav-item">
                     <a className="nav-link" href="#">
-                      About Us
+                      Categories
                     </a>
                   </li>
-                  <li className={splitLocation[1] === 'privacy' ? 'active' : ''}>
-                    <a className="nav-link" href="/privacy">
-                      Privacy Policy
-                    </a>
-                  </li>
+                  {/*<li className="nav-item">*/}
+                  {/*  <a className="nav-link" href="#">*/}
+                  {/*    About Us*/}
+                  {/*  </a>*/}
+                  {/*</li>*/}
+                  {/*<li className={splitLocation[1] === 'privacy' ? 'active' : ''}>*/}
+                  {/*  <a className="nav-link" href="/privacy">*/}
+                  {/*    Privacy Policy*/}
+                  {/*  </a>*/}
+                  {/*</li>*/}
                   <li className={splitLocation[1] === 'login' ? 'active' : ''}>
                     <a className="nav-link" href="/login">
                       Login

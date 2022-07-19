@@ -14,7 +14,7 @@ const EditCard44 = () => {
   const navigate = useNavigate()
   const id = useQueryParams()
   const { id: id2 } = id
-
+  const [loading, setLoading] = useState(false)
   const { data: profile, status } = useProfileApi()
 
   const [cardData, setCardData] = useState()
@@ -121,7 +121,7 @@ const EditCard44 = () => {
     details = [{ date }, { date, time, venue, _rsvp, rsvp, rsvpNumber }]
 
     let card_id = cardData.cardId
-
+    setLoading(true)
     const res = await fetch(`http://localhost:3001/api/card1/birthdaycard`, {
       method: 'POST',
       credentials: 'include',
@@ -139,9 +139,10 @@ const EditCard44 = () => {
 
     const card_data = await res.json()
 
-    setCardData(card_data.id)
-
-    navigate(`/preview?id=${card_data.id}`)
+    if ((card_data.status = 'Success')) {
+      setLoading(false)
+      navigate(`/preview?id=${card_data.data.id}`)
+    }
   }
 
   if (!textdata) {
@@ -161,9 +162,9 @@ const EditCard44 = () => {
                     textAlign: 'center',
                     width: '100%',
                     fontFamily: 'Lora',
-                    color: '#000',
+
                     height: '100%',
-                    padding: '200px 0 50px',
+                    padding: '200px 0 150px',
                     backgroundSize: '100% 100%'
                   }}
                 >
@@ -172,12 +173,11 @@ const EditCard44 = () => {
                     data-bs-target="#id1"
                     style={{
                       maxWidth: '350px',
+                      paddingTop: '150px',
                       margin: 'auto',
-                      fontStyle: 'italic',
+                      fontFamily: 'segoe-ui-bold',
                       fontSize: '12px',
-                      color: '#fff',
-                      marginLeft: '107px',
-                      fontWeight: 'bold'
+                      color: '#fff'
                     }}
                   >
                     {' '}
@@ -195,9 +195,9 @@ const EditCard44 = () => {
                     textAlign: 'center',
                     width: '100%',
                     fontFamily: 'Lora',
-                    color: '#de8aa4',
+                    color: '#000',
                     height: '100%',
-                    padding: '250px 0 40px',
+                    padding: '250px 0 150px',
                     backgroundSize: '100% 100%'
                   }}
                 >
@@ -206,10 +206,11 @@ const EditCard44 = () => {
                     data-bs-toggle="modal"
                     data-bs-target="#id1"
                     style={{
-                      fontSize: '20px',
                       maxWidth: '350px',
                       margin: 'auto',
-                      fontWeight: 'bold'
+                      paddingTop: '50px',
+                      color: '#efb53a',
+                      fontFamily: 'nuevastd-bold'
                     }}
                   >
                     {' '}
@@ -221,36 +222,53 @@ const EditCard44 = () => {
                     data-bs-toggle="modal"
                     data-bs-target="#id2"
                     style={{
-                      fontSize: '20px',
+                      color: '#efb53a',
                       maxWidth: '350px',
                       margin: 'auto',
-                      fontWeight: 'bold'
+                      fontFamily: 'nuevastd-bold'
                     }}
                   >
                     {' '}
                     {secondPageData.time}
                   </h5>
 
-                  <h5
+                  <h7
                     data-bs-toggle="modal"
                     data-bs-target="#id3"
-                    style={{ paddingTop: '20px', maxWidth: '300px', margin: 'auto', color: '#fff' }}
+                    style={{
+                      paddingTop: '20px',
+                      maxWidth: '300px',
+                      color: '#ece2d1',
+                      margin: 'auto',
+                      fontFamily: 'nuevastd-bold'
+                    }}
                   >
                     {secondPageData.venue}
-                  </h5>
+                  </h7>
 
-                  <h5
+                  <h6
                     data-bs-toggle="modal"
                     data-bs-target="#id4"
-                    style={{ paddingTop: '10px', maxWidth: '300px', margin: 'auto', color: '#fff', fontSize: 'small' }}
+                    style={{
+                      paddingTop: '10px',
+                      maxWidth: '300px',
+                      margin: 'auto',
+                      color: '#f3e9d5',
+                      fontFamily: 'nuevastd-bold'
+                    }}
                   >
                     {secondPageData._rsvp}
-                  </h5>
+                  </h6>
 
                   <h5
                     data-bs-toggle="modal"
                     data-bs-target="#id5"
-                    style={{ paddingTop: '10px', maxWidth: '300px', margin: 'auto', color: '#fff', fontSize: 'small' }}
+                    style={{
+                      maxWidth: '300px',
+                      margin: 'auto',
+                      color: '#efb53a',
+                      fontFamily: 'nuevastd-bold'
+                    }}
                   >
                     {secondPageData.rsvp}
                   </h5>
@@ -258,7 +276,12 @@ const EditCard44 = () => {
                   <h5
                     data-bs-toggle="modal"
                     data-bs-target="#id6"
-                    style={{ paddingTop: '10px', maxWidth: '300px', margin: 'auto', color: '#fff', fontSize: 'small' }}
+                    style={{
+                      maxWidth: '300px',
+                      margin: 'auto',
+                      color: '#efb53a',
+                      fontFamily: 'nuevastd-bold'
+                    }}
                   >
                     {secondPageData.rsvpNumber}
                   </h5>
@@ -318,6 +341,7 @@ const EditCard44 = () => {
           <button
             onClick={PostData}
             className="btn"
+            disabled={loading}
             style={{
               borderRadius: '50px',
               background: '#FF3767',
@@ -325,7 +349,9 @@ const EditCard44 = () => {
               padding: '10px 20px'
             }}
           >
-            Preview
+            {loading && <i className="fa fa-refresh fa-spin" style={{ marginRight: '5px' }} />}
+            {loading && <span>Loading...</span>}
+            {!loading && <span>Preview</span>}
           </button>
         </div>
         <Footer />

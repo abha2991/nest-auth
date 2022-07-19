@@ -36,8 +36,19 @@ const EnterCaptionDetails = () => {
   const deleteRow = (i) => setCaption((existing) => existing.filter((_, index) => i !== index))
 
   const EnterDetails = async () => {
-    let Caption = caption
-    console.log({ Caption })
+    let x
+    let y
+    let font
+    let array = caption?.map((val, ind) => {
+      x = Number(val.x)
+      y = Number(val.y)
+      font = val.font
+      return { x, y, font }
+    })
+
+    console.log({ array })
+    let Caption = array
+
     const res = await fetch(`http://localhost:3001/api/cardcaptiondetails`, {
       method: 'POST',
       credentials: 'include',
@@ -54,7 +65,7 @@ const EnterCaptionDetails = () => {
       })
     })
 
-    const data = await res.json()
+    //const data = await res.json()
 
     window.alert('Succesfully Submitted')
   }
@@ -129,10 +140,10 @@ const EnterCaptionDetails = () => {
                   {caption.map((obj, i) => (
                     <tr key={i}>
                       <td>
-                        <input type="number" name="x" value={obj.x} onChange={handleInputs1(i)} />
+                        <input type="number" name="x" value={Number(obj.x)} onChange={handleInputs1(i)} />
                       </td>
                       <td>
-                        <input type="number" name="y" value={obj.y} onChange={handleInputs1(i)} />
+                        <input type="number" name="y" value={Number(obj.y)} onChange={handleInputs1(i)} />
                       </td>
                       <td>
                         <input type="text" name="font" value={obj.font} onChange={handleInputs1(i)} />

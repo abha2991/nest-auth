@@ -16,7 +16,7 @@ const Card41 = () => {
   const { id: id2 } = id
 
   const { data: profile, status } = useProfileApi()
-
+  const [loading, setLoading] = useState(false)
   function useHover(styleOnHover, styleOnNotHover = {}) {
     const [style, setStyle] = React.useState(styleOnNotHover)
 
@@ -69,7 +69,7 @@ const Card41 = () => {
       { brideAndGroomName, date },
       { brideAndGroomName, dateAndTime, venue }
     ]
-
+    setLoading(true)
     const res = await fetch(`http://localhost:3001/api/card1/receptioncard`, {
       method: 'POST',
       credentials: 'include',
@@ -87,7 +87,10 @@ const Card41 = () => {
 
     const card_data = await res.json()
 
-    navigate(`/preview?id=${card_data.id}`)
+    if ((card_data.status = 'Success')) {
+      setLoading(false)
+      navigate(`/preview?id=${card_data.data.id}`)
+    }
   }
 
   return (
@@ -181,13 +184,13 @@ const Card41 = () => {
                   {firstPageData.date}
                 </h6>
 
-                <h7
+                <h6
                   data-bs-toggle="modal"
                   data-bs-target="#id3"
                   style={{ paddingTop: '20px', maxWidth: '300px', margin: 'auto', fontFamily: 'nirmala-ui' }}
                 >
                   {secondPageData.venue}
-                </h7>
+                </h6>
 
                 <h6
                   data-bs-toggle="modal"
@@ -249,15 +252,17 @@ const Card41 = () => {
         <button
           onClick={PostData}
           className="btn"
+          disabled={loading}
           style={{
             borderRadius: '50px',
             background: '#FF3767',
             color: '#fff',
-            padding: '10px 20px',
-            margin: '20px'
+            padding: '10px 20px'
           }}
         >
-          Preview
+          {loading && <i className="fa fa-refresh fa-spin" style={{ marginRight: '5px' }} />}
+          {loading && <span>Loading...</span>}
+          {!loading && <span>Preview</span>}
         </button>
       </div>
 

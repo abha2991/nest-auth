@@ -113,6 +113,11 @@ export class CardController {
     return this.cardservice.WeddingCard14(cardDto)
   }
 
+  @Post('weddingcard15')
+  WeddingCard15(@Body() cardDto: CardDto) {
+    return this.cardservice.WeddingCard15(cardDto)
+  }
+
   @Post('babyshower')
   BabyShowerCard(@Body() cardDto: CardDto) {
     return this.cardservice.BabyShowerCard(cardDto)

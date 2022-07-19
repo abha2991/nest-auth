@@ -14,7 +14,7 @@ const Card8 = () => {
   const navigate = useNavigate()
   const id = useQueryParams()
   const { id: id2 } = id
-  console.log(id2)
+  const [loading, setLoading] = useState(false)
   const { data: profile, status } = useProfileApi()
 
   function useHover(styleOnHover, styleOnNotHover = {}) {
@@ -54,7 +54,7 @@ const Card8 = () => {
     let details
 
     details = [{ message_1, message_2 }]
-
+    setLoading(true)
     const res = await fetch(`http://localhost:3001/api/card1/congratulationscard`, {
       method: 'POST',
       credentials: 'include',
@@ -71,10 +71,11 @@ const Card8 = () => {
     })
 
     const card_data = await res.json()
-    console.log(card_data.id)
-    setCardData(card_data.id)
 
-    navigate(`/preview?id=${card_data.id}`)
+    if ((card_data.status = 'Success')) {
+      setLoading(false)
+      navigate(`/preview?id=${card_data.data.id}`)
+    }
   }
 
   return (
@@ -158,15 +159,17 @@ const Card8 = () => {
         <button
           onClick={PostData}
           className="btn"
+          disabled={loading}
           style={{
             borderRadius: '50px',
             background: '#FF3767',
             color: '#fff',
-            padding: '10px 20px',
-            marginBottom: '20px'
+            padding: '10px 20px'
           }}
         >
-          Preview
+          {loading && <i className="fa fa-refresh fa-spin" style={{ marginRight: '5px' }} />}
+          {loading && <span>Loading...</span>}
+          {!loading && <span>Preview</span>}
         </button>
       </div>
 

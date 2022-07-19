@@ -23,7 +23,7 @@ const UpdateCardDetails = () => {
     })
 
     const data = await res.json()
-    console.log({ data })
+
     setCardData(data)
   }
   useEffect(() => {

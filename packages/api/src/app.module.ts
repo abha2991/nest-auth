@@ -25,6 +25,7 @@ import { VideoModule } from './video/video.module'
 import { VideoredisModule } from './videoredis/videoredis.module'
 import { ContactusModule } from './contactus/contactus.module'
 import { CustomizecardsqueryModule } from './customizecardsquery/customizecardsquery.module'
+import { UploadfileModule } from './uploadfile/uploadfile.module'
 
 @Module({
   imports: [
@@ -61,6 +62,11 @@ import { CustomizecardsqueryModule } from './customizecardsquery/customizecardsq
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, 'card1', 'assets'),
       serveRoot: '/assets/'
+    }),
+
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '../uploads', 'Banner'),
+      serveRoot: '/Banner/'
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
@@ -106,7 +112,8 @@ import { CustomizecardsqueryModule } from './customizecardsquery/customizecardsq
     CardcaptiondetailsModule,
     ContactusModule,
     PaymentgatewayModule,
-    CustomizecardsqueryModule
+    CustomizecardsqueryModule,
+    UploadfileModule
   ],
   controllers: [AppController],
   providers: [

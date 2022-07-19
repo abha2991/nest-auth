@@ -8,13 +8,13 @@ import useProfileApi from '../../../../api/useProfileApi'
 import Loading from '../../../../components/Loading'
 import Footer from '../../../Footer'
 import Modal from '../../../Modal'
-import anniversaryCard1 from '../../../img/Anniversary/Anniversary_2_1.png'
-import anniversaryCard2 from '../../../img/Anniversary/Anniversary_2_2.png'
+import anniversaryCard1 from '../../../img/Anniversary/Anniversary_3_1.png'
+import anniversaryCard2 from '../../../img/Anniversary/Anniversary_3_2.png'
 const EditCard13 = () => {
   const navigate = useNavigate()
   const id = useQueryParams()
   const { id: id2 } = id
-
+  const [loading, setLoading] = useState(false)
   const { data: profile, status } = useProfileApi()
 
   const [cardData, setCardData] = useState()
@@ -113,13 +113,13 @@ const EditCard13 = () => {
     let details
 
     details = [
-      { anniversaryYear, name, date },
-      { anniversaryYear, day, time, venue }
+      { name, anniversaryYear, date },
+      { day, time, venue }
     ]
 
     let card_id = cardData.cardId
-
-    const res = await fetch(`http://localhost:3001/api/card1/anniversarycard1`, {
+    setLoading(true)
+    const res = await fetch(`http://localhost:3001/api/card1/anniversarycard3`, {
       method: 'POST',
       credentials: 'include',
       headers: {
@@ -136,9 +136,10 @@ const EditCard13 = () => {
 
     const card_data = await res.json()
 
-    setCardData(card_data.id)
-
-    navigate(`/preview?id=${card_data.id}`)
+    if ((card_data.status = 'Success')) {
+      setLoading(false)
+      navigate(`/preview?id=${card_data.data.id}`)
+    }
   }
 
   if (!textdata) {
@@ -315,6 +316,7 @@ const EditCard13 = () => {
           <button
             onClick={PostData}
             className="btn"
+            disabled={loading}
             style={{
               borderRadius: '50px',
               background: '#FF3767',
@@ -322,7 +324,9 @@ const EditCard13 = () => {
               padding: '10px 20px'
             }}
           >
-            Preview
+            {loading && <i className="fa fa-refresh fa-spin" style={{ marginRight: '5px' }} />}
+            {loading && <span>Loading...</span>}
+            {!loading && <span>Preview</span>}
           </button>
         </div>
         <Footer />

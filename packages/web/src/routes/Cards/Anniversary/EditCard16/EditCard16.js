@@ -13,7 +13,7 @@ const EditCard16 = () => {
   const navigate = useNavigate()
   const id = useQueryParams()
   const { id: id2 } = id
-
+  const [loading, setLoading] = useState(false)
   const { data: profile, status } = useProfileApi()
 
   const [cardData, setCardData] = useState()
@@ -107,7 +107,7 @@ const EditCard16 = () => {
     let details
 
     details = [{ name1, name2, anniversaryYear, date, time, venue }]
-
+    setLoading(true)
     const res = await fetch(`http://localhost:3001/api/card1/anniversarycard`, {
       method: 'POST',
       credentials: 'include',
@@ -115,7 +115,7 @@ const EditCard16 = () => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        id: id2,
+        id: cardData.cardId,
         details,
         userId: profile.id,
         email: profile.email,
@@ -125,9 +125,10 @@ const EditCard16 = () => {
 
     const card_data = await res.json()
 
-    setCardData(card_data.id)
-
-    navigate(`/preview?id=${card_data.id}`)
+    if ((card_data.status = 'Success')) {
+      setLoading(false)
+      navigate(`/preview?id=${card_data.data.id}`)
+    }
   }
 
   if (!textdata) {
@@ -250,6 +251,7 @@ const EditCard16 = () => {
           <button
             onClick={PostData}
             className="btn"
+            disabled={loading}
             style={{
               borderRadius: '50px',
               background: '#FF3767',
@@ -257,7 +259,9 @@ const EditCard16 = () => {
               padding: '10px 20px'
             }}
           >
-            Preview
+            {loading && <i className="fa fa-refresh fa-spin" style={{ marginRight: '5px' }} />}
+            {loading && <span>Loading...</span>}
+            {!loading && <span>Preview</span>}
           </button>
         </div>
         <Footer />

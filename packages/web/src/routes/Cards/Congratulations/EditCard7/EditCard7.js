@@ -13,7 +13,7 @@ const EditCard7 = () => {
   const navigate = useNavigate()
   const id = useQueryParams()
   const { id: id2 } = id
-
+  const [loading, setLoading] = useState(false)
   const { data: profile, status } = useProfileApi()
 
   const [cardData, setCardData] = useState()
@@ -94,7 +94,7 @@ const EditCard7 = () => {
     details = [{ message_1, message_2 }]
 
     let card_id = cardData.cardId
-
+    setLoading(true)
     const res = await fetch(`http://localhost:3001/api/card1/congratulationscard`, {
       method: 'POST',
       credentials: 'include',
@@ -111,10 +111,10 @@ const EditCard7 = () => {
     })
 
     const card_data = await res.json()
-    console.log(card_data.id)
-    setCardData(card_data.id)
-
-    navigate(`/preview?id=${card_data.id}`)
+    if ((card_data.status = 'Success')) {
+      setLoading(false)
+      navigate(`/preview?id=${card_data.data.id}`)
+    }
   }
 
   if (!textdata) {
@@ -129,51 +129,46 @@ const EditCard7 = () => {
         <hr />
         <div className="container" style={{ position: 'relative' }}>
           <div className="row my-5">
-            <div className="col-md-4">
-              <div className="card-box">
-                <div
-                  style={{
-                    background: `url(${congratulationCard}) no-repeat center/contain`,
-                    textAlign: 'center',
+            <div className="card-box">
+              <div
+                style={{
+                  background: `url(${congratulationCard}) no-repeat center/contain`,
+                  textAlign: 'center',
 
-                    width: '100%',
-                    fontFamily: 'Lora',
-                    color: '#f2df83',
-                    height: '100%',
-                    padding: '200px 0 300px',
-                    backgroundSize: '100% 100%'
+                  width: '100%',
+                  fontFamily: 'myriad-pro-bold',
+                  color: '#f2de83',
+                  height: '100%',
+                  padding: '200px 0 300px',
+                  backgroundSize: '100% 100%'
+                }}
+              >
+                <h5
+                  data-bs-toggle="modal"
+                  data-bs-target="#id1"
+                  style={{
+                    fontSize: '18px',
+                    paddingTop: '20px',
+                    maxWidth: '350px',
+                    margin: 'auto'
                   }}
                 >
-                  <h4
-                    data-bs-toggle="modal"
-                    data-bs-target="#id1"
-                    style={{
-                      paddingTop: '20px',
-                      maxWidth: '350px',
-                      margin: 'auto',
-                      fontStyle: 'italic',
-                      fontSize: '15px',
-                      fontWeight: 'bold'
-                    }}
-                  >
-                    {' '}
-                    {cardText.message_1}
-                  </h4>
+                  {' '}
+                  {cardText.message_1}
+                </h5>
 
-                  <h5
-                    data-bs-toggle="modal"
-                    data-bs-target="#id2"
-                    style={{
-                      paddingTop: '10px',
-                      maxWidth: '300px',
-                      margin: 'auto',
-                      fontSize: '15px',
-                      fontWeight: 'bold'
-                    }}
-                  >
-                    {cardText.message_2}
-                  </h5>
-                </div>
+                <h5
+                  data-bs-toggle="modal"
+                  data-bs-target="#id2"
+                  style={{
+                    fontSize: '18px',
+                    paddingTop: '10px',
+                    maxWidth: '300px',
+                    margin: 'auto'
+                  }}
+                >
+                  {cardText.message_2}
+                </h5>
               </div>
             </div>
           </div>
@@ -205,6 +200,7 @@ const EditCard7 = () => {
           <button
             onClick={PostData}
             className="btn"
+            disabled={loading}
             style={{
               borderRadius: '50px',
               background: '#FF3767',
@@ -212,7 +208,9 @@ const EditCard7 = () => {
               padding: '10px 20px'
             }}
           >
-            Preview
+            {loading && <i className="fa fa-refresh fa-spin" style={{ marginRight: '5px' }} />}
+            {loading && <span>Loading...</span>}
+            {!loading && <span>Preview</span>}
           </button>
         </div>
         <Footer />

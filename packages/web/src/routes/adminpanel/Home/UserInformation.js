@@ -77,7 +77,7 @@ const UserInformation = () => {
                             <td>{val.userId}</td>
                             <td>{email?.email}</td>
                             <td>{val.cardNames}</td>
-                            <td>{val.CardType}</td>
+                            <td>{val.cardCategory}</td>
                             <td>{val.cardSalePrice}</td>
                             <td>{val.cardTotalPrice}</td>
                             <td>{val.paymentStatus}</td>

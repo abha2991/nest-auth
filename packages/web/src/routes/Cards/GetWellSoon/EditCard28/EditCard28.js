@@ -9,17 +9,18 @@ import useProfileApi from '../../../../api/useProfileApi'
 import Loading from '../../../../components/Loading'
 import Footer from '../../../Footer'
 import Modal from '../../../Modal'
+import getWellSoonCard from '../../../img/GetWellSoon/GetWellSoon_2_1.png'
 const EditCard27 = () => {
   const navigate = useNavigate()
   const id = useQueryParams()
   const { id: id2 } = id
 
   const { data: profile, status } = useProfileApi()
-
+  const [loading, setLoading] = useState(false)
   const [cardData, setCardData] = useState()
   const [cardname, setCardName] = useState()
   const [userdata, setUserData] = useState()
-  console.log({ id2, profile })
+
   const [textdata, setTextData] = useState()
   const getCardsOfUser = async () => {
     const res = await fetch(`http://localhost:3001/api/card1/getCard/${id2}`, {
@@ -94,7 +95,7 @@ const EditCard27 = () => {
     details = [{ message_1, senderName }]
 
     let card_id = cardData.cardId
-
+    setLoading(true)
     const res = await fetch(`http://localhost:3001/api/card1/getwellsooncard`, {
       method: 'POST',
       credentials: 'include',
@@ -112,9 +113,10 @@ const EditCard27 = () => {
 
     const card_data = await res.json()
 
-    setCardData(card_data.id)
-
-    navigate(`/preview?id=${card_data.id}`)
+    if ((card_data.status = 'Success')) {
+      setLoading(false)
+      navigate(`/preview?id=${card_data.data.id}`)
+    }
   }
 
   if (!textdata) {
@@ -133,23 +135,43 @@ const EditCard27 = () => {
               <div className="card-box">
                 <div
                   style={{
-                    background: `url(${card1}) no-repeat center/cover`,
+                    background: `url(${card1}) no-repeat center/contain`,
                     textAlign: 'center',
                     width: '100%',
-                    fontFamily: 'Lora',
-                    color: '#7132A1',
+                    fontFamily: 'myriad-pro-bold',
+
                     height: '100%',
-                    padding: '100px 0'
+                    padding: '120px 0 380px',
+                    backgroundSize: '100% 100%'
                   }}
                 >
-                  <h2 data-bs-toggle="modal" data-bs-target="#id1" style={{ paddingTop: '105px' }}>
-                    {' '}
+                  <h6
+                    data-bs-toggle="modal"
+                    data-bs-target="#id1"
+                    style={{
+                      paddingTop: '10px',
+                      maxWidth: '350px',
+                      margin: 'auto',
+                      color: '#e24b5d',
+                      textAlign: 'center'
+                    }}
+                  >
                     {messageData.message_1}
-                  </h2>
+                  </h6>
 
-                  <h2 data-bs-toggle="modal" data-bs-target="#id2">
+                  <h6
+                    data-bs-toggle="modal"
+                    data-bs-target="#id2"
+                    style={{
+                      paddingTop: '6px',
+                      maxWidth: '350px',
+                      margin: 'auto',
+                      color: '#e24b5d'
+                    }}
+                  >
+                    {' '}
                     {messageData.senderName}
-                  </h2>
+                  </h6>
                 </div>
               </div>
             </div>
@@ -183,6 +205,7 @@ const EditCard27 = () => {
           <button
             onClick={PostData}
             className="btn"
+            disabled={loading}
             style={{
               borderRadius: '50px',
               background: '#FF3767',
@@ -190,7 +213,9 @@ const EditCard27 = () => {
               padding: '10px 20px'
             }}
           >
-            Preview
+            {loading && <i className="fa fa-refresh fa-spin" style={{ marginRight: '5px' }} />}
+            {loading && <span>Loading...</span>}
+            {!loading && <span>Preview</span>}
           </button>
         </div>
         <Footer />

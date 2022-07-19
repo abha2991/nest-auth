@@ -12,7 +12,7 @@ const Card2 = () => {
   const navigate = useNavigate()
   const id = useQueryParams()
   const { id: id2 } = id
-  console.log(id2)
+
   const { data: profile, status } = useProfileApi()
 
   function useHover(styleOnHover, styleOnNotHover = {}) {

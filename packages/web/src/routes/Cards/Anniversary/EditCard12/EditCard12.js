@@ -16,7 +16,7 @@ const EditCard12 = () => {
   const { id: id2 } = id
 
   const { data: profile, status } = useProfileApi()
-
+  const [loading, setLoading] = useState(false)
   const [cardData, setCardData] = useState()
   const [cardname, setCardName] = useState()
   const [userdata, setUserData] = useState()
@@ -113,12 +113,12 @@ const EditCard12 = () => {
     let details
 
     details = [
-      { anniversaryYear, name, date },
-      { anniversaryYear, day, time, venue }
+      { name, anniversaryYear, date },
+      { day, time, venue }
     ]
 
     let card_id = cardData.cardId
-
+    setLoading(true)
     const res = await fetch(`http://localhost:3001/api/card1/anniversarycard1`, {
       method: 'POST',
       credentials: 'include',
@@ -136,9 +136,10 @@ const EditCard12 = () => {
 
     const card_data = await res.json()
 
-    setCardData(card_data.id)
-
-    navigate(`/preview?id=${card_data.id}`)
+    if ((card_data.status = 'Success')) {
+      setLoading(false)
+      navigate(`/preview?id=${card_data.data.id}`)
+    }
   }
 
   if (!textdata) {
@@ -296,8 +297,6 @@ const EditCard12 = () => {
                 let name = textData2[index]
                 let value = textData2[index + 3]
 
-                console.log({ name, value })
-
                 setSecondPageData({ ...secondPageData, [name]: [value] })
               }}
               onChange={(e) => {
@@ -315,6 +314,7 @@ const EditCard12 = () => {
           <button
             onClick={PostData}
             className="btn"
+            disabled={loading}
             style={{
               borderRadius: '50px',
               background: '#FF3767',
@@ -322,7 +322,9 @@ const EditCard12 = () => {
               padding: '10px 20px'
             }}
           >
-            Preview
+            {loading && <i className="fa fa-refresh fa-spin" style={{ marginRight: '5px' }} />}
+            {loading && <span>Loading...</span>}
+            {!loading && <span>Preview</span>}
           </button>
         </div>
         <Footer />

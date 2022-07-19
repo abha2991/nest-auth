@@ -14,7 +14,7 @@ const EditCard45 = () => {
   const navigate = useNavigate()
   const id = useQueryParams()
   const { id: id2 } = id
-
+  const [loading, setLoading] = useState(false)
   const { data: profile, status } = useProfileApi()
 
   const [cardData, setCardData] = useState()
@@ -40,7 +40,6 @@ const EditCard45 = () => {
     getCardsOfUser()
   }, [id2])
 
-  console.log({ textdata })
   const [firstPageData, setFirstPageData] = useState({
     date: ''
   })
@@ -125,7 +124,7 @@ const EditCard45 = () => {
     details = [{ date }, { name, date, time, venue, _rsvp, rsvp, rsvpNumber }]
 
     let card_id = cardData.cardId
-
+    setLoading(true)
     const res = await fetch(`http://localhost:3001/api/card1/birthdaycard`, {
       method: 'POST',
       credentials: 'include',
@@ -142,10 +141,10 @@ const EditCard45 = () => {
     })
 
     const card_data = await res.json()
-
-    setCardData(card_data.id)
-
-    navigate(`/preview?id=${card_data.id}`)
+    if ((card_data.status = 'Success')) {
+      setLoading(false)
+      navigate(`/preview?id=${card_data.data.id}`)
+    }
   }
 
   if (!textdata) {
@@ -164,29 +163,29 @@ const EditCard45 = () => {
                     background: `url(${birthdayCard1}) no-repeat center/contain`,
                     textAlign: 'center',
                     width: '100%',
-                    fontFamily: 'Lora',
-                    color: '#000',
+
                     height: '100%',
                     padding: '200px 0 50px',
                     backgroundSize: '100% 100%'
                   }}
                 >
-                  <h5
+                  <p
                     data-bs-toggle="modal"
                     data-bs-target="#id1"
                     style={{
                       maxWidth: '350px',
+                      paddingTop: '230px',
+                      textAlign: 'center',
                       margin: 'auto',
-                      fontStyle: 'italic',
-                      fontSize: '12px',
-                      color: '#fff',
-                      marginLeft: '107px',
-                      fontWeight: 'bold'
+                      fontSize: '14px',
+                      fontFamily: 'segoe-ui-bold',
+                      color: '#e49027',
+                      marginLeft: '50px'
                     }}
                   >
                     {' '}
                     {firstPageData.date}
-                  </h5>
+                  </p>
                 </div>
               </div>
             </div>
@@ -198,71 +197,106 @@ const EditCard45 = () => {
                     background: `url(${birthdayCard2}) no-repeat center/contain`,
                     textAlign: 'center',
                     width: '100%',
-                    fontFamily: 'Lora',
-                    color: '#de8aa4',
+
                     height: '100%',
-                    padding: '250px 0 40px',
+                    padding: '250px 0 150px',
                     backgroundSize: '100% 100%'
                   }}
                 >
-                  <h5
-                    className="card12-text"
+                  <h4
+                    data-bs-toggle="modal"
+                    data-bs-target="#id2"
+                    style={{
+                      color: '#cd1515',
+                      maxWidth: '350px',
+                      margin: 'auto',
+                      paddingTop: '50px',
+                      fontFamily: 'myriad-pro-bold'
+                    }}
+                  >
+                    {' '}
+                    {secondPageData.name}
+                  </h4>
+                  <h6
                     data-bs-toggle="modal"
                     data-bs-target="#id1"
                     style={{
-                      fontSize: '20px',
+                      color: '#eca531',
                       maxWidth: '350px',
                       margin: 'auto',
-                      fontWeight: 'bold'
+
+                      fontFamily: 'nuevastd-bold'
                     }}
                   >
                     {' '}
                     {firstPageData.date}
-                  </h5>
+                  </h6>
 
-                  <h5
-                    className="card12-text"
+                  <h6
                     data-bs-toggle="modal"
-                    data-bs-target="#id2"
+                    data-bs-target="#id3"
                     style={{
-                      fontSize: '20px',
+                      color: '#eca531',
                       maxWidth: '350px',
                       margin: 'auto',
-                      fontWeight: 'bold'
+                      fontFamily: 'nuevastd-bold'
                     }}
                   >
                     {' '}
                     {secondPageData.time}
-                  </h5>
+                  </h6>
 
-                  <h5
-                    data-bs-toggle="modal"
-                    data-bs-target="#id3"
-                    style={{ paddingTop: '20px', maxWidth: '300px', margin: 'auto', color: '#fff' }}
-                  >
-                    {secondPageData.venue}
-                  </h5>
-
-                  <h5
+                  <h7
                     data-bs-toggle="modal"
                     data-bs-target="#id4"
-                    style={{ paddingTop: '10px', maxWidth: '300px', margin: 'auto', color: '#fff', fontSize: 'small' }}
+                    style={{
+                      paddingTop: '20px',
+                      fontSize: '14px',
+                      maxWidth: '300px',
+                      margin: 'auto',
+                      color: '#e79624',
+                      fontFamily: 'nuevastd-bold'
+                    }}
+                  >
+                    {secondPageData.venue}
+                  </h7>
+
+                  <h6
+                    data-bs-toggle="modal"
+                    data-bs-target="#id5"
+                    style={{
+                      paddingTop: '15px',
+                      maxWidth: '300px',
+                      margin: 'auto',
+                      color: '#d11919',
+                      fontFamily: 'nuevastd-bold'
+                    }}
                   >
                     {secondPageData._rsvp}
-                  </h5>
+                  </h6>
 
                   <h5
                     data-bs-toggle="modal"
-                    data-bs-target="#id5"
-                    style={{ paddingTop: '10px', maxWidth: '300px', margin: 'auto', color: '#fff', fontSize: 'small' }}
+                    data-bs-target="#id6"
+                    style={{
+                      maxWidth: '300px',
+                      margin: 'auto',
+                      color: '#e79624',
+                      fontFamily: 'nuevastd-bold'
+                    }}
                   >
                     {secondPageData.rsvp}
                   </h5>
 
                   <h5
                     data-bs-toggle="modal"
-                    data-bs-target="#id6"
-                    style={{ paddingTop: '10px', maxWidth: '300px', margin: 'auto', color: '#fff', fontSize: 'small' }}
+                    data-bs-target="#id7"
+                    style={{
+                      maxWidth: '300px',
+                      margin: 'auto',
+                      color: '#e79624',
+                      fontFamily: 'nuevastd-bold'
+                    }}
                   >
                     {secondPageData.rsvpNumber}
                   </h5>
@@ -322,6 +356,7 @@ const EditCard45 = () => {
           <button
             onClick={PostData}
             className="btn"
+            disabled={loading}
             style={{
               borderRadius: '50px',
               background: '#FF3767',
@@ -329,7 +364,9 @@ const EditCard45 = () => {
               padding: '10px 20px'
             }}
           >
-            Preview
+            {loading && <i className="fa fa-refresh fa-spin" style={{ marginRight: '5px' }} />}
+            {loading && <span>Loading...</span>}
+            {!loading && <span>Preview</span>}
           </button>
         </div>
         <Footer />

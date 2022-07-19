@@ -1122,8 +1122,8 @@ export class CardService {
             let text
             if (
               k === 0 ||
-              (i === 0 && k === 1) ||
-              (i === 4 && k === 1) ||
+              (i === 1 && k === 1) ||
+              (i === 5 && k === 1) ||
               (i === 0 && k === 2) ||
               (i === 3 && k === 2) ||
               (i === 6 && k === 2) ||
@@ -1157,49 +1157,53 @@ export class CardService {
 
               let space = singleLineHeight * e + spaceBetweenLines * e
 
-              // let y_value
-
-              // if (k === 0) {
-              //   y_value = capt.y + space
-              // } else if (i === 0 && k === 1) {
-              //   y_value = secondPageCaption1
-              // } else if ((i === 1 && k === 1) || (i === 2 && k === 1)) {
-              //   y_value = secondPageCaption1 + space * (e + 1)
-              // } else if (i === 3 && k === 1) {
-              //   y_value = secondPageCaption2
-              // } else if (i === 4 && k === 1) {
-              //   y_value = secondPageCaption2 + space * (e + 1)
-              // } else if (i === 4 && k === 1) {
-              //   y_value = secondPageCaption2 + space * (e + 1)
-              // } else if (k === 2) {
-              //   y_value = thirdPageCaption + space * (e + 1)
+              //if (k === 1) {
+              // const singleLineHeight1 = Jimp.measureTextHeight(font, 'a', textWidth)
+              //
+              // let space2
+              // if (text[0] === 'Weds') {
+              //   space2 = singleLineHeight1
+              //   y_value = y_value + space2
+              //   space2 = singleLineHeight1 * 2
               // } else {
-              //   y_value = capt.y + space * (e + 1)
-              // }
-
-              // if (k === 0) {
-              //   y_value = capt.y + space
-              // } else if (k === 1) {
-              //   y_value = secondPageCaption1
-              // } else if (i === 3 && k === 1) {
-              //   y_value = secondPageCaption2
-              // } else if (k === 2) {
-              //   y_value = thirdPageCaption + space
-              // } else {
-              //   y_value = capt.y + space
+              //   space2 = singleLineHeight1 + 15
               // }
               //
-              // console.log({ y_value })
+              // await image.print(
+              //   font,
+              //
+              //   x,
+              //
+              //   y_value,
+              //
+              //   { text: text[e], alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER, alignmentY: Jimp.VERTICAL_ALIGN_CENTER },
+              //   textWidth,
+              //   singleLineHeight
+              // )
+              // y_value = y_value + space2
+
               if (k === 1) {
                 const singleLineHeight1 = Jimp.measureTextHeight(font, 'a', textWidth)
 
-                let space2
-                if (text[0] === 'Weds') {
-                  space2 = singleLineHeight1
-                  y_value = y_value + space2
-                  space2 = singleLineHeight1 * 2
-                } else {
-                  space2 = singleLineHeight1 + 15
+                let space
+
+                if (i === 0 && e === 0) {
+                  y_value = y_value
+                }
+                if ((i === 3 || i === 7) && e === 0) {
+                  space = singleLineHeight + spaceBetweenLines * 2
+                  y_value = y_value + space
+                } else if (i === 1 && e === 0) {
+                  space = singleLineHeight + spaceBetweenLines * 4
+                  y_value = y_value + space + 100
+                } else if ((i === 5 || i === 4) && e === 0) {
+                  space = singleLineHeight + spaceBetweenLines * 4
+                  y_value = y_value + space
+                } else if ((i === 2 || i === 6) && e === 0) {
+                  space = singleLineHeight + spaceBetweenLines * 10
+                  y_value = y_value + space
+                } else if (e != 0) {
+                  y_value = y_value + singleLineHeight
                 }
 
                 await image.print(
@@ -1213,29 +1217,16 @@ export class CardService {
                   textWidth,
                   singleLineHeight
                 )
-                y_value = y_value + space2
               } else if (k === 2) {
                 const singleLineHeight2 = Jimp.measureTextHeight(font, 'a', textWidth)
                 // console.log({ singleLineHeight2 })
                 // console.log({ k, e, i })
                 let space3
-                // if (i === 2 || i === 5 || i === 8 || i === 11) {
-                //   space3 = singleLineHeight2 * 2
-                // } else {
-                // if (i % 3 == 0) {
-                //   space3 = singleLineHeight2 + spaceBetweenLines * 0.5
-                // } else if (i === 2 || i === 5 || i === 8 || i === 11 || i === 14) {
-                //   space3 = singleLineHeight2 + spaceBetweenLines * 6
-                // } else {
-                //   space3 = singleLineHeight2 + spaceBetweenLines * 2
-                // }
 
                 if (i === 0 && e === 0) {
                   yValue = yValue
                 }
-                // if (i === 0 && e != 0) {
-                //   yValue = yValue + singleLineHeight2
-                // }
+
                 if ((i === 3 || i === 6 || i === 9 || i === 12) && e === 0) {
                   space3 = singleLineHeight2 + spaceBetweenLines * 5
                   yValue = yValue + space3
@@ -1250,20 +1241,14 @@ export class CardService {
                   space3 = singleLineHeight2 + spaceBetweenLines
                   yValue = yValue + space3
                 }
-                //}
 
-                // console.log({ text, e, i, k, space3 })
-
-                // console.log(thirdPageCaption + space2)
-                // console.log({ y_value })
                 await image.print(
                   font,
-                  // image.bitmap.width / 3,
+
                   x,
-                  // y_value + space,
-                  //capt.x,
+
                   yValue,
-                  // y,
+
                   { text: text[e], alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER, alignmentY: Jimp.VERTICAL_ALIGN_CENTER },
                   textWidth,
                   singleLineHeight
@@ -1283,73 +1268,6 @@ export class CardService {
                   singleLineHeight
                 )
               }
-              //y_value = y_value + space1
-              // else if (k === 1 && i === 0) {
-              //   await image.print(
-              //     font,
-              //     // image.bitmap.width / 3,
-              //     x,
-              //     // y_value + space,
-              //     //capt.x,
-              //     secondPageCaption1,
-              //     // y,
-              //     { text: text[e], alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER, alignmentY: Jimp.VERTICAL_ALIGN_CENTER },
-              //     textWidth,
-              //     singleLineHeight
-              //   )
-              // } else if (k === 1 && i === 1) {
-              //   await image.print(
-              //     font,
-              //     // image.bitmap.width / 3,
-              //     x,
-              //     // y_value + space,
-              //     //capt.x,
-              //     secondPageCaption1 + space + 120,
-              //     // y,
-              //     { text: text[e], alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER, alignmentY: Jimp.VERTICAL_ALIGN_CENTER },
-              //     textWidth,
-              //     singleLineHeight
-              //   )
-              // } else if (k === 1 && i === 2) {
-              //   await image.print(
-              //     font,
-              //     // image.bitmap.width / 3,
-              //     x,
-              //     // y_value + space,
-              //     //capt.x,
-              //     secondPageCaption1 + space + 180,
-              //     // y,
-              //     { text: text[e], alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER, alignmentY: Jimp.VERTICAL_ALIGN_CENTER },
-              //     textWidth,
-              //     singleLineHeight
-              //   )
-              // } else if ((k === 1 && i === 3) || (k === 1 && i === 4) || (k === 1 && i === 5)) {
-              //   await image.print(
-              //     font,
-              //     // image.bitmap.width / 3,
-              //     x,
-              //     // y_value + space,
-              //     //capt.x,
-              //     secondPageCaption2 + space + 600,
-              //     // y,
-              //     { text: text[e], alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER, alignmentY: Jimp.VERTICAL_ALIGN_CENTER },
-              //     textWidth,
-              //     singleLineHeight
-              //   )
-              // } else if (k === 2) {
-              //   await image.print(
-              //     font,
-              //     // image.bitmap.width / 3,
-              //     x,
-              //     // y_value + space,
-              //     //capt.x,
-              //     capt.y + space,
-              //     // y,
-              //     { text: text[e], alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER, alignmentY: Jimp.VERTICAL_ALIGN_CENTER },
-              //     textWidth,
-              //     singleLineHeight
-              //   )
-              // }
             }
             // await image.print(font, capt.x, capt.y, data[i])
           } else {
@@ -1363,24 +1281,17 @@ export class CardService {
         await image.writeAsync(resolve('src', 'card1', 'generated', details.cardCategory, newFileName))
 
         fileName.push(newFileName)
-        //console.log({fileName})
-
-        //let user = await this.usersService.findByEmail(email)
-        //console.log({user})
       }
       // console.log({ fileName })
       let downloadFileName = []
 
       for (let j = 0; j < details.noOfPages; j++) {
         image = await Jimp.read(resolve('src', 'card1', 'assets', details.cardCategory, details.Caption[j].page))
-        //console.log(car[j].previewpage)
-        //console.log(car[k].captions.length)
+
         for (let i = 0; i < details.Caption[j].Caption.length; i++) {
           // const capt = await car[j].captions[i]
           const capt = await details.Caption[j].Caption[i]
-          //console.log({ capt })
 
-          //const font = await Jimp.loadFont(capt.font)
           let jimpfont = resolve(__dirname, 'fonts', capt.font)
           const font = await Jimp.loadFont(jimpfont)
           let data = Object.values(Details[j])
@@ -1391,10 +1302,27 @@ export class CardService {
             a = a?.replace(/\s/g, '') ?? ''
 
             let text
-            if (a.length > maxCharsPerLine) {
-              text = breakTextToLines(data[i] as string, maxCharsPerLine, 1)
+            if (
+              j === 0 ||
+              (i === 1 && j === 1) ||
+              (i === 5 && j === 1) ||
+              (i === 0 && j === 2) ||
+              (i === 3 && j === 2) ||
+              (i === 6 && j === 2) ||
+              (i === 9 && j === 2) ||
+              (i === 12 && j === 2)
+            ) {
+              if (a.length > maxCharsPerLine - 15) {
+                text = breakTextToLines(data[i] as string, maxCharsPerLine - 15, 1)
+              } else {
+                text = [data[i]]
+              }
             } else {
-              text = [data[i]]
+              if (a.length > maxCharsPerLine) {
+                text = breakTextToLines(data[i] as string, maxCharsPerLine, 1)
+              } else {
+                text = [data[i]]
+              }
             }
 
             let textWidth = Jimp.measureText(font, text)
@@ -1410,49 +1338,28 @@ export class CardService {
 
               let space = singleLineHeight * e + spaceBetweenLines * e
 
-              // let y_value
-
-              // if (k === 0) {
-              //   y_value = capt.y + space
-              // } else if (i === 0 && k === 1) {
-              //   y_value = secondPageCaption1
-              // } else if ((i === 1 && k === 1) || (i === 2 && k === 1)) {
-              //   y_value = secondPageCaption1 + space * (e + 1)
-              // } else if (i === 3 && k === 1) {
-              //   y_value = secondPageCaption2
-              // } else if (i === 4 && k === 1) {
-              //   y_value = secondPageCaption2 + space * (e + 1)
-              // } else if (i === 4 && k === 1) {
-              //   y_value = secondPageCaption2 + space * (e + 1)
-              // } else if (k === 2) {
-              //   y_value = thirdPageCaption + space * (e + 1)
-              // } else {
-              //   y_value = capt.y + space * (e + 1)
-              // }
-
-              // if (k === 0) {
-              //   y_value = capt.y + space
-              // } else if (k === 1) {
-              //   y_value = secondPageCaption1
-              // } else if (i === 3 && k === 1) {
-              //   y_value = secondPageCaption2
-              // } else if (k === 2) {
-              //   y_value = thirdPageCaption + space
-              // } else {
-              //   y_value = capt.y + space
-              // }
-              //
-              // console.log({ y_value })
               if (k === 1) {
                 const singleLineHeight1 = Jimp.measureTextHeight(font, 'a', textWidth)
 
-                let space2
-                if (text[0] === 'Weds') {
-                  space2 = singleLineHeight1
-                  y_value = y_value + space2
-                  space2 = singleLineHeight1 * 2
-                } else {
-                  space2 = singleLineHeight1 + 15
+                let space
+
+                if (i === 0 && e === 0) {
+                  y_value = y_value
+                }
+                if ((i === 3 || i === 7) && e === 0) {
+                  space = singleLineHeight + spaceBetweenLines * 2
+                  y_value = y_value + space
+                } else if (i === 1 && e === 0) {
+                  space = singleLineHeight + spaceBetweenLines * 4
+                  y_value = y_value + space + 100
+                } else if ((i === 5 || i === 4) && e === 0) {
+                  space = singleLineHeight + spaceBetweenLines * 4
+                  y_value = y_value + space
+                } else if ((i === 2 || i === 6) && e === 0) {
+                  space = singleLineHeight + spaceBetweenLines * 10
+                  y_value = y_value + space
+                } else if (e != 0) {
+                  y_value = y_value + singleLineHeight
                 }
 
                 await image.print(
@@ -1466,7 +1373,6 @@ export class CardService {
                   textWidth,
                   singleLineHeight
                 )
-                y_value = y_value + space2
               } else if (k === 2) {
                 const singleLineHeight2 = Jimp.measureTextHeight(font, 'a', textWidth)
                 // console.log({ singleLineHeight2 })
@@ -1515,73 +1421,6 @@ export class CardService {
                   singleLineHeight
                 )
               }
-              //y_value = y_value + space1
-              // else if (k === 1 && i === 0) {
-              //   await image.print(
-              //     font,
-              //     // image.bitmap.width / 3,
-              //     x,
-              //     // y_value + space,
-              //     //capt.x,
-              //     secondPageCaption1,
-              //     // y,
-              //     { text: text[e], alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER, alignmentY: Jimp.VERTICAL_ALIGN_CENTER },
-              //     textWidth,
-              //     singleLineHeight
-              //   )
-              // } else if (k === 1 && i === 1) {
-              //   await image.print(
-              //     font,
-              //     // image.bitmap.width / 3,
-              //     x,
-              //     // y_value + space,
-              //     //capt.x,
-              //     secondPageCaption1 + space + 120,
-              //     // y,
-              //     { text: text[e], alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER, alignmentY: Jimp.VERTICAL_ALIGN_CENTER },
-              //     textWidth,
-              //     singleLineHeight
-              //   )
-              // } else if (k === 1 && i === 2) {
-              //   await image.print(
-              //     font,
-              //     // image.bitmap.width / 3,
-              //     x,
-              //     // y_value + space,
-              //     //capt.x,
-              //     secondPageCaption1 + space + 180,
-              //     // y,
-              //     { text: text[e], alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER, alignmentY: Jimp.VERTICAL_ALIGN_CENTER },
-              //     textWidth,
-              //     singleLineHeight
-              //   )
-              // } else if ((k === 1 && i === 3) || (k === 1 && i === 4) || (k === 1 && i === 5)) {
-              //   await image.print(
-              //     font,
-              //     // image.bitmap.width / 3,
-              //     x,
-              //     // y_value + space,
-              //     //capt.x,
-              //     secondPageCaption2 + space + 600,
-              //     // y,
-              //     { text: text[e], alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER, alignmentY: Jimp.VERTICAL_ALIGN_CENTER },
-              //     textWidth,
-              //     singleLineHeight
-              //   )
-              // } else if (k === 2) {
-              //   await image.print(
-              //     font,
-              //     // image.bitmap.width / 3,
-              //     x,
-              //     // y_value + space,
-              //     //capt.x,
-              //     capt.y + space,
-              //     // y,
-              //     { text: text[e], alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER, alignmentY: Jimp.VERTICAL_ALIGN_CENTER },
-              //     textWidth,
-              //     singleLineHeight
-              //   )
-              // }
             }
             // console.log({b})
           } else {
@@ -1600,14 +1439,6 @@ export class CardService {
         //let user = await this.usersService.findByEmail(email)
         //console.log({user})
       }
-      // console.log({ downloadFileName })
-      //console.log({id})
-      // console.log(typeof id)
-
-      // let a=await this.cardetailsService.findOne()
-      // console.log({a})
-
-      //console.log({Details})
 
       const user = new UserCardEntity()
       user.userId = userid
@@ -1615,9 +1446,6 @@ export class CardService {
       user.cardCategory = details.cardCategory
       user.previewCardNames = fileName
       user.cardNames = downloadFileName
-      // user.OrderCreationId="PENDING";
-      //             user.RazorpayPaymentId="PENDING";
-      //             user.RazorpayOrderId="PENDING";
 
       user.text = Details
       user.cardId = id
@@ -1626,9 +1454,8 @@ export class CardService {
       user.noOfPages = details.noOfPages
       user.description = details.description
       const createdUser = this.usersCardRepository.create(user)
-      //console.log({createdUser})
-
-      return this.usersCardRepository.save(createdUser)
+      const data = await this.usersCardRepository.save(createdUser)
+      return { data, status: 'Success', message: 'Successfully Created' }
     }
     let id = cardDto.id.toString()
     let userid = cardDto.userId
@@ -1647,7 +1474,7 @@ export class CardService {
       for (k = 0; k < details.noOfPages; k++) {
         image = await Jimp.read(resolve('src', 'card1', 'assets', details.cardCategory, details.Caption[k].previewPage))
         const secondPageCaption1 = (await details.Caption[1].Caption[0]?.y) ?? ''
-        const secondPageCaption2 = (await details.Caption[1].Caption[3]?.y) ?? ''
+        const secondPageCaption2 = (await details.Caption[1].Caption[4]?.y) ?? ''
 
         let y_value = 0
 
@@ -1674,8 +1501,8 @@ export class CardService {
             let text
             if (
               k === 0 ||
-              (i === 0 && k === 1) ||
-              (i === 3 && k === 1) ||
+              (i === 1 && k === 1) ||
+              (i === 4 && k === 1) ||
               (i === 0 && k === 2) ||
               (i === 3 && k === 2) ||
               (i === 6 && k === 2) ||
@@ -1725,13 +1552,18 @@ export class CardService {
                 if (i === 0 && e === 0) {
                   y_value = y_value
                 }
-                if (i === 3 && e === 0) {
+                if (i === 1 && e === 0) {
+                  // space = singleLineHeight + spaceBetweenLines * 12
+                  // y_value = y_value + space
+                  y_value = y_value + 700
+                }
+                if (i === 4 && e === 0) {
                   // space = singleLineHeight + spaceBetweenLines * 12
                   // y_value = y_value + space
                   y_value = secondPageCaption2
-                } else if ((i === 1 || i === 4) && e === 0) {
-                  y_value = y_value + singleLineHeight + 40
                 } else if ((i === 2 || i === 5) && e === 0) {
+                  y_value = y_value + singleLineHeight + 40
+                } else if ((i === 3 || i === 6) && e === 0) {
                   y_value = y_value + singleLineHeight + 20
                 } else if (e != 0) {
                   y_value = y_value + singleLineHeight
@@ -1848,7 +1680,7 @@ export class CardService {
       for (let j = 0; j < details.noOfPages; j++) {
         image = await Jimp.read(resolve('src', 'card1', 'assets', details.cardCategory, details.Caption[j].page))
         const secondPageCaption1 = (await details.Caption[1].Caption[0]?.y) ?? ''
-        const secondPageCaption2 = (await details.Caption[1].Caption[3]?.y) ?? ''
+        const secondPageCaption2 = (await details.Caption[1].Caption[4]?.y) ?? ''
 
         let y_value = 0
 
@@ -1875,8 +1707,8 @@ export class CardService {
             let text
             if (
               j === 0 ||
-              (i === 0 && j === 1) ||
-              (i === 3 && j === 1) ||
+              (i === 1 && j === 1) ||
+              (i === 4 && j === 1) ||
               (i === 0 && j === 2) ||
               (i === 3 && j === 2) ||
               (i === 6 && j === 2) ||
@@ -1924,13 +1756,14 @@ export class CardService {
                 if (i === 0 && e === 0) {
                   y_value = y_value
                 }
-                if (i === 3 && e === 0) {
-                  // space = singleLineHeight + spaceBetweenLines * 12
-                  // y_value = y_value + space
+                if (i === 1 && e === 0) {
+                  y_value = y_value + 700
+                }
+                if (i === 4 && e === 0) {
                   y_value = secondPageCaption2
-                } else if ((i === 1 || i === 4) && e === 0) {
-                  y_value = y_value + singleLineHeight + 40
                 } else if ((i === 2 || i === 5) && e === 0) {
+                  y_value = y_value + singleLineHeight + 40
+                } else if ((i === 3 || i === 6) && e === 0) {
                   y_value = y_value + singleLineHeight + 20
                 } else if (e != 0) {
                   y_value = y_value + singleLineHeight
@@ -2056,9 +1889,8 @@ export class CardService {
       user.noOfPages = details.noOfPages
       user.description = details.description
       const createdUser = this.usersCardRepository.create(user)
-      //console.log({createdUser})
-
-      return this.usersCardRepository.save(createdUser)
+      const data = await this.usersCardRepository.save(createdUser)
+      return { data, status: 'Success', message: 'Successfully Created' }
     }
     let id = cardDto.id.toString()
     let userid = cardDto.userId
@@ -2107,8 +1939,8 @@ export class CardService {
             let text
             if (
               k === 0 ||
-              (i === 0 && k === 1) ||
-              (i === 4 && k === 1) ||
+              (i === 1 && k === 1) ||
+              (i === 5 && k === 1) ||
               (i === 0 && k === 2) ||
               (i === 3 && k === 2) ||
               (i === 6 && k === 2) ||
@@ -2182,16 +2014,19 @@ export class CardService {
                 let space
 
                 if (i === 0 && e === 0) {
-                  y_value = y_value
-                }
-                if ((i === 3 || i === 4) && e === 0) {
-                  space = singleLineHeight + spaceBetweenLines * 4
-                  y_value = y_value + space
-                } else if ((i === 1 || i === 5) && e === 0) {
+                  y_value = y_value - 400
+                } else if (i === 1 && e === 0) {
                   space = singleLineHeight + spaceBetweenLines * 7
+                  y_value = y_value + space + 100
+                }
+                if ((i === 3 || i === 7) && e === 0) {
+                  space = singleLineHeight + spaceBetweenLines
+                  y_value = y_value + space
+                } else if ((i === 4 || i === 5) && e === 0) {
+                  space = singleLineHeight + spaceBetweenLines * 5
                   y_value = y_value + space
                 } else if ((i === 2 || i === 6) && e === 0) {
-                  space = singleLineHeight + spaceBetweenLines
+                  space = singleLineHeight + spaceBetweenLines * 7
                   y_value = y_value + space
                 } else if (e != 0) {
                   y_value = y_value + singleLineHeight
@@ -2215,7 +2050,7 @@ export class CardService {
                 let space3
 
                 if (i === 0 && e === 0) {
-                  yValue = yValue
+                  yValue = yValue - 50
                 }
 
                 if ((i === 3 || i === 6 || i === 9 || i === 12) && e === 0) {
@@ -2322,8 +2157,8 @@ export class CardService {
             let text
             if (
               j === 0 ||
-              (i === 0 && j === 1) ||
-              (i === 4 && j === 1) ||
+              (i === 1 && j === 1) ||
+              (i === 5 && j === 1) ||
               (i === 0 && j === 2) ||
               (i === 3 && j === 2) ||
               (i === 6 && j === 2) ||
@@ -2395,21 +2230,23 @@ export class CardService {
                 let space
 
                 if (i === 0 && e === 0) {
-                  y_value = y_value
-                }
-                if ((i === 3 || i === 4) && e === 0) {
-                  space = singleLineHeight + spaceBetweenLines * 4
-                  y_value = y_value + space
-                } else if ((i === 1 || i === 5) && e === 0) {
+                  y_value = y_value - 400
+                } else if (i === 1 && e === 0) {
                   space = singleLineHeight + spaceBetweenLines * 7
+                  y_value = y_value + space + 100
+                }
+                if ((i === 3 || i === 7) && e === 0) {
+                  space = singleLineHeight + spaceBetweenLines
+                  y_value = y_value + space
+                } else if ((i === 4 || i === 5) && e === 0) {
+                  space = singleLineHeight + spaceBetweenLines * 5
                   y_value = y_value + space
                 } else if ((i === 2 || i === 6) && e === 0) {
-                  space = singleLineHeight + spaceBetweenLines
+                  space = singleLineHeight + spaceBetweenLines * 7
                   y_value = y_value + space
                 } else if (e != 0) {
                   y_value = y_value + singleLineHeight
                 }
-
                 await image.print(
                   font,
 
@@ -2428,7 +2265,7 @@ export class CardService {
                 let space3
 
                 if (i === 0 && e === 0) {
-                  yValue = yValue
+                  yValue = yValue - 50
                 }
 
                 if ((i === 3 || i === 6 || i === 9 || i === 12) && e === 0) {
@@ -2517,9 +2354,8 @@ export class CardService {
       user.noOfPages = details.noOfPages
       user.description = details.description
       const createdUser = this.usersCardRepository.create(user)
-      //console.log({createdUser})
-
-      return this.usersCardRepository.save(createdUser)
+      const data = await this.usersCardRepository.save(createdUser)
+      return { data, status: 'Success', message: 'Successfully Created' }
     }
     let id = cardDto.id.toString()
     let userid = cardDto.userId
@@ -2850,8 +2686,8 @@ export class CardService {
       user.noOfPages = details.noOfPages
       user.description = details.description
       const createdUser = this.usersCardRepository.create(user)
-
-      return this.usersCardRepository.save(createdUser)
+      const data = await this.usersCardRepository.save(createdUser)
+      return { data, status: 'Success', message: 'Successfully Created' }
     }
     let id = cardDto.id.toString()
     let userid = cardDto.userId
@@ -3130,9 +2966,8 @@ export class CardService {
       user.noOfPages = details.noOfPages
       user.description = details.description
       const createdUser = this.usersCardRepository.create(user)
-      //console.log({createdUser})
-
-      return this.usersCardRepository.save(createdUser)
+      const data = await this.usersCardRepository.save(createdUser)
+      return { data, status: 'Success', message: 'Successfully Created' }
     }
     let id = cardDto.id.toString()
     let userid = cardDto.userId
@@ -3459,8 +3294,8 @@ export class CardService {
       user.noOfPages = details.noOfPages
       user.description = details.description
       const createdUser = this.usersCardRepository.create(user)
-
-      return this.usersCardRepository.save(createdUser)
+      const data = await this.usersCardRepository.save(createdUser)
+      return { data, status: 'Success', message: 'Successfully Created' }
     }
     let id = cardDto.id.toString()
     let userid = cardDto.userId
@@ -4084,16 +3919,16 @@ export class CardService {
 
                 if ((i === 2 || i === 4 || i === 6 || i === 8 || i === 10) && e === 0) {
                   const singleLineHeight2 = Jimp.measureTextHeight(font, 'a', textWidth)
-                  let space = singleLineHeight2 + spaceBetweenLines * 6
+                  let space = singleLineHeight2 + spaceBetweenLines * 4
                   yValue1 = yValue1 + space
                 } else if ((i === 1 || i === 3 || i === 5 || i === 7 || i === 9) && e === 0) {
                   const singleLineHeight2 = Jimp.measureTextHeight(font, 'a', textWidth)
-                  let space = singleLineHeight2 + spaceBetweenLines * 3
+                  let space = singleLineHeight2 + spaceBetweenLines * 4
                   yValue1 = yValue1 + space
                 } else if (i === 11 && e === 0) {
                   const singleLineHeight = Jimp.measureTextHeight(font, 'a', textWidth)
                   yValue1 = yValue1 + singleLineHeight + 20
-                } else if (i === 11 || i === 12 || i === 13 || i === 14 || e != 0) {
+                } else if (i === 12 || i === 13 || i === 14 || e != 0) {
                   const singleLineHeight = Jimp.measureTextHeight(font, 'a', textWidth)
                   yValue1 = yValue1 + singleLineHeight
                 }
@@ -4280,16 +4115,16 @@ export class CardService {
 
                 if ((i === 2 || i === 4 || i === 6 || i === 8 || i === 10) && e === 0) {
                   const singleLineHeight2 = Jimp.measureTextHeight(font, 'a', textWidth)
-                  let space = singleLineHeight2 + spaceBetweenLines * 6
+                  let space = singleLineHeight2 + spaceBetweenLines * 4
                   yValue1 = yValue1 + space
                 } else if ((i === 1 || i === 3 || i === 5 || i === 7 || i === 9) && e === 0) {
                   const singleLineHeight2 = Jimp.measureTextHeight(font, 'a', textWidth)
-                  let space = singleLineHeight2 + spaceBetweenLines * 3
+                  let space = singleLineHeight2 + spaceBetweenLines * 4
                   yValue1 = yValue1 + space
                 } else if (i === 11 && e === 0) {
                   const singleLineHeight = Jimp.measureTextHeight(font, 'a', textWidth)
                   yValue1 = yValue1 + singleLineHeight + 20
-                } else if (i === 11 || i === 12 || i === 13 || i === 14 || e != 0) {
+                } else if (i === 12 || i === 13 || i === 14 || e != 0) {
                   const singleLineHeight = Jimp.measureTextHeight(font, 'a', textWidth)
                   yValue1 = yValue1 + singleLineHeight
                 }
@@ -4335,9 +4170,8 @@ export class CardService {
       user.noOfPages = details.noOfPages
       user.description = details.description
       const createdUser = this.usersCardRepository.create(user)
-      //console.log({createdUser})
-
-      return this.usersCardRepository.save(createdUser)
+      const data = await this.usersCardRepository.save(createdUser)
+      return { data, status: 'Success', message: 'Successfully Created' }
     }
     let id = cardDto.id.toString()
     let userid = cardDto.userId
@@ -4740,8 +4574,8 @@ export class CardService {
       user.description = details.description
       const createdUser = this.usersCardRepository.create(user)
       //console.log({createdUser})
-
-      return this.usersCardRepository.save(createdUser)
+      const data = await this.usersCardRepository.save(createdUser)
+      return { data, status: 'Success', message: 'Successfully Created' }
     }
     let id = cardDto.id.toString()
     let userid = cardDto.userId
@@ -5175,9 +5009,8 @@ export class CardService {
       user.noOfPages = details.noOfPages
       user.description = details.description
       const createdUser = this.usersCardRepository.create(user)
-      //console.log({createdUser})
-
-      return this.usersCardRepository.save(createdUser)
+      const data = await this.usersCardRepository.save(createdUser)
+      return { data, status: 'Success', message: 'Successfully Created' }
     }
     let id = cardDto.id.toString()
     let userid = cardDto.userId
@@ -5196,11 +5029,7 @@ export class CardService {
 
       for (k = 0; k < details.noOfPages; k++) {
         image = await Jimp.read(resolve('src', 'card1', 'assets', details.cardCategory, details.Caption[k].previewPage))
-        const secondPageCaption1 = (await details.Caption[0].Caption[0]?.y) ?? ''
-
-        let y_value = 0
-
-        y_value = y_value + secondPageCaption1
+        let y_value = (await details.Caption[1].Caption[0]?.y) ?? ''
 
         const thirdPageCaption = (await details.Caption[2].Caption[0]?.y) ?? ''
         let yValue = thirdPageCaption
@@ -5293,7 +5122,7 @@ export class CardService {
                 let space
 
                 if (i === 0 && e === 0) {
-                  y_value = y_value - 150
+                  y_value = y_value
                 }
                 if ((i === 3 || i === 7) && e === 0) {
                   space = singleLineHeight + spaceBetweenLines * 2
@@ -5319,7 +5148,6 @@ export class CardService {
                   textWidth,
                   singleLineHeight
                 )
-                //y_value = y_value + space2
               } else if (k === 2) {
                 const singleLineHeight2 = Jimp.measureTextHeight(font, 'a', textWidth)
 
@@ -5405,7 +5233,7 @@ export class CardService {
 
       for (let j = 0; j < details.noOfPages; j++) {
         image = await Jimp.read(resolve('src', 'card1', 'assets', details.cardCategory, details.Caption[j].page))
-        const secondPageCaption1 = (await details.Caption[0].Caption[0]?.y) ?? ''
+        const secondPageCaption1 = (await details.Caption[1].Caption[0]?.y) ?? ''
 
         let y_value = 0
 
@@ -5499,7 +5327,7 @@ export class CardService {
                 let space
 
                 if (i === 0 && e === 0) {
-                  y_value = y_value - 150
+                  y_value = y_value
                 }
                 if ((i === 3 || i === 7) && e === 0) {
                   space = singleLineHeight + spaceBetweenLines * 2
@@ -6237,78 +6065,8 @@ export class CardService {
                 )
                 // y_value1 = y_value1 + space1
               }
-              // if (k === 1 && i === 1) {
-              //   const singleLineHeight2 = Jimp.measureTextHeight(font, 'a', textWidth)
-              //
-              //   let space1
-              //
-              //   space1 = singleLineHeight2 + spaceBetweenLines
-              //
-              //   await image.print(
-              //     font,
-              //
-              //     x,
-              //
-              //     y_value1,
-              //
-              //     { text: text[e], alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER, alignmentY: Jimp.VERTICAL_ALIGN_CENTER },
-              //     textWidth,
-              //     singleLineHeight
-              //   )
-              //   y_value1 = y_value1 + space1
-              // }
-              // if (k === 1 && (i === 2 || i === 3 || i === 4 || i === 5)) {
-              //   const singleLineHeight2 = Jimp.measureTextHeight(font, 'a', textWidth)
-              //
-              //   let space1
-              //
-              //   space1 = singleLineHeight2 + spaceBetweenLines * 3
-              //
-              //   await image.print(
-              //     font,
-              //
-              //     x,
-              //
-              //     y_value2,
-              //
-              //     { text: text[e], alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER, alignmentY: Jimp.VERTICAL_ALIGN_CENTER },
-              //     textWidth,
-              //     singleLineHeight
-              //   )
-              //   y_value2 = y_value2 + space1
-              // }
-              //
-              // if (k === 1 && (i === 7 || i === 6)) {
-              //   const singleLineHeight2 = Jimp.measureTextHeight(font, 'a', textWidth)
-              //
-              //   let space1
-              //
-              //   space1 = singleLineHeight2 + spaceBetweenLines * 2
-              //
-              //   await image.print(
-              //     font,
-              //
-              //     x,
-              //
-              //     y_value3 + space1,
-              //
-              //     { text: text[e], alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER, alignmentY: Jimp.VERTICAL_ALIGN_CENTER },
-              //     textWidth,
-              //     singleLineHeight
-              //   )
-              //   y_value3 = y_value3 + space1
-              // }
-              if (k === 2) {
-                // const singleLineHeight2 = Jimp.measureTextHeight(font, 'a', textWidth)
-                //
-                // let space3
-                //
-                // if (i % 2 == 0) {
-                //   space3 = singleLineHeight2 + spaceBetweenLines * 3
-                // } else if (i % 2 != 0) {
-                //   space3 = singleLineHeight2 + spaceBetweenLines * 6
-                // }
 
+              if (k === 2) {
                 if (i === 0 && e === 0) {
                   yValue1 = yValue1
                 }
@@ -6598,9 +6356,8 @@ export class CardService {
       user.noOfPages = details.noOfPages
       user.description = details.description
       const createdUser = this.usersCardRepository.create(user)
-      //console.log({createdUser})
-
-      return this.usersCardRepository.save(createdUser)
+      const data = await this.usersCardRepository.save(createdUser)
+      return { data, status: 'Success', message: 'Successfully Created' }
     }
     let id = cardDto.id.toString()
     let userid = cardDto.userId
@@ -7054,8 +6811,8 @@ export class CardService {
       user.noOfPages = details.noOfPages
       user.description = details.description
       const createdUser = this.usersCardRepository.create(user)
-
-      return this.usersCardRepository.save(createdUser)
+      const data = await this.usersCardRepository.save(createdUser)
+      return { data, status: 'Success', message: 'Successfully Created' }
     }
     let id = cardDto.id.toString()
     let userid = cardDto.userId
@@ -7813,8 +7570,8 @@ export class CardService {
       user.noOfPages = details.noOfPages
       user.description = details.description
       const createdUser = this.usersCardRepository.create(user)
-
-      return this.usersCardRepository.save(createdUser)
+      const data = await this.usersCardRepository.save(createdUser)
+      return { data, status: 'Success', message: 'Successfully Created' }
     }
     let id = cardDto.id.toString()
     let userid = cardDto.userId
@@ -8557,7 +8314,8 @@ export class CardService {
       user.description = details.description
       const createdUser = this.usersCardRepository.create(user)
 
-      return this.usersCardRepository.save(createdUser)
+      const data = await this.usersCardRepository.save(createdUser)
+      return { data, status: 'Success', message: 'Successfully Created' }
     }
     let id = cardDto.id.toString()
     let userid = cardDto.userId
@@ -9026,8 +8784,328 @@ export class CardService {
       user.noOfPages = details.noOfPages
       user.description = details.description
       const createdUser = this.usersCardRepository.create(user)
+      const data = await this.usersCardRepository.save(createdUser)
+      return { data, status: 'Success', message: 'Successfully Created' }
+    }
+    let id = cardDto.id.toString()
+    let userid = cardDto.userId
+    let email = cardDto.email
 
-      return this.usersCardRepository.save(createdUser)
+    return await generatePreviewImage(id, cardDto.details, userid, email, cardDto.maxCharsPerLine)
+  }
+
+  async WeddingCard15(@Body() cardDto: CardDto) {
+    const generatePreviewImage = async (id, Details, userid, email, maxCharsPerLine) => {
+      let fileName = []
+      var image
+      const details = await this.cardetailsService.find(id)
+
+      let k
+
+      for (k = 0; k < details.noOfPages; k++) {
+        image = await Jimp.read(resolve('src', 'card1', 'assets', details.cardCategory, details.Caption[k].previewPage))
+        const capt2 = (await details.Caption[1].Caption[0]?.y) ?? ''
+        const capt3 = (await details.Caption[1].Caption[3]?.y) ?? ''
+        let y_value = capt2
+        const capt1 = await details.Caption[0].Caption[0]
+
+        let y = capt1.y
+
+        let yValue = capt3
+        for (let i = 0; i < details.Caption[k].Caption.length; i++) {
+          const capt = await details.Caption[k].Caption[i]
+
+          let jimpfont = resolve(__dirname, 'fonts', capt.font)
+          const font = await Jimp.loadFont(jimpfont)
+
+          let data = Object.values(Details[k])
+
+          if (data[i]) {
+            let a: any
+            a = data[i]
+            a = a?.replace(/\s/g, '') ?? ''
+
+            let text
+            if (k === 0 || (i === 0 && k === 1) || (i === 1 && k === 1)) {
+              if (a.length > maxCharsPerLine - 20) {
+                text = breakTextToLines(data[i] as string, maxCharsPerLine - 20, 1)
+              } else {
+                text = [data[i]]
+              }
+            } else {
+              if (a.length > maxCharsPerLine) {
+                text = breakTextToLines(data[i] as string, maxCharsPerLine, 1)
+              } else {
+                text = [data[i]]
+              }
+            }
+
+            let textWidth = Jimp.measureText(font, text)
+            const singleLineHeight = Jimp.measureTextHeight(font, 'a', textWidth)
+            const allTextHeight = singleLineHeight * text.length
+            let spaceBetweenLines = 10
+
+            let space1 = singleLineHeight + spaceBetweenLines
+
+            for (let e = 0; e < text.length; e++) {
+              textWidth = Jimp.measureText(font, text[e])
+
+              let x = (image.bitmap.width - textWidth) / 2
+
+              let space = singleLineHeight * e + spaceBetweenLines * e
+
+              if (k == 0) {
+                textWidth = Jimp.measureText(font, text[e])
+
+                let x = (image.bitmap.width - textWidth) / 2
+
+                if (i === 0 && e === 0) {
+                  y = y
+                } else if (i === 1 && e === 0) {
+                  const singleLineHeight = Jimp.measureTextHeight(font, 'a', textWidth)
+                  let space = singleLineHeight + spaceBetweenLines * 12
+
+                  y = y + space
+                } else if (i === 2 && e === 0) {
+                  const singleLineHeight = Jimp.measureTextHeight(font, 'a', textWidth)
+                  let space = singleLineHeight + spaceBetweenLines * 5
+                  y = y + space
+                } else if (e != 0) {
+                  const singleLineHeight = Jimp.measureTextHeight(font, 'a', textWidth)
+
+                  y = y + singleLineHeight
+                }
+
+                await image.print(
+                  font,
+
+                  x,
+
+                  y,
+
+                  { text: text[e], alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER, alignmentY: Jimp.VERTICAL_ALIGN_CENTER },
+                  textWidth,
+                  singleLineHeight
+                )
+                // y = y + space1
+              } else if (k == 1) {
+                if (i === 0 && e === 0) {
+                  y_value = y_value
+                }
+                if (i === 1 && e === 0) {
+                  const singleLineHeight = Jimp.measureTextHeight(font, 'a', textWidth)
+                  let space = singleLineHeight + spaceBetweenLines * 2
+                  y_value = y_value + space + 80
+                }
+                if (i === 2 && e === 0) {
+                  const singleLineHeight = Jimp.measureTextHeight(font, 'a', textWidth)
+                  let space = singleLineHeight + spaceBetweenLines
+                  y_value = y_value + space
+                }
+                // if (i === 2 && e === 0) {
+                //   const singleLineHeight = Jimp.measureTextHeight(font, 'a', textWidth)
+                //   let space = singleLineHeight + spaceBetweenLines * 2
+                //   y_value = y_value + space
+                // }
+                if (i === 3 && e === 0) {
+                  const singleLineHeight = Jimp.measureTextHeight(font, 'a', textWidth)
+                  let space = singleLineHeight + spaceBetweenLines
+                  y_value = y_value + space + 100
+                }
+                if ((i === 4 || i === 5) && e === 0) {
+                  const singleLineHeight = Jimp.measureTextHeight(font, 'a', textWidth)
+                  let space = singleLineHeight + spaceBetweenLines
+                  y_value = y_value + space
+                } else if (e != 0) {
+                  const singleLineHeight = Jimp.measureTextHeight(font, 'a', textWidth)
+
+                  y_value = y_value + singleLineHeight
+                }
+
+                await image.print(
+                  font,
+
+                  x,
+
+                  y_value,
+
+                  { text: text[e], alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER, alignmentY: Jimp.VERTICAL_ALIGN_CENTER },
+                  textWidth,
+                  singleLineHeight
+                )
+              }
+            }
+          } else {
+          }
+        }
+        const newFileName = `${details.Caption[k].previewPage.replace(
+          extname(details.Caption[k].previewPage),
+          ''
+        )}-${Date.now()}${extname(details.Caption[k].previewPage)}`
+
+        await image.writeAsync(resolve('src', 'card1', 'generated', details.cardCategory, newFileName))
+
+        fileName.push(newFileName)
+      }
+
+      let downloadFileName = []
+
+      for (let j = 0; j < details.noOfPages; j++) {
+        image = await Jimp.read(resolve('src', 'card1', 'assets', details.cardCategory, details.Caption[j].page))
+        const capt2 = (await details.Caption[1].Caption[0]?.y) ?? ''
+        const capt3 = (await details.Caption[1].Caption[3]?.y) ?? ''
+        let y_value = capt2
+        const capt1 = await details.Caption[0].Caption[0]
+
+        let y = capt1.y
+
+        let yValue = capt3
+        for (let i = 0; i < details.Caption[j].Caption.length; i++) {
+          const capt = await details.Caption[j].Caption[i]
+
+          let jimpfont = resolve(__dirname, 'fonts', capt.font)
+          const font = await Jimp.loadFont(jimpfont)
+          let data = Object.values(Details[j])
+
+          if (data[i]) {
+            let a: any
+            a = data[i]
+            a = a?.replace(/\s/g, '') ?? ''
+
+            let text
+            if (j === 0 || (i === 0 && j === 1) || (i === 1 && j === 1)) {
+              if (a.length > maxCharsPerLine - 20) {
+                text = breakTextToLines(data[i] as string, maxCharsPerLine - 20, 1)
+              } else {
+                text = [data[i]]
+              }
+            } else {
+              if (a.length > maxCharsPerLine) {
+                text = breakTextToLines(data[i] as string, maxCharsPerLine, 1)
+              } else {
+                text = [data[i]]
+              }
+            }
+
+            let textWidth = Jimp.measureText(font, text)
+            const singleLineHeight = Jimp.measureTextHeight(font, 'a', textWidth)
+            const allTextHeight = singleLineHeight * text.length
+            let spaceBetweenLines = 10
+
+            for (let e = 0; e < text.length; e++) {
+              textWidth = Jimp.measureText(font, text[e])
+
+              let x = (image.bitmap.width - textWidth) / 2
+
+              let space = singleLineHeight * e + spaceBetweenLines * e
+
+              if (j == 0) {
+                textWidth = Jimp.measureText(font, text[e])
+
+                let x = (image.bitmap.width - textWidth) / 2
+
+                if (i === 0 && e === 0) {
+                  y = y
+                } else if (i === 1 && e === 0) {
+                  const singleLineHeight = Jimp.measureTextHeight(font, 'a', textWidth)
+                  let space = singleLineHeight + spaceBetweenLines * 12
+
+                  y = y + space
+                } else if (i === 2 && e === 0) {
+                  const singleLineHeight = Jimp.measureTextHeight(font, 'a', textWidth)
+                  let space = singleLineHeight + spaceBetweenLines * 5
+                  y = y + space
+                } else if (e != 0) {
+                  const singleLineHeight = Jimp.measureTextHeight(font, 'a', textWidth)
+
+                  y = y + singleLineHeight
+                }
+
+                await image.print(
+                  font,
+
+                  x,
+
+                  y,
+
+                  { text: text[e], alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER, alignmentY: Jimp.VERTICAL_ALIGN_CENTER },
+                  textWidth,
+                  singleLineHeight
+                )
+                // y = y + space1
+              } else if (j == 1) {
+                if (i === 0 && e === 0) {
+                  y_value = y_value
+                }
+                if (i === 1 && e === 0) {
+                  const singleLineHeight = Jimp.measureTextHeight(font, 'a', textWidth)
+                  let space = singleLineHeight + spaceBetweenLines * 2
+                  y_value = y_value + space + 80
+                }
+                if (i === 2 && e === 0) {
+                  const singleLineHeight = Jimp.measureTextHeight(font, 'a', textWidth)
+                  let space = singleLineHeight + spaceBetweenLines
+                  y_value = y_value + space
+                }
+
+                if (i === 3 && e === 0) {
+                  const singleLineHeight = Jimp.measureTextHeight(font, 'a', textWidth)
+                  let space = singleLineHeight + spaceBetweenLines
+                  y_value = y_value + space + 100
+                }
+                if ((i === 4 || i === 5) && e === 0) {
+                  const singleLineHeight = Jimp.measureTextHeight(font, 'a', textWidth)
+                  let space = singleLineHeight + spaceBetweenLines
+                  y_value = y_value + space
+                } else if (e != 0) {
+                  const singleLineHeight = Jimp.measureTextHeight(font, 'a', textWidth)
+
+                  y_value = y_value + singleLineHeight
+                }
+
+                await image.print(
+                  font,
+
+                  x,
+
+                  y_value,
+
+                  { text: text[e], alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER, alignmentY: Jimp.VERTICAL_ALIGN_CENTER },
+                  textWidth,
+                  singleLineHeight
+                )
+              }
+            }
+            // console.log({b})
+          } else {
+          }
+        }
+        const newFileName = `${details.Caption[j].page.replace(
+          extname(details.Caption[j].page),
+          ''
+        )}-${Date.now()}${extname(details.Caption[j].page)}`
+
+        await image.writeAsync(resolve('src', 'card1', 'generated', details.cardCategory, newFileName))
+
+        downloadFileName.push(newFileName)
+      }
+
+      const user = new UserCardEntity()
+      user.userId = userid
+      user.email = email
+      user.cardCategory = details.cardCategory
+      user.previewCardNames = fileName
+      user.cardNames = downloadFileName
+
+      user.text = Details
+      user.cardId = id
+      user.cardSalePrice = details.cardSalePrice
+      user.cardTotalPrice = details.cardTotalPrice
+      user.noOfPages = details.noOfPages
+      user.description = details.description
+      const createdUser = this.usersCardRepository.create(user)
+      const data = await this.usersCardRepository.save(createdUser)
+      return { data, status: 'Success', message: 'Successfully Created' }
     }
     let id = cardDto.id.toString()
     let userid = cardDto.userId
@@ -9192,7 +9270,8 @@ export class CardService {
       user.description = details.description
       const createdUser = this.usersCardRepository.create(user)
 
-      return this.usersCardRepository.save(createdUser)
+      const data = await this.usersCardRepository.save(createdUser)
+      return { data, status: 'Success', message: 'Successfully Created' }
     }
     let id = cardDto.id.toString()
     let userid = cardDto.userId
@@ -9358,7 +9437,8 @@ export class CardService {
       user.description = details.description
       const createdUser = this.usersCardRepository.create(user)
 
-      return this.usersCardRepository.save(createdUser)
+      const data = await this.usersCardRepository.save(createdUser)
+      return { data, status: 'Success', message: 'Successfully Created' }
     }
     let id = cardDto.id.toString()
     let userid = cardDto.userId
@@ -9523,8 +9603,8 @@ export class CardService {
       user.noOfPages = details.noOfPages
       user.description = details.description
       const createdUser = this.usersCardRepository.create(user)
-
-      return this.usersCardRepository.save(createdUser)
+      const data = await this.usersCardRepository.save(createdUser)
+      return { data, status: 'Success', message: 'Successfully Created' }
     }
     let id = cardDto.id.toString()
     let userid = cardDto.userId
@@ -9688,8 +9768,8 @@ export class CardService {
       user.noOfPages = details.noOfPages
       user.description = details.description
       const createdUser = this.usersCardRepository.create(user)
-
-      return this.usersCardRepository.save(createdUser)
+      const data = await this.usersCardRepository.save(createdUser)
+      return { data, status: 'Success', message: 'Successfully Created' }
     }
     let id = cardDto.id.toString()
     let userid = cardDto.userId
@@ -10013,7 +10093,8 @@ export class CardService {
       user.description = details.description
       const createdUser = this.usersCardRepository.create(user)
 
-      return this.usersCardRepository.save(createdUser)
+      const data = await this.usersCardRepository.save(createdUser)
+      return { data, status: 'Success', message: 'Successfully Created' }
     }
     let id = cardDto.id.toString()
     let userid = cardDto.userId
@@ -10173,7 +10254,8 @@ export class CardService {
       user.description = details.description
       const createdUser = this.usersCardRepository.create(user)
 
-      return this.usersCardRepository.save(createdUser)
+      const data = await this.usersCardRepository.save(createdUser)
+      return { data, status: 'Success', message: 'Successfully Created' }
     }
     let id = cardDto.id.toString()
     let userid = cardDto.userId
@@ -10383,12 +10465,13 @@ export class CardService {
       user.description = details.description
       const createdUser = this.usersCardRepository.create(user)
 
-      return this.usersCardRepository.save(createdUser)
+      const data = await this.usersCardRepository.save(createdUser)
+      return { data, status: 'Success', message: 'Successfully Created' }
     }
     let id = cardDto.id.toString()
     let userid = cardDto.userId
     let email = cardDto.email
-    console.log({ cardDto })
+
     return await generatePreviewImage(id, cardDto.details, userid, email, cardDto.maxCharsPerLine)
   }
   async EngagementCard1(@Body() cardDto: CardDto) {
@@ -10596,12 +10679,13 @@ export class CardService {
       user.description = details.description
       const createdUser = this.usersCardRepository.create(user)
 
-      return this.usersCardRepository.save(createdUser)
+      const data = await this.usersCardRepository.save(createdUser)
+      return { data, status: 'Success', message: 'Successfully Created' }
     }
     let id = cardDto.id.toString()
     let userid = cardDto.userId
     let email = cardDto.email
-    console.log({ cardDto })
+
     return await generatePreviewImage(id, cardDto.details, userid, email, cardDto.maxCharsPerLine)
   }
 
@@ -10782,12 +10866,13 @@ export class CardService {
       user.description = details.description
       const createdUser = this.usersCardRepository.create(user)
 
-      return this.usersCardRepository.save(createdUser)
+      const data = await this.usersCardRepository.save(createdUser)
+      return { data, status: 'Success', message: 'Successfully Created' }
     }
     let id = cardDto.id.toString()
     let userid = cardDto.userId
     let email = cardDto.email
-    console.log({ cardDto })
+
     return await generatePreviewImage(id, cardDto.details, userid, email, cardDto.maxCharsPerLine)
   }
 
@@ -10888,7 +10973,7 @@ export class CardService {
           let jimpfont = resolve(__dirname, 'fonts', capt.font)
           const font = await Jimp.loadFont(jimpfont)
           let data = Object.values(Details[j])
-          console.log(data[0])
+
           if (data[i]) {
             let a: any
             a = data[i]
@@ -10960,12 +11045,13 @@ export class CardService {
       user.description = details.description
       const createdUser = this.usersCardRepository.create(user)
 
-      return this.usersCardRepository.save(createdUser)
+      const data = await this.usersCardRepository.save(createdUser)
+      return { data, status: 'Success', message: 'Successfully Created' }
     }
     let id = cardDto.id.toString()
     let userid = cardDto.userId
     let email = cardDto.email
-    console.log({ cardDto })
+
     return await generatePreviewImage(id, cardDto.details, userid, email, cardDto.maxCharsPerLine)
   }
 
@@ -11023,7 +11109,7 @@ export class CardService {
               } else {
                 x_value = (image.bitmap.width - textWidth) / 1.25
               }
-              console.log(capt.x + 70)
+
               await image.print(
                 font,
 
@@ -11066,7 +11152,7 @@ export class CardService {
           let jimpfont = resolve(__dirname, 'fonts', capt.font)
           const font = await Jimp.loadFont(jimpfont)
           let data = Object.values(Details[j])
-          console.log(data[0])
+
           if (data[i]) {
             let a: any
             a = data[i]
@@ -11137,12 +11223,14 @@ export class CardService {
       user.description = details.description
       const createdUser = this.usersCardRepository.create(user)
 
-      return this.usersCardRepository.save(createdUser)
+      const data = await this.usersCardRepository.save(createdUser)
+
+      return { data, status: 'Success', message: 'Successfully Created' }
     }
     let id = cardDto.id.toString()
     let userid = cardDto.userId
     let email = cardDto.email
-    console.log({ cardDto })
+
     return await generatePreviewImage(id, cardDto.details, userid, email, cardDto.maxCharsPerLine)
   }
   async MissYouCard3(@Body() cardDto: CardDto) {
@@ -11322,7 +11410,8 @@ export class CardService {
       user.description = details.description
       const createdUser = this.usersCardRepository.create(user)
 
-      return this.usersCardRepository.save(createdUser)
+      const data = await this.usersCardRepository.save(createdUser)
+      return { data, status: 'Success', message: 'Successfully Created' }
     }
     let id = cardDto.id.toString()
     let userid = cardDto.userId
@@ -11483,7 +11572,8 @@ export class CardService {
       user.description = details.description
       const createdUser = this.usersCardRepository.create(user)
 
-      return this.usersCardRepository.save(createdUser)
+      const data = await this.usersCardRepository.save(createdUser)
+      return { data, status: 'Success', message: 'Successfully Created' }
     }
     let id = cardDto.id.toString()
     let userid = cardDto.userId
@@ -12538,7 +12628,8 @@ export class CardService {
       user.description = details.description
       const createdUser = this.usersCardRepository.create(user)
 
-      return this.usersCardRepository.save(createdUser)
+      const data = await this.usersCardRepository.save(createdUser)
+      return { data, status: 'Success', message: 'Successfully Created' }
     }
     let id = cardDto.id.toString()
     let userid = cardDto.userId
@@ -12785,7 +12876,8 @@ export class CardService {
       user.description = details.description
       const createdUser = this.usersCardRepository.create(user)
 
-      return this.usersCardRepository.save(createdUser)
+      const data = await this.usersCardRepository.save(createdUser)
+      return { data, status: 'Success', message: 'Successfully Created' }
     }
     let id = cardDto.id.toString()
     let userid = cardDto.userId
@@ -13035,7 +13127,8 @@ export class CardService {
       user.description = details.description
       const createdUser = this.usersCardRepository.create(user)
 
-      return this.usersCardRepository.save(createdUser)
+      const data = await this.usersCardRepository.save(createdUser)
+      return { data, status: 'Success', message: 'Successfully Created' }
     }
     let id = cardDto.id.toString()
     let userid = cardDto.userId
@@ -13296,7 +13389,8 @@ export class CardService {
       user.description = details.description
       const createdUser = this.usersCardRepository.create(user)
 
-      return this.usersCardRepository.save(createdUser)
+      const data = await this.usersCardRepository.save(createdUser)
+      return { data, status: 'Success', message: 'Successfully Created' }
     }
     let id = cardDto.id.toString()
     let userid = cardDto.userId
@@ -13715,7 +13809,8 @@ export class CardService {
       user.description = details.description
       const createdUser = this.usersCardRepository.create(user)
 
-      return this.usersCardRepository.save(createdUser)
+      const data = await this.usersCardRepository.save(createdUser)
+      return { data, status: 'Success', message: 'Successfully Created' }
     }
     let id = cardDto.id.toString()
     let userid = cardDto.userId
@@ -13944,7 +14039,8 @@ export class CardService {
       user.description = details.description
       const createdUser = this.usersCardRepository.create(user)
 
-      return this.usersCardRepository.save(createdUser)
+      const data = await this.usersCardRepository.save(createdUser)
+      return { data, status: 'Success', message: 'Successfully Created' }
     }
     let id = cardDto.id.toString()
     let userid = cardDto.userId

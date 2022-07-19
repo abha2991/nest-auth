@@ -17,7 +17,7 @@ const Card67 = () => {
   const { id: id2 } = id
 
   const { data: profile, status } = useProfileApi()
-
+  const [loading, setLoading] = useState(false)
   function useHover(styleOnHover, styleOnNotHover = {}) {
     const [style, setStyle] = React.useState(styleOnNotHover)
 
@@ -190,7 +190,7 @@ const Card67 = () => {
         _name4
       }
     ]
-
+    setLoading(true)
     const res = await fetch(`http://localhost:3001/api/card1/weddingcard13`, {
       method: 'POST',
       credentials: 'include',
@@ -208,7 +208,10 @@ const Card67 = () => {
 
     const card_data = await res.json()
 
-    navigate(`/preview?id=${card_data.id}`)
+    if ((card_data.status = 'Success')) {
+      setLoading(false)
+      navigate(`/preview?id=${card_data.data.id}`)
+    }
   }
 
   return (
@@ -608,6 +611,7 @@ const Card67 = () => {
         <button
           onClick={PostData}
           className="btn"
+          disabled={loading}
           style={{
             borderRadius: '50px',
             background: '#FF3767',
@@ -615,7 +619,9 @@ const Card67 = () => {
             padding: '10px 20px'
           }}
         >
-          Preview
+          {loading && <i className="fa fa-refresh fa-spin" style={{ marginRight: '5px' }} />}
+          {loading && <span>Loading...</span>}
+          {!loading && <span>Preview</span>}
         </button>
       </div>
 

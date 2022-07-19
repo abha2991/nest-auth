@@ -52,7 +52,7 @@ const DownloadCards = () => {
     loop: true,
     margin: 20,
     autoplay: true,
-    autoplayTimeout: 2000,
+    autoplayTimeout: 1000,
     autoplayHoverPause: true,
     dots: true,
     nav: false,
@@ -184,10 +184,10 @@ const DownloadCards = () => {
               &nbsp;Back
             </button>
 
-            <a href="#" style={{ textDecoration: 'none' }}>
-              <FontAwesomeIcon icon={faShareNodes} />
-              &nbsp;Share
-            </a>
+            {/*<a href="#" style={{ textDecoration: 'none' }}>*/}
+            {/*  <FontAwesomeIcon icon={faShareNodes} />*/}
+            {/*  &nbsp;Share*/}
+            {/*</a>*/}
           </div>
           {(cardData as any)?.noOfPages === 1 ? (
             (cardname as any)?.map((val: any, ind: number) => {

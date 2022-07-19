@@ -14,7 +14,7 @@ const Card40 = () => {
   const navigate = useNavigate()
   const id = useQueryParams()
   const { id: id2 } = id
-  console.log(id2)
+  const [loading, setLoading] = useState(false)
   const { data: profile, status } = useProfileApi()
 
   function useHover(styleOnHover, styleOnNotHover = {}) {
@@ -69,7 +69,7 @@ const Card40 = () => {
       { brideAndGroomName, date },
       { brideAndGroomName, dateAndTime, venue }
     ]
-
+    setLoading(true)
     const res = await fetch(`http://localhost:3001/api/card1/receptioncard2`, {
       method: 'POST',
       credentials: 'include',
@@ -89,7 +89,10 @@ const Card40 = () => {
 
     //setCardData(card_data.id)
 
-    navigate(`/preview?id=${card_data.id}`)
+    if ((card_data.status = 'Success')) {
+      setLoading(false)
+      navigate(`/preview?id=${card_data.data.id}`)
+    }
   }
 
   return (
@@ -204,7 +207,7 @@ const Card40 = () => {
 
                 <h6
                   data-bs-toggle="modal"
-                  data-bs-target="#id5"
+                  data-bs-target="#id4"
                   style={{
                     paddingTop: '10px',
                     maxWidth: '300px',
@@ -229,7 +232,7 @@ const Card40 = () => {
               let name = FirstPageData[index]
               let value = FirstPageData[index + 2]
 
-              console.log({ name, value })
+              console.log({ name, value, index })
 
               setFirstPageData({ ...firstPageData, [name]: [value] })
             }}
@@ -251,9 +254,9 @@ const Card40 = () => {
             id={`id${index + 3}`}
             onClick={() => {
               let name = SecondPageData[index]
-              let value = SecondPageData[index + 3]
+              let value = SecondPageData[index + 2]
 
-              console.log({ name, value })
+              console.log({ name, value, index })
 
               setSecondPageData({ ...secondPageData, [name]: [value] })
             }}
@@ -272,15 +275,17 @@ const Card40 = () => {
         <button
           onClick={PostData}
           className="btn"
+          disabled={loading}
           style={{
             borderRadius: '50px',
             background: '#FF3767',
             color: '#fff',
-            padding: '10px 20px',
-            margin: '20px'
+            padding: '10px 20px'
           }}
         >
-          Preview
+          {loading && <i className="fa fa-refresh fa-spin" style={{ marginRight: '5px' }} />}
+          {loading && <span>Loading...</span>}
+          {!loading && <span>Preview</span>}
         </button>
       </div>
 

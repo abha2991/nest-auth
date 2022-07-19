@@ -48,7 +48,7 @@ const HomeAdmin = lazy(() => import('./routes/adminpanel/Home/Home'))
 
 const RegisteredUsersList = lazy(() => import('./routes/adminpanel/Home/RegisteredUsersList'))
 const WeddingCards = lazy(() => import('./routes/adminpanel/Home/WeddingCards'))
-
+const UploadImage = lazy(() => import('./routes/adminpanel/Home/UploadImage'))
 const AnniversaryCards = lazy(() => import('./routes/adminpanel/Home/AnniversaryCards'))
 const BabyShowerCards = lazy(() => import('./routes/adminpanel/Home/BabyShowerCards'))
 const BirthdayCards = lazy(() => import('./routes/adminpanel/Home/BirthdayCards'))
@@ -91,6 +91,8 @@ const Card8 = lazy(() => import('./routes/Cards/Congratulations/Card8'))
 const Card9 = lazy(() => import('./routes/Cards/Congratulations/Card9'))
 const EditCard6 = lazy(() => import('./routes/Cards/Congratulations/EditCard6'))
 const EditCard7 = lazy(() => import('./routes/Cards/Congratulations/EditCard7'))
+const EditCard8 = lazy(() => import('./routes/Cards/Congratulations/EditCard8'))
+const EditCard9 = lazy(() => import('./routes/Cards/Congratulations/EditCard9'))
 
 // Anniversary Card
 
@@ -151,8 +153,11 @@ const EditCard35 = lazy(() => import('./routes/Cards/BabyShower/EditCard35'))
 const Card40 = lazy(() => import('./routes/Cards/Reception/Card40'))
 const EditCard40 = lazy(() => import('./routes/Cards/Reception/EditCard40'))
 const Card41 = lazy(() => import('./routes/Cards/Reception/Card41'))
+const EditCard41 = lazy(() => import('./routes/Cards/Reception/EditCard41'))
 const Card42 = lazy(() => import('./routes/Cards/Reception/Card42'))
+const EditCard42 = lazy(() => import('./routes/Cards/Reception/EditCard42'))
 const Card43 = lazy(() => import('./routes/Cards/Reception/Card43'))
+const EditCard43 = lazy(() => import('./routes/Cards/Reception/EditCard43'))
 
 // Birthday
 const Card44 = lazy(() => import('./routes/Cards/Birthday/Card44'))
@@ -192,6 +197,26 @@ const Card72 = lazy(() => import('./routes/Cards/Wedding/Card72'))
 const Card73 = lazy(() => import('./routes/Cards/Wedding/Card73'))
 const Card74 = lazy(() => import('./routes/Cards/Wedding/Card74'))
 const Card75 = lazy(() => import('./routes/Cards/Wedding/Card75'))
+const Card77 = lazy(() => import('./routes/Cards/Wedding/Card77'))
+const Card78 = lazy(() => import('./routes/Cards/Wedding/Card78'))
+const Card79 = lazy(() => import('./routes/Cards/Wedding/Card79'))
+const Card80 = lazy(() => import('./routes/Cards/Wedding/Card80'))
+const EditCard56 = lazy(() => import('./routes/Cards/Wedding/EditCard56'))
+const EditCard57 = lazy(() => import('./routes/Cards/Wedding/EditCard57'))
+const EditCard59 = lazy(() => import('./routes/Cards/Wedding/EditCard59'))
+const EditCard60 = lazy(() => import('./routes/Cards/Wedding/EditCard60'))
+const EditCard62 = lazy(() => import('./routes/Cards/Wedding/EditCard62'))
+const EditCard63 = lazy(() => import('./routes/Cards/Wedding/EditCard63'))
+const EditCard64 = lazy(() => import('./routes/Cards/Wedding/EditCard64'))
+const EditCard65 = lazy(() => import('./routes/Cards/Wedding/EditCard65'))
+const EditCard67 = lazy(() => import('./routes/Cards/Wedding/EditCard67'))
+const EditCard66 = lazy(() => import('./routes/Cards/Wedding/EditCard66'))
+const EditCard69 = lazy(() => import('./routes/Cards/Wedding/EditCard69'))
+const EditCard70 = lazy(() => import('./routes/Cards/Wedding/EditCard70'))
+const EditCard71 = lazy(() => import('./routes/Cards/Wedding/EditCard71'))
+const EditCard72 = lazy(() => import('./routes/Cards/Wedding/EditCard72'))
+const EditCard73 = lazy(() => import('./routes/Cards/Wedding/EditCard73'))
+const EditCard74 = lazy(() => import('./routes/Cards/Wedding/EditCard74'))
 // import Purchased from './routes/Purchased'
 // import Drafts from './routes/DownloadCards'
 
@@ -237,7 +262,7 @@ const App: FC = () => {
           <Route path="home-admin" element={<HomeAdmin />} />
           <Route path="registered-users" element={<RegisteredUsersList />} />
           <Route path="wedding-cards" element={<WeddingCards />} />
-
+          <Route path="upload" element={<UploadImage />} />
           <Route path="admin-login" element={<AdminLogin />} />
           <Route path="engagement-cards" element={<EngagementCards />} />
           <Route path="update-card-details" element={<UpdateCardDetails />} />
@@ -338,6 +363,8 @@ const App: FC = () => {
         <Route path="card9" element={<Card9 />} />
         <Route path="/edit-card6" element={<EditCard6 />} />
         <Route path="/edit-card7" element={<EditCard7 />} />
+        <Route path="/edit-card8" element={<EditCard8 />} />
+        <Route path="/edit-card9" element={<EditCard9 />} />
 
         {/*Anniversary Card*/}
         <Route path="card12" element={<Card12 />} />
@@ -400,8 +427,11 @@ const App: FC = () => {
 
         <Route path="edit-card40" element={<EditCard40 />} />
         <Route path="card41" element={<Card41 />} />
+        <Route path="edit-card41" element={<EditCard41 />} />
         <Route path="card42" element={<Card42 />} />
+        <Route path="edit-card42" element={<EditCard42 />} />
         <Route path="card43" element={<Card43 />} />
+        <Route path="edit-card43" element={<EditCard43 />} />
 
         {/*Birthday*/}
         <Route path="card44" element={<Card44 />} />
@@ -441,6 +471,26 @@ const App: FC = () => {
         <Route path="card73" element={<Card73 />} />
         <Route path="card74" element={<Card74 />} />
         <Route path="card75" element={<Card75 />} />
+        <Route path="card77" element={<Card77 />} />
+        <Route path="card78" element={<Card78 />} />
+        <Route path="card79" element={<Card79 />} />
+        <Route path="card80" element={<Card80 />} />
+        <Route path="edit-card56" element={<EditCard56 />} />
+        <Route path="edit-card57" element={<EditCard57 />} />
+        <Route path="edit-card59" element={<EditCard59 />} />
+        <Route path="edit-card60" element={<EditCard60 />} />
+        <Route path="edit-card62" element={<EditCard62 />} />
+        <Route path="edit-card63" element={<EditCard63 />} />
+        <Route path="edit-card64" element={<EditCard64 />} />
+        <Route path="edit-card65" element={<EditCard65 />} />
+        <Route path="edit-card66" element={<EditCard66 />} />
+        <Route path="edit-card67" element={<EditCard67 />} />
+        <Route path="edit-card69" element={<EditCard69 />} />
+        <Route path="edit-card70" element={<EditCard70 />} />
+        <Route path="edit-card71" element={<EditCard71 />} />
+        <Route path="edit-card72" element={<EditCard72 />} />
+        <Route path="edit-card73" element={<EditCard73 />} />
+        <Route path="edit-card74" element={<EditCard74 />} />
       </Routes>
     </Suspense>
   )

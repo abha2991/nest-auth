@@ -16,7 +16,7 @@ const Card57 = () => {
   const navigate = useNavigate()
   const id = useQueryParams()
   const { id: id2 } = id
-  console.log(id2)
+  const [loading, setLoading] = useState(false)
   const { data: profile, status } = useProfileApi()
 
   function useHover(styleOnHover, styleOnNotHover = {}) {
@@ -39,6 +39,7 @@ const Card57 = () => {
     date: '21 JULY 2022'
   })
   const [secondPageData, setSecondPageData] = useState({
+    sonOrDaughter: 'SON',
     parents1: 'S/O Mr Ahmad Khan & Mrs Nazma Khan',
     grandParents1: 'GS/O Mr Eqbal Khan & Mrs Aarifa Khan',
     parents2: 'D/O Mr Salman Khan & Mrs Amina Khan',
@@ -73,10 +74,12 @@ const Card57 = () => {
   const FirstPageData = ['name1', 'name2', 'date', 'EMRAAN KHAN', 'AAISHA KHAN', '21 JULY 2022']
 
   const SecondPageData = [
+    'sonOrDaughter',
     'parents1',
     'grandParents1',
     'parents2',
     'grandParents2',
+    'SON',
     'S/O Mr Ahmad Khan & Mrs Nazma Khan',
     'GS/O Mr Eqbal Khan & Mrs Aarifa Khan',
     'D/O Mr Salman Khan & Mrs Amina Khan',
@@ -169,12 +172,13 @@ const Card57 = () => {
     let venue = fourthPageData?.venue?.toString() ?? ''
     let rsvp = fourthPageData?.rsvp?.toString() ?? ''
     let _rsvp = fourthPageData?._rsvp?.toString() ?? ''
-
+    let sonOrDaughter = secondPageData?.sonOrDaughter?.toString() ?? ''
+    let message = `WE INVITE YOU FOR WEDDING OF OUR ${sonOrDaughter}`
     let details
 
     details = [
       { name1, weds, name2, _date },
-      { name1, parents1, grandparents1, weds, name2, parents2, grandparents2 },
+      { message, name1, parents1, grandparents1, weds, name2, parents2, grandparents2 },
       {
         function1,
         date1,
@@ -194,7 +198,7 @@ const Card57 = () => {
       },
       { date, time, _venue, venue, rsvp, _rsvp }
     ]
-
+    setLoading(true)
     const res = await fetch(`http://localhost:3001/api/card1/weddingcard10`, {
       method: 'POST',
       credentials: 'include',
@@ -213,7 +217,10 @@ const Card57 = () => {
 
     const card_data = await res.json()
 
-    navigate(`/preview?id=${card_data.id}`)
+    if ((card_data.status = 'Success')) {
+      setLoading(false)
+      navigate(`/preview?id=${card_data.data.id}`)
+    }
   }
 
   return (
@@ -284,6 +291,19 @@ const Card57 = () => {
                   backgroundSize: '100% 100%'
                 }}
               >
+                <p
+                  style={{
+                    maxWidth: '350px',
+                    margin: 'auto',
+                    color: '#ffce0a',
+                    fontFamily: 'myriad-bold-bold'
+                  }}
+                >
+                  WE INVITE YOU FOR WEDDING OF OUR
+                  <span data-bs-toggle="modal" data-bs-target="#id4">
+                    {secondPageData.sonOrDaughter}
+                  </span>
+                </p>
                 <h3
                   data-bs-toggle="modal"
                   data-bs-target="#id1"
@@ -298,10 +318,10 @@ const Card57 = () => {
                   {firstPageData.name1}
                 </h3>
 
-                <h6 data-bs-toggle="modal" data-bs-target="#id4" style={{ maxWidth: '300px', margin: 'auto' }}>
+                <h6 data-bs-toggle="modal" data-bs-target="#id5" style={{ maxWidth: '300px', margin: 'auto' }}>
                   {secondPageData.parents1}
                 </h6>
-                <h6 data-bs-toggle="modal" data-bs-target="#id5" style={{ maxWidth: '300px', margin: 'auto' }}>
+                <h6 data-bs-toggle="modal" data-bs-target="#id6" style={{ maxWidth: '300px', margin: 'auto' }}>
                   {secondPageData.grandParents1}
                 </h6>
                 <h5 style={{ maxWidth: '300px', margin: 'auto', fontFamily: 'lucida-handwriting' }}>Weds</h5>
@@ -318,10 +338,10 @@ const Card57 = () => {
                 >
                   {firstPageData.name2}
                 </h3>
-                <h6 data-bs-toggle="modal" data-bs-target="#id6" style={{ maxWidth: '300px', margin: 'auto' }}>
+                <h6 data-bs-toggle="modal" data-bs-target="#id7" style={{ maxWidth: '300px', margin: 'auto' }}>
                   {secondPageData.parents2}
                 </h6>
-                <h6 data-bs-toggle="modal" data-bs-target="#id7" style={{ maxWidth: '300px', margin: 'auto' }}>
+                <h6 data-bs-toggle="modal" data-bs-target="#id8" style={{ maxWidth: '300px', margin: 'auto' }}>
                   {secondPageData.grandParents2}
                 </h6>
               </div>
@@ -343,7 +363,7 @@ const Card57 = () => {
               >
                 <h5
                   data-bs-toggle="modal"
-                  data-bs-target="#id8"
+                  data-bs-target="#id9"
                   style={{
                     maxWidth: '350px',
                     margin: 'auto',
@@ -355,15 +375,15 @@ const Card57 = () => {
                   {thirdPageData.function1}
                 </h5>
 
-                <h5 data-bs-toggle="modal" data-bs-target="#id9" style={{ maxWidth: '300px', margin: 'auto' }}>
+                <h5 data-bs-toggle="modal" data-bs-target="#id10" style={{ maxWidth: '300px', margin: 'auto' }}>
                   {thirdPageData.date1}
                 </h5>
-                <h5 data-bs-toggle="modal" data-bs-target="#id10" style={{ maxWidth: '300px', margin: 'auto' }}>
+                <h5 data-bs-toggle="modal" data-bs-target="#id11" style={{ maxWidth: '300px', margin: 'auto' }}>
                   {thirdPageData.venue1}
                 </h5>
                 <h5
                   data-bs-toggle="modal"
-                  data-bs-target="#id11"
+                  data-bs-target="#id12"
                   style={{
                     maxWidth: '350px',
                     margin: 'auto',
@@ -375,15 +395,15 @@ const Card57 = () => {
                   {thirdPageData.function2}
                 </h5>
 
-                <h5 data-bs-toggle="modal" data-bs-target="#id12" style={{ maxWidth: '300px', margin: 'auto' }}>
+                <h5 data-bs-toggle="modal" data-bs-target="#id13" style={{ maxWidth: '300px', margin: 'auto' }}>
                   {thirdPageData.date2}
                 </h5>
-                <h5 data-bs-toggle="modal" data-bs-target="#id13" style={{ maxWidth: '300px', margin: 'auto' }}>
+                <h5 data-bs-toggle="modal" data-bs-target="#id14" style={{ maxWidth: '300px', margin: 'auto' }}>
                   {thirdPageData.venue2}
                 </h5>
                 <h5
                   data-bs-toggle="modal"
-                  data-bs-target="#id14"
+                  data-bs-target="#id15"
                   style={{
                     maxWidth: '350px',
                     margin: 'auto',
@@ -397,21 +417,21 @@ const Card57 = () => {
 
                 <h5
                   data-bs-toggle="modal"
-                  data-bs-target="#id15"
+                  data-bs-target="#id16"
                   style={{ paddingTop: '20px', maxWidth: '300px', margin: 'auto', color: '#fff' }}
                 >
                   {thirdPageData.date3}
                 </h5>
                 <h5
                   data-bs-toggle="modal"
-                  data-bs-target="#id16"
+                  data-bs-target="#id17"
                   style={{ paddingTop: '10px', maxWidth: '300px', margin: 'auto', color: '#fff' }}
                 >
                   {thirdPageData.venue3}
                 </h5>
                 <h5
                   data-bs-toggle="modal"
-                  data-bs-target="#id17"
+                  data-bs-target="#id18"
                   style={{
                     maxWidth: '350px',
                     margin: 'auto',
@@ -423,16 +443,16 @@ const Card57 = () => {
                   {thirdPageData.function4}
                 </h5>
 
-                <h5 data-bs-toggle="modal" data-bs-target="#id18" style={{ maxWidth: '300px', margin: 'auto' }}>
+                <h5 data-bs-toggle="modal" data-bs-target="#id19" style={{ maxWidth: '300px', margin: 'auto' }}>
                   {thirdPageData.date4}
                 </h5>
-                <h5 data-bs-toggle="modal" data-bs-target="#id19" style={{ maxWidth: '300px', margin: 'auto' }}>
+                <h5 data-bs-toggle="modal" data-bs-target="#id20" style={{ maxWidth: '300px', margin: 'auto' }}>
                   {thirdPageData.venue4}
                 </h5>
                 <h5
                   className="card12-text"
                   data-bs-toggle="modal"
-                  data-bs-target="#id20"
+                  data-bs-target="#id21"
                   style={{
                     maxWidth: '350px',
                     margin: 'auto',
@@ -444,10 +464,10 @@ const Card57 = () => {
                   {thirdPageData.function5}
                 </h5>
 
-                <h5 data-bs-toggle="modal" data-bs-target="#id21" style={{ maxWidth: '300px', margin: 'auto' }}>
+                <h5 data-bs-toggle="modal" data-bs-target="#id22" style={{ maxWidth: '300px', margin: 'auto' }}>
                   {thirdPageData.date5}
                 </h5>
-                <h5 data-bs-toggle="modal" data-bs-target="#id22" style={{ maxWidth: '300px', margin: 'auto' }}>
+                <h5 data-bs-toggle="modal" data-bs-target="#id23" style={{ maxWidth: '300px', margin: 'auto' }}>
                   {thirdPageData.venue5}
                 </h5>
               </div>
@@ -469,7 +489,7 @@ const Card57 = () => {
               >
                 <h6
                   data-bs-toggle="modal"
-                  data-bs-target="#id23"
+                  data-bs-target="#id24"
                   style={{
                     maxWidth: '350px',
                     margin: 'auto'
@@ -479,19 +499,19 @@ const Card57 = () => {
                   {fourthPageData.date}
                 </h6>
 
-                <h6 data-bs-toggle="modal" data-bs-target="#id24" style={{ maxWidth: '300px', margin: 'auto' }}>
+                <h6 data-bs-toggle="modal" data-bs-target="#id25" style={{ maxWidth: '300px', margin: 'auto' }}>
                   {fourthPageData.time}
                 </h6>
                 <h6
                   data-bs-toggle="modal"
-                  data-bs-target="#id25"
+                  data-bs-target="#id26"
                   style={{ paddingTop: '40px', maxWidth: '300px', margin: 'auto' }}
                 >
                   {fourthPageData.venue}
                 </h6>
                 <h4
                   data-bs-toggle="modal"
-                  data-bs-target="#id26"
+                  data-bs-target="#id27"
                   style={{
                     paddingTop: '10px',
                     maxWidth: '300px',
@@ -504,7 +524,7 @@ const Card57 = () => {
                 </h4>
                 <h5
                   data-bs-toggle="modal"
-                  data-bs-target="#id27"
+                  data-bs-target="#id28"
                   style={{ paddingTop: '10px', maxWidth: '300px', margin: 'auto' }}
                 >
                   {fourthPageData._rsvp}
@@ -543,7 +563,7 @@ const Card57 = () => {
             id={`id${index + 4}`}
             onClick={() => {
               let name = SecondPageData[index]
-              let value = SecondPageData[index + 4]
+              let value = SecondPageData[index + 5]
 
               setSecondPageData({ ...secondPageData, [name]: [value] })
             }}
@@ -561,8 +581,8 @@ const Card57 = () => {
       {weddingThirdPageCardData?.map((val, index) => {
         return (
           <Modal
-            key={index + 8}
-            id={`id${index + 8}`}
+            key={index + 9}
+            id={`id${index + 9}`}
             onClick={() => {
               let name = ThirdPageData[index]
               let value = ThirdPageData[index + 15]
@@ -585,8 +605,8 @@ const Card57 = () => {
       {weddingFourthPageCardData?.map((val, index) => {
         return (
           <Modal
-            key={index + 23}
-            id={`id${index + 23}`}
+            key={index + 24}
+            id={`id${index + 24}`}
             onClick={() => {
               let name = FourthPageData[index]
               let value = FourthPageData[index + 5]
@@ -610,6 +630,7 @@ const Card57 = () => {
         <button
           onClick={PostData}
           className="btn"
+          disabled={loading}
           style={{
             borderRadius: '50px',
             background: '#FF3767',
@@ -617,7 +638,9 @@ const Card57 = () => {
             padding: '10px 20px'
           }}
         >
-          Preview
+          {loading && <i className="fa fa-refresh fa-spin" style={{ marginRight: '5px' }} />}
+          {loading && <span>Loading...</span>}
+          {!loading && <span>Preview</span>}
         </button>
       </div>
 

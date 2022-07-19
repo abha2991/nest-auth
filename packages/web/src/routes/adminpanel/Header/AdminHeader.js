@@ -202,6 +202,14 @@ function Header() {
                     </span>
                   </Link>
                 </li>
+                <li className={toggleState === 10 ? 'active' : null}>
+                  <Link to="/upload" className="span-underline">
+                    <i className="fa fa-table"></i> <span>Upload Banner</span>
+                    <span className="pull-right-container">
+                      <i className="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </Link>
+                </li>
                 {/*<li className={toggleState === 10 ? "active" : null}>*/}
                 {/*  <Link to="/usersquery" className="span-underline">*/}
                 {/*    <i className="fa fa-table"></i> <span>Users Query</span>*/}

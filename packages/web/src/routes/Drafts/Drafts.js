@@ -9,7 +9,7 @@ import card1 from '../img/WhatsApp Image 2022-05-12 at 12.15.41 PM.jpeg'
 import { useNavigate } from 'react-router'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeft, faShareNodes } from '@fortawesome/free-solid-svg-icons'
+import { faArrowLeft, faPen, faShareNodes } from '@fortawesome/free-solid-svg-icons'
 import Fancybox from '../../fancybox'
 import logo from '../img/image 7.png'
 import Loading from '../../components/Loading'
@@ -31,7 +31,7 @@ const Drafts = () => {
     })
 
     const data = await res.json()
-    //console.log(data)
+
     setCardData(data)
   }
   useEffect(() => {
@@ -42,6 +42,10 @@ const Drafts = () => {
 
   const preview = (id) => {
     navigate(`/preview?id=${id}`)
+  }
+
+  const editCard = (cardId, id) => {
+    navigate(`/edit-card${cardId}?id=${id}`)
   }
 
   const options2 = {
@@ -56,15 +60,6 @@ const Drafts = () => {
     dots: true,
     nav: false
   }
-
-  // cardData.map((val,ind)=>{
-  //   console.log(val.CardNames[0])
-  // })
-
-  // cardData?.map((val)=>{
-  //   console.log(val.CardNames
-  //   )
-  // })
 
   if (!cardData || status != 'success' || cardData.statusCode === 404) {
     return (
@@ -87,7 +82,6 @@ const Drafts = () => {
           <div className="row my-5">
             {cardData?.map((val, index) => {
               if (val.paymentStatus === 'PENDING') {
-                console.log(val.cardNames[0])
                 return (
                   <>
                     <div className="col-md-3">
@@ -97,19 +91,6 @@ const Drafts = () => {
                             src={'http://localhost:3001/generated/' + val.cardCategory + '/' + val.previewCardNames[0]}
                             className="img-fluid"
                           />
-                          {/*<div*/}
-                          {/*  style={{*/}
-                          {/*    position: 'absolute',*/}
-                          {/*    top: '45%',*/}
-                          {/*    left: 'auto',*/}
-                          {/*    right: 'auto',*/}
-                          {/*    width: '100%',*/}
-                          {/*    textAlign: 'center',*/}
-                          {/*    opacity: '0.2'*/}
-                          {/*  }}*/}
-                          {/*>*/}
-                          {/*  /!*<img src={logo} alt="logo" style={{ maxWidth: '150px', margin: 'auto', height: 'auto' }} />*!/*/}
-                          {/*</div>*/}
                         </a>
                         <div className="inner">
                           <div className="triangle-right"></div>
@@ -140,16 +121,11 @@ const Drafts = () => {
                               <FontAwesomeIcon icon={faArrowLeft} />
                               &nbsp;Back
                             </button>
-                            <a href="#" style={{ textDecoration: 'none' }}>
-                              <FontAwesomeIcon icon={faShareNodes} />
-                              &nbsp;Share
-                            </a>
                           </div>
                           <div className="modal-body">
                             <Fancybox>
                               {val.noOfPages === 1 ? (
                                 val.previewCardNames.map((card1, ind) => {
-                                  console.log({ card1 })
                                   return (
                                     <>
                                       <div className="item">
@@ -167,17 +143,6 @@ const Drafts = () => {
                                               margin: 'auto'
                                             }}
                                           />{' '}
-                                          {/*                               <div style={{*/}{' '}
-                                          {/*                                 position: "absolute",*/}{' '}
-                                          {/*                                 top: "45%",*/}{' '}
-                                          {/*                                 left: "auto",*/}{' '}
-                                          {/*                                 right: "auto",*/}{' '}
-                                          {/*                                 width: "100%",*/}{' '}
-                                          {/*                                 textAlign: "center",*/}{' '}
-                                          {/*                                 opacity: "0.2"*/}{' '}
-                                          {/*                               }}>*/}{' '}
-                                          {/*    <img src={logo} style={{ height:"auto",maxWidth: "120px", margin: "auto"}} alt="card"/>*/}
-                                          {/*</div>*/}
                                         </a>
                                       </div>
                                     </>
@@ -203,17 +168,6 @@ const Drafts = () => {
                                                 margin: 'auto'
                                               }}
                                             />{' '}
-                                            {/*                               <div style={{*/}{' '}
-                                            {/*                                 position: "absolute",*/}{' '}
-                                            {/*                                 top: "45%",*/}{' '}
-                                            {/*                                 left: "auto",*/}{' '}
-                                            {/*                                 right: "auto",*/}{' '}
-                                            {/*                                 width: "100%",*/}{' '}
-                                            {/*                                 textAlign: "center",*/}{' '}
-                                            {/*                                 opacity: "0.2"*/}{' '}
-                                            {/*                               }}>*/}{' '}
-                                            {/*    <img src={logo} style={{ height:"auto",maxWidth: "120px", margin: "auto"}} alt="card"/>*/}
-                                            {/*</div>*/}
                                           </a>
                                         </div>
                                       </>
@@ -232,24 +186,25 @@ const Drafts = () => {
                                 <del>₹{val.cardTotalPrice}</del>
                               </div>
                             </div>
-                            <div>
-                              {/*<a id="edit-card"*/}
-                              {/*   // href="./edit-card" onclick="window.location.href=this.href+'?id='+val;"*/}
-                              {/*    onClick={changeHref(1)}*/}
-                              {/*   style={{ background: "#FF3767", color: "#fff", borderRadius: "10px", textDecoration: "none", padding: "10px 20px" }}>Try This Card</a>*/}
+                            {/*<div>*/}
+                            {/* */}
 
+                            {/*  <button className="btn btn-primary" onClick={() => preview(val.id)}>*/}
+                            {/*    Pay And Download*/}
+                            {/*  </button>*/}
+                            {/*</div>*/}
+
+                            <div className="d-md-flex justify-content-center pay-btn my-5">
+                              <button className="btn btn-primary" onClick={() => editCard(val.cardId, val.id)}>
+                                Edit This Card
+                              </button>
+                            </div>
+                            <div className="d-md-flex justify-content-center pay-btn my-5">
                               <button className="btn btn-primary" onClick={() => preview(val.id)}>
                                 Pay And Download
                               </button>
                             </div>
                           </div>
-
-                          {/*        {casedetail.map((val,index)=>{*/}
-                          {/*            <div className="d-flex justify-content-between mt-5">*/}
-                          {/*    <h4>{val.CardName}</h4>*/}
-                          {/*     <h4>{val.CardCategory}</h4>*/}
-                          {/*</div>*/}
-                          {/*        })}*/}
                         </div>
                       </div>
                     </div>

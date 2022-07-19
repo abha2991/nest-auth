@@ -95,12 +95,8 @@ const Preview = () => {
   }
 
   const Pay = async (Price, cardId) => {
-    //console.log("in Preview")
-
     try {
       let result = await pay(Price, cardId)
-
-      //navigate('/download')
     } catch (e) {
       if (e.message) {
       }
@@ -137,10 +133,10 @@ const Preview = () => {
               <i className="fa fa-trash" aria-hidden="true"></i>
               &nbsp;Delete
             </button>
-            <a href="#" style={{ textDecoration: 'none' }}>
-              <FontAwesomeIcon icon={faShareNodes} />
-              &nbsp;Share
-            </a>
+            {/*<a href="#" style={{ textDecoration: 'none' }}>*/}
+            {/*  <FontAwesomeIcon icon={faShareNodes} />*/}
+            {/*  &nbsp;Share*/}
+            {/*</a>*/}
           </div>
           <div>
             <OwlCarousel className="owl-carousel owl-theme wedding-carousel" options={options}>
@@ -160,17 +156,6 @@ const Preview = () => {
                             margin: 'auto'
                           }}
                         />
-                        {/*<div style={{*/}
-                        {/*    position: "absolute",*/}
-                        {/*    top: "45%",*/}
-                        {/*    left: "auto",*/}
-                        {/*    right: "auto",*/}
-                        {/*    width: "100%",*/}
-                        {/*    textAlign: "center",*/}
-                        {/*    opacity: "0.2"*/}
-                        {/*}}>*/}
-                        {/*    <img src={logo} style={{maxWidth: "150px", margin: "auto"}}/>*/}
-                        {/*</div>*/}
                       </div>
                     </div>
                   </>

@@ -9,13 +9,14 @@ import useProfileApi from '../../../../api/useProfileApi'
 import Loading from '../../../../components/Loading'
 import Footer from '../../../Footer'
 import Modal from '../../../Modal'
+import missYouCard from '../../../img/MissYou/MissYou_3_1.png'
 const EditCard25 = () => {
   const navigate = useNavigate()
   const id = useQueryParams()
   const { id: id2 } = id
 
   const { data: profile, status } = useProfileApi()
-
+  const [loading, setLoading] = useState(false)
   const [cardData, setCardData] = useState()
   const [cardname, setCardName] = useState()
   const [userdata, setUserData] = useState()
@@ -103,8 +104,8 @@ const EditCard25 = () => {
     details = [{ receiverName, message_1, senderName }]
 
     let card_id = cardData.cardId
-
-    const res = await fetch(`http://localhost:3001/api/card1/missyoucard`, {
+    setLoading(true)
+    const res = await fetch(`http://localhost:3001/api/card1/missyoucard1`, {
       method: 'POST',
       credentials: 'include',
       headers: {
@@ -120,10 +121,10 @@ const EditCard25 = () => {
     })
 
     const card_data = await res.json()
-
-    setCardData(card_data.id)
-
-    navigate(`/preview?id=${card_data.id}`)
+    if ((card_data.status = 'Success')) {
+      setLoading(false)
+      navigate(`/preview?id=${card_data.data.id}`)
+    }
   }
 
   if (!textdata) {
@@ -142,27 +143,55 @@ const EditCard25 = () => {
               <div className="card-box">
                 <div
                   style={{
-                    background: `url(${card1}) no-repeat center/cover`,
+                    background: `url(${card1}) no-repeat center/contain`,
                     textAlign: 'center',
                     width: '100%',
-                    fontFamily: 'Lora',
-                    color: '#7132A1',
+                    fontFamily: 'nirmala-bold',
+                    color: '#fff',
                     height: '100%',
-                    padding: '100px 0'
+                    padding: '200px 0 300px',
+                    backgroundSize: '100% 100%'
                   }}
                 >
-                  <h2 data-bs-toggle="modal" data-bs-target="#id1" style={{ paddingTop: '105px' }}>
+                  <h7
+                    data-bs-toggle="modal"
+                    data-bs-target="#id1"
+                    style={{
+                      paddingTop: '150px',
+                      maxWidth: '300px',
+                      margin: 'auto'
+                    }}
+                  >
                     {' '}
                     {messageData.receiverName}
-                  </h2>
-                  <h4 data-bs-toggle="modal" data-bs-target="#id2" style={{ paddingTop: '105px' }}>
-                    {' '}
-                    {messageData.message_1}
-                  </h4>
+                  </h7>
 
-                  <h2 data-bs-toggle="modal" data-bs-target="#id3">
+                  <h5
+                    data-bs-toggle="modal"
+                    data-bs-target="#id2"
+                    style={{
+                      paddingTop: '6px',
+                      maxWidth: '300px',
+                      margin: 'auto',
+
+                      textAlign: 'center'
+                    }}
+                  >
+                    {messageData.message_1}
+                  </h5>
+
+                  <h7
+                    data-bs-toggle="modal"
+                    data-bs-target="#id2"
+                    style={{
+                      paddingTop: '6px',
+                      maxWidth: '350px',
+                      margin: 'auto'
+                    }}
+                  >
+                    {' '}
                     {messageData.senderName}
-                  </h2>
+                  </h7>
                 </div>
               </div>
             </div>
@@ -196,6 +225,7 @@ const EditCard25 = () => {
           <button
             onClick={PostData}
             className="btn"
+            disabled={loading}
             style={{
               borderRadius: '50px',
               background: '#FF3767',
@@ -203,7 +233,9 @@ const EditCard25 = () => {
               padding: '10px 20px'
             }}
           >
-            Preview
+            {loading && <i className="fa fa-refresh fa-spin" style={{ marginRight: '5px' }} />}
+            {loading && <span>Loading...</span>}
+            {!loading && <span>Preview</span>}
           </button>
         </div>
         <Footer />

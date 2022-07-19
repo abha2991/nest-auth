@@ -628,7 +628,7 @@ const Home = () => {
     })
 
     const data = await res.json()
-    console.log({ data })
+
     if (data.status === 'success') {
       window.alert('Submitted Successfully')
     } else {
@@ -638,7 +638,27 @@ const Home = () => {
     // setPaymentStatus(data.PaymentStatus)
   }
 
-  //console.log({ cardInfo })
+  const [banner, setBanner] = useState()
+  const getBanner = async (e) => {
+    const res = await fetch(`http://localhost:3001/api/uploadfile`, {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+
+    const data = await res.json()
+
+    setBanner(data)
+  }
+  useEffect(() => {
+    getBanner()
+  }, [])
+
+  banner?.data?.map((val, ind) => {
+    console.log(val.fileName)
+  })
 
   let url = '../img/'
 
@@ -647,6 +667,26 @@ const Home = () => {
       <Header />
 
       {/*<OwlCarousel className='owl-carousel owl-theme banner-carousel' options={options1}>*/}
+
+      {/*<Carousel className="mt-0">*/}
+      {/*  {banner?.data?.map((val, ind) => {*/}
+      {/*    return (*/}
+      {/*      <>*/}
+      {/*        <div className="item">*/}
+      {/*          <div className="banner-box">*/}
+      {/*            <div className="row pt-5">*/}
+      {/*              <div className="col-md-4">*/}
+      {/*                <div className="d-flex justify-content-md-end text-white">*/}
+      {/*                  <h3>{<img src={'http://localhost:3001/Banner/' + val.fileName} />}</h3>*/}
+      {/*                </div>*/}
+      {/*              </div>*/}
+      {/*            </div>*/}
+      {/*          </div>*/}
+      {/*        </div>*/}
+      {/*      </>*/}
+      {/*    )*/}
+      {/*  })}*/}
+      {/*</Carousel>*/}
       <Carousel className="mt-0">
         <div className="item">
           <div className="banner-box">
@@ -836,7 +876,7 @@ const Home = () => {
               if (val.cardCategory === 'WeddingInvitation') {
                 return (
                   <>
-                    <div className="col-md-3">
+                    <div>
                       <div className="wedding-box">
                         <a href={'#id' + index} data-bs-toggle="modal">
                           <img
@@ -875,10 +915,10 @@ const Home = () => {
                               <FontAwesomeIcon icon={faArrowLeft} />
                               &nbsp;Back
                             </button>
-                            <a href="#" style={{ textDecoration: 'none' }}>
-                              <FontAwesomeIcon icon={faShareNodes} />
-                              &nbsp;Share
-                            </a>
+                            {/*<a href="#" style={{ textDecoration: 'none' }}>*/}
+                            {/*  <FontAwesomeIcon icon={faShareNodes} />*/}
+                            {/*  &nbsp;Share*/}
+                            {/*</a>*/}
                           </div>
                           <div className="modal-body">
                             <Fancybox>
@@ -1016,10 +1056,10 @@ const Home = () => {
                             <FontAwesomeIcon icon={faArrowLeft} />
                             &nbsp;Back
                           </button>
-                          <a href="#" style={{ textDecoration: 'none' }}>
-                            <FontAwesomeIcon icon={faShareNodes} />
-                            &nbsp;Share
-                          </a>
+                          {/*<a href="#" style={{ textDecoration: 'none' }}>*/}
+                          {/*  <FontAwesomeIcon icon={faShareNodes} />*/}
+                          {/*  &nbsp;Share*/}
+                          {/*</a>*/}
                         </div>
                         <div className="modal-body">
                           <Fancybox>
@@ -1156,10 +1196,10 @@ const Home = () => {
                             <FontAwesomeIcon icon={faArrowLeft} />
                             &nbsp;Back
                           </button>
-                          <a href="#" style={{ textDecoration: 'none' }}>
-                            <FontAwesomeIcon icon={faShareNodes} />
-                            &nbsp;Share
-                          </a>
+                          {/*<a href="#" style={{ textDecoration: 'none' }}>*/}
+                          {/*  <FontAwesomeIcon icon={faShareNodes} />*/}
+                          {/*  &nbsp;Share*/}
+                          {/*</a>*/}
                         </div>
                         <div className="modal-body">
                           <Fancybox>
@@ -1297,10 +1337,10 @@ const Home = () => {
                               <FontAwesomeIcon icon={faArrowLeft} />
                               &nbsp;Back
                             </button>
-                            <a href="#" style={{ textDecoration: 'none' }}>
-                              <FontAwesomeIcon icon={faShareNodes} />
-                              &nbsp;Share
-                            </a>
+                            {/*<a href="#" style={{ textDecoration: 'none' }}>*/}
+                            {/*  <FontAwesomeIcon icon={faShareNodes} />*/}
+                            {/*  &nbsp;Share*/}
+                            {/*</a>*/}
                           </div>
                           <div className="modal-body">
                             <Fancybox>
@@ -1438,10 +1478,10 @@ const Home = () => {
                             <FontAwesomeIcon icon={faArrowLeft} />
                             &nbsp;Back
                           </button>
-                          <a href="#" style={{ textDecoration: 'none' }}>
-                            <FontAwesomeIcon icon={faShareNodes} />
-                            &nbsp;Share
-                          </a>
+                          {/*<a href="#" style={{ textDecoration: 'none' }}>*/}
+                          {/*  <FontAwesomeIcon icon={faShareNodes} />*/}
+                          {/*  &nbsp;Share*/}
+                          {/*</a>*/}
                         </div>
                         <div className="modal-body">
                           <Fancybox>
@@ -1578,10 +1618,10 @@ const Home = () => {
                             <FontAwesomeIcon icon={faArrowLeft} />
                             &nbsp;Back
                           </button>
-                          <a href="#" style={{ textDecoration: 'none' }}>
-                            <FontAwesomeIcon icon={faShareNodes} />
-                            &nbsp;Share
-                          </a>
+                          {/*<a href="#" style={{ textDecoration: 'none' }}>*/}
+                          {/*  <FontAwesomeIcon icon={faShareNodes} />*/}
+                          {/*  &nbsp;Share*/}
+                          {/*</a>*/}
                         </div>
                         <div className="modal-body">
                           <Fancybox>
@@ -1718,10 +1758,10 @@ const Home = () => {
                             <FontAwesomeIcon icon={faArrowLeft} />
                             &nbsp;Back
                           </button>
-                          <a href="#" style={{ textDecoration: 'none' }}>
-                            <FontAwesomeIcon icon={faShareNodes} />
-                            &nbsp;Share
-                          </a>
+                          {/*<a href="#" style={{ textDecoration: 'none' }}>*/}
+                          {/*  <FontAwesomeIcon icon={faShareNodes} />*/}
+                          {/*  &nbsp;Share*/}
+                          {/*</a>*/}
                         </div>
                         <div className="modal-body">
                           <Fancybox>
@@ -1858,10 +1898,10 @@ const Home = () => {
                             <FontAwesomeIcon icon={faArrowLeft} />
                             &nbsp;Back
                           </button>
-                          <a href="#" style={{ textDecoration: 'none' }}>
-                            <FontAwesomeIcon icon={faShareNodes} />
-                            &nbsp;Share
-                          </a>
+                          {/*<a href="#" style={{ textDecoration: 'none' }}>*/}
+                          {/*  <FontAwesomeIcon icon={faShareNodes} />*/}
+                          {/*  &nbsp;Share*/}
+                          {/*</a>*/}
                         </div>
                         <div className="modal-body">
                           <Fancybox>
@@ -1998,10 +2038,10 @@ const Home = () => {
                             <FontAwesomeIcon icon={faArrowLeft} />
                             &nbsp;Back
                           </button>
-                          <a href="#" style={{ textDecoration: 'none' }}>
-                            <FontAwesomeIcon icon={faShareNodes} />
-                            &nbsp;Share
-                          </a>
+                          {/*<a href="#" style={{ textDecoration: 'none' }}>*/}
+                          {/*  <FontAwesomeIcon icon={faShareNodes} />*/}
+                          {/*  &nbsp;Share*/}
+                          {/*</a>*/}
                         </div>
                         <div className="modal-body">
                           <Fancybox>
@@ -2138,10 +2178,10 @@ const Home = () => {
                             <FontAwesomeIcon icon={faArrowLeft} />
                             &nbsp;Back
                           </button>
-                          <a href="#" style={{ textDecoration: 'none' }}>
-                            <FontAwesomeIcon icon={faShareNodes} />
-                            &nbsp;Share
-                          </a>
+                          {/*<a href="#" style={{ textDecoration: 'none' }}>*/}
+                          {/*  <FontAwesomeIcon icon={faShareNodes} />*/}
+                          {/*  &nbsp;Share*/}
+                          {/*</a>*/}
                         </div>
                         <div className="modal-body">
                           <Fancybox>
