@@ -10,13 +10,27 @@ import Loading from '../../../../components/Loading'
 import Footer from '../../../Footer'
 import Modal from '../../../Modal'
 import Engagement from '../../../img/Engagement/Engagement_2_1.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 const EditCard51 = () => {
   const navigate = useNavigate()
   const id = useQueryParams()
   const { id: id2 } = id
   const [loading, setLoading] = useState(false)
   const { data: profile, status } = useProfileApi()
+  function useHover(styleOnHover, styleOnNotHover = {}) {
+    const [style, setStyle] = React.useState(styleOnNotHover)
 
+    const onMouseEnter = () => setStyle(styleOnHover)
+    const onMouseLeave = () => setStyle(styleOnNotHover)
+
+    return { style, onMouseEnter, onMouseLeave }
+  }
+  const hover1 = useHover({ border: '2px solid #ffd167' })
+  const hover2 = useHover({ border: '2px solid #ffd167' })
+  const hover3 = useHover({ border: '2px solid #ffd167' })
+  const hover4 = useHover({ border: '2px solid #ffd167' })
+  const hover5 = useHover({ border: '2px solid #ffd167' })
   const [cardData, setCardData] = useState()
   const [cardname, setCardName] = useState()
   const [userdata, setUserData] = useState()
@@ -40,7 +54,6 @@ const EditCard51 = () => {
     getCardsOfUser()
   }, [id2])
 
-  // console.log({textdata})
   const [data, setdata] = useState({
     brideOrGroomName: '',
     groomOrBrideName: '',
@@ -53,7 +66,7 @@ const EditCard51 = () => {
     if (textdata) {
       setdata({
         brideOrGroomName: textdata[0]?.brideOrGroomName ?? '',
-        and: textdata[0]?.and ?? '',
+
         groomOrBrideName: textdata[0]?.groomOrBrideName ?? '',
         date: textdata[0]?.date ?? '',
         time: textdata[0]?.time ?? '',
@@ -82,27 +95,16 @@ const EditCard51 = () => {
     engagementCardData = Object.entries(data)
   }
 
-  function useHover(styleOnHover, styleOnNotHover = {}) {
-    const [style, setStyle] = React.useState(styleOnNotHover)
-
-    const onMouseEnter = () => setStyle(styleOnHover)
-    const onMouseLeave = () => setStyle(styleOnNotHover)
-
-    return { style, onMouseEnter, onMouseLeave }
-  }
-
-  const hover = useHover({ color: 'orange' })
-
   const PostData = async (e) => {
     e.preventDefault()
     let brideOrGroomName = data.brideOrGroomName?.toString() ?? ''
     let groomOrBrideName = data.groomOrBrideName?.toString() ?? ''
-    let and = data.and?.toString() ?? ''
+
     let date = data.date?.toString() ?? ''
     let time = data.time?.toString() ?? ''
     let venue = data.venue?.toString() ?? ''
     let email = profile.email?.toString() ?? ''
-
+    let and = 'and'
     let details
 
     details = [{ brideOrGroomName, and, groomOrBrideName, date, time, venue }]
@@ -127,7 +129,7 @@ const EditCard51 = () => {
     const card_data = await res.json()
     if ((card_data.status = 'Success')) {
       setLoading(false)
-      navigate(`/preview?id=${card_data.data.id}`)
+      navigate(`/preview?id=${card_data.createdCardId}`)
     }
   }
 
@@ -157,21 +159,24 @@ const EditCard51 = () => {
                     backgroundSize: '100% 100%'
                   }}
                 >
-                  <h4
-                    data-bs-toggle="modal"
-                    data-bs-target="#id1"
-                    style={{
-                      paddingTop: '330px',
-                      maxWidth: '300px',
-                      margin: 'auto',
-                      fontFamily: 'bell-mt-bold',
-                      fontSize: '20px',
+                  <div className="editable" {...hover1}>
+                    <h4
+                      data-bs-toggle="modal"
+                      data-bs-target="#id1"
+                      style={{
+                        paddingTop: '330px',
+                        maxWidth: '300px',
+                        margin: 'auto',
+                        fontFamily: 'bell-mt-bold',
+                        fontSize: '20px',
 
-                      textAlign: 'center'
-                    }}
-                  >
-                    {data.brideOrGroomName}
-                  </h4>
+                        textAlign: 'center'
+                      }}
+                    >
+                      {data.brideOrGroomName}
+                    </h4>
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
                   <h4
                     data-bs-toggle="modal"
                     style={{
@@ -184,70 +189,81 @@ const EditCard51 = () => {
                       textAlign: 'center'
                     }}
                   >
-                    AND
+                    and
                   </h4>
+                  <div className="editable" {...hover2}>
+                    <h4
+                      data-bs-toggle="modal"
+                      data-bs-target="#id2"
+                      style={{
+                        paddingTop: '10px',
+                        maxWidth: '350px',
+                        margin: 'auto',
 
-                  <h4
-                    data-bs-toggle="modal"
-                    data-bs-target="#id2"
-                    style={{
-                      paddingTop: '10px',
-                      maxWidth: '350px',
-                      margin: 'auto',
+                        fontSize: '20px',
+                        fontFamily: 'bell-mt-bold'
+                      }}
+                    >
+                      {' '}
+                      {data.groomOrBrideName}
+                    </h4>
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
+                  <div className="editable" {...hover3}>
+                    <h5
+                      data-bs-toggle="modal"
+                      data-bs-target="#id3"
+                      style={{
+                        paddingTop: '20px',
+                        maxWidth: '350px',
+                        margin: 'auto',
 
-                      fontSize: '20px',
-                      fontFamily: 'bell-mt-bold'
-                    }}
-                  >
-                    {' '}
-                    {data.groomOrBrideName}
-                  </h4>
-                  <h5
-                    data-bs-toggle="modal"
-                    data-bs-target="#id3"
-                    style={{
-                      paddingTop: '20px',
-                      maxWidth: '350px',
-                      margin: 'auto',
+                        fontSize: '15px',
+                        fontFamily: 'copper-plate-gothic-light'
+                      }}
+                    >
+                      {' '}
+                      {data.date}
+                    </h5>{' '}
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
+                  <div className="editable" {...hover4}>
+                    <h5
+                      data-bs-toggle="modal"
+                      data-bs-target="#id4"
+                      style={{
+                        paddingTop: '10px',
+                        maxWidth: '350px',
+                        margin: 'auto',
 
-                      fontSize: '15px',
-                      fontFamily: 'copper-plate-gothic-light'
-                    }}
-                  >
-                    {' '}
-                    {data.date}
-                  </h5>
-                  <h5
-                    data-bs-toggle="modal"
-                    data-bs-target="#id4"
-                    style={{
-                      paddingTop: '10px',
-                      maxWidth: '350px',
-                      margin: 'auto',
+                        fontSize: '15px',
+                        fontFamily: 'copper-plate-gothic-light'
+                      }}
+                    >
+                      {' '}
+                      {data.time}
+                    </h5>
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
+                  <div className="editable" {...hover5}>
+                    <h5
+                      data-bs-toggle="modal"
+                      data-bs-target="#id5"
+                      style={{
+                        paddingTop: '20px',
+                        maxWidth: '350px',
+                        margin: 'auto',
 
-                      fontSize: '15px',
-                      fontFamily: 'copper-plate-gothic-light'
-                    }}
-                  >
-                    {' '}
-                    {data.time}
-                  </h5>
-                  <h5
-                    data-bs-toggle="modal"
-                    data-bs-target="#id5"
-                    style={{
-                      paddingTop: '20px',
-                      maxWidth: '350px',
-                      margin: 'auto',
+                        fontSize: '12px',
 
-                      fontSize: '12px',
-
-                      fontFamily: 'copper-plate-gothic-light'
-                    }}
-                  >
-                    {' '}
-                    {data.venue}
-                  </h5>
+                        fontFamily: 'copper-plate-gothic-light'
+                      }}
+                    >
+                      {' '}
+                      {data.venue}
+                    </h5>
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
                 </div>
               </div>
             </div>

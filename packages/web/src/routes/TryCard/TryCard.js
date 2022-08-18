@@ -13,11 +13,8 @@ const TryCard = () => {
   const navigate = useNavigate()
   const id = useQueryParams()
   const { id: id2 } = id
-  console.log(id2)
+
   const { data: profile, status } = useProfileApi()
-  console.log({ profile })
-  //console.log(`Profile id is ${profile.id}`)
-  console.log({ status })
 
   const [brideData, setBrideData] = useState({
     BrideName: 'Anamika',
@@ -110,16 +107,8 @@ const TryCard = () => {
     let venue = rsvpData.Venue
     let _date = rsvpData._Date
 
-    // let Data = data;
-    //
-    // let len = Data.length;
-
     let email = profile.email
-    console.log({ email })
 
-    // const obj = Object.assign({}, Data);
-    // console.log({id})
-    //
     let Details
 
     Details = [
@@ -127,8 +116,6 @@ const TryCard = () => {
       { groomname, groomfather, groommother, brideName, brideFathername, grrom },
       { text, venue, _date }
     ]
-
-    console.log({ Details })
 
     const res = await fetch(`http://localhost:3001/api/card1/create`, {
       method: 'POST',
@@ -144,7 +131,7 @@ const TryCard = () => {
     })
 
     const card_data = await res.json()
-    console.log(card_data.id)
+
     setCardData(card_data.id)
 
     navigate(`/preview?id=${card_data.id}`)

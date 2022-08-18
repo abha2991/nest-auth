@@ -68,6 +68,11 @@ import { UploadfileModule } from './uploadfile/uploadfile.module'
       rootPath: join(__dirname, '../uploads', 'Banner'),
       serveRoot: '/Banner/'
     }),
+
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '../uploads', 'ProfilePic'),
+      serveRoot: '/ProfilePic/'
+    }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => {

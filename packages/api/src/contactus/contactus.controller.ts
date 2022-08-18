@@ -27,6 +27,6 @@ export class ContactusController {
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.contactusService.remove(+id)
+    return this.contactusService.remove(id)
   }
 }

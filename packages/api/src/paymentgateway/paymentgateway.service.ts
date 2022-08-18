@@ -35,13 +35,12 @@ export class PaymentgatewayService {
   }
 
   async success(successDto: SuccessDto) {
-    console.log({ successDto })
+    //console.log({ successDto })
 
     let id = successDto.cardId
 
-    console.log({ id })
     let cardDetails = await this.cardservice.findOne(id)
-    console.log(cardDetails.paymentStatus)
+
     let PaymentStatus = 'SUCCESS'
     let updated = await this.cardservice.updatepaymentstatus(id, {
       paymentStatus: PaymentStatus,

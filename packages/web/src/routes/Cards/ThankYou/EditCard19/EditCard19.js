@@ -10,11 +10,23 @@ import Loading from '../../../../components/Loading'
 import Footer from '../../../Footer'
 import Modal from '../../../Modal'
 import thankyouCard from '../../../img/ThankYou/ThankYou_2_1.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 const EditCard19 = () => {
   const navigate = useNavigate()
   const id = useQueryParams()
   const { id: id2 } = id
+  function useHover(styleOnHover, styleOnNotHover = {}) {
+    const [style, setStyle] = React.useState(styleOnNotHover)
 
+    const onMouseEnter = () => setStyle(styleOnHover)
+    const onMouseLeave = () => setStyle(styleOnNotHover)
+
+    return { style, onMouseEnter, onMouseLeave }
+  }
+  const hover1 = useHover({ border: '2px solid #ffd167' })
+  const hover2 = useHover({ border: '2px solid #ffd167' })
+  const hover3 = useHover({ border: '2px solid #ffd167' })
   const { data: profile, status } = useProfileApi()
   const [loading, setLoading] = useState(false)
   const [cardData, setCardData] = useState()
@@ -78,17 +90,6 @@ const EditCard19 = () => {
     setMessageData({ ...messageData, [name]: value })
   }
 
-  function useHover(styleOnHover, styleOnNotHover = {}) {
-    const [style, setStyle] = React.useState(styleOnNotHover)
-
-    const onMouseEnter = () => setStyle(styleOnHover)
-    const onMouseLeave = () => setStyle(styleOnNotHover)
-
-    return { style, onMouseEnter, onMouseLeave }
-  }
-
-  const hover = useHover({ color: 'orange' })
-
   const PostData = async (e) => {
     e.preventDefault()
     let receiverName = messageData.receiverName?.toString()
@@ -121,7 +122,7 @@ const EditCard19 = () => {
     const card_data = await res.json()
     if ((card_data.status = 'Success')) {
       setLoading(false)
-      navigate(`/preview?id=${card_data.data.id}`)
+      navigate(`/preview?id=${card_data.createdCardId}`)
     }
   }
 
@@ -151,39 +152,46 @@ const EditCard19 = () => {
                     backgroundSize: '100% 100%'
                   }}
                 >
-                  <p
-                    data-bs-toggle="modal"
-                    data-bs-target="#id1"
-                    style={{
-                      paddingTop: '50px',
-                      maxWidth: '350px',
-                      margin: 'auto'
-                    }}
-                  >
-                    {' '}
-                    {messageData.receiverName}
-                  </p>
-
-                  <p
-                    data-bs-toggle="modal"
-                    data-bs-target="#id2"
-                    style={{ paddingTop: '8px', maxWidth: '350px', margin: 'auto' }}
-                  >
-                    {messageData.message_1}
-                  </p>
-
-                  <p
-                    data-bs-toggle="modal"
-                    data-bs-target="#id3"
-                    style={{
-                      paddingTop: '8px',
-                      maxWidth: '350px',
-                      margin: 'auto'
-                    }}
-                  >
-                    {' '}
-                    {messageData.senderName}
-                  </p>
+                  <div className="editable" {...hover1}>
+                    <p
+                      data-bs-toggle="modal"
+                      data-bs-target="#id1"
+                      style={{
+                        paddingTop: '50px',
+                        maxWidth: '350px',
+                        margin: 'auto'
+                      }}
+                    >
+                      {' '}
+                      {messageData.receiverName}
+                    </p>
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
+                  <div className="editable" {...hover2}>
+                    <p
+                      data-bs-toggle="modal"
+                      data-bs-target="#id2"
+                      style={{ paddingTop: '8px', maxWidth: '350px', margin: 'auto' }}
+                    >
+                      {messageData.message_1}
+                    </p>
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
+                  <div className="editable" {...hover3}>
+                    <p
+                      data-bs-toggle="modal"
+                      data-bs-target="#id3"
+                      style={{
+                        paddingTop: '8px',
+                        maxWidth: '350px',
+                        margin: 'auto'
+                      }}
+                    >
+                      {' '}
+                      {messageData.senderName}
+                    </p>
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
                 </div>
               </div>
             </div>

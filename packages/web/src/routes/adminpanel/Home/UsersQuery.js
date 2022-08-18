@@ -17,7 +17,6 @@ function UsersQuery() {
     })
     const data1 = await res.json()
 
-    console.log({ data1 })
     setData(data1)
   }
   useEffect(() => {
@@ -26,6 +25,26 @@ function UsersQuery() {
 
   if (!data) {
     return <Loading />
+  }
+
+  const deleteCard = async (id) => {
+    let text = 'Are You Sure!!!'
+    if (confirm(text) == true) {
+      const res = await fetch(`http://localhost:3001/api/contactus/${id}`, {
+        method: 'DELETE',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+
+      const data = await res.json()
+      if (data.message === 'Successfully Deleted') {
+        window.alert('Succesfully Deleted')
+        window.location.reload()
+      }
+    } else {
+    }
   }
 
   return (
@@ -57,6 +76,7 @@ function UsersQuery() {
 
                       <th>Message</th>
                       <th>Date</th>
+                      <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -70,6 +90,20 @@ function UsersQuery() {
 
                             <td>{val.message}</td>
                             <td>{new Date(val.createdAt).toDateString()}</td>
+                            <td>
+                              {' '}
+                              <button
+                                style={{
+                                  borderRadius: '50px',
+                                  background: '#FF3767',
+                                  color: '#fff',
+                                  padding: '10px 20px'
+                                }}
+                                onClick={() => deleteCard(val.id)}
+                              >
+                                Delete{' '}
+                              </button>
+                            </td>
 
                             {/*<td><button setcaseid={val._id}*/}
                             {/*    className="viewbtn"*/}

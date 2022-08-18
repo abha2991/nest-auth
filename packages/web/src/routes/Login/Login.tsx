@@ -57,7 +57,6 @@ const Login: FC = () => {
   const { id: id2 } = id
 
   if (!id2) {
-    console.log(!id2)
     handleSubmit = async (values: ILoginRequest) => {
       await mutateAsync(values)
 
@@ -73,7 +72,7 @@ const Login: FC = () => {
     // }
     // else if(!id)
     // {
-    //   console.log(!id)
+
     //   handleSubmit = async (values: ILoginRequest) => {
     //     await mutateAsync(values)
     //
@@ -82,74 +81,71 @@ const Login: FC = () => {
   }
 
   return (
-      <>
-    <Center>
-      <Card sx={{ maxWidth: 480 }}>
-        {/*<CardHeader title="Login" />*/}
-        <CardContent>
-          <Form<ILoginRequest> validationSchema={schema} defaultValues={defaultValues} onSuccess={handleSubmit}>
-            <FormInput name="email" label="Email" type="email" />
-            <FormInput name="password" label="Password" type="password" />
-            <Center mt={4}>
-              <LoadingButton
-                loading={isLoading}
-                variant="contained"
-                type="submit"
-                sx={{
-                  width: '100%',
-                  backgroundColor: '#FF3162!important'
-                }}
+    <>
+      <Center>
+        <Card sx={{ maxWidth: 480 }}>
+          {/*<CardHeader title="Login" />*/}
+          <CardContent>
+            <Form<ILoginRequest> validationSchema={schema} defaultValues={defaultValues} onSuccess={handleSubmit}>
+              <FormInput name="email" label="Email" type="email" />
+              <FormInput name="password" label="Password" type="password" />
+              <Center mt={4}>
+                <LoadingButton
+                  loading={isLoading}
+                  variant="contained"
+                  type="submit"
+                  sx={{
+                    width: '100%',
+                    backgroundColor: '#FF3162!important'
+                  }}
+                >
+                  Login
+                </LoadingButton>
+              </Center>
+              <Center mt={2}>
+                <Typography variant="body1">
+                  Don't have an account?{' '}
+                  <Link component={RouterLink} to="/registration">
+                    Register Here
+                  </Link>
+                </Typography>
+              </Center>
+            </Form>
+            <Box my={4}>
+              <Divider>OR</Divider>
+            </Box>
+            {/*<Center flexDirection="row">*/}
+            {/*  <Button*/}
+            {/*    href={urlJoin(config.app.apiUrl, 'auth', 'facebook')}*/}
+            {/*    sx={{ width: 120 }}*/}
+            {/*    startIcon={<FacebookIcon />}*/}
+            {/*  >*/}
+            {/*    Facebook*/}
+            {/*  </Button>*/}
+            {/*  <Box width={24} />*/}
+            {/*  <Button href={urlJoin(config.app.apiUrl, 'auth', 'google')} sx={{ width: 120 }} startIcon={<GoogleIcon />}>*/}
+            {/*    Google*/}
+            {/*  </Button>*/}
+            {/*</Center>*/}
+            <Box className="social-login">
+              <Button href={urlJoin(config.app.apiUrl, 'auth', 'facebook')}>
+                <StyledImage src={FacebookLogo} />
+                &nbsp;Facebook
+              </Button>
+
+              <Button
+                //onClick={GoogleLogin}
+                href={urlJoin(config.app.apiUrl, 'auth', 'google')}
               >
-                Login
-              </LoadingButton>
-            </Center>
-            <Center mt={2}>
-              <Typography variant="body1">
-                Don't have an account?{' '}
-                <Link component={RouterLink} to="/registration">
-                  Register Here
-                </Link>
-              </Typography>
-            </Center>
-          </Form>
-          <Box my={4}>
-            <Divider>OR</Divider>
-          </Box>
-          {/*<Center flexDirection="row">*/}
-          {/*  <Button*/}
-          {/*    href={urlJoin(config.app.apiUrl, 'auth', 'facebook')}*/}
-          {/*    sx={{ width: 120 }}*/}
-          {/*    startIcon={<FacebookIcon />}*/}
-          {/*  >*/}
-          {/*    Facebook*/}
-          {/*  </Button>*/}
-          {/*  <Box width={24} />*/}
-          {/*  <Button href={urlJoin(config.app.apiUrl, 'auth', 'google')} sx={{ width: 120 }} startIcon={<GoogleIcon />}>*/}
-          {/*    Google*/}
-          {/*  </Button>*/}
-          {/*</Center>*/}
-          <Box className="social-login">
-            <Button href={urlJoin(config.app.apiUrl, 'auth', 'facebook')}>
-              <StyledImage src={FacebookLogo} />
-              &nbsp;Facebook
-            </Button>
-
-            <Button
-              //onClick={GoogleLogin}
-              href={urlJoin(config.app.apiUrl, 'auth', 'google')}
-            >
-              <StyledImage src={google} />
-              &nbsp;Google
-            </Button>
-          </Box>
-        </CardContent>
-      </Card>
-
-    </Center>
-
-</>
+                <StyledImage src={google} />
+                &nbsp;Google
+              </Button>
+            </Box>
+          </CardContent>
+        </Card>
+      </Center>
+    </>
   )
-
 }
 
 export default Login

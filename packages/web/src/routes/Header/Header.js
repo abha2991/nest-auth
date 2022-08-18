@@ -141,13 +141,8 @@
 // export default Header
 
 import React from 'react'
-import logo from '../img/image 7.png'
-import play from '../img/Group.png'
-import translate from '../img/Group1.png'
-// import { usePopupState } from 'material-ui-popup-state/hooks'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
-import Logout from '../Logout'
+import logo from '../img/logo.png'
+
 import useProfileApi from '../../api/useProfileApi'
 import { NavLink } from 'react-router-dom'
 
@@ -160,8 +155,7 @@ const Header = () => {
   const location = useLocation()
   const { pathname } = location
   const splitLocation = pathname.split('/')
-  // console.log(window.location.href)
-  // console.log({ splitLocation })
+
   $(window).scroll(function () {
     if ($(this).scrollTop() > 40) {
       $('header').addClass('sticky-top')
@@ -169,19 +163,6 @@ const Header = () => {
       $('header').removeClass('sticky-top')
     }
   })
-
-  //   $(function(){
-  //
-  //     var url = window.location.href;
-  //
-  //     $("#navbarSupportedContent a").each(function() {
-  //       // checks if its the same on the address bar
-  //       if(url == (this.href)) {
-  //         $(this).closest("li").addClass("active");
-  //       }
-  //     });
-  //   });
-  // console.log({pathname})
 
   const { data: profile, status } = useProfileApi()
   const { mutateAsync } = useLogoutApi()
@@ -272,7 +253,7 @@ const Header = () => {
           <div className="container">
             <nav className="navbar navbar-expand-lg navbar-dark">
               <a className="navbar-brand" href="./">
-                <img src={logo} className="img-fluid" alt="logo" />
+                <img src={logo} style={{ width: '150px' }} alt="logo" />
               </a>
 
               {/* <div className="w-100 navbar-expand">
@@ -310,7 +291,7 @@ const Header = () => {
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="#">
+                    <a className="nav-link" href="/home#CustomizeCard">
                       Design Your Card
                     </a>
                   </li>
@@ -388,7 +369,7 @@ const Header = () => {
           <div className="container">
             <nav className="navbar navbar-expand-lg navbar-dark">
               <a className="navbar-brand" href="./">
-                <img src={logo} className="img-fluid" alt="logo" />
+                <img src={logo} style={{ width: '150px' }} alt="logo" />
               </a>
 
               {/* <div className="w-100 navbar-expand">
@@ -433,10 +414,48 @@ const Header = () => {
                     </a>
                   </li>
 
-                  <li className="nav-item">
-                    <a className="nav-link" href="#">
+                  <li className="nav-item dropdown">
+                    <NavLink
+                      className="nav-link dropdown-toggle"
+                      id="navbarDropdown"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                      to="#"
+                    >
                       Categories
-                    </a>
+                    </NavLink>
+                    <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <NavLink className="dropdown-item header-navbar" to="/anniversarycards">
+                        Anniversary Cards
+                      </NavLink>
+                      <NavLink className="dropdown-item header-navbar" to="/babyshowercards">
+                        Baby Shower Cards
+                      </NavLink>
+                      <NavLink className="dropdown-item header-navbar" to="/birthdaycards">
+                        Birthday Cards
+                      </NavLink>
+                      <NavLink className="dropdown-item header-navbar" to="/congratulationscards">
+                        Congratulations Cards
+                      </NavLink>
+                      <NavLink className="dropdown-item header-navbar" to="/engagementcards">
+                        Engagement Cards
+                      </NavLink>
+                      <NavLink className="dropdown-item header-navbar" to="/getwellsooncards">
+                        Get Well Soon Cards
+                      </NavLink>
+                      <NavLink className="dropdown-item header-navbar" to="/missyoucards">
+                        Miss You Cards
+                      </NavLink>
+                      <NavLink className="dropdown-item header-navbar" to="/receptioncards">
+                        Reception Cards
+                      </NavLink>
+                      <NavLink className="dropdown-item header-navbar" to="/thankyoucards">
+                        Thank You Cards
+                      </NavLink>
+                      <NavLink className="dropdown-item header-navbar" to="/weddingcards">
+                        Wedding Cards
+                      </NavLink>
+                    </div>
                   </li>
                   {/*<li className="nav-item">*/}
                   {/*  <a className="nav-link" href="#">*/}

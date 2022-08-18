@@ -10,13 +10,26 @@ import Loading from '../../../../components/Loading'
 import Footer from '../../../Footer'
 import Modal from '../../../Modal'
 import babyShowerCard from '../../../img/BabyShower/BabyShower_1_1.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 const EditCard32 = () => {
   const navigate = useNavigate()
   const id = useQueryParams()
   const { id: id2 } = id
   const [loading, setLoading] = useState(false)
   const { data: profile, status } = useProfileApi()
+  function useHover(styleOnHover, styleOnNotHover = {}) {
+    const [style, setStyle] = React.useState(styleOnNotHover)
 
+    const onMouseEnter = () => setStyle(styleOnHover)
+    const onMouseLeave = () => setStyle(styleOnNotHover)
+
+    return { style, onMouseEnter, onMouseLeave }
+  }
+  const hover1 = useHover({ border: '2px solid #ffd167' })
+  const hover2 = useHover({ border: '2px solid #ffd167' })
+  const hover3 = useHover({ border: '2px solid #ffd167' })
+  const hover4 = useHover({ border: '2px solid #ffd167' })
   const [cardData, setCardData] = useState()
   const [cardname, setCardName] = useState()
   const [userdata, setUserData] = useState()
@@ -40,7 +53,6 @@ const EditCard32 = () => {
     getCardsOfUser()
   }, [id2])
 
-  // console.log({textdata})
   const [data, setdata] = useState({
     babyName: '',
     date: '',
@@ -82,17 +94,6 @@ const EditCard32 = () => {
     setdata({ ...data, [name]: value })
   }
 
-  function useHover(styleOnHover, styleOnNotHover = {}) {
-    const [style, setStyle] = React.useState(styleOnNotHover)
-
-    const onMouseEnter = () => setStyle(styleOnHover)
-    const onMouseLeave = () => setStyle(styleOnNotHover)
-
-    return { style, onMouseEnter, onMouseLeave }
-  }
-
-  const hover = useHover({ color: 'orange' })
-
   const PostData = async (e) => {
     e.preventDefault()
     let babyName = data.babyName?.toString() ?? ''
@@ -100,10 +101,10 @@ const EditCard32 = () => {
     let time = data.time?.toString() ?? ''
     let venue = data.venue?.toString() ?? ''
     let email = profile.email?.toString() ?? ''
-
+    let _venue = 'VENUE'
     let details
 
-    details = [{ babyName, date, time, venue }]
+    details = [{ babyName, date, time, _venue, venue }]
     setLoading(true)
     let card_id = cardData.cardId
     const res = await fetch(`http://localhost:3001/api/card1/babyshower1`, {
@@ -125,7 +126,7 @@ const EditCard32 = () => {
 
     if ((card_data.status = 'Success')) {
       setLoading(false)
-      navigate(`/preview?id=${card_data.data.id}`)
+      navigate(`/preview?id=${card_data.createdCardId}`)
     }
   }
 
@@ -155,46 +156,53 @@ const EditCard32 = () => {
                     backgroundSize: '100% 100%'
                   }}
                 >
-                  <h4
-                    data-bs-toggle="modal"
-                    data-bs-target="#id1"
-                    style={{
-                      paddingTop: '100px',
-                      maxWidth: '350px',
-                      margin: 'auto',
-                      fontFamily: 'pristina-regular'
-                    }}
-                  >
-                    {' '}
-                    {data.babyName}
-                  </h4>
+                  <div className="editable" {...hover1}>
+                    <h4
+                      data-bs-toggle="modal"
+                      data-bs-target="#id1"
+                      style={{
+                        paddingTop: '100px',
+                        maxWidth: '350px',
+                        margin: 'auto',
+                        fontFamily: 'pristina-regular'
+                      }}
+                    >
+                      {' '}
+                      {data.babyName}
+                    </h4>
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
+                  <div className="editable" {...hover2}>
+                    <h5
+                      data-bs-toggle="modal"
+                      data-bs-target="#id2"
+                      style={{
+                        paddingTop: '120px',
+                        fontFamily: 'myriad-pro-regular',
+                        maxWidth: '300px',
+                        margin: 'auto'
+                      }}
+                    >
+                      {data.date}
+                    </h5>
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
+                  <div className="editable" {...hover3}>
+                    <h6
+                      data-bs-toggle="modal"
+                      data-bs-target="#id3"
+                      style={{
+                        maxWidth: '350px',
+                        margin: 'auto',
 
-                  <h5
-                    data-bs-toggle="modal"
-                    data-bs-target="#id2"
-                    style={{
-                      paddingTop: '120px',
-                      fontFamily: 'myriad-pro-regular',
-                      maxWidth: '300px',
-                      margin: 'auto'
-                    }}
-                  >
-                    {data.date}
-                  </h5>
-
-                  <h6
-                    data-bs-toggle="modal"
-                    data-bs-target="#id3"
-                    style={{
-                      maxWidth: '350px',
-                      margin: 'auto',
-
-                      fontFamily: 'myriad-pro-regular'
-                    }}
-                  >
-                    {' '}
-                    {data.time}
-                  </h6>
+                        fontFamily: 'myriad-pro-regular'
+                      }}
+                    >
+                      {' '}
+                      {data.time}
+                    </h6>
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
                   <h5
                     data-bs-toggle="modal"
                     style={{
@@ -206,19 +214,22 @@ const EditCard32 = () => {
                   >
                     VENUE
                   </h5>
-                  <h5
-                    data-bs-toggle="modal"
-                    data-bs-target="#id4"
-                    style={{
-                      paddingTop: '40px',
-                      maxWidth: '350px',
-                      margin: 'auto',
-                      fontFamily: 'myriad-pro-bold'
-                    }}
-                  >
-                    {' '}
-                    {data.venue}
-                  </h5>
+                  <div className="editable" {...hover4}>
+                    <h5
+                      data-bs-toggle="modal"
+                      data-bs-target="#id4"
+                      style={{
+                        paddingTop: '40px',
+                        maxWidth: '350px',
+                        margin: 'auto',
+                        fontFamily: 'myriad-pro-bold'
+                      }}
+                    >
+                      {' '}
+                      {data.venue}
+                    </h5>{' '}
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
                 </div>
               </div>
             </div>

@@ -1,6 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
-import _, {orderBy} from 'lodash'
+import _, { orderBy } from 'lodash'
 import { Repository } from 'typeorm'
 
 import { CardcaptionEntity } from '../cardcaptiondetails/entities/cardcaption.entity'
@@ -24,14 +24,12 @@ export class CardetailsService {
     return this.cardsRepository.find({ relations })
   }
 
-
   // async findOne(id: number) {
   //   return await this.cardsRepository.findOne({
   //     where: { id },
   //     relations: [ 'CardcaptionEntity' ],
   // })
   // }
-
 
   // async findbyid(UserId: string) {
   //   return await this.cardsRepository.findOneOrFail(UserId);
@@ -43,24 +41,18 @@ export class CardetailsService {
     })
   }
 
-
-
-
   async find(id: string) {
+    let data = await this.cardsRepository.findOneOrFail(
+      id,
 
-    let data=await this.cardsRepository.findOneOrFail(id,
+      {
+        relations: ['Caption']
+      }
+    )
 
-        {
-
-          relations: ['Caption']
-
-
-        })
-
-     console.log({data})
-//
-// const data1={...data,Caption:_.orderBy(data.Caption,'id')}
-// console.log({data1})
+    //
+    // const data1={...data,Caption:_.orderBy(data.Caption,'id')}
+    // console.log({data1})
     //let data1=_.orderBy(data,Id=>Id.Caption.Caption.id);
     //
     //
@@ -68,11 +60,8 @@ export class CardetailsService {
     return data
   }
 
-
-
   async updateCardDetails(id: string, data: any): Promise<any> {
     try {
-      console.log({ id, data })
       await this.cardsRepository.update(id, data)
 
       return {
@@ -83,7 +72,6 @@ export class CardetailsService {
       console.log({ err })
     }
   }
-
 
   remove(id: number) {
     return `This action removes a #${id} cardetail`

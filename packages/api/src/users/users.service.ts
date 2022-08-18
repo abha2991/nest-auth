@@ -16,22 +16,38 @@ export class UsersService {
     return this.usersRepository.findOne({ email }, { relations })
   }
 
-
   // find(value: string, relations: string[] = []) {
   //   return this.usersRepository.find("", { relations })
   // }
 
-
   async findByCredentials(email: string, password: string, relations: string[] = []) {
     const user = await this.findByEmail(email, relations)
     if (!user) {
-      throw new HttpException('Invalid credentials', HttpStatus.BAD_REQUEST)
+      // throw new HttpException('Invalid Email', HttpStatus.BAD_REQUEST)
+      throw new HttpException(
+        {
+          statusCode: HttpStatus.BAD_REQUEST,
+          status: 'Failed',
+          message: 'Invalid Email'
+        },
+        HttpStatus.BAD_REQUEST
+      )
     }
 
     const areEqual = await compare(password, user.password)
     if (!areEqual) {
-      throw new HttpException('Invalid credentials', HttpStatus.BAD_REQUEST)
+      // throw new HttpException('Password Do Not Match', HttpStatus.BAD_REQUEST)
+      throw new HttpException(
+        {
+          statusCode: HttpStatus.BAD_REQUEST,
+          status: 'Failed',
+          message: 'Invalid Password'
+        },
+        HttpStatus.BAD_REQUEST
+      )
     }
+    //return { user: user, statusCode: HttpStatus.OK, status: 'Success', message: 'Logged In Successfully' }
+
     return user
   }
 
@@ -44,7 +60,16 @@ export class UsersService {
       const createdUser = this.usersRepository.create(user)
       return await this.usersRepository.save(createdUser)
     } catch (e) {
-      throw new HttpException(e.message, HttpStatus.BAD_REQUEST)
+      //throw new HttpException(e.message, HttpStatus.BAD_REQUEST)
+
+      throw new HttpException(
+        {
+          statusCode: HttpStatus.BAD_REQUEST,
+          status: 'Failed',
+          message: e.message
+        },
+        HttpStatus.BAD_REQUEST
+      )
     }
   }
 

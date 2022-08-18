@@ -9,6 +9,8 @@ import useQueryParams from '../../../../hooks/useQueryParams'
 import Footer from '../../../Footer'
 
 import Modal from '../../../Modal'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 const Card30 = () => {
   const navigate = useNavigate()
   const id = useQueryParams()
@@ -26,9 +28,6 @@ const Card30 = () => {
   }
   const hover1 = useHover({ border: '2px solid #ffd167' })
   const hover2 = useHover({ border: '2px solid #ffd167' })
-  const hover3 = useHover({ border: '2px solid #ffd167' })
-  const hover4 = useHover({ border: '2px solid #ffd167' })
-  const hover5 = useHover({ border: '2px solid #ffd167' })
 
   const [cardData, setCardData] = useState({
     message_1: 'Thoughtful Prayers are being sent your way within hopes that you will feel better soon',
@@ -75,7 +74,7 @@ const Card30 = () => {
 
     if ((card_data.status = 'Success')) {
       setLoading(false)
-      navigate(`/preview?id=${card_data.data.id}`)
+      navigate(`/preview?id=${card_data.createdCardId}`)
     }
   }
 
@@ -98,35 +97,41 @@ const Card30 = () => {
                   backgroundSize: '100% 100%'
                 }}
               >
-                <h6
-                  data-bs-toggle="modal"
-                  data-bs-target="#id1"
-                  style={{
-                    paddingTop: '70px',
-                    maxWidth: '300px',
-                    margin: 'auto',
-                    color: '#e54d8d',
-                    fontFamily: 'nirmala-bold',
-                    textAlign: 'center'
-                  }}
-                >
-                  {cardData.message_1}
-                </h6>
+                <div className="editable" {...hover1}>
+                  <h6
+                    data-bs-toggle="modal"
+                    data-bs-target="#id1"
+                    style={{
+                      paddingTop: '70px',
+                      maxWidth: '300px',
+                      margin: 'auto',
+                      color: '#e54d8d',
+                      fontFamily: 'nirmala-bold',
+                      textAlign: 'center'
+                    }}
+                  >
+                    {cardData.message_1}
+                  </h6>
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
 
-                <h7
-                  data-bs-toggle="modal"
-                  data-bs-target="#id2"
-                  style={{
-                    paddingTop: '6px',
-                    maxWidth: '350px',
-                    margin: 'auto',
-                    fontFamily: 'myriad-pro-condensed',
-                    color: '#e24b5d'
-                  }}
-                >
-                  {' '}
-                  {cardData.senderName}
-                </h7>
+                <div className="editable" {...hover2}>
+                  <p
+                    data-bs-toggle="modal"
+                    data-bs-target="#id2"
+                    style={{
+                      paddingTop: '6px',
+                      maxWidth: '350px',
+                      margin: 'auto',
+                      fontFamily: 'myriad-pro-condensed',
+                      color: '#e24b5d'
+                    }}
+                  >
+                    {' '}
+                    {cardData.senderName}
+                  </p>
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
               </div>
             </div>
           </div>
@@ -140,8 +145,6 @@ const Card30 = () => {
             onClick={() => {
               let name = messageData[index]
               let value = messageData[index + 2]
-
-              console.log({ name, value })
 
               setCardData({ ...cardData, [name]: [value] })
             }}

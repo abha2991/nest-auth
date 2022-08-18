@@ -9,6 +9,8 @@ import useQueryParams from '../../../../hooks/useQueryParams'
 import Footer from '../../../Footer'
 
 import Modal from '../../../Modal'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 const Card50 = () => {
   const navigate = useNavigate()
   const id = useQueryParams()
@@ -87,7 +89,7 @@ const Card50 = () => {
 
     if ((card_data.status = 'Success')) {
       setLoading(false)
-      navigate(`/preview?id=${card_data.data.id}`)
+      navigate(`/preview?id=${card_data.createdCardId}`)
     }
   }
 
@@ -110,20 +112,23 @@ const Card50 = () => {
                   backgroundSize: '100% 100%'
                 }}
               >
-                <h3
-                  data-bs-toggle="modal"
-                  data-bs-target="#id1"
-                  style={{
-                    paddingTop: '100px',
-                    maxWidth: '300px',
-                    margin: 'auto',
-                    color: '#83889c',
-                    fontFamily: 'nirmala-bold',
-                    textAlign: 'center'
-                  }}
-                >
-                  {cardData.brideOrGroomName}
-                </h3>
+                <div className="editable" {...hover1}>
+                  <h3
+                    data-bs-toggle="modal"
+                    data-bs-target="#id1"
+                    style={{
+                      paddingTop: '100px',
+                      maxWidth: '300px',
+                      margin: 'auto',
+                      color: '#83889c',
+                      fontFamily: 'nirmala-bold',
+                      textAlign: 'center'
+                    }}
+                  >
+                    {cardData.brideOrGroomName}
+                  </h3>
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
                 <h3
                   data-bs-toggle="modal"
                   style={{
@@ -137,62 +142,74 @@ const Card50 = () => {
                 >
                   AND
                 </h3>
-                <h3
-                  data-bs-toggle="modal"
-                  data-bs-target="#id2"
-                  style={{
-                    paddingTop: '10px',
-                    maxWidth: '350px',
-                    margin: 'auto',
-                    color: '#83889c',
-                    fontFamily: 'nirmala-bold'
-                  }}
-                >
-                  {' '}
-                  {cardData.groomOrBrideName}
-                </h3>
-                <h6
-                  data-bs-toggle="modal"
-                  data-bs-target="#id3"
-                  style={{
-                    paddingTop: '20px',
-                    maxWidth: '350px',
-                    margin: 'auto',
-                    color: '#767c91',
-                    fontFamily: 'nirmala-bold'
-                  }}
-                >
-                  {' '}
-                  {cardData.date}
-                </h6>
-                <h6
-                  data-bs-toggle="modal"
-                  data-bs-target="#id4"
-                  style={{
-                    paddingTop: '10px',
-                    maxWidth: '350px',
-                    margin: 'auto',
-                    color: '#767c91',
-                    fontFamily: 'nirmala-bold'
-                  }}
-                >
-                  {' '}
-                  {cardData.time}
-                </h6>
-                <h6
-                  data-bs-toggle="modal"
-                  data-bs-target="#id5"
-                  style={{
-                    paddingTop: '20px',
-                    maxWidth: '350px',
-                    margin: 'auto',
-                    color: '#5e6a9c',
-                    fontFamily: 'franklin-gothic-regular'
-                  }}
-                >
-                  {' '}
-                  {cardData.venue}
-                </h6>
+                <div className="editable" {...hover2}>
+                  <h3
+                    data-bs-toggle="modal"
+                    data-bs-target="#id2"
+                    style={{
+                      paddingTop: '10px',
+                      maxWidth: '350px',
+                      margin: 'auto',
+                      color: '#83889c',
+                      fontFamily: 'nirmala-bold'
+                    }}
+                  >
+                    {' '}
+                    {cardData.groomOrBrideName}
+                  </h3>
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover3}>
+                  <h6
+                    data-bs-toggle="modal"
+                    data-bs-target="#id3"
+                    style={{
+                      paddingTop: '20px',
+                      maxWidth: '350px',
+                      margin: 'auto',
+                      color: '#767c91',
+                      fontFamily: 'nirmala-bold'
+                    }}
+                  >
+                    {' '}
+                    {cardData.date}
+                  </h6>
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover4}>
+                  <h6
+                    data-bs-toggle="modal"
+                    data-bs-target="#id4"
+                    style={{
+                      paddingTop: '10px',
+                      maxWidth: '350px',
+                      margin: 'auto',
+                      color: '#767c91',
+                      fontFamily: 'nirmala-bold'
+                    }}
+                  >
+                    {' '}
+                    {cardData.time}
+                  </h6>
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover5}>
+                  <h6
+                    data-bs-toggle="modal"
+                    data-bs-target="#id5"
+                    style={{
+                      paddingTop: '20px',
+                      maxWidth: '350px',
+                      margin: 'auto',
+                      color: '#5e6a9c',
+                      fontFamily: 'franklin-gothic-regular'
+                    }}
+                  >
+                    {' '}
+                    {cardData.venue}
+                  </h6>
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
               </div>
             </div>
           </div>

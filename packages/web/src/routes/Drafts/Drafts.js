@@ -17,7 +17,6 @@ const Drafts = () => {
   const navigate = useNavigate()
   const { data: profile, status } = useProfileApi()
   let id = profile?.id ?? ''
-  //console.log({id,status})
 
   const [cardData, setCardData] = useState()
 
@@ -37,8 +36,6 @@ const Drafts = () => {
   useEffect(() => {
     getCardsOfUser()
   }, [id])
-
-  //console.log(cardData)
 
   const preview = (id) => {
     navigate(`/preview?id=${id}`)

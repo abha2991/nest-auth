@@ -1,4 +1,4 @@
-import { IsArray, IsNotEmpty, IsNumber } from 'class-validator'
+import { IsArray, IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator'
 
 export class CardsCaptionDto {
   @IsNotEmpty()
@@ -30,4 +30,9 @@ export class CardsCaptionDto {
   //     text: string
   //   }
   // ]
+}
+
+export class CreateCaptionDto {
+  @IsString()
+  previewPage: string
 }

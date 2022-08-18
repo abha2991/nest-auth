@@ -10,11 +10,27 @@ import useProfileApi from '../../../../api/useProfileApi'
 import Loading from '../../../../components/Loading'
 import Footer from '../../../Footer'
 import Modal from '../../../Modal'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 const EditCard12 = () => {
   const navigate = useNavigate()
   const id = useQueryParams()
   const { id: id2 } = id
+  function useHover(styleOnHover, styleOnNotHover = {}) {
+    const [style, setStyle] = React.useState(styleOnNotHover)
 
+    const onMouseEnter = () => setStyle(styleOnHover)
+    const onMouseLeave = () => setStyle(styleOnNotHover)
+
+    return { style, onMouseEnter, onMouseLeave }
+  }
+  const hover1 = useHover({ border: '2px solid #ffd167' })
+  const hover2 = useHover({ border: '2px solid #ffd167' })
+  const hover3 = useHover({ border: '2px solid #ffd167' })
+  const hover4 = useHover({ border: '2px solid #ffd167' })
+  const hover5 = useHover({ border: '2px solid #ffd167' })
+  const hover6 = useHover({ border: '2px solid #ffd167' })
+  const hover7 = useHover({ border: '2px solid #ffd167' })
   const { data: profile, status } = useProfileApi()
   const [loading, setLoading] = useState(false)
   const [cardData, setCardData] = useState()
@@ -41,12 +57,13 @@ const EditCard12 = () => {
   }, [id2])
 
   const [firstPageData, setFirstPageData] = useState({
-    anniversaryYear: '',
+    message: '',
     name: '',
     date: ''
   })
 
   const [secondPageData, setSecondPageData] = useState({
+    anniversaryYear: '',
     day: '',
     time: '',
     venue: ''
@@ -55,11 +72,12 @@ const EditCard12 = () => {
   useEffect(() => {
     if (textdata) {
       setFirstPageData({
-        anniversaryYear: textdata[0]?.anniversaryYear ?? '',
+        message: textdata[0]?.message ?? '',
         name: textdata[0]?.name ?? '',
         date: textdata[0]?.date ?? ''
       })
       setSecondPageData({
+        anniversaryYear: textdata[1].anniversaryYear ?? '',
         day: textdata[1]?.day ?? '',
         time: textdata[1]?.time ?? '',
         venue: textdata[1]?.venue ?? ''
@@ -74,47 +92,44 @@ const EditCard12 = () => {
 
   if (textdata) {
     textData1 = [
-      'anniversaryYear',
+      'message',
       'name',
       'date',
-      textdata[0]?.anniversaryYear ?? '',
+      textdata[0]?.message ?? '',
       textdata[0]?.name ?? '',
       textdata[0]?.date ?? ''
     ]
 
-    textData2 = ['day', 'time', 'venue', textdata[1]?.day ?? '', textdata[1]?.time ?? '', textdata[1]?.venue ?? '']
+    textData2 = [
+      'anniversaryYear',
+      'day',
+      'time',
+      'venue',
+      textdata[1]?.day ?? '',
+      textdata[1]?.time ?? '',
+      textdata[1]?.venue ?? ''
+    ]
 
     anniversaryFirstPageCardData = Object.entries(firstPageData)
 
     anniversarySecondPageCardData = Object.entries(secondPageData)
   }
 
-  function useHover(styleOnHover, styleOnNotHover = {}) {
-    const [style, setStyle] = React.useState(styleOnNotHover)
-
-    const onMouseEnter = () => setStyle(styleOnHover)
-    const onMouseLeave = () => setStyle(styleOnNotHover)
-
-    return { style, onMouseEnter, onMouseLeave }
-  }
-
-  const hover = useHover({ color: 'orange' })
-
   const PostData = async (e) => {
     e.preventDefault()
 
-    let anniversaryYear = firstPageData.anniversaryYear?.toString() ?? ''
+    let message = firstPageData.message?.toString() ?? ''
     let name = firstPageData.name?.toString() ?? ''
     let date = firstPageData.date?.toString() ?? ''
     let day = secondPageData.day?.toString() ?? ''
     let time = secondPageData.time?.toString() ?? ''
     let venue = secondPageData.venue?.toString() ?? ''
-
+    let anniversaryYear = secondPageData.anniversaryYear?.toString() ?? ''
     let details
 
     details = [
-      { name, anniversaryYear, date },
-      { day, time, venue }
+      { message, name, date },
+      { anniversaryYear, day, time, venue }
     ]
 
     let card_id = cardData.cardId
@@ -130,7 +145,7 @@ const EditCard12 = () => {
         details,
         userId: profile.id,
         email: profile.email,
-        maxCharsPerLine: Number(20)
+        maxCharsPerLine: Number(30)
       })
     })
 
@@ -138,7 +153,7 @@ const EditCard12 = () => {
 
     if ((card_data.status = 'Success')) {
       setLoading(false)
-      navigate(`/preview?id=${card_data.data.id}`)
+      navigate(`/preview?id=${card_data.createdCardId}`)
     }
   }
 
@@ -165,41 +180,49 @@ const EditCard12 = () => {
                     backgroundSize: '100% 100%'
                   }}
                 >
-                  <h4
-                    className="card12-text"
-                    data-bs-toggle="modal"
-                    data-bs-target="#id1"
-                    style={{
-                      fontSize: '80px',
-                      maxWidth: '350px',
-                      margin: 'auto',
-                      fontWeight: 'bold'
-                    }}
-                  >
-                    {' '}
-                    {firstPageData.anniversaryYear}
-                  </h4>
-                  <h3
-                    data-bs-toggle="modal"
-                    data-bs-target="#id2"
-                    style={{
-                      paddingTop: '10px',
-                      maxWidth: '300px',
-                      margin: 'auto',
-                      color: '#ebd0ab',
-                      marginTop: '100px',
-                      fontWeight: 'bold'
-                    }}
-                  >
-                    {firstPageData.name}
-                  </h3>
-                  <h6
-                    data-bs-toggle="modal"
-                    data-bs-target="#id3"
-                    style={{ paddingTop: '10px', maxWidth: '300px', margin: 'auto', color: '#ebd0ab' }}
-                  >
-                    {firstPageData.date}
-                  </h6>
+                  <div className="editable" {...hover1}>
+                    <h4
+                      className="card12-text"
+                      data-bs-toggle="modal"
+                      data-bs-target="#id1"
+                      style={{
+                        maxWidth: '350px',
+                        margin: 'auto',
+                        fontWeight: 'bold'
+                      }}
+                    >
+                      {' '}
+                      {firstPageData.message}
+                    </h4>
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
+                  <div className="editable" {...hover2}>
+                    <h3
+                      data-bs-toggle="modal"
+                      data-bs-target="#id2"
+                      style={{
+                        paddingTop: '10px',
+                        maxWidth: '300px',
+                        margin: 'auto',
+                        color: '#ebd0ab',
+                        marginTop: '100px',
+                        fontWeight: 'bold'
+                      }}
+                    >
+                      {firstPageData.name}
+                    </h3>
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
+                  <div className="editable" {...hover3}>
+                    <h6
+                      data-bs-toggle="modal"
+                      data-bs-target="#id3"
+                      style={{ paddingTop: '10px', maxWidth: '300px', margin: 'auto', color: '#ebd0ab' }}
+                    >
+                      {firstPageData.date}
+                    </h6>
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
                 </div>
               </div>
             </div>
@@ -218,47 +241,64 @@ const EditCard12 = () => {
                     backgroundSize: '100% 100%'
                   }}
                 >
-                  <h4
-                    className="card12-text"
-                    data-bs-toggle="modal"
-                    data-bs-target="#id1"
-                    style={{
-                      fontSize: '80px',
-                      maxWidth: '350px',
-                      margin: 'auto',
-                      fontWeight: 'bold'
-                    }}
-                  >
-                    {' '}
-                    {firstPageData.anniversaryYear}
-                  </h4>
-                  <h5
-                    data-bs-toggle="modal"
-                    data-bs-target="#id4"
-                    style={{ paddingTop: '20px', maxWidth: '300px', margin: 'auto', color: '#fff' }}
-                  >
-                    {secondPageData.day}
-                  </h5>
-                  <h5
-                    data-bs-toggle="modal"
-                    data-bs-target="#id5"
-                    style={{
-                      paddingTop: '10px',
-                      maxWidth: '300px',
-                      margin: 'auto',
-                      color: '#fff',
-                      fontStyle: 'italic'
-                    }}
-                  >
-                    {secondPageData.time}
-                  </h5>
-                  <h5
-                    data-bs-toggle="modal"
-                    data-bs-target="#id6"
-                    style={{ paddingTop: '10px', maxWidth: '300px', margin: 'auto', color: '#fff', fontSize: 'small' }}
-                  >
-                    {secondPageData.venue}
-                  </h5>
+                  <div className="editable" {...hover4}>
+                    <h5
+                      className="card12-text"
+                      data-bs-toggle="modal"
+                      data-bs-target="#id4"
+                      style={{
+                        maxWidth: '350px',
+                        margin: 'auto',
+                        fontWeight: 'bold'
+                      }}
+                    >
+                      {' '}
+                      {secondPageData.anniversaryYear}
+                    </h5>
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
+                  <div className="editable" {...hover5}>
+                    <h5
+                      data-bs-toggle="modal"
+                      data-bs-target="#id5"
+                      style={{ paddingTop: '20px', maxWidth: '300px', margin: 'auto', color: '#fff' }}
+                    >
+                      {secondPageData.day}
+                    </h5>
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
+                  <div className="editable" {...hover6}>
+                    <h5
+                      data-bs-toggle="modal"
+                      data-bs-target="#id6"
+                      style={{
+                        paddingTop: '10px',
+                        maxWidth: '300px',
+                        margin: 'auto',
+                        color: '#fff',
+                        fontStyle: 'italic'
+                      }}
+                    >
+                      {secondPageData.time}
+                    </h5>
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
+                  <div className="editable" {...hover7}>
+                    <h5
+                      data-bs-toggle="modal"
+                      data-bs-target="#id7"
+                      style={{
+                        paddingTop: '10px',
+                        maxWidth: '300px',
+                        margin: 'auto',
+                        color: '#fff',
+                        fontSize: 'small'
+                      }}
+                    >
+                      {secondPageData.venue}
+                    </h5>
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
                 </div>
               </div>
             </div>
@@ -272,8 +312,6 @@ const EditCard12 = () => {
               onClick={() => {
                 let name = textData1[index]
                 let value = textData1[index + 3]
-
-                console.log({ name, value })
 
                 setFirstPageData({ ...firstPageData, [name]: [value] })
               }}
@@ -295,7 +333,7 @@ const EditCard12 = () => {
               id={`id${index + 4}`}
               onClick={() => {
                 let name = textData2[index]
-                let value = textData2[index + 3]
+                let value = textData2[index + 4]
 
                 setSecondPageData({ ...secondPageData, [name]: [value] })
               }}

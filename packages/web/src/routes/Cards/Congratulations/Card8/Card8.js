@@ -74,7 +74,7 @@ const Card8 = () => {
 
     if ((card_data.status = 'Success')) {
       setLoading(false)
-      navigate(`/preview?id=${card_data.data.id}`)
+      navigate(`/preview?id=${card_data.createdCardId}`)
     }
   }
 
@@ -97,35 +97,40 @@ const Card8 = () => {
                   backgroundSize: '100% 100%'
                 }}
               >
-                <h6
-                  data-bs-toggle="modal"
-                  data-bs-target="#id1"
-                  style={{
-                    fontFamily: 'myriad-pro-bold',
-                    paddingTop: '120px',
-                    maxWidth: '350px',
-                    margin: 'auto',
-                    color: '#a83e63'
-                  }}
-                >
-                  {' '}
-                  {cardData.message_1}
-                </h6>
-
-                <h6
-                  data-bs-toggle="modal"
-                  data-bs-target="#id2"
-                  style={{
-                    paddingTop: '20px',
-                    fontFamily: 'myriad-pro-semibold',
-                    fontSize: '18px',
-                    maxWidth: '300px',
-                    margin: 'auto',
-                    color: '#a1395c'
-                  }}
-                >
-                  {cardData.message_2}
-                </h6>
+                <div className="editable" {...hover1}>
+                  <h6
+                    data-bs-toggle="modal"
+                    data-bs-target="#id1"
+                    style={{
+                      fontFamily: 'myriad-pro-bold',
+                      paddingTop: '120px',
+                      maxWidth: '350px',
+                      margin: 'auto',
+                      color: '#a83e63'
+                    }}
+                  >
+                    {' '}
+                    {cardData.message_1}
+                  </h6>
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover2}>
+                  <h6
+                    data-bs-toggle="modal"
+                    data-bs-target="#id2"
+                    style={{
+                      paddingTop: '20px',
+                      fontFamily: 'myriad-pro-semibold',
+                      fontSize: '18px',
+                      maxWidth: '300px',
+                      margin: 'auto',
+                      color: '#a1395c'
+                    }}
+                  >
+                    {cardData.message_2}
+                  </h6>
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
               </div>
             </div>
           </div>
@@ -139,8 +144,6 @@ const Card8 = () => {
             onClick={() => {
               let name = messageData[index]
               let value = messageData[index + 2]
-
-              console.log({ name, value })
 
               setCardData({ ...cardData, [name]: [value] })
             }}

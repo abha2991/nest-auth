@@ -27,7 +27,6 @@ const EnterCardDetails = () => {
     const name = e.target.name
     const value = e.target.value
     setData((existing) => {
-      // console.log({ existing })
       existing[i] = { ...existing[i], [name]: value }
       return [...existing]
     })
@@ -102,6 +101,7 @@ const EnterCardDetails = () => {
                 onChange={handleInput}
                 style={{ width: '300px', height: '35px' }}
               >
+                <option value="0">Select Card Category</option>
                 <option value="AnniversaryInvitation">Anniversary Invitation</option>
                 <option value="BabyShowerInvitation">BabyShower Invitation</option>
                 <option value="BirthdayInvitation">Birthday Invitation</option>

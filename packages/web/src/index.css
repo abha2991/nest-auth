@@ -768,3 +768,36 @@ code {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+.header-navbar {
+  color: #ff3767 !important;
+}
+
+.profile {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  text-align: left;
+}
+
+/*table td {*/
+/*  border: 1px solid black;*/
+/*  border-collapse: collapse;*/
+/*}*/
+
+.image-container {
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+}
+.page-header {
+  font-size: large;
+  font-weight: bold;
+  text-decoration: none;
+}
+.display-image img {
+  width: auto;
+  height: 100%;
+  object-fit: contain;
+  overflow: hidden;
+}

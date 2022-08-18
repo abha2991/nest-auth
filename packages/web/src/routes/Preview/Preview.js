@@ -5,6 +5,7 @@ import logo from '../img/image 7.png'
 import 'react-owl-carousel2/lib/styles.css'
 import 'react-owl-carousel2/src/owl.theme.default.css'
 import useRazorpay from '../../hooks/useRazorpay'
+import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch'
 // get our fontawesome imports
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
@@ -147,6 +148,15 @@ const Preview = () => {
                   <>
                     <div className="item">
                       <div style={{ position: 'relative' }}>
+                        {/*<TransformWrapper initialScale={1} initialPositionX={200} initialPositionY={100}>*/}
+                        {/*  {({ zoomIn, zoomOut, resetTransform, ...rest }) => (*/}
+                        {/*    <React.Fragment>*/}
+                        {/*      <div className="tools">*/}
+                        {/*        <button onClick={() => zoomIn()}>+</button>*/}
+                        {/*        <button onClick={() => zoomOut()}>-</button>*/}
+                        {/*        <button onClick={() => resetTransform()}>x</button>*/}
+                        {/*      </div>*/}
+                        {/*      <TransformComponent>*/}
                         <img
                           src={'http://localhost:3001/generated/' + cardData?.cardCategory + '/' + val}
                           className="img-fluid"
@@ -156,6 +166,10 @@ const Preview = () => {
                             margin: 'auto'
                           }}
                         />
+                        {/*      </TransformComponent>*/}
+                        {/*    </React.Fragment>*/}
+                        {/*  )}*/}
+                        {/*</TransformWrapper>*/}
                       </div>
                     </div>
                   </>

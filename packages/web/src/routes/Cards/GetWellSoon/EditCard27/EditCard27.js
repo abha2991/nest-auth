@@ -10,13 +10,24 @@ import Loading from '../../../../components/Loading'
 import Footer from '../../../Footer'
 import Modal from '../../../Modal'
 import getWellSoonCard from '../../../img/GetWellSoon/GetWellSoon_1_1.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 const EditCard27 = () => {
   const navigate = useNavigate()
   const id = useQueryParams()
   const { id: id2 } = id
 
   const { data: profile, status } = useProfileApi()
+  function useHover(styleOnHover, styleOnNotHover = {}) {
+    const [style, setStyle] = React.useState(styleOnNotHover)
 
+    const onMouseEnter = () => setStyle(styleOnHover)
+    const onMouseLeave = () => setStyle(styleOnNotHover)
+
+    return { style, onMouseEnter, onMouseLeave }
+  }
+  const hover1 = useHover({ border: '2px solid #ffd167' })
+  const hover2 = useHover({ border: '2px solid #ffd167' })
   const [cardData, setCardData] = useState()
   const [cardname, setCardName] = useState()
   const [userdata, setUserData] = useState()
@@ -40,7 +51,6 @@ const EditCard27 = () => {
     getCardsOfUser()
   }, [id2])
 
-  // console.log({textdata})
   const [messageData, setMessageData] = useState({
     message_1: '',
     senderName: ''
@@ -48,7 +58,6 @@ const EditCard27 = () => {
 
   useEffect(() => {
     if (textdata) {
-      console.log({ textdata })
       setMessageData({
         message_1: textdata[0]?.message_1 ?? '',
         senderName: textdata[0]?.senderName ?? ''
@@ -70,17 +79,6 @@ const EditCard27 = () => {
     const value = e.target.value
     setMessageData({ ...messageData, [name]: value })
   }
-
-  function useHover(styleOnHover, styleOnNotHover = {}) {
-    const [style, setStyle] = React.useState(styleOnNotHover)
-
-    const onMouseEnter = () => setStyle(styleOnHover)
-    const onMouseLeave = () => setStyle(styleOnNotHover)
-
-    return { style, onMouseEnter, onMouseLeave }
-  }
-
-  const hover = useHover({ color: 'orange' })
 
   const PostData = async (e) => {
     e.preventDefault()
@@ -115,7 +113,7 @@ const EditCard27 = () => {
 
     if ((card_data.status = 'Success')) {
       setLoading(false)
-      navigate(`/preview?id=${card_data.data.id}`)
+      navigate(`/preview?id=${card_data.createdCardId}`)
     }
   }
 
@@ -146,33 +144,38 @@ const EditCard27 = () => {
                     fontWeight: 'bold'
                   }}
                 >
-                  <h5
-                    data-bs-toggle="modal"
-                    data-bs-target="#id1"
-                    style={{
-                      paddingTop: '70px',
-                      maxWidth: '300px',
-                      margin: 'auto',
-                      fontFamily: 'georgia',
-                      textAlign: 'center'
-                    }}
-                  >
-                    {messageData.message_1}
-                  </h5>
-
-                  <h6
-                    data-bs-toggle="modal"
-                    data-bs-target="#id2"
-                    style={{
-                      paddingTop: '4px',
-                      maxWidth: '350px',
-                      margin: 'auto',
-                      fontFamily: 'lucida-fax-demibold-italic'
-                    }}
-                  >
-                    {' '}
-                    {messageData.senderName}
-                  </h6>
+                  <div className="editable" {...hover1}>
+                    <h5
+                      data-bs-toggle="modal"
+                      data-bs-target="#id1"
+                      style={{
+                        paddingTop: '70px',
+                        maxWidth: '300px',
+                        margin: 'auto',
+                        fontFamily: 'georgia',
+                        textAlign: 'center'
+                      }}
+                    >
+                      {messageData.message_1}
+                    </h5>
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
+                  <div className="editable" {...hover2}>
+                    <h6
+                      data-bs-toggle="modal"
+                      data-bs-target="#id2"
+                      style={{
+                        paddingTop: '4px',
+                        maxWidth: '350px',
+                        margin: 'auto',
+                        fontFamily: 'lucida-fax-demibold-italic'
+                      }}
+                    >
+                      {' '}
+                      {messageData.senderName}
+                    </h6>
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
                 </div>
               </div>
             </div>

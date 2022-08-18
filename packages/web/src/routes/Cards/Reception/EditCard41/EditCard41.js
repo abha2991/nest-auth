@@ -10,11 +10,26 @@ import useProfileApi from '../../../../api/useProfileApi'
 import Loading from '../../../../components/Loading'
 import Footer from '../../../Footer'
 import Modal from '../../../Modal'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 const EditCard41 = () => {
   const navigate = useNavigate()
   const id = useQueryParams()
   const { id: id2 } = id
+  function useHover(styleOnHover, styleOnNotHover = {}) {
+    const [style, setStyle] = React.useState(styleOnNotHover)
 
+    const onMouseEnter = () => setStyle(styleOnHover)
+    const onMouseLeave = () => setStyle(styleOnNotHover)
+
+    return { style, onMouseEnter, onMouseLeave }
+  }
+  const hover1 = useHover({ border: '2px solid #ffd167' })
+  const hover2 = useHover({ border: '2px solid #ffd167' })
+  const hover3 = useHover({ border: '2px solid #ffd167' })
+  const hover4 = useHover({ border: '2px solid #ffd167' })
+  const hover5 = useHover({ border: '2px solid #ffd167' })
+  const hover6 = useHover({ border: '2px solid #ffd167' })
   const { data: profile, status } = useProfileApi()
   const [loading, setLoading] = useState(false)
   const [cardData, setCardData] = useState()
@@ -79,17 +94,6 @@ const EditCard41 = () => {
     receptionSecondPageCardData = Object.entries(secondPageData)
   }
 
-  function useHover(styleOnHover, styleOnNotHover = {}) {
-    const [style, setStyle] = React.useState(styleOnNotHover)
-
-    const onMouseEnter = () => setStyle(styleOnHover)
-    const onMouseLeave = () => setStyle(styleOnNotHover)
-
-    return { style, onMouseEnter, onMouseLeave }
-  }
-
-  const hover = useHover({ color: 'orange' })
-
   const PostData = async (e) => {
     e.preventDefault()
 
@@ -128,7 +132,7 @@ const EditCard41 = () => {
 
     if ((card_data.status = 'Success')) {
       setLoading(false)
-      navigate(`/preview?id=${card_data.data.id}`)
+      navigate(`/preview?id=${card_data.createdCardId}`)
     }
   }
 
@@ -155,28 +159,33 @@ const EditCard41 = () => {
                     backgroundSize: '100% 100%'
                   }}
                 >
-                  <h4
-                    className="card12-text"
-                    data-bs-toggle="modal"
-                    data-bs-target="#id1"
-                    style={{
-                      fontSize: '80px',
-                      maxWidth: '350px',
-                      margin: 'auto',
-                      fontWeight: 'bold'
-                    }}
-                  >
-                    {' '}
-                    {firstPageData.brideAndGroomName}
-                  </h4>
-
-                  <h6
-                    data-bs-toggle="modal"
-                    data-bs-target="#id2"
-                    style={{ paddingTop: '10px', maxWidth: '300px', margin: 'auto', color: '#ebd0ab' }}
-                  >
-                    {firstPageData.date}
-                  </h6>
+                  <div className="editable" {...hover1}>
+                    <h4
+                      className="card12-text"
+                      data-bs-toggle="modal"
+                      data-bs-target="#id1"
+                      style={{
+                        fontSize: '80px',
+                        maxWidth: '350px',
+                        margin: 'auto',
+                        fontWeight: 'bold'
+                      }}
+                    >
+                      {' '}
+                      {firstPageData.brideAndGroomName}
+                    </h4>{' '}
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
+                  <div className="editable" {...hover2}>
+                    <h6
+                      data-bs-toggle="modal"
+                      data-bs-target="#id2"
+                      style={{ paddingTop: '10px', maxWidth: '300px', margin: 'auto', color: '#ebd0ab' }}
+                    >
+                      {firstPageData.date}
+                    </h6>{' '}
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
                 </div>
               </div>
             </div>
@@ -195,41 +204,49 @@ const EditCard41 = () => {
                     backgroundSize: '100% 100%'
                   }}
                 >
-                  <h5
-                    className="card12-text"
-                    data-bs-toggle="modal"
-                    data-bs-target="#id1"
-                    style={{
-                      fontSize: '80px',
-                      maxWidth: '350px',
-                      margin: 'auto',
-                      fontWeight: 'bold'
-                    }}
-                  >
-                    {' '}
-                    {firstPageData.brideAndGroomName}
-                  </h5>
-
-                  <h5
-                    data-bs-toggle="modal"
-                    data-bs-target="#id3"
-                    style={{
-                      paddingTop: '10px',
-                      maxWidth: '300px',
-                      margin: 'auto',
-                      color: '#fff',
-                      fontStyle: 'italic'
-                    }}
-                  >
-                    {secondPageData.dateAndTime}
-                  </h5>
-                  <h5
-                    data-bs-toggle="modal"
-                    data-bs-target="#id4"
-                    style={{ paddingTop: '20px', maxWidth: '300px', margin: 'auto', color: '#fff' }}
-                  >
-                    {secondPageData.venue}
-                  </h5>
+                  <div className="editable" {...hover3}>
+                    <h5
+                      className="card12-text"
+                      data-bs-toggle="modal"
+                      data-bs-target="#id1"
+                      style={{
+                        fontSize: '80px',
+                        maxWidth: '350px',
+                        margin: 'auto',
+                        fontWeight: 'bold'
+                      }}
+                    >
+                      {' '}
+                      {firstPageData.brideAndGroomName}
+                    </h5>{' '}
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
+                  <div className="editable" {...hover4}>
+                    <h5
+                      data-bs-toggle="modal"
+                      data-bs-target="#id3"
+                      style={{
+                        paddingTop: '10px',
+                        maxWidth: '300px',
+                        margin: 'auto',
+                        color: '#fff',
+                        fontStyle: 'italic'
+                      }}
+                    >
+                      {secondPageData.dateAndTime}
+                    </h5>{' '}
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
+                  <div className="editable" {...hover5}>
+                    <h5
+                      data-bs-toggle="modal"
+                      data-bs-target="#id4"
+                      style={{ paddingTop: '20px', maxWidth: '300px', margin: 'auto', color: '#fff' }}
+                    >
+                      {secondPageData.venue}
+                    </h5>{' '}
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
                 </div>
               </div>
             </div>
@@ -243,8 +260,6 @@ const EditCard41 = () => {
               onClick={() => {
                 let name = textData1[index]
                 let value = textData1[index + 2]
-
-                console.log({ name, value })
 
                 setFirstPageData({ ...firstPageData, [name]: [value] })
               }}
@@ -267,8 +282,6 @@ const EditCard41 = () => {
               onClick={() => {
                 let name = textData2[index]
                 let value = textData2[index + 2]
-
-                console.log({ name, value })
 
                 setSecondPageData({ ...secondPageData, [name]: [value] })
               }}

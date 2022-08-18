@@ -1,8 +1,6 @@
-import React from "react";
+import React from 'react'
 
-import ScrollTop from "react-scroll-to-top";
-
-
+import ScrollTop from 'react-scroll-to-top'
 
 // export default function ScrollToTop() {
 //   return (
@@ -19,24 +17,18 @@ import ScrollTop from "react-scroll-to-top";
 //   );
 // }
 
+const ScrollToTop = () => {
+  return (
+    <>
+      <h1>Hello</h1>
 
-const ScrollToTop=()=>{
-console.log({ScrollTop})
+      <ScrollTop smooth component={<h1>UP</h1>} />
 
-  return(
-      <>
-        <h1>Hello</h1>
-
-        <ScrollTop smooth
-                               component={<h1
-                               >UP</h1>} />
-
-        <h1>Hello!</h1>
+      <h1>Hello!</h1>
       <h2>Scroll down for the button to appear</h2>
-      <p style={{ marginTop: "400vh" }}>bottom</p>
-      </>
+      <p style={{ marginTop: '400vh' }}>bottom</p>
+    </>
   )
-
 }
 
 export default ScrollToTop

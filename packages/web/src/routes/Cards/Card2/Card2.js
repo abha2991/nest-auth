@@ -100,7 +100,7 @@ const Card2 = () => {
     })
 
     const card_data = await res.json()
-    console.log(card_data.id)
+
     setCardData(card_data.id)
 
     navigate(`/preview?id=${card_data.id}`)

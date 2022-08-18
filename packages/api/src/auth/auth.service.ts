@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common'
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common'
 import { JwtService } from '@nestjs/jwt'
 import * as moment from 'moment'
 import { CreateUserDto } from 'src/users/dto/create-user.dto'
@@ -13,12 +13,37 @@ export class AuthService {
 
   async login(loginDto: LoginDto) {
     const user = await this.usersService.findByCredentials(loginDto.email, loginDto.password)
-    return this.createToken(user)
+
+    return await this.createToken(user)
   }
 
   async register(createUserDto: CreateUserDto) {
-    const user = await this.usersService.create(createUserDto)
-    return this.createToken(user)
+    try {
+      const createdUser = await this.usersService.findByEmail(createUserDto.email)
+      if (createdUser) {
+        throw new HttpException(
+          {
+            statusCode: HttpStatus.BAD_REQUEST,
+            status: 'Failed',
+            message: 'Email Already Exists'
+          },
+          HttpStatus.BAD_REQUEST
+        )
+      }
+
+      const user = await this.usersService.create(createUserDto)
+
+      return this.createToken(user)
+    } catch (e) {
+      throw new HttpException(
+        {
+          statusCode: HttpStatus.BAD_REQUEST,
+          status: 'Failed',
+          message: e.message
+        },
+        HttpStatus.BAD_REQUEST
+      )
+    }
   }
 
   async socialLogin(socialUser: Partial<User>) {

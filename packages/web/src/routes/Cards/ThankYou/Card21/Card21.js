@@ -9,6 +9,8 @@ import useQueryParams from '../../../../hooks/useQueryParams'
 import Footer from '../../../Footer'
 
 import Modal from '../../../Modal'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 const Card21 = () => {
   const navigate = useNavigate()
   const id = useQueryParams()
@@ -27,8 +29,6 @@ const Card21 = () => {
   const hover1 = useHover({ border: '2px solid #ffd167' })
   const hover2 = useHover({ border: '2px solid #ffd167' })
   const hover3 = useHover({ border: '2px solid #ffd167' })
-  const hover4 = useHover({ border: '2px solid #ffd167' })
-  const hover5 = useHover({ border: '2px solid #ffd167' })
 
   const [cardData, setCardData] = useState({
     receiverName: 'Dear Jeane,',
@@ -78,7 +78,7 @@ const Card21 = () => {
 
     if ((card_data.status = 'Success')) {
       setLoading(false)
-      navigate(`/preview?id=${card_data.data.id}`)
+      navigate(`/preview?id=${card_data.createdCardId}`)
     }
   }
 
@@ -102,50 +102,57 @@ const Card21 = () => {
                   backgroundSize: '100% 100%'
                 }}
               >
-                <h7
-                  data-bs-toggle="modal"
-                  data-bs-target="#id1"
-                  style={{
-                    paddingTop: '300px',
-                    maxWidth: '350px',
-                    margin: 'auto',
-                    fontFamily: 'myriad-pro-regular',
-                    color: '#dd7895'
-                  }}
-                >
-                  {' '}
-                  {cardData.receiverName}
-                </h7>
+                <div className="editable" {...hover1}>
+                  <p
+                    data-bs-toggle="modal"
+                    data-bs-target="#id1"
+                    style={{
+                      paddingTop: '300px',
+                      maxWidth: '350px',
+                      margin: 'auto',
+                      fontFamily: 'myriad-pro-regular',
+                      color: '#dd7895'
+                    }}
+                  >
+                    {' '}
+                    {cardData.receiverName}
+                  </p>
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover2}>
+                  <h5
+                    data-bs-toggle="modal"
+                    data-bs-target="#id2"
+                    style={{
+                      paddingTop: '8px',
+                      maxWidth: '300px',
+                      margin: 'auto',
+                      color: '#ca6180',
+                      fontFamily: 'myriad-pro-bold'
+                    }}
+                  >
+                    {cardData.message_1}
+                  </h5>
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover3}>
+                  <p
+                    data-bs-toggle="modal"
+                    data-bs-target="#id3"
+                    style={{
+                      paddingTop: '8px',
+                      maxWidth: '350px',
+                      margin: 'auto',
 
-                <h5
-                  data-bs-toggle="modal"
-                  data-bs-target="#id2"
-                  style={{
-                    paddingTop: '8px',
-                    maxWidth: '300px',
-                    margin: 'auto',
-                    color: '#ca6180',
-                    fontFamily: 'myriad-pro-bold'
-                  }}
-                >
-                  {cardData.message_1}
-                </h5>
-
-                <h7
-                  data-bs-toggle="modal"
-                  data-bs-target="#id3"
-                  style={{
-                    paddingTop: '8px',
-                    maxWidth: '350px',
-                    margin: 'auto',
-
-                    color: '#dd7895',
-                    fontFamily: 'myriad-pro-regular'
-                  }}
-                >
-                  {' '}
-                  {cardData.senderName}
-                </h7>
+                      color: '#dd7895',
+                      fontFamily: 'myriad-pro-regular'
+                    }}
+                  >
+                    {' '}
+                    {cardData.senderName}
+                  </p>
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
               </div>
             </div>
           </div>

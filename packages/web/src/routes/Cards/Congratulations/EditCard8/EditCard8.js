@@ -9,13 +9,24 @@ import useProfileApi from '../../../../api/useProfileApi'
 import Loading from '../../../../components/Loading'
 import Footer from '../../../Footer'
 import Modal from '../../../Modal'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 const EditCard8 = () => {
   const navigate = useNavigate()
   const id = useQueryParams()
   const { id: id2 } = id
   const [loading, setLoading] = useState(false)
   const { data: profile, status } = useProfileApi()
+  function useHover(styleOnHover, styleOnNotHover = {}) {
+    const [style, setStyle] = React.useState(styleOnNotHover)
 
+    const onMouseEnter = () => setStyle(styleOnHover)
+    const onMouseLeave = () => setStyle(styleOnNotHover)
+
+    return { style, onMouseEnter, onMouseLeave }
+  }
+  const hover1 = useHover({ border: '2px solid #ffd167' })
+  const hover2 = useHover({ border: '2px solid #ffd167' })
   const [cardData, setCardData] = useState()
 
   const [userdata, setUserData] = useState()
@@ -70,17 +81,6 @@ const EditCard8 = () => {
     setCardText({ ...cardText, [name]: value })
   }
 
-  function useHover(styleOnHover, styleOnNotHover = {}) {
-    const [style, setStyle] = React.useState(styleOnNotHover)
-
-    const onMouseEnter = () => setStyle(styleOnHover)
-    const onMouseLeave = () => setStyle(styleOnNotHover)
-
-    return { style, onMouseEnter, onMouseLeave }
-  }
-
-  const hover = useHover({ color: 'orange' })
-
   const PostData = async (e) => {
     e.preventDefault()
 
@@ -113,7 +113,7 @@ const EditCard8 = () => {
     const card_data = await res.json()
     if ((card_data.status = 'Success')) {
       setLoading(false)
-      navigate(`/preview?id=${card_data.data.id}`)
+      navigate(`/preview?id=${card_data.createdCardId}`)
     }
   }
 
@@ -142,35 +142,40 @@ const EditCard8 = () => {
                     backgroundSize: '100% 100%'
                   }}
                 >
-                  <h6
-                    data-bs-toggle="modal"
-                    data-bs-target="#id1"
-                    style={{
-                      fontFamily: 'myriad-pro-bold',
-                      paddingTop: '120px',
-                      maxWidth: '350px',
-                      margin: 'auto',
-                      color: '#a83e63'
-                    }}
-                  >
-                    {' '}
-                    {cardText.message_1}
-                  </h6>
-
-                  <h6
-                    data-bs-toggle="modal"
-                    data-bs-target="#id2"
-                    style={{
-                      paddingTop: '20px',
-                      fontFamily: 'myriad-pro-semibold',
-                      fontSize: '18px',
-                      maxWidth: '300px',
-                      margin: 'auto',
-                      color: '#a1395c'
-                    }}
-                  >
-                    {cardText.message_2}
-                  </h6>
+                  <div className="editable" {...hover1}>
+                    <h6
+                      data-bs-toggle="modal"
+                      data-bs-target="#id1"
+                      style={{
+                        fontFamily: 'myriad-pro-bold',
+                        paddingTop: '120px',
+                        maxWidth: '350px',
+                        margin: 'auto',
+                        color: '#a83e63'
+                      }}
+                    >
+                      {' '}
+                      {cardText.message_1}
+                    </h6>
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
+                  <div className="editable" {...hover2}>
+                    <h6
+                      data-bs-toggle="modal"
+                      data-bs-target="#id2"
+                      style={{
+                        paddingTop: '20px',
+                        fontFamily: 'myriad-pro-semibold',
+                        fontSize: '18px',
+                        maxWidth: '300px',
+                        margin: 'auto',
+                        color: '#a1395c'
+                      }}
+                    >
+                      {cardText.message_2}
+                    </h6>
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
                 </div>
               </div>
             </div>

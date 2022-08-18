@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Req, Res, UseGuards } from '@nestjs/common'
+import { Body, Controller, Get, HttpService, HttpStatus, Post, Req, Res, UseGuards } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { AuthGuard } from '@nestjs/passport'
 import { Response } from 'express'
@@ -29,8 +29,10 @@ export class AuthController {
       httpOnly: true,
       secure: true,
       sameSite: 'strict',
+
       expires: new Date(data.expiry)
     })
+
     return data
   }
 
@@ -42,8 +44,11 @@ export class AuthController {
   @Public()
   @Post('login')
   async login(@Body() loginDto: LoginDto, @Res({ passthrough: true }) response: Response) {
-    const data = await this.authService.login(loginDto)
-    return AuthController.loginResponse(data, response)
+    const data1 = await this.authService.login(loginDto)
+
+    const data = AuthController.loginResponse(data1, response)
+
+    return { user: data.user, status: 'Success', message: 'Logged In Succesfully', statusCode: HttpStatus.OK }
   }
 
   @Post('logout')
@@ -54,8 +59,13 @@ export class AuthController {
   @Public()
   @Post('register')
   async register(@Body() createUserDto: CreateUserDto, @Res({ passthrough: true }) response: Response) {
-    const data = await this.authService.register(createUserDto)
-    return AuthController.loginResponse(data, response)
+    const createdUser = await this.authService.register(createUserDto)
+
+    const data = AuthController.loginResponse(createdUser, response)
+
+    //return AuthController.loginResponse(data, response)
+
+    return { user: data.user, status: 'Success', message: 'Logged In Succesfully', statusCode: HttpStatus.OK }
   }
 
   @Public()

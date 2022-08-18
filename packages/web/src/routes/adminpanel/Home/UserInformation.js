@@ -76,7 +76,24 @@ const UserInformation = () => {
                             <td>{val.id}</td>
                             <td>{val.userId}</td>
                             <td>{email?.email}</td>
-                            <td>{val.cardNames}</td>
+                            <td>
+                              {' '}
+                              {val.cardNames?.map((cardetails, ind) => {
+                                if (val.cardNames.length === ind + 1) {
+                                  return (
+                                    <>
+                                      <td>{cardetails}</td>
+                                    </>
+                                  )
+                                } else {
+                                  return (
+                                    <>
+                                      <td>{cardetails},</td>
+                                    </>
+                                  )
+                                }
+                              })}
+                            </td>
                             <td>{val.cardCategory}</td>
                             <td>{val.cardSalePrice}</td>
                             <td>{val.cardTotalPrice}</td>

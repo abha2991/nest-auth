@@ -20,7 +20,6 @@ const Purchased = () => {
   const navigate = useNavigate()
   const { data: profile, status } = useProfileApi()
   let id = profile?.id ?? ''
-  console.log({ id, status })
 
   const [cardData, setCardData] = useState()
 
@@ -34,14 +33,12 @@ const Purchased = () => {
     })
 
     const data = await res.json()
-    console.log(data)
+
     setCardData(data)
   }
   useEffect(() => {
     getCardsOfUser()
   }, [id])
-
-  console.log(cardData)
 
   const preview = (id) => {
     navigate(`/download?id=${id}`)

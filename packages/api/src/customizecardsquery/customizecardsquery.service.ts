@@ -29,7 +29,16 @@ export class CustomizecardsqueryService {
     return `This action returns a #${id} customizecardsquery`
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} customizecardsquery`
+  async remove(id: string) {
+    try {
+      await this.customizeCardRepository.delete(id)
+
+      return {
+        success: true,
+        message: 'Successfully Deleted'
+      }
+    } catch (e) {
+      console.log({ e })
+    }
   }
 }

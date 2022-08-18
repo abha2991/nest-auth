@@ -12,6 +12,8 @@ import useQueryParams from '../../../../hooks/useQueryParams'
 import Footer from '../../../Footer'
 
 import Modal from '../../../Modal'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 const Card59 = () => {
   const navigate = useNavigate()
   const id = useQueryParams()
@@ -32,6 +34,31 @@ const Card59 = () => {
   const hover3 = useHover({ border: '2px solid #ffd167' })
   const hover4 = useHover({ border: '2px solid #ffd167' })
   const hover5 = useHover({ border: '2px solid #ffd167' })
+  const hover6 = useHover({ border: '2px solid #ffd167' })
+  const hover7 = useHover({ border: '2px solid #ffd167' })
+  const hover8 = useHover({ border: '2px solid #ffd167' })
+  const hover9 = useHover({ border: '2px solid #ffd167' })
+  const hover10 = useHover({ border: '2px solid #ffd167' })
+  const hover11 = useHover({ border: '2px solid #ffd167' })
+  const hover12 = useHover({ border: '2px solid #ffd167' })
+  const hover13 = useHover({ border: '2px solid #ffd167' })
+  const hover14 = useHover({ border: '2px solid #ffd167' })
+  const hover15 = useHover({ border: '2px solid #ffd167' })
+  const hover16 = useHover({ border: '2px solid #ffd167' })
+  const hover17 = useHover({ border: '2px solid #ffd167' })
+  const hover18 = useHover({ border: '2px solid #ffd167' })
+  const hover19 = useHover({ border: '2px solid #ffd167' })
+  const hover20 = useHover({ border: '2px solid #ffd167' })
+  const hover21 = useHover({ border: '2px solid #ffd167' })
+  const hover22 = useHover({ border: '2px solid #ffd167' })
+  const hover23 = useHover({ border: '2px solid #ffd167' })
+  const hover24 = useHover({ border: '2px solid #ffd167' })
+  const hover25 = useHover({ border: '2px solid #ffd167' })
+  const hover26 = useHover({ border: '2px solid #ffd167' })
+  const hover27 = useHover({ border: '2px solid #ffd167' })
+  const hover28 = useHover({ border: '2px solid #ffd167' })
+  const hover29 = useHover({ border: '2px solid #ffd167' })
+  const hover30 = useHover({ border: '2px solid #ffd167' })
 
   const [firstPageData, setFirstPageData] = useState({
     name1: 'EMRAAN KHAN',
@@ -219,7 +246,7 @@ const Card59 = () => {
 
     if ((card_data.status = 'Success')) {
       setLoading(false)
-      navigate(`/preview?id=${card_data.data.id}`)
+      navigate(`/preview?id=${card_data.createdCardId}`)
     }
   }
 
@@ -243,36 +270,44 @@ const Card59 = () => {
                   backgroundSize: '100% 100%'
                 }}
               >
-                <h3
-                  data-bs-toggle="modal"
-                  data-bs-target="#id1"
-                  style={{
-                    maxWidth: '350px',
-                    margin: 'auto'
-                  }}
-                >
-                  {' '}
-                  {firstPageData.name1}
-                </h3>
-
-                <h3
-                  data-bs-toggle="modal"
-                  data-bs-target="#id2"
-                  style={{
-                    paddingTop: '10px',
-                    maxWidth: '300px',
-                    margin: 'auto'
-                  }}
-                >
-                  {firstPageData.name2}
-                </h3>
-                <h5
-                  data-bs-toggle="modal"
-                  data-bs-target="#id3"
-                  style={{ paddingTop: '10px', maxWidth: '300px', margin: 'auto' }}
-                >
-                  {firstPageData.date}
-                </h5>
+                <div className="editable" {...hover1}>
+                  <h3
+                    data-bs-toggle="modal"
+                    data-bs-target="#id1"
+                    style={{
+                      maxWidth: '350px',
+                      margin: 'auto'
+                    }}
+                  >
+                    {' '}
+                    {firstPageData.name1}
+                  </h3>{' '}
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover2}>
+                  <h3
+                    data-bs-toggle="modal"
+                    data-bs-target="#id2"
+                    style={{
+                      paddingTop: '10px',
+                      maxWidth: '300px',
+                      margin: 'auto'
+                    }}
+                  >
+                    {firstPageData.name2}
+                  </h3>{' '}
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover3}>
+                  <h5
+                    data-bs-toggle="modal"
+                    data-bs-target="#id3"
+                    style={{ paddingTop: '10px', maxWidth: '300px', margin: 'auto' }}
+                  >
+                    {firstPageData.date}
+                  </h5>{' '}
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
               </div>
             </div>
           </div>
@@ -300,39 +335,51 @@ const Card59 = () => {
                   }}
                 >
                   WE INVITE YOU FOR WEDDING OF OUR
-                  <span data-bs-toggle="modal" data-bs-target="#id4">
-                    {secondPageData.sonOrDaughter}
-                  </span>
+                  <div className="editable" {...hover4}>
+                    <span data-bs-toggle="modal" data-bs-target="#id4">
+                      {secondPageData.sonOrDaughter}
+                    </span>{' '}
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
                 </p>
-                <h2
-                  data-bs-toggle="modal"
-                  data-bs-target="#id1"
-                  style={{
-                    paddingTop: '80px',
-                    maxWidth: '350px',
-                    margin: 'auto',
+                <div className="editable" {...hover5}>
+                  <h2
+                    data-bs-toggle="modal"
+                    data-bs-target="#id1"
+                    style={{
+                      paddingTop: '80px',
+                      maxWidth: '350px',
+                      margin: 'auto',
 
-                    fontFamily: 'myriad-pro-bold'
-                  }}
-                >
-                  {' '}
-                  {firstPageData.name1}
-                </h2>
+                      fontFamily: 'myriad-pro-bold'
+                    }}
+                  >
+                    {' '}
+                    {firstPageData.name1}
+                  </h2>{' '}
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover6}>
+                  <h5
+                    data-bs-toggle="modal"
+                    data-bs-target="#id5"
+                    style={{ paddingTop: '20px', maxWidth: '300px', margin: 'auto' }}
+                  >
+                    {secondPageData.parents1}
+                  </h5>{' '}
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover7}>
+                  <h5
+                    data-bs-toggle="modal"
+                    data-bs-target="#id6"
+                    style={{ paddingTop: '10px', maxWidth: '300px', margin: 'auto' }}
+                  >
+                    {secondPageData.grandParents1}
+                  </h5>{' '}
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
 
-                <h5
-                  data-bs-toggle="modal"
-                  data-bs-target="#id5"
-                  style={{ paddingTop: '20px', maxWidth: '300px', margin: 'auto' }}
-                >
-                  {secondPageData.parents1}
-                </h5>
-                <h5
-                  data-bs-toggle="modal"
-                  data-bs-target="#id6"
-                  style={{ paddingTop: '10px', maxWidth: '300px', margin: 'auto' }}
-                >
-                  {secondPageData.grandParents1}
-                </h5>
                 <h5
                   style={{
                     paddingTop: '10px',
@@ -344,33 +391,42 @@ const Card59 = () => {
                 >
                   Weds
                 </h5>
-                <h2
-                  data-bs-toggle="modal"
-                  data-bs-target="#id2"
-                  style={{
-                    paddingTop: '10px',
-                    maxWidth: '300px',
-                    margin: 'auto',
+                <div className="editable" {...hover8}>
+                  <h2
+                    data-bs-toggle="modal"
+                    data-bs-target="#id2"
+                    style={{
+                      paddingTop: '10px',
+                      maxWidth: '300px',
+                      margin: 'auto',
 
-                    fontFamily: 'myriad-pro-bold'
-                  }}
-                >
-                  {firstPageData.name2}
-                </h2>
-                <h5
-                  data-bs-toggle="modal"
-                  data-bs-target="#id7"
-                  style={{ paddingTop: '10px', maxWidth: '300px', margin: 'auto' }}
-                >
-                  {secondPageData.parents2}
-                </h5>
-                <h5
-                  data-bs-toggle="modal"
-                  data-bs-target="#id8"
-                  style={{ paddingTop: '10px', maxWidth: '300px', margin: 'auto' }}
-                >
-                  {secondPageData.grandParents2}
-                </h5>
+                      fontFamily: 'myriad-pro-bold'
+                    }}
+                  >
+                    {firstPageData.name2}
+                  </h2>{' '}
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover9}>
+                  <h5
+                    data-bs-toggle="modal"
+                    data-bs-target="#id7"
+                    style={{ paddingTop: '10px', maxWidth: '300px', margin: 'auto' }}
+                  >
+                    {secondPageData.parents2}
+                  </h5>{' '}
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover10}>
+                  <h5
+                    data-bs-toggle="modal"
+                    data-bs-target="#id8"
+                    style={{ paddingTop: '10px', maxWidth: '300px', margin: 'auto' }}
+                  >
+                    {secondPageData.grandParents2}
+                  </h5>{' '}
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
               </div>
             </div>
           </div>
@@ -388,146 +444,186 @@ const Card59 = () => {
                   backgroundSize: '100% 100%'
                 }}
               >
-                <h5
-                  data-bs-toggle="modal"
-                  data-bs-target="#id9"
-                  style={{
-                    maxWidth: '350px',
-                    margin: 'auto',
-                    fontFamily: 'myriad-pro-semibold',
-                    color: '#ffc601'
-                  }}
-                >
-                  {' '}
-                  {thirdPageData.function1}
-                </h5>
-
-                <h5
-                  data-bs-toggle="modal"
-                  data-bs-target="#id10"
-                  style={{ paddingTop: '20px', maxWidth: '300px', margin: 'auto', color: '#fff' }}
-                >
-                  {thirdPageData.date1}
-                </h5>
-                <h5
-                  data-bs-toggle="modal"
-                  data-bs-target="#id11"
-                  style={{ paddingTop: '10px', maxWidth: '300px', margin: 'auto', color: '#fff' }}
-                >
-                  {thirdPageData.venue1}
-                </h5>
-                <h5
-                  data-bs-toggle="modal"
-                  data-bs-target="#id12"
-                  style={{
-                    maxWidth: '350px',
-                    margin: 'auto',
-                    fontFamily: 'myriad-pro-semibold',
-                    color: '#ffc601'
-                  }}
-                >
-                  {' '}
-                  {thirdPageData.function2}
-                </h5>
-
-                <h5
-                  data-bs-toggle="modal"
-                  data-bs-target="#id13"
-                  style={{ paddingTop: '20px', maxWidth: '300px', margin: 'auto', color: '#fff' }}
-                >
-                  {thirdPageData.date2}
-                </h5>
-                <h5
-                  data-bs-toggle="modal"
-                  data-bs-target="#id14"
-                  style={{ paddingTop: '10px', maxWidth: '300px', margin: 'auto', color: '#fff' }}
-                >
-                  {thirdPageData.venue2}
-                </h5>
-                <h5
-                  data-bs-toggle="modal"
-                  data-bs-target="#id15"
-                  style={{
-                    maxWidth: '350px',
-                    margin: 'auto',
-                    fontFamily: 'myriad-pro-semibold',
-                    color: '#ffc601'
-                  }}
-                >
-                  {' '}
-                  {thirdPageData.function3}
-                </h5>
-
-                <h5
-                  data-bs-toggle="modal"
-                  data-bs-target="#id16"
-                  style={{ paddingTop: '20px', maxWidth: '300px', margin: 'auto', color: '#fff' }}
-                >
-                  {thirdPageData.date3}
-                </h5>
-                <h5
-                  data-bs-toggle="modal"
-                  data-bs-target="#id17"
-                  style={{ paddingTop: '10px', maxWidth: '300px', margin: 'auto', color: '#fff' }}
-                >
-                  {thirdPageData.venue3}
-                </h5>
-                <h5
-                  data-bs-toggle="modal"
-                  data-bs-target="#id18"
-                  style={{
-                    maxWidth: '350px',
-                    margin: 'auto',
-                    fontFamily: 'myriad-pro-semibold',
-                    color: '#ffc601'
-                  }}
-                >
-                  {' '}
-                  {thirdPageData.function4}
-                </h5>
-
-                <h5
-                  data-bs-toggle="modal"
-                  data-bs-target="#id19"
-                  style={{ paddingTop: '20px', maxWidth: '300px', margin: 'auto', color: '#fff' }}
-                >
-                  {thirdPageData.date4}
-                </h5>
-                <h5
-                  data-bs-toggle="modal"
-                  data-bs-target="#id20"
-                  style={{ paddingTop: '10px', maxWidth: '300px', margin: 'auto', color: '#fff' }}
-                >
-                  {thirdPageData.venue4}
-                </h5>
-                <h5
-                  data-bs-toggle="modal"
-                  data-bs-target="#id21"
-                  style={{
-                    maxWidth: '350px',
-                    margin: 'auto',
-                    fontFamily: 'myriad-pro-semibold',
-                    color: '#ffc601'
-                  }}
-                >
-                  {' '}
-                  {thirdPageData.function5}
-                </h5>
-
-                <h5
-                  data-bs-toggle="modal"
-                  data-bs-target="#id22"
-                  style={{ paddingTop: '20px', maxWidth: '300px', margin: 'auto', color: '#fff' }}
-                >
-                  {thirdPageData.date5}
-                </h5>
-                <h5
-                  data-bs-toggle="modal"
-                  data-bs-target="#id23"
-                  style={{ paddingTop: '10px', maxWidth: '300px', margin: 'auto', color: '#fff' }}
-                >
-                  {thirdPageData.venue5}
-                </h5>
+                <div className="editable" {...hover11}>
+                  <h5
+                    data-bs-toggle="modal"
+                    data-bs-target="#id9"
+                    style={{
+                      maxWidth: '350px',
+                      margin: 'auto',
+                      fontFamily: 'myriad-pro-semibold',
+                      color: '#ffc601'
+                    }}
+                  >
+                    {' '}
+                    {thirdPageData.function1}
+                  </h5>{' '}
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover12}>
+                  <h5
+                    data-bs-toggle="modal"
+                    data-bs-target="#id10"
+                    style={{ paddingTop: '20px', maxWidth: '300px', margin: 'auto', color: '#fff' }}
+                  >
+                    {thirdPageData.date1}
+                  </h5>{' '}
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover13}>
+                  <h5
+                    data-bs-toggle="modal"
+                    data-bs-target="#id11"
+                    style={{ paddingTop: '10px', maxWidth: '300px', margin: 'auto', color: '#fff' }}
+                  >
+                    {thirdPageData.venue1}
+                  </h5>{' '}
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover14}>
+                  <h5
+                    data-bs-toggle="modal"
+                    data-bs-target="#id12"
+                    style={{
+                      maxWidth: '350px',
+                      margin: 'auto',
+                      fontFamily: 'myriad-pro-semibold',
+                      color: '#ffc601'
+                    }}
+                  >
+                    {' '}
+                    {thirdPageData.function2}
+                  </h5>{' '}
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover15}>
+                  <h5
+                    data-bs-toggle="modal"
+                    data-bs-target="#id13"
+                    style={{ paddingTop: '20px', maxWidth: '300px', margin: 'auto', color: '#fff' }}
+                  >
+                    {thirdPageData.date2}
+                  </h5>{' '}
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover16}>
+                  <h5
+                    data-bs-toggle="modal"
+                    data-bs-target="#id14"
+                    style={{ paddingTop: '10px', maxWidth: '300px', margin: 'auto', color: '#fff' }}
+                  >
+                    {thirdPageData.venue2}
+                  </h5>{' '}
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover17}>
+                  <h5
+                    data-bs-toggle="modal"
+                    data-bs-target="#id15"
+                    style={{
+                      maxWidth: '350px',
+                      margin: 'auto',
+                      fontFamily: 'myriad-pro-semibold',
+                      color: '#ffc601'
+                    }}
+                  >
+                    {' '}
+                    {thirdPageData.function3}
+                  </h5>{' '}
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover18}>
+                  <h5
+                    data-bs-toggle="modal"
+                    data-bs-target="#id16"
+                    style={{ paddingTop: '20px', maxWidth: '300px', margin: 'auto', color: '#fff' }}
+                  >
+                    {thirdPageData.date3}
+                  </h5>{' '}
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover19}>
+                  <h5
+                    data-bs-toggle="modal"
+                    data-bs-target="#id17"
+                    style={{ paddingTop: '10px', maxWidth: '300px', margin: 'auto', color: '#fff' }}
+                  >
+                    {thirdPageData.venue3}
+                  </h5>{' '}
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover20}>
+                  <h5
+                    data-bs-toggle="modal"
+                    data-bs-target="#id18"
+                    style={{
+                      maxWidth: '350px',
+                      margin: 'auto',
+                      fontFamily: 'myriad-pro-semibold',
+                      color: '#ffc601'
+                    }}
+                  >
+                    {' '}
+                    {thirdPageData.function4}
+                  </h5>{' '}
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover21}>
+                  <h5
+                    data-bs-toggle="modal"
+                    data-bs-target="#id19"
+                    style={{ paddingTop: '20px', maxWidth: '300px', margin: 'auto', color: '#fff' }}
+                  >
+                    {thirdPageData.date4}
+                  </h5>{' '}
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover22}>
+                  <h5
+                    data-bs-toggle="modal"
+                    data-bs-target="#id20"
+                    style={{ paddingTop: '10px', maxWidth: '300px', margin: 'auto', color: '#fff' }}
+                  >
+                    {thirdPageData.venue4}
+                  </h5>{' '}
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover23}>
+                  <h5
+                    data-bs-toggle="modal"
+                    data-bs-target="#id21"
+                    style={{
+                      maxWidth: '350px',
+                      margin: 'auto',
+                      fontFamily: 'myriad-pro-semibold',
+                      color: '#ffc601'
+                    }}
+                  >
+                    {' '}
+                    {thirdPageData.function5}
+                  </h5>{' '}
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover24}>
+                  <h5
+                    data-bs-toggle="modal"
+                    data-bs-target="#id22"
+                    style={{ paddingTop: '20px', maxWidth: '300px', margin: 'auto', color: '#fff' }}
+                  >
+                    {thirdPageData.date5}
+                  </h5>{' '}
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover25}>
+                  <h5
+                    data-bs-toggle="modal"
+                    data-bs-target="#id23"
+                    style={{ paddingTop: '10px', maxWidth: '300px', margin: 'auto', color: '#fff' }}
+                  >
+                    {thirdPageData.venue5}
+                  </h5>{' '}
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
               </div>
             </div>
           </div>
@@ -545,42 +641,56 @@ const Card59 = () => {
                   backgroundSize: '100% 100%'
                 }}
               >
-                <h5
-                  data-bs-toggle="modal"
-                  data-bs-target="#id24"
-                  style={{
-                    maxWidth: '350px',
-                    margin: 'auto'
-                  }}
-                >
-                  {' '}
-                  {fourthPageData.date}
-                </h5>
-
-                <h5 data-bs-toggle="modal" data-bs-target="#id25" style={{ maxWidth: '300px', margin: 'auto' }}>
-                  {fourthPageData.time}
-                </h5>
-                <h5
-                  data-bs-toggle="modal"
-                  data-bs-target="#id26"
-                  style={{ paddingTop: '60px', maxWidth: '300px', margin: 'auto' }}
-                >
-                  {fourthPageData.venue}
-                </h5>
-                <h5
-                  data-bs-toggle="modal"
-                  data-bs-target="#id27"
-                  style={{ paddingTop: '10px', maxWidth: '300px', margin: 'auto', fontFamily: 'myriad-pro-bold' }}
-                >
-                  {fourthPageData.rsvp}
-                </h5>
-                <h5
-                  data-bs-toggle="modal"
-                  data-bs-target="#id28"
-                  style={{ paddingTop: '10px', maxWidth: '300px', margin: 'auto' }}
-                >
-                  {fourthPageData._rsvp}
-                </h5>
+                <div className="editable" {...hover26}>
+                  <h5
+                    data-bs-toggle="modal"
+                    data-bs-target="#id24"
+                    style={{
+                      maxWidth: '350px',
+                      margin: 'auto'
+                    }}
+                  >
+                    {' '}
+                    {fourthPageData.date}
+                  </h5>{' '}
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover27}>
+                  <h5 data-bs-toggle="modal" data-bs-target="#id25" style={{ maxWidth: '300px', margin: 'auto' }}>
+                    {fourthPageData.time}
+                  </h5>{' '}
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover28}>
+                  <h5
+                    data-bs-toggle="modal"
+                    data-bs-target="#id26"
+                    style={{ paddingTop: '60px', maxWidth: '300px', margin: 'auto' }}
+                  >
+                    {fourthPageData.venue}
+                  </h5>{' '}
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover29}>
+                  <h5
+                    data-bs-toggle="modal"
+                    data-bs-target="#id27"
+                    style={{ paddingTop: '10px', maxWidth: '300px', margin: 'auto', fontFamily: 'myriad-pro-bold' }}
+                  >
+                    {fourthPageData.rsvp}
+                  </h5>{' '}
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover30}>
+                  <h5
+                    data-bs-toggle="modal"
+                    data-bs-target="#id28"
+                    style={{ paddingTop: '10px', maxWidth: '300px', margin: 'auto' }}
+                  >
+                    {fourthPageData._rsvp}
+                  </h5>{' '}
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
               </div>
             </div>
           </div>
@@ -639,8 +749,6 @@ const Card59 = () => {
               let name = ThirdPageData[index]
               let value = ThirdPageData[index + 15]
 
-              console.log({ name, value, index })
-
               setThirdPageData({ ...thirdPageData, [name]: [value] })
             }}
             onChange={(e) => {
@@ -662,8 +770,6 @@ const Card59 = () => {
             onClick={() => {
               let name = FourthPageData[index]
               let value = FourthPageData[index + 5]
-
-              console.log({ name, value })
 
               setFourthPageData({ ...fourthPageData, [name]: [value] })
             }}

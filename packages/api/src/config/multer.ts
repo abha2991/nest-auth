@@ -6,7 +6,9 @@ import { HttpException, HttpStatus } from '@nestjs/common'
 
 // Multer configuration
 export const multerConfig = {
-  dest: './uploads/Banner'
+  // dest: './uploads/Banner'
+
+  dest: './uploads'
 }
 
 // Multer upload options
@@ -25,8 +27,12 @@ export const multerOptions = {
   storage: diskStorage({
     // Destination storage path details
     destination: (req: any, file: any, cb: any) => {
-      const uploadPath = multerConfig.dest
-      console.log({ uploadPath })
+      // const uploadPath = multerConfig.dest
+      const folder = multerConfig.dest
+      const createdFolder = req.params.folder
+
+      const uploadPath = folder + '/' + createdFolder
+
       // Create folder if doesn't exist
       if (!existsSync(uploadPath)) {
         mkdirSync(uploadPath)

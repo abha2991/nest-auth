@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common'
+import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Patch, Post, Res } from '@nestjs/common'
 import { Public } from 'src/common/decorators/public.decorator'
 import { Role } from '../common/decorators/role.decorator'
 
@@ -15,22 +15,7 @@ export class CardController {
   constructor(private readonly cardservice: CardService) {}
 
   @Post('create')
-
-  // Card(@Body() cardDto: CardDto,@CurrentUser() currentUser: LoggedInUser) {
-  //     let email=currentUser.email;
-  //     cardDto.email=email;
-  //     return this.cardservice.Card(cardDto)
-  //
-  // }
-
-  // @Public()
-  //     Card(@Body() cardDto: CardDto) {
-  //       console.log({cardDto})
-  //         return this.cardservice.Card(cardDto)
-  //
-  //     }
   Card(@Body() cardDto: CardDto) {
-    // console.log({ cardDto })
     return this.cardservice.Card(cardDto)
   }
 
@@ -118,6 +103,11 @@ export class CardController {
     return this.cardservice.WeddingCard15(cardDto)
   }
 
+  @Post('weddingcard16')
+  WeddingCard16(@Body() cardDto: CardDto) {
+    return this.cardservice.WeddingCard16(cardDto)
+  }
+
   @Post('babyshower')
   BabyShowerCard(@Body() cardDto: CardDto) {
     return this.cardservice.BabyShowerCard(cardDto)
@@ -197,6 +187,11 @@ export class CardController {
     return this.cardservice.ReceptionCard3(cardDto)
   }
 
+  @Post('receptioncard4')
+  ReceptionCard4(@Body() cardDto: CardDto) {
+    return this.cardservice.ReceptionCard4(cardDto)
+  }
+
   @Post('birthdaycard')
   BirthdayCard(@Body() cardDto: CardDto) {
     return this.cardservice.BirthdayCard(cardDto)
@@ -205,6 +200,11 @@ export class CardController {
   @Post('birthdaycard1')
   BirthdayCard1(@Body() cardDto: CardDto) {
     return this.cardservice.BirthdayCard1(cardDto)
+  }
+
+  @Post('birthdaycard2')
+  BirthdayCard2(@Body() cardDto: CardDto) {
+    return this.cardservice.BirthdayCard2(cardDto)
   }
 
   @Post('anniversarycard')
@@ -262,55 +262,32 @@ export class CardController {
   //
   //     return "Card"
   // }
-  @Public()
+  @Role('ADMIN')
   @Get('getall')
   findAll() {
     return this.cardservice.findAll()
   }
 
-  @Public()
   @Patch(':id')
   updatepaymentstatus(@Param('id') id: string, @Body() updateUserDto: UpdateCardUserDto) {
-    console.log({ updateUserDto })
     return this.cardservice.updatepaymentstatus(id, updateUserDto)
   }
 
-  // @Public()
-  //     @Post('getbyemail')
-  //     async findByEmail(@Body('email') email: string) {
-  //         return this.cardservice.findByEmail(email)
-  //     }
-
-  @Public()
-  // @Post('getbyuserid')
-  // async findOne(@Body('id') UserId:string)
-  // {
-  //
-  //     console.log({UserId})
-  //     return this.cardservice.findOne(UserId)
-  // }
   @Get(':UserId')
   async find(@Param('UserId') UserId: string) {
-    console.log({ UserId })
-    //console.log(join(__dirname, '..','src', 'card1','generated'))
-
     return this.cardservice.find(UserId)
   }
 
-  @Public()
   @Get('getCard/:id')
   findOne(@Param('id') id: string) {
     return this.cardservice.findOne(id)
   }
 
-  @Public()
   @Post('findCardById')
   findById(@Body('id') id: string) {
-    console.log({ id })
     return this.cardservice.findById(id)
   }
 
-  @Public()
   @Delete('delete/:id')
   remove(@Param('id') id: string) {
     return this.cardservice.remove(id)

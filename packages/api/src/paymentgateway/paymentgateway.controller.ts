@@ -7,13 +7,11 @@ import { PaymentgatewayService } from './paymentgateway.service'
 export class PaymentgatewayController {
   constructor(private readonly paymentgatewayService: PaymentgatewayService) {}
 
-  @Public()
   @Post()
   create(@Body() createPaymentgatewayDto: CreatePaymentgatewayDto) {
     return this.paymentgatewayService.create(createPaymentgatewayDto)
   }
 
-  @Public()
   @Post('success')
   success(@Body() successDto: SuccessDto) {
     return this.paymentgatewayService.success(successDto)

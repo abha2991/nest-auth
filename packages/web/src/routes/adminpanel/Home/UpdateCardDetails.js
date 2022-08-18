@@ -6,7 +6,7 @@ import AdminHeader from '../Header/AdminHeader'
 const UpdateCardDetails = () => {
   const id = useQueryParams()
   const { id: id2 } = id
-  //console.log({id2})
+
   const [cardData, setCardData] = useState()
 
   const getCardsOfUser = async (e) => {
@@ -39,8 +39,6 @@ const UpdateCardDetails = () => {
   }
 
   const updateCardDetails = async (name, sale, total, description, noOfPages) => {
-    //console.log({sale,total})
-    console.log({ name, sale, total, description })
     const res = await fetch(`http://localhost:3001/api/cardetails/${id2}`, {
       method: 'PATCH',
       credentials: 'include',
@@ -58,8 +56,6 @@ const UpdateCardDetails = () => {
     })
 
     const data = await res.json()
-
-    //console.log({data})
 
     if (data.message === 'Successfully Updated') {
       window.alert('Successfully Updated!!')

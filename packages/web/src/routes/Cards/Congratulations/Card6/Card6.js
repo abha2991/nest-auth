@@ -27,9 +27,6 @@ const Card6 = () => {
   }
   const hover1 = useHover({ border: '2px solid #ffd167' })
   const hover2 = useHover({ border: '2px solid #ffd167' })
-  const hover3 = useHover({ border: '2px solid #ffd167' })
-  const hover4 = useHover({ border: '2px solid #ffd167' })
-  const hover5 = useHover({ border: '2px solid #ffd167' })
 
   const [cardData, setCardData] = useState({
     message_1: 'I AM SO HAPPY AND EXCITED FOR YOUR SUCCESS',
@@ -74,7 +71,7 @@ const Card6 = () => {
 
     if ((card_data.status = 'Success')) {
       setLoading(false)
-      navigate(`/preview?id=${card_data.data.id}`)
+      navigate(`/preview?id=${card_data.createdCardId}`)
     }
   }
 
@@ -98,29 +95,40 @@ const Card6 = () => {
                   backgroundSize: '100% 100%'
                 }}
               >
-                <h3
-                  data-bs-toggle="modal"
-                  data-bs-target="#id1"
-                  style={{
-                    paddingTop: '90px',
-                    maxWidth: '350px',
-                    margin: 'auto',
+                <div className="editable" {...hover1}>
+                  <h3
+                    data-bs-toggle="modal"
+                    data-bs-target="#id1"
+                    style={{
+                      paddingTop: '90px',
+                      maxWidth: '350px',
+                      margin: 'auto',
 
-                    fontSize: '16px',
-                    color: '#de8aa4'
-                  }}
-                >
-                  {' '}
-                  {cardData.message_1}
-                </h3>
-
-                <h3
-                  data-bs-toggle="modal"
-                  data-bs-target="#id2"
-                  style={{ paddingTop: '10px', fontSize: '16px', maxWidth: '300px', margin: 'auto', color: '#da498c' }}
-                >
-                  {cardData.message_2}
-                </h3>
+                      fontSize: '16px',
+                      color: '#de8aa4'
+                    }}
+                  >
+                    {' '}
+                    {cardData.message_1}
+                  </h3>
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover2}>
+                  <h3
+                    data-bs-toggle="modal"
+                    data-bs-target="#id2"
+                    style={{
+                      paddingTop: '10px',
+                      fontSize: '16px',
+                      maxWidth: '300px',
+                      margin: 'auto',
+                      color: '#da498c'
+                    }}
+                  >
+                    {cardData.message_2}
+                  </h3>
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
               </div>
             </div>
           </div>
@@ -134,8 +142,6 @@ const Card6 = () => {
             onClick={() => {
               let name = messageData[index]
               let value = messageData[index + 2]
-
-              console.log({ name, value })
 
               setCardData({ ...cardData, [name]: [value] })
             }}

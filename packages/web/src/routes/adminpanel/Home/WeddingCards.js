@@ -3,6 +3,10 @@ import '../Adminindex.css'
 import AdminHeader from '../Header/AdminHeader'
 import Loading from '../../../components/Loading'
 import { useNavigate } from 'react-router'
+import OwlCarousel from 'react-owl-carousel2'
+import Fancybox from '../../../fancybox'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowLeft, faShareNodes } from '@fortawesome/free-solid-svg-icons'
 function WeddingCards() {
   const navigate = useNavigate()
   const [cardInfo, setCardInfo] = useState()
@@ -17,8 +21,6 @@ function WeddingCards() {
 
     const data = await res.json()
 
-    console.log({ data })
-
     setCardInfo(data)
   }
   useEffect(() => {
@@ -28,6 +30,20 @@ function WeddingCards() {
   const ChangeCardDetails = (id) => {
     navigate(`/update-card-details?id=${id}`)
   }
+
+  const options = {
+    loop: true,
+    center: true,
+    items: 2,
+    margin: 20,
+    rewind: true,
+    autoplay: true,
+    autoplayTimeout: 2000,
+    autoplayHoverPause: true,
+    dots: true,
+    nav: false
+  }
+
   if (!cardInfo) {
     return (
       <>
@@ -79,15 +95,33 @@ function WeddingCards() {
                             <tr>
                               <td>{val.id}</td>
                               <td>{val.cardName}</td>
-                              <td>{val.cardDetails}</td>
+                              <td>
+                                {val.cardDetails?.map((cardetails, ind) => {
+                                  if (val.cardDetails.length === ind + 1) {
+                                    return (
+                                      <>
+                                        <td>{cardetails}</td>
+                                      </>
+                                    )
+                                  } else {
+                                    return (
+                                      <>
+                                        <td>{cardetails},</td>
+                                      </>
+                                    )
+                                  }
+                                })}
+                              </td>
                               <td>{val.cardSalePrice}</td>
                               <td>{val.cardTotalPrice}</td>
                               <td>{val.noOfPages}</td>
                               <td>
+                                {/*<a href={'#id' + index} data-bs-toggle="modal">*/}
                                 <img
                                   style={{ maxWidth: '80px' }}
                                   src={'http://localhost:3001/assets/' + val.cardCategory + '/' + val.cardTemplates[0]}
                                 />
+                                {/*</a>*/}
                               </td>
                               <td>
                                 <button
@@ -99,6 +133,104 @@ function WeddingCards() {
                                 </button>
                               </td>
                             </tr>
+
+                            <div
+                              className="modal fade"
+                              id={'id' + index}
+                              data-bs-backdrop="static"
+                              data-bs-keyboard="false"
+                              aria-labelledby="staticBackdropLabel"
+                              aria-hidden="true"
+                            >
+                              <div className="modal-dialog">
+                                <div className="modal-content">
+                                  <div className="modal-header">
+                                    <button type="button" className="btn" data-bs-dismiss="modal" aria-label="Close">
+                                      <FontAwesomeIcon icon={faArrowLeft} />
+                                      &nbsp;Back
+                                    </button>
+                                    <a href="#" style={{ textDecoration: 'none' }}>
+                                      <FontAwesomeIcon icon={faShareNodes} />
+                                      &nbsp;Share
+                                    </a>
+                                  </div>
+                                  <div className="modal-body">
+                                    <Fancybox>
+                                      {val.noOfPages === 1 ? (
+                                        val.cardTemplates.map((card1, ind) => {
+                                          return (
+                                            <>
+                                              <div className="item" style={{ textAlign: 'center' }}>
+                                                <a
+                                                  data-fancybox={'#id' + index}
+                                                  href={
+                                                    'http://localhost:3001/assets/' + val.cardCategory + '/' + card1
+                                                  }
+                                                >
+                                                  <img
+                                                    src={
+                                                      'http://localhost:3001/assets/' + val.cardCategory + '/' + card1
+                                                    }
+                                                    className="img-fluid"
+                                                    alt="Invitations"
+                                                    style={{
+                                                      maxWidth: '300px',
+                                                      margin: 'auto'
+                                                    }}
+                                                  />
+                                                </a>
+                                              </div>
+                                            </>
+                                          )
+                                        })
+                                      ) : (
+                                        <OwlCarousel
+                                          className="owl-carousel owl-theme wedding-carousel"
+                                          options={options}
+                                        >
+                                          {val.cardTemplates.map((card1, ind) => {
+                                            return (
+                                              <>
+                                                <div className="item">
+                                                  <a
+                                                    data-fancybox={'#id' + index}
+                                                    href={
+                                                      'http://localhost:3001/assets/' + val.cardCategory + '/' + card1
+                                                    }
+                                                  >
+                                                    <img
+                                                      src={
+                                                        'http://localhost:3001/assets/' + val.cardCategory + '/' + card1
+                                                      }
+                                                      className="img-fluid"
+                                                      alt="Invitations"
+                                                      style={{
+                                                        maxWidth: '300px',
+                                                        margin: 'auto'
+                                                      }}
+                                                    />
+                                                  </a>
+                                                </div>
+                                              </>
+                                            )
+                                          })}
+                                        </OwlCarousel>
+                                      )}
+                                    </Fancybox>
+                                  </div>
+                                  <div className="modal-footer justify-content-between">
+                                    <div className="d-flex align-items-center">
+                                      <div className="price">
+                                        <strong>
+                                          <span>₹{val.cardSalePrice}</span>
+                                        </strong>
+                                        <del>₹{val.cardTotalPrice}</del>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                           </>
                         )
                       }

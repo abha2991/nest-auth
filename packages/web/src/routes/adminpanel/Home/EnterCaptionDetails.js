@@ -46,7 +46,6 @@ const EnterCaptionDetails = () => {
       return { x, y, font }
     })
 
-    console.log({ array })
     let Caption = array
 
     const res = await fetch(`http://localhost:3001/api/cardcaptiondetails`, {

@@ -16,8 +16,6 @@ const AllPurchased = () => {
 
     const data = await res.json()
 
-    console.log({ data })
-
     setCardInfo(data)
   }
   useEffect(() => {
@@ -75,7 +73,24 @@ const AllPurchased = () => {
                                 <a href={'/user-information?id=' + val.userId}>{val.userId}</a>
                               </td>
 
-                              <td>{val.cardNames}</td>
+                              <td>
+                                {' '}
+                                {val.cardNames?.map((cardetails, ind) => {
+                                  if (val.cardNames.length === ind + 1) {
+                                    return (
+                                      <>
+                                        <td>{cardetails}</td>
+                                      </>
+                                    )
+                                  } else {
+                                    return (
+                                      <>
+                                        <td>{cardetails},</td>
+                                      </>
+                                    )
+                                  }
+                                })}
+                              </td>
                               <td>{val.cardCategory}</td>
                               <td>{val.cardSalePrice}</td>
                               <td>{val.cardTotalPrice}</td>

@@ -10,6 +10,8 @@ import Loading from '../../../../components/Loading'
 import Footer from '../../../Footer'
 import Modal from '../../../Modal'
 import missYouCard from '../../../img/MissYou/MissYou_3_1.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 const EditCard25 = () => {
   const navigate = useNavigate()
   const id = useQueryParams()
@@ -20,7 +22,17 @@ const EditCard25 = () => {
   const [cardData, setCardData] = useState()
   const [cardname, setCardName] = useState()
   const [userdata, setUserData] = useState()
+  function useHover(styleOnHover, styleOnNotHover = {}) {
+    const [style, setStyle] = React.useState(styleOnNotHover)
 
+    const onMouseEnter = () => setStyle(styleOnHover)
+    const onMouseLeave = () => setStyle(styleOnNotHover)
+
+    return { style, onMouseEnter, onMouseLeave }
+  }
+  const hover1 = useHover({ border: '2px solid #ffd167' })
+  const hover2 = useHover({ border: '2px solid #ffd167' })
+  const hover3 = useHover({ border: '2px solid #ffd167' })
   const [textdata, setTextData] = useState()
   const getCardsOfUser = async () => {
     const res = await fetch(`http://localhost:3001/api/card1/getCard/${id2}`, {
@@ -40,7 +52,6 @@ const EditCard25 = () => {
     getCardsOfUser()
   }, [id2])
 
-  // console.log({textdata})
   const [messageData, setMessageData] = useState({
     receiverName: '',
     message_1: '',
@@ -79,17 +90,6 @@ const EditCard25 = () => {
     setMessageData({ ...messageData, [name]: value })
   }
 
-  function useHover(styleOnHover, styleOnNotHover = {}) {
-    const [style, setStyle] = React.useState(styleOnNotHover)
-
-    const onMouseEnter = () => setStyle(styleOnHover)
-    const onMouseLeave = () => setStyle(styleOnNotHover)
-
-    return { style, onMouseEnter, onMouseLeave }
-  }
-
-  const hover = useHover({ color: 'orange' })
-
   const PostData = async (e) => {
     e.preventDefault()
     let receiverName = messageData.receiverName?.toString() ?? ''
@@ -123,7 +123,7 @@ const EditCard25 = () => {
     const card_data = await res.json()
     if ((card_data.status = 'Success')) {
       setLoading(false)
-      navigate(`/preview?id=${card_data.data.id}`)
+      navigate(`/preview?id=${card_data.createdCardId}`)
     }
   }
 
@@ -153,45 +153,52 @@ const EditCard25 = () => {
                     backgroundSize: '100% 100%'
                   }}
                 >
-                  <h7
-                    data-bs-toggle="modal"
-                    data-bs-target="#id1"
-                    style={{
-                      paddingTop: '150px',
-                      maxWidth: '300px',
-                      margin: 'auto'
-                    }}
-                  >
-                    {' '}
-                    {messageData.receiverName}
-                  </h7>
+                  <div className="editable" {...hover1}>
+                    <p
+                      data-bs-toggle="modal"
+                      data-bs-target="#id1"
+                      style={{
+                        paddingTop: '150px',
+                        maxWidth: '300px',
+                        margin: 'auto'
+                      }}
+                    >
+                      {' '}
+                      {messageData.receiverName}
+                    </p>
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
+                  <div className="editable" {...hover2}>
+                    <h5
+                      data-bs-toggle="modal"
+                      data-bs-target="#id2"
+                      style={{
+                        paddingTop: '6px',
+                        maxWidth: '300px',
+                        margin: 'auto',
 
-                  <h5
-                    data-bs-toggle="modal"
-                    data-bs-target="#id2"
-                    style={{
-                      paddingTop: '6px',
-                      maxWidth: '300px',
-                      margin: 'auto',
-
-                      textAlign: 'center'
-                    }}
-                  >
-                    {messageData.message_1}
-                  </h5>
-
-                  <h7
-                    data-bs-toggle="modal"
-                    data-bs-target="#id2"
-                    style={{
-                      paddingTop: '6px',
-                      maxWidth: '350px',
-                      margin: 'auto'
-                    }}
-                  >
-                    {' '}
-                    {messageData.senderName}
-                  </h7>
+                        textAlign: 'center'
+                      }}
+                    >
+                      {messageData.message_1}
+                    </h5>
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
+                  <div className="editable" {...hover3}>
+                    <p
+                      data-bs-toggle="modal"
+                      data-bs-target="#id2"
+                      style={{
+                        paddingTop: '6px',
+                        maxWidth: '350px',
+                        margin: 'auto'
+                      }}
+                    >
+                      {' '}
+                      {messageData.senderName}
+                    </p>
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
                 </div>
               </div>
             </div>

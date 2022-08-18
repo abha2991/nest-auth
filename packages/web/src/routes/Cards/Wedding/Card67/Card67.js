@@ -11,6 +11,8 @@ import useQueryParams from '../../../../hooks/useQueryParams'
 import Footer from '../../../Footer'
 
 import Modal from '../../../Modal'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 const Card67 = () => {
   const navigate = useNavigate()
   const id = useQueryParams()
@@ -31,6 +33,30 @@ const Card67 = () => {
   const hover3 = useHover({ border: '2px solid #ffd167' })
   const hover4 = useHover({ border: '2px solid #ffd167' })
   const hover5 = useHover({ border: '2px solid #ffd167' })
+  const hover6 = useHover({ border: '2px solid #ffd167' })
+  const hover7 = useHover({ border: '2px solid #ffd167' })
+  const hover8 = useHover({ border: '2px solid #ffd167' })
+  const hover9 = useHover({ border: '2px solid #ffd167' })
+  const hover10 = useHover({ border: '2px solid #ffd167' })
+  const hover11 = useHover({ border: '2px solid #ffd167' })
+  const hover12 = useHover({ border: '2px solid #ffd167' })
+  const hover13 = useHover({ border: '2px solid #ffd167' })
+  const hover14 = useHover({ border: '2px solid #ffd167' })
+  const hover15 = useHover({ border: '2px solid #ffd167' })
+  const hover16 = useHover({ border: '2px solid #ffd167' })
+  const hover17 = useHover({ border: '2px solid #ffd167' })
+  const hover18 = useHover({ border: '2px solid #ffd167' })
+  const hover19 = useHover({ border: '2px solid #ffd167' })
+  const hover20 = useHover({ border: '2px solid #ffd167' })
+  const hover21 = useHover({ border: '2px solid #ffd167' })
+  const hover22 = useHover({ border: '2px solid #ffd167' })
+  const hover23 = useHover({ border: '2px solid #ffd167' })
+  const hover24 = useHover({ border: '2px solid #ffd167' })
+  const hover25 = useHover({ border: '2px solid #ffd167' })
+  const hover26 = useHover({ border: '2px solid #ffd167' })
+  const hover27 = useHover({ border: '2px solid #ffd167' })
+  const hover28 = useHover({ border: '2px solid #ffd167' })
+  const hover29 = useHover({ border: '2px solid #ffd167' })
 
   const [firstPageData, setFirstPageData] = useState({
     name1: 'SIMARPREET',
@@ -83,7 +109,7 @@ const Card67 = () => {
     'D /O  Mr Harpreet Kaur  &  Mrs Sunpreet Kaur',
     'MANDEEP KAUR',
     'S/O MR. AMARJEET KAUR & MRS. KAMALJEET AHLUWALIA',
-    'S/O MR. AMARJEET KAUR & MRS. KAMALJEET AHLUWALIA',
+    '16 DECEMBER 2022',
     'AT HOTEL BROOKLYN  MALVIYA NAGAR  SOUTH ROAD \n' + 'NEW DELHI'
   ]
 
@@ -210,7 +236,7 @@ const Card67 = () => {
 
     if ((card_data.status = 'Success')) {
       setLoading(false)
-      navigate(`/preview?id=${card_data.data.id}`)
+      navigate(`/preview?id=${card_data.createdCardId}`)
     }
   }
 
@@ -234,41 +260,49 @@ const Card67 = () => {
                   backgroundSize: '100% 100%'
                 }}
               >
-                <h3
-                  data-bs-toggle="modal"
-                  data-bs-target="#id1"
-                  style={{
-                    maxWidth: '350px',
-                    margin: 'auto'
-                  }}
-                >
-                  {' '}
-                  {firstPageData.name1}
-                </h3>
-
-                <h3
-                  data-bs-toggle="modal"
-                  data-bs-target="#id2"
-                  style={{
-                    paddingTop: '140px',
-                    maxWidth: '300px',
-                    margin: 'auto'
-                  }}
-                >
-                  {firstPageData.name2}
-                </h3>
-                <h6
-                  data-bs-toggle="modal"
-                  data-bs-target="#id3"
-                  style={{
-                    paddingTop: '30px',
-                    maxWidth: '300px',
-                    margin: 'auto',
-                    fontFamily: 'agaramond-pro-bold'
-                  }}
-                >
-                  {firstPageData.date}
-                </h6>
+                <div className="editable" {...hover1}>
+                  <h3
+                    data-bs-toggle="modal"
+                    data-bs-target="#id1"
+                    style={{
+                      maxWidth: '350px',
+                      margin: 'auto'
+                    }}
+                  >
+                    {' '}
+                    {firstPageData.name1}
+                  </h3>
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover2}>
+                  <h3
+                    data-bs-toggle="modal"
+                    data-bs-target="#id2"
+                    style={{
+                      paddingTop: '140px',
+                      maxWidth: '300px',
+                      margin: 'auto'
+                    }}
+                  >
+                    {firstPageData.name2}
+                  </h3>
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover3}>
+                  <h6
+                    data-bs-toggle="modal"
+                    data-bs-target="#id3"
+                    style={{
+                      paddingTop: '30px',
+                      maxWidth: '300px',
+                      margin: 'auto',
+                      fontFamily: 'agaramond-pro-bold'
+                    }}
+                  >
+                    {firstPageData.date}
+                  </h6>
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
               </div>
             </div>
           </div>
@@ -287,52 +321,64 @@ const Card67 = () => {
                   backgroundSize: '100% 100%'
                 }}
               >
-                <h6
-                  data-bs-toggle="modal"
-                  data-bs-target="#id4"
-                  style={{
-                    maxWidth: '350px',
-                    margin: 'auto',
-                    color: '#911e3e',
-                    fontFamily: 'georgia-bold'
-                  }}
-                >
-                  {' '}
-                  {secondPageData.grandParents}
-                </h6>
+                <div className="editable" {...hover4}>
+                  <h6
+                    data-bs-toggle="modal"
+                    data-bs-target="#id4"
+                    style={{
+                      maxWidth: '350px',
+                      margin: 'auto',
+                      color: '#911e3e',
+                      fontFamily: 'georgia-bold'
+                    }}
+                  >
+                    {' '}
+                    {secondPageData.grandParents}
+                  </h6>
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
 
-                <h7 style={{ color: '#a82047', maxWidth: '300px', margin: 'auto', fontFamily: 'georgia-bold' }}>
+                <p style={{ color: '#a82047', maxWidth: '300px', margin: 'auto', fontFamily: 'georgia-bold' }}>
                   Request The Honor Of Your Presence At The Wedding Ceremony Of Their{' '}
-                  <span data-bs-toggle="modal" data-bs-target="#id5">
-                    {secondPageData.message}
-                  </span>
-                </h7>
-                <h3
-                  data-bs-toggle="modal"
-                  data-bs-target="#id6"
-                  style={{
-                    paddingTop: '30px',
-                    maxWidth: '300px',
-                    margin: 'auto',
-                    color: '#7a1537',
-                    fontFamily: 'franklin-gothic-regular'
-                  }}
-                >
-                  {secondPageData.brideOrGroomName}
-                </h3>
+                  <div className="editable" {...hover5}>
+                    <span data-bs-toggle="modal" data-bs-target="#id5">
+                      {secondPageData.message}
+                    </span>
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
+                </p>
+                <div className="editable" {...hover6}>
+                  <h3
+                    data-bs-toggle="modal"
+                    data-bs-target="#id6"
+                    style={{
+                      paddingTop: '30px',
+                      maxWidth: '300px',
+                      margin: 'auto',
+                      color: '#7a1537',
+                      fontFamily: 'franklin-gothic-regular'
+                    }}
+                  >
+                    {secondPageData.brideOrGroomName}
+                  </h3>
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover7}>
+                  <p
+                    data-bs-toggle="modal"
+                    data-bs-target="#id7"
+                    style={{
+                      maxWidth: '300px',
+                      margin: 'auto',
+                      color: '#a82047',
+                      fontFamily: 'georgia-bold'
+                    }}
+                  >
+                    {secondPageData.parents1}
+                  </p>
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
 
-                <h7
-                  data-bs-toggle="modal"
-                  data-bs-target="#id7"
-                  style={{
-                    maxWidth: '300px',
-                    margin: 'auto',
-                    color: '#a82047',
-                    fontFamily: 'georgia-bold'
-                  }}
-                >
-                  {secondPageData.parents1}
-                </h7>
                 <h4
                   data-bs-toggle="modal"
                   data-bs-target="#id7"
@@ -346,57 +392,70 @@ const Card67 = () => {
                 >
                   With
                 </h4>
-                <h3
-                  data-bs-toggle="modal"
-                  data-bs-target="#id8"
-                  style={{
-                    paddingTop: '20px',
-                    maxWidth: '300px',
-                    margin: 'auto',
-                    color: '#7a1537',
-                    fontFamily: 'franklin-gothic-regular'
-                  }}
-                >
-                  {secondPageData.groomOrBrideName}
-                </h3>
-                <h7
-                  data-bs-toggle="modal"
-                  data-bs-target="#id9"
-                  style={{
-                    maxWidth: '300px',
-                    margin: 'auto',
-                    color: '#a82047',
-                    fontFamily: 'georgia-bold'
-                  }}
-                >
-                  {secondPageData.parents2}
-                </h7>
-                <h5
-                  data-bs-toggle="modal"
-                  data-bs-target="#id10"
-                  style={{
-                    paddingTop: '10px',
-                    maxWidth: '300px',
-                    margin: 'auto',
-                    color: '#a82047',
-                    fontFamily: 'gadugi-bold'
-                  }}
-                >
-                  {secondPageData.date}
-                </h5>
-                <h6
-                  data-bs-toggle="modal"
-                  data-bs-target="#id11"
-                  style={{
-                    paddingTop: '10px',
-                    maxWidth: '300px',
-                    margin: 'auto',
-                    color: '#a82047',
-                    fontFamily: 'gadugi-bold'
-                  }}
-                >
-                  {secondPageData.venue}
-                </h6>
+                <div className="editable" {...hover8}>
+                  <h3
+                    data-bs-toggle="modal"
+                    data-bs-target="#id8"
+                    style={{
+                      paddingTop: '20px',
+                      maxWidth: '300px',
+                      margin: 'auto',
+                      color: '#7a1537',
+                      fontFamily: 'franklin-gothic-regular'
+                    }}
+                  >
+                    {secondPageData.groomOrBrideName}
+                  </h3>
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+
+                <div className="editable" {...hover9}>
+                  <p
+                    data-bs-toggle="modal"
+                    data-bs-target="#id9"
+                    style={{
+                      maxWidth: '300px',
+                      margin: 'auto',
+                      color: '#a82047',
+                      fontFamily: 'georgia-bold'
+                    }}
+                  >
+                    {secondPageData.parents2}
+                  </p>
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover10}>
+                  <h5
+                    data-bs-toggle="modal"
+                    data-bs-target="#id10"
+                    style={{
+                      paddingTop: '10px',
+                      maxWidth: '300px',
+                      margin: 'auto',
+                      color: '#a82047',
+                      fontFamily: 'gadugi-bold'
+                    }}
+                  >
+                    {secondPageData.date}
+                  </h5>
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover11}>
+                  <h6
+                    data-bs-toggle="modal"
+                    data-bs-target="#id11"
+                    style={{
+                      paddingTop: '10px',
+                      maxWidth: '300px',
+                      margin: 'auto',
+                      color: '#a82047',
+                      fontFamily: 'gadugi-bold'
+                    }}
+                  >
+                    {secondPageData.venue}
+                  </h6>
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
               </div>
             </div>
           </div>
@@ -414,126 +473,162 @@ const Card67 = () => {
                   backgroundSize: '100% 100%'
                 }}
               >
-                <h5
-                  data-bs-toggle="modal"
-                  data-bs-target="#id12"
-                  style={{
-                    paddingTop: '20px',
-                    maxWidth: '350px',
-                    margin: 'auto',
-                    fontFamily: 'franklin-gothic-regular',
-                    color: '#991737'
-                  }}
-                >
-                  {' '}
-                  {thirdPageData.function1}
-                </h5>
-
-                <h6 data-bs-toggle="modal" data-bs-target="#id13" style={{ maxWidth: '300px', margin: 'auto' }}>
-                  {thirdPageData.date1}
-                </h6>
-
-                <h5
-                  data-bs-toggle="modal"
-                  data-bs-target="#id14"
-                  style={{
-                    paddingTop: '20px',
-                    maxWidth: '350px',
-                    margin: 'auto',
-                    fontFamily: 'franklin-gothic-regular',
-                    color: '#991737'
-                  }}
-                >
-                  {' '}
-                  {thirdPageData.function2}
-                </h5>
-
-                <h6 data-bs-toggle="modal" data-bs-target="#id15" style={{ maxWidth: '300px', margin: 'auto' }}>
-                  {thirdPageData.date2}
-                </h6>
-
-                <h5
-                  data-bs-toggle="modal"
-                  data-bs-target="#id16"
-                  style={{
-                    paddingTop: '20px',
-                    maxWidth: '350px',
-                    margin: 'auto',
-                    fontFamily: 'franklin-gothic-regular',
-                    color: '#991737'
-                  }}
-                >
-                  {' '}
-                  {thirdPageData.function3}
-                </h5>
-
-                <h6 data-bs-toggle="modal" data-bs-target="#id17" style={{ maxWidth: '300px', margin: 'auto' }}>
-                  {thirdPageData.date3}
-                </h6>
-
-                <h5
-                  data-bs-toggle="modal"
-                  data-bs-target="#id18"
-                  style={{
-                    paddingTop: '20px',
-                    maxWidth: '350px',
-                    margin: 'auto',
-                    fontFamily: 'franklin-gothic-regular',
-                    color: '#991737'
-                  }}
-                >
-                  {' '}
-                  {thirdPageData.function4}
-                </h5>
-
-                <h6 data-bs-toggle="modal" data-bs-target="#id19" style={{ maxWidth: '300px', margin: 'auto' }}>
-                  {thirdPageData.date4}
-                </h6>
-                <h5
-                  data-bs-toggle="modal"
-                  data-bs-target="#id20"
-                  style={{
-                    paddingTop: '20px',
-                    maxWidth: '350px',
-                    margin: 'auto',
-                    fontFamily: 'franklin-gothic-regular',
-                    color: '#991737'
-                  }}
-                >
-                  {' '}
-                  {thirdPageData.function5}
-                </h5>
-
-                <h6 data-bs-toggle="modal" data-bs-target="#id21" style={{ maxWidth: '300px', margin: 'auto' }}>
-                  {thirdPageData.date5}
-                </h6>
-                <h5
-                  data-bs-toggle="modal"
-                  data-bs-target="#id22"
-                  style={{
-                    paddingTop: '20px',
-                    maxWidth: '350px',
-                    margin: 'auto',
-                    fontFamily: 'franklin-gothic-regular',
-                    color: '#991737'
-                  }}
-                >
-                  {' '}
-                  {thirdPageData.rsvp}
-                </h5>
-
-                <h6 data-bs-toggle="modal" data-bs-target="#id23" style={{ maxWidth: '300px', margin: 'auto' }}>
-                  {thirdPageData.name1}
-                </h6>
-                <h6 data-bs-toggle="modal" data-bs-target="#id24" style={{ maxWidth: '300px', margin: 'auto' }}>
-                  {thirdPageData.name2}
-                </h6>
-                <h6 data-bs-toggle="modal" data-bs-target="#id25" style={{ maxWidth: '300px', margin: 'auto' }}>
-                  {thirdPageData.name3}
-                </h6>
-                <h6 data-bs-toggle="modal" data-bs-target="#id26" style={{ maxWidth: '300px', margin: 'auto' }}>
-                  {thirdPageData.name4}
-                </h6>
+                <div className="editable" {...hover12}>
+                  <h5
+                    data-bs-toggle="modal"
+                    data-bs-target="#id12"
+                    style={{
+                      paddingTop: '20px',
+                      maxWidth: '350px',
+                      margin: 'auto',
+                      fontFamily: 'franklin-gothic-regular',
+                      color: '#991737'
+                    }}
+                  >
+                    {' '}
+                    {thirdPageData.function1}
+                  </h5>
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover13}>
+                  <h6 data-bs-toggle="modal" data-bs-target="#id13" style={{ maxWidth: '300px', margin: 'auto' }}>
+                    {thirdPageData.date1}
+                  </h6>
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover14}>
+                  <h5
+                    data-bs-toggle="modal"
+                    data-bs-target="#id14"
+                    style={{
+                      paddingTop: '20px',
+                      maxWidth: '350px',
+                      margin: 'auto',
+                      fontFamily: 'franklin-gothic-regular',
+                      color: '#991737'
+                    }}
+                  >
+                    {' '}
+                    {thirdPageData.function2}
+                  </h5>
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover15}>
+                  <h6 data-bs-toggle="modal" data-bs-target="#id15" style={{ maxWidth: '300px', margin: 'auto' }}>
+                    {thirdPageData.date2}
+                  </h6>
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover16}>
+                  <h5
+                    data-bs-toggle="modal"
+                    data-bs-target="#id16"
+                    style={{
+                      paddingTop: '20px',
+                      maxWidth: '350px',
+                      margin: 'auto',
+                      fontFamily: 'franklin-gothic-regular',
+                      color: '#991737'
+                    }}
+                  >
+                    {' '}
+                    {thirdPageData.function3}
+                  </h5>
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover17}>
+                  <h6 data-bs-toggle="modal" data-bs-target="#id17" style={{ maxWidth: '300px', margin: 'auto' }}>
+                    {thirdPageData.date3}
+                  </h6>
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover18}>
+                  <h5
+                    data-bs-toggle="modal"
+                    data-bs-target="#id18"
+                    style={{
+                      paddingTop: '20px',
+                      maxWidth: '350px',
+                      margin: 'auto',
+                      fontFamily: 'franklin-gothic-regular',
+                      color: '#991737'
+                    }}
+                  >
+                    {' '}
+                    {thirdPageData.function4}
+                  </h5>
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover19}>
+                  <h6 data-bs-toggle="modal" data-bs-target="#id19" style={{ maxWidth: '300px', margin: 'auto' }}>
+                    {thirdPageData.date4}
+                  </h6>
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover20}>
+                  <h5
+                    data-bs-toggle="modal"
+                    data-bs-target="#id20"
+                    style={{
+                      paddingTop: '20px',
+                      maxWidth: '350px',
+                      margin: 'auto',
+                      fontFamily: 'franklin-gothic-regular',
+                      color: '#991737'
+                    }}
+                  >
+                    {' '}
+                    {thirdPageData.function5}
+                  </h5>
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover21}>
+                  <h6 data-bs-toggle="modal" data-bs-target="#id21" style={{ maxWidth: '300px', margin: 'auto' }}>
+                    {thirdPageData.date5}
+                  </h6>
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover22}>
+                  <h5
+                    data-bs-toggle="modal"
+                    data-bs-target="#id22"
+                    style={{
+                      paddingTop: '20px',
+                      maxWidth: '350px',
+                      margin: 'auto',
+                      fontFamily: 'franklin-gothic-regular',
+                      color: '#991737'
+                    }}
+                  >
+                    {' '}
+                    {thirdPageData.rsvp}
+                  </h5>
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover23}>
+                  <h6 data-bs-toggle="modal" data-bs-target="#id23" style={{ maxWidth: '300px', margin: 'auto' }}>
+                    {thirdPageData.name1}
+                  </h6>
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover24}>
+                  <h6 data-bs-toggle="modal" data-bs-target="#id24" style={{ maxWidth: '300px', margin: 'auto' }}>
+                    {thirdPageData.name2}
+                  </h6>
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover25}>
+                  <h6 data-bs-toggle="modal" data-bs-target="#id25" style={{ maxWidth: '300px', margin: 'auto' }}>
+                    {thirdPageData.name3}
+                  </h6>
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
+                <div className="editable" {...hover26}>
+                  <h6 data-bs-toggle="modal" data-bs-target="#id26" style={{ maxWidth: '300px', margin: 'auto' }}>
+                    {thirdPageData.name4}
+                  </h6>
+                  <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                </div>
               </div>
             </div>
           </div>
@@ -591,8 +686,6 @@ const Card67 = () => {
             onClick={() => {
               let name = ThirdPageData[index]
               let value = ThirdPageData[index + 15]
-
-              console.log({ name, value, index })
 
               setThirdPageData({ ...thirdPageData, [name]: [value] })
             }}

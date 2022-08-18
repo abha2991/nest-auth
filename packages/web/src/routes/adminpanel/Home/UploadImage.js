@@ -11,7 +11,7 @@ const UploadImage = () => {
     const formData = new FormData()
     formData.append('file', inputRef.current.files[0])
 
-    const response = await fetch(`http://localhost:3001/api/uploadfile`, {
+    const response = await fetch(`http://localhost:3001/api/uploadfile/Banner`, {
       method: 'POST',
       credentials: 'include',
 
@@ -42,7 +42,7 @@ const UploadImage = () => {
         <div className="content">
           <div className="card m-t-3">
             <div className="card-body">
-              <input type="file" name="images" multiple ref={inputRef} className=" border" />
+              <input type="file" name="images" multiple ref={inputRef} className="border" />
               <button className="btn btn-primary mt-2" onClick={getData}>
                 Submit
               </button>

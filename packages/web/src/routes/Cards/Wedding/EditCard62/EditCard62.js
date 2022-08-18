@@ -11,6 +11,8 @@ import useProfileApi from '../../../../api/useProfileApi'
 import Loading from '../../../../components/Loading'
 import Footer from '../../../Footer'
 import Modal from '../../../Modal'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 const EditCard62 = () => {
   const navigate = useNavigate()
   const id = useQueryParams()
@@ -93,9 +95,9 @@ const EditCard62 = () => {
     }
   }, [textdata])
 
-  let textData1
-  let textData2
-  let textData3
+  let FirstPageData
+  let SecondPageData
+  let ThirdPageData
 
   let weddingFirstPageCardData = []
 
@@ -104,9 +106,9 @@ const EditCard62 = () => {
   let weddingThirdPageCardData = []
 
   if (textdata) {
-    textData1 = ['name1', 'name2', textdata[0]?.name1 ?? '', textdata[0]?.name2 ?? '']
+    FirstPageData = ['name1', 'name2', textdata[0]?.name1 ?? '', textdata[0]?.name2 ?? '']
 
-    textData2 = [
+    SecondPageData = [
       'date',
       'time',
       'venue',
@@ -120,7 +122,7 @@ const EditCard62 = () => {
       textdata[1]?.family ?? ''
     ]
 
-    textData3 = [
+    ThirdPageData = [
       'function1',
       'date1',
 
@@ -160,8 +162,21 @@ const EditCard62 = () => {
 
     return { style, onMouseEnter, onMouseLeave }
   }
-
-  const hover = useHover({ color: 'orange' })
+  const hover1 = useHover({ border: '2px solid #ffd167' })
+  const hover2 = useHover({ border: '2px solid #ffd167' })
+  const hover3 = useHover({ border: '2px solid #ffd167' })
+  const hover4 = useHover({ border: '2px solid #ffd167' })
+  const hover5 = useHover({ border: '2px solid #ffd167' })
+  const hover6 = useHover({ border: '2px solid #ffd167' })
+  const hover7 = useHover({ border: '2px solid #ffd167' })
+  const hover8 = useHover({ border: '2px solid #ffd167' })
+  const hover9 = useHover({ border: '2px solid #ffd167' })
+  const hover10 = useHover({ border: '2px solid #ffd167' })
+  const hover11 = useHover({ border: '2px solid #ffd167' })
+  const hover12 = useHover({ border: '2px solid #ffd167' })
+  const hover13 = useHover({ border: '2px solid #ffd167' })
+  const hover14 = useHover({ border: '2px solid #ffd167' })
+  const hover15 = useHover({ border: '2px solid #ffd167' })
 
   const PostData = async (e) => {
     e.preventDefault()
@@ -227,7 +242,7 @@ const EditCard62 = () => {
 
     if ((card_data.status = 'Success')) {
       setLoading(false)
-      navigate(`/preview?id=${card_data.data.id}`)
+      navigate(`/preview?id=${card_data.createdCardId}`)
     }
   }
 
@@ -254,30 +269,35 @@ const EditCard62 = () => {
                     backgroundSize: '100% 100%'
                   }}
                 >
-                  <h3
-                    data-bs-toggle="modal"
-                    data-bs-target="#id1"
-                    style={{
-                      paddingTop: '50px',
-                      maxWidth: '350px',
-                      margin: 'auto'
-                    }}
-                  >
-                    {' '}
-                    {firstPageData.name1}
-                  </h3>
-
-                  <h3
-                    data-bs-toggle="modal"
-                    data-bs-target="#id2"
-                    style={{
-                      paddingTop: '50px',
-                      maxWidth: '300px',
-                      margin: 'auto'
-                    }}
-                  >
-                    {firstPageData.name2}
-                  </h3>
+                  <div className="editable" {...hover1}>
+                    <h3
+                      data-bs-toggle="modal"
+                      data-bs-target="#id1"
+                      style={{
+                        paddingTop: '50px',
+                        maxWidth: '350px',
+                        margin: 'auto'
+                      }}
+                    >
+                      {' '}
+                      {firstPageData.name1}
+                    </h3>{' '}
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
+                  <div className="editable" {...hover2}>
+                    <h3
+                      data-bs-toggle="modal"
+                      data-bs-target="#id2"
+                      style={{
+                        paddingTop: '50px',
+                        maxWidth: '300px',
+                        margin: 'auto'
+                      }}
+                    >
+                      {firstPageData.name2}
+                    </h3>{' '}
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
                 </div>
               </div>
             </div>
@@ -295,73 +315,86 @@ const EditCard62 = () => {
                     backgroundSize: '100% 100%'
                   }}
                 >
-                  <h6
-                    data-bs-toggle="modal"
-                    data-bs-target="#id3"
-                    style={{
-                      maxWidth: '350px',
-                      margin: 'auto',
-                      color: '#9e6c73',
-                      fontFamily: 'gadugi-bold'
-                    }}
-                  >
-                    {' '}
-                    {secondPageData.date}
-                  </h6>
-
-                  <h6
-                    data-bs-toggle="modal"
-                    data-bs-target="#id4"
-                    style={{
-                      paddingTop: '20px',
-                      maxWidth: '300px',
-                      margin: 'auto',
-                      color: '#9e6c73',
-                      fontFamily: 'gadugi-bold'
-                    }}
-                  >
-                    {secondPageData.time}
-                  </h6>
-                  <h6
-                    data-bs-toggle="modal"
-                    data-bs-target="#id5"
-                    style={{
-                      paddingTop: '10px',
-                      maxWidth: '300px',
-                      margin: 'auto',
-                      color: '#87706c',
-                      fontFamily: 'gadugi-bold'
-                    }}
-                  >
-                    {secondPageData.venue}
-                  </h6>
-
-                  <h6
-                    data-bs-toggle="modal"
-                    data-bs-target="#id6"
-                    style={{
-                      paddingTop: '10px',
-                      maxWidth: '300px',
-                      margin: 'auto',
-                      color: '#e2c3c3',
-                      fontFamily: 'gadugi-bold'
-                    }}
-                  >
-                    {secondPageData.yours}
-                  </h6>
-                  <h6
-                    data-bs-toggle="modal"
-                    data-bs-target="#id7"
-                    style={{
-                      paddingTop: '10px',
-                      maxWidth: '300px',
-                      margin: 'auto',
-                      color: '#e2c3c3',
-                      fontFamily: 'gadugi-bold'
-                    }}
-                  >
-                    {secondPageData.family}
-                  </h6>
+                  <div className="editable" {...hover3}>
+                    <h6
+                      data-bs-toggle="modal"
+                      data-bs-target="#id3"
+                      style={{
+                        maxWidth: '350px',
+                        margin: 'auto',
+                        color: '#9e6c73',
+                        fontFamily: 'gadugi-bold'
+                      }}
+                    >
+                      {' '}
+                      {secondPageData.date}
+                    </h6>{' '}
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
+                  <div className="editable" {...hover4}>
+                    <h6
+                      data-bs-toggle="modal"
+                      data-bs-target="#id4"
+                      style={{
+                        paddingTop: '20px',
+                        maxWidth: '300px',
+                        margin: 'auto',
+                        color: '#9e6c73',
+                        fontFamily: 'gadugi-bold'
+                      }}
+                    >
+                      {secondPageData.time}
+                    </h6>{' '}
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
+                  <div className="editable" {...hover5}>
+                    <h6
+                      data-bs-toggle="modal"
+                      data-bs-target="#id5"
+                      style={{
+                        paddingTop: '10px',
+                        maxWidth: '300px',
+                        margin: 'auto',
+                        color: '#87706c',
+                        fontFamily: 'gadugi-bold'
+                      }}
+                    >
+                      {secondPageData.venue}
+                    </h6>{' '}
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
+                  <div className="editable" {...hover6}>
+                    <h6
+                      data-bs-toggle="modal"
+                      data-bs-target="#id6"
+                      style={{
+                        paddingTop: '10px',
+                        maxWidth: '300px',
+                        margin: 'auto',
+                        color: '#e2c3c3',
+                        fontFamily: 'gadugi-bold'
+                      }}
+                    >
+                      {secondPageData.yours}
+                    </h6>{' '}
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
+                  <div className="editable" {...hover7}>
+                    <h6
+                      data-bs-toggle="modal"
+                      data-bs-target="#id7"
+                      style={{
+                        paddingTop: '10px',
+                        maxWidth: '300px',
+                        margin: 'auto',
+                        color: '#e2c3c3',
+                        fontFamily: 'gadugi-bold'
+                      }}
+                    >
+                      {secondPageData.family}
+                    </h6>{' '}
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
                 </div>
               </div>
             </div>
@@ -378,120 +411,137 @@ const EditCard62 = () => {
                     backgroundSize: '100% 100%'
                   }}
                 >
-                  <h3
-                    data-bs-toggle="modal"
-                    data-bs-target="#id8"
-                    style={{
-                      fontFamily: 'bodoni-mt',
-                      color: '#c48d9d',
-                      maxWidth: '350px',
-                      margin: 'auto'
-                    }}
-                  >
-                    {' '}
-                    {thirdPageData.function1}
-                  </h3>
-
-                  <h5
-                    data-bs-toggle="modal"
-                    data-bs-target="#id9"
-                    style={{
-                      paddingTop: '20px',
-                      maxWidth: '300px',
-                      margin: 'auto',
-                      color: '#625857',
-                      fontFamily: 'arial-mt-bold'
-                    }}
-                  >
-                    {thirdPageData.date1}
-                  </h5>
-
-                  <h3
-                    data-bs-toggle="modal"
-                    data-bs-target="#id10"
-                    style={{
-                      fontFamily: 'bodoni-mt',
-                      color: '#c48d9d',
-                      maxWidth: '350px',
-                      margin: 'auto',
-                      fontWeight: 'bold'
-                    }}
-                  >
-                    {' '}
-                    {thirdPageData.function2}
-                  </h3>
-
-                  <h5
-                    data-bs-toggle="modal"
-                    data-bs-target="#id11"
-                    style={{
-                      paddingTop: '20px',
-                      maxWidth: '300px',
-                      margin: 'auto',
-                      color: '#625857',
-                      fontFamily: 'arial-mt-bold'
-                    }}
-                  >
-                    {thirdPageData.date2}
-                  </h5>
-
-                  <h3
-                    data-bs-toggle="modal"
-                    data-bs-target="#id12"
-                    style={{
-                      fontFamily: 'bodoni-mt',
-                      color: '#c48d9d',
-                      maxWidth: '350px',
-                      margin: 'auto',
-                      fontWeight: 'bold'
-                    }}
-                  >
-                    {' '}
-                    {thirdPageData.function3}
-                  </h3>
-
-                  <h5
-                    data-bs-toggle="modal"
-                    data-bs-target="#id13"
-                    style={{
-                      paddingTop: '20px',
-                      maxWidth: '300px',
-                      margin: 'auto',
-                      color: '#625857',
-                      fontFamily: 'arial-mt-bold'
-                    }}
-                  >
-                    {thirdPageData.date3}
-                  </h5>
-
-                  <h3
-                    data-bs-toggle="modal"
-                    data-bs-target="#id14"
-                    style={{
-                      fontFamily: 'bodoni-mt',
-                      color: '#c48d9d',
-                      maxWidth: '350px',
-                      margin: 'auto',
-                      fontWeight: 'bold'
-                    }}
-                  >
-                    {' '}
-                    {thirdPageData.function4}
-                  </h3>
-
-                  <h5
-                    data-bs-toggle="modal"
-                    data-bs-target="#id15"
-                    style={{
-                      paddingTop: '20px',
-                      maxWidth: '300px',
-                      margin: 'auto',
-                      color: '#625857',
-                      fontFamily: 'arial-mt-bold'
-                    }}
-                  >
-                    {thirdPageData.date4}
-                  </h5>
+                  <div className="editable" {...hover8}>
+                    <h3
+                      data-bs-toggle="modal"
+                      data-bs-target="#id8"
+                      style={{
+                        fontFamily: 'bodoni-mt',
+                        color: '#c48d9d',
+                        maxWidth: '350px',
+                        margin: 'auto'
+                      }}
+                    >
+                      {' '}
+                      {thirdPageData.function1}
+                    </h3>{' '}
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
+                  <div className="editable" {...hover9}>
+                    <h5
+                      data-bs-toggle="modal"
+                      data-bs-target="#id9"
+                      style={{
+                        paddingTop: '20px',
+                        maxWidth: '300px',
+                        margin: 'auto',
+                        color: '#625857',
+                        fontFamily: 'arial-mt-bold'
+                      }}
+                    >
+                      {thirdPageData.date1}
+                    </h5>{' '}
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
+                  <div className="editable" {...hover10}>
+                    <h3
+                      data-bs-toggle="modal"
+                      data-bs-target="#id10"
+                      style={{
+                        fontFamily: 'bodoni-mt',
+                        color: '#c48d9d',
+                        maxWidth: '350px',
+                        margin: 'auto',
+                        fontWeight: 'bold'
+                      }}
+                    >
+                      {' '}
+                      {thirdPageData.function2}
+                    </h3>{' '}
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
+                  <div className="editable" {...hover11}>
+                    <h5
+                      data-bs-toggle="modal"
+                      data-bs-target="#id11"
+                      style={{
+                        paddingTop: '20px',
+                        maxWidth: '300px',
+                        margin: 'auto',
+                        color: '#625857',
+                        fontFamily: 'arial-mt-bold'
+                      }}
+                    >
+                      {thirdPageData.date2}
+                    </h5>{' '}
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
+                  <div className="editable" {...hover12}>
+                    <h3
+                      data-bs-toggle="modal"
+                      data-bs-target="#id12"
+                      style={{
+                        fontFamily: 'bodoni-mt',
+                        color: '#c48d9d',
+                        maxWidth: '350px',
+                        margin: 'auto',
+                        fontWeight: 'bold'
+                      }}
+                    >
+                      {' '}
+                      {thirdPageData.function3}
+                    </h3>{' '}
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
+                  <div className="editable" {...hover13}>
+                    <h5
+                      data-bs-toggle="modal"
+                      data-bs-target="#id13"
+                      style={{
+                        paddingTop: '20px',
+                        maxWidth: '300px',
+                        margin: 'auto',
+                        color: '#625857',
+                        fontFamily: 'arial-mt-bold'
+                      }}
+                    >
+                      {thirdPageData.date3}
+                    </h5>{' '}
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
+                  <div className="editable" {...hover14}>
+                    <h3
+                      data-bs-toggle="modal"
+                      data-bs-target="#id14"
+                      style={{
+                        fontFamily: 'bodoni-mt',
+                        color: '#c48d9d',
+                        maxWidth: '350px',
+                        margin: 'auto',
+                        fontWeight: 'bold'
+                      }}
+                    >
+                      {' '}
+                      {thirdPageData.function4}
+                    </h3>{' '}
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
+                  <div className="editable" {...hover15}>
+                    <h5
+                      data-bs-toggle="modal"
+                      data-bs-target="#id15"
+                      style={{
+                        paddingTop: '20px',
+                        maxWidth: '300px',
+                        margin: 'auto',
+                        color: '#625857',
+                        fontFamily: 'arial-mt-bold'
+                      }}
+                    >
+                      {thirdPageData.date4}
+                    </h5>{' '}
+                    <FontAwesomeIcon icon={faPenToSquare} style={{ backgroundColor: '#50024B' }} />
+                  </div>
                 </div>
               </div>
             </div>
@@ -549,8 +599,6 @@ const EditCard62 = () => {
               onClick={() => {
                 let name = ThirdPageData[index]
                 let value = ThirdPageData[index + 8]
-
-                console.log({ name, value, index })
 
                 setThirdPageData({ ...thirdPageData, [name]: [value] })
               }}

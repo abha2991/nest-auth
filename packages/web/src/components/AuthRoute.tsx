@@ -12,7 +12,6 @@ const AuthRoute: FC<AuthRouteProps> = ({ children, redirectTo = '/login' }) => {
 
   const location = useLocation()
 
-  console.log({ location })
   if (status === 'loading') {
     return <Loading />
   }

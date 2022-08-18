@@ -419,6 +419,7 @@ import Footer from '../Footer'
 import ScrollToTop from '../../components/ScrollToTop'
 import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
 import { Carousel } from 'react-responsive-carousel'
+import CustomizedCard from '../CustomizedCard/CustomizedCard'
 
 const Home = () => {
   // function getScrollParent(node) {
@@ -477,18 +478,16 @@ const Home = () => {
   }
   const [casedetail, setCasedetail] = React.useState([])
 
-  const CaseTypeOptions = async (e) => {
+  const CardDetails = async (e) => {
     const res = await fetch(`http://localhost:3001/api/cardetails/cardetails`)
 
     const casedetail = await res.json()
-    //console.log(casedetail)
+
     setCasedetail(casedetail)
   }
   useEffect(() => {
-    CaseTypeOptions()
+    CardDetails()
   }, [])
-
-  //console.log({casedetail})
 
   const options = {
     loop: true,
@@ -655,10 +654,6 @@ const Home = () => {
   useEffect(() => {
     getBanner()
   }, [])
-
-  banner?.data?.map((val, ind) => {
-    console.log(val.fileName)
-  })
 
   let url = '../img/'
 
@@ -1014,84 +1009,61 @@ const Home = () => {
         </div>
 
         <div className="row">
-          {casedetail?.map((val, index) => {
-            if (val.cardCategory === 'CongratulationsInvitation') {
-              return (
-                <>
-                  <div className="col-md-3">
-                    <div className="wedding-box">
-                      <a href={'#id' + index} data-bs-toggle="modal">
-                        <img
-                          src={'http://localhost:3001/assets/' + val.cardCategory + '/' + val.cardTemplates[0]}
-                          className="img-fluid"
-                        />
-                      </a>
-                      <div className="inner">
-                        <div className="triangle-right"></div>
-                        <h4>{val.noOfPages}</h4>
+          <Carousel1 responsive={responsive}>
+            {casedetail?.map((val, index) => {
+              if (val.cardCategory === 'CongratulationsInvitation') {
+                return (
+                  <>
+                    <div className="col-md-3">
+                      <div className="wedding-box">
+                        <a href={'#id' + index} data-bs-toggle="modal">
+                          <img
+                            src={'http://localhost:3001/assets/' + val.cardCategory + '/' + val.cardTemplates[0]}
+                            className="img-fluid"
+                          />
+                        </a>
+                        <div className="inner">
+                          <div className="triangle-right"></div>
+                          <h4>{val.noOfPages}</h4>
 
-                        {val.noOfPages === 1 ? <p>Page</p> : <p>Pages</p>}
-                      </div>
-                      <div className="price">
-                        <strong>
-                          <span>₹{val.cardSalePrice}</span>
-                        </strong>
-                        <del>₹{val.cardTotalPrice}</del>
+                          {val.noOfPages === 1 ? <p>Page</p> : <p>Pages</p>}
+                        </div>
+                        <div className="price">
+                          <strong>
+                            <span>₹{val.cardSalePrice}</span>
+                          </strong>
+                          <del>₹{val.cardTotalPrice}</del>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div
-                    className="modal fade"
-                    id={'id' + index}
-                    data-bs-backdrop="static"
-                    data-bs-keyboard="false"
-                    aria-labelledby="staticBackdropLabel"
-                    aria-hidden="true"
-                  >
-                    <div className="modal-dialog">
-                      <div className="modal-content">
-                        <div className="modal-header">
-                          <button type="button" className="btn" data-bs-dismiss="modal" aria-label="Close">
-                            <FontAwesomeIcon icon={faArrowLeft} />
-                            &nbsp;Back
-                          </button>
-                          {/*<a href="#" style={{ textDecoration: 'none' }}>*/}
-                          {/*  <FontAwesomeIcon icon={faShareNodes} />*/}
-                          {/*  &nbsp;Share*/}
-                          {/*</a>*/}
-                        </div>
-                        <div className="modal-body">
-                          <Fancybox>
-                            {val.noOfPages === 1 ? (
-                              val.cardTemplates.map((card1, ind) => {
-                                return (
-                                  <>
-                                    <div className="item" style={{ textAlign: 'center' }}>
-                                      <a
-                                        data-fancybox={'#id' + index}
-                                        href={'http://localhost:3001/assets/' + val.cardCategory + '/' + card1}
-                                      >
-                                        <img
-                                          src={'http://localhost:3001/assets/' + val.cardCategory + '/' + card1}
-                                          className="img-fluid"
-                                          alt="Invitations"
-                                          style={{
-                                            maxWidth: '300px',
-                                            margin: 'auto'
-                                          }}
-                                        />
-                                      </a>
-                                    </div>
-                                  </>
-                                )
-                              })
-                            ) : (
-                              <OwlCarousel className="owl-carousel owl-theme wedding-carousel" options={options2}>
-                                {val.cardTemplates.map((card1, ind) => {
+                    <div
+                      className="modal fade"
+                      id={'id' + index}
+                      data-bs-backdrop="static"
+                      data-bs-keyboard="false"
+                      aria-labelledby="staticBackdropLabel"
+                      aria-hidden="true"
+                    >
+                      <div className="modal-dialog">
+                        <div className="modal-content">
+                          <div className="modal-header">
+                            <button type="button" className="btn" data-bs-dismiss="modal" aria-label="Close">
+                              <FontAwesomeIcon icon={faArrowLeft} />
+                              &nbsp;Back
+                            </button>
+                            {/*<a href="#" style={{ textDecoration: 'none' }}>*/}
+                            {/*  <FontAwesomeIcon icon={faShareNodes} />*/}
+                            {/*  &nbsp;Share*/}
+                            {/*</a>*/}
+                          </div>
+                          <div className="modal-body">
+                            <Fancybox>
+                              {val.noOfPages === 1 ? (
+                                val.cardTemplates.map((card1, ind) => {
                                   return (
                                     <>
-                                      <div className="item">
+                                      <div className="item" style={{ textAlign: 'center' }}>
                                         <a
                                           data-fancybox={'#id' + index}
                                           href={'http://localhost:3001/assets/' + val.cardCategory + '/' + card1}
@@ -1109,37 +1081,62 @@ const Home = () => {
                                       </div>
                                     </>
                                   )
-                                })}
-                              </OwlCarousel>
-                            )}
-                          </Fancybox>
-                        </div>
-                        <div className="modal-footer justify-content-between">
-                          <div className="d-flex align-items-center">
-                            <div className="price">
-                              <strong>
-                                <span>₹{val.cardSalePrice}</span>
-                              </strong>
-                              <del>₹{val.cardTotalPrice}</del>
-                            </div>
+                                })
+                              ) : (
+                                <OwlCarousel className="owl-carousel owl-theme wedding-carousel" options={options2}>
+                                  {val.cardTemplates.map((card1, ind) => {
+                                    return (
+                                      <>
+                                        <div className="item">
+                                          <a
+                                            data-fancybox={'#id' + index}
+                                            href={'http://localhost:3001/assets/' + val.cardCategory + '/' + card1}
+                                          >
+                                            <img
+                                              src={'http://localhost:3001/assets/' + val.cardCategory + '/' + card1}
+                                              className="img-fluid"
+                                              alt="Invitations"
+                                              style={{
+                                                maxWidth: '300px',
+                                                margin: 'auto'
+                                              }}
+                                            />
+                                          </a>
+                                        </div>
+                                      </>
+                                    )
+                                  })}
+                                </OwlCarousel>
+                              )}
+                            </Fancybox>
                           </div>
-                          <div>
-                            <button
-                              className="btn btn-primary"
-                              data-bs-dismiss="modal"
-                              onClick={() => EditCard(val.id)}
-                            >
-                              Try This Card
-                            </button>
+                          <div className="modal-footer justify-content-between">
+                            <div className="d-flex align-items-center">
+                              <div className="price">
+                                <strong>
+                                  <span>₹{val.cardSalePrice}</span>
+                                </strong>
+                                <del>₹{val.cardTotalPrice}</del>
+                              </div>
+                            </div>
+                            <div>
+                              <button
+                                className="btn btn-primary"
+                                data-bs-dismiss="modal"
+                                onClick={() => EditCard(val.id)}
+                              >
+                                Try This Card
+                              </button>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </>
-              )
-            }
-          })}
+                  </>
+                )
+              }
+            })}
+          </Carousel1>
         </div>
 
         <div className="my-4">
@@ -1154,84 +1151,61 @@ const Home = () => {
         </div>
 
         <div className="row">
-          {casedetail?.map((val, index) => {
-            if (val.cardCategory === 'AnniversaryInvitation') {
-              return (
-                <>
-                  <div className="col-md-3">
-                    <div className="wedding-box">
-                      <a href={'#id' + index} data-bs-toggle="modal">
-                        <img
-                          src={'http://localhost:3001/assets/' + val.cardCategory + '/' + val.cardTemplates[0]}
-                          className="img-fluid"
-                        />
-                      </a>
-                      <div className="inner">
-                        <div className="triangle-right"></div>
-                        <h4>{val.noOfPages}</h4>
+          <Carousel1 responsive={responsive}>
+            {casedetail?.map((val, index) => {
+              if (val.cardCategory === 'AnniversaryInvitation') {
+                return (
+                  <>
+                    <div className="col-md-3">
+                      <div className="wedding-box">
+                        <a href={'#id' + index} data-bs-toggle="modal">
+                          <img
+                            src={'http://localhost:3001/assets/' + val.cardCategory + '/' + val.cardTemplates[0]}
+                            className="img-fluid"
+                          />
+                        </a>
+                        <div className="inner">
+                          <div className="triangle-right"></div>
+                          <h4>{val.noOfPages}</h4>
 
-                        {val.noOfPages === 1 ? <p>Page</p> : <p>Pages</p>}
-                      </div>
-                      <div className="price">
-                        <strong>
-                          <span>₹{val.cardSalePrice}</span>
-                        </strong>
-                        <del>₹{val.cardTotalPrice}</del>
+                          {val.noOfPages === 1 ? <p>Page</p> : <p>Pages</p>}
+                        </div>
+                        <div className="price">
+                          <strong>
+                            <span>₹{val.cardSalePrice}</span>
+                          </strong>
+                          <del>₹{val.cardTotalPrice}</del>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div
-                    className="modal fade"
-                    id={'id' + index}
-                    data-bs-backdrop="static"
-                    data-bs-keyboard="false"
-                    aria-labelledby="staticBackdropLabel"
-                    aria-hidden="true"
-                  >
-                    <div className="modal-dialog">
-                      <div className="modal-content">
-                        <div className="modal-header">
-                          <button type="button" className="btn" data-bs-dismiss="modal" aria-label="Close">
-                            <FontAwesomeIcon icon={faArrowLeft} />
-                            &nbsp;Back
-                          </button>
-                          {/*<a href="#" style={{ textDecoration: 'none' }}>*/}
-                          {/*  <FontAwesomeIcon icon={faShareNodes} />*/}
-                          {/*  &nbsp;Share*/}
-                          {/*</a>*/}
-                        </div>
-                        <div className="modal-body">
-                          <Fancybox>
-                            {val.noOfPages === 1 ? (
-                              val.cardTemplates.map((card1, ind) => {
-                                return (
-                                  <>
-                                    <div className="item" style={{ textAlign: 'center' }}>
-                                      <a
-                                        data-fancybox={'#id' + index}
-                                        href={'http://localhost:3001/assets/' + val.cardCategory + '/' + card1}
-                                      >
-                                        <img
-                                          src={'http://localhost:3001/assets/' + val.cardCategory + '/' + card1}
-                                          className="img-fluid"
-                                          alt="Invitations"
-                                          style={{
-                                            maxWidth: '300px',
-                                            margin: 'auto'
-                                          }}
-                                        />
-                                      </a>
-                                    </div>
-                                  </>
-                                )
-                              })
-                            ) : (
-                              <OwlCarousel className="owl-carousel owl-theme wedding-carousel" options={options2}>
-                                {val.cardTemplates.map((card1, ind) => {
+                    <div
+                      className="modal fade"
+                      id={'id' + index}
+                      data-bs-backdrop="static"
+                      data-bs-keyboard="false"
+                      aria-labelledby="staticBackdropLabel"
+                      aria-hidden="true"
+                    >
+                      <div className="modal-dialog">
+                        <div className="modal-content">
+                          <div className="modal-header">
+                            <button type="button" className="btn" data-bs-dismiss="modal" aria-label="Close">
+                              <FontAwesomeIcon icon={faArrowLeft} />
+                              &nbsp;Back
+                            </button>
+                            {/*<a href="#" style={{ textDecoration: 'none' }}>*/}
+                            {/*  <FontAwesomeIcon icon={faShareNodes} />*/}
+                            {/*  &nbsp;Share*/}
+                            {/*</a>*/}
+                          </div>
+                          <div className="modal-body">
+                            <Fancybox>
+                              {val.noOfPages === 1 ? (
+                                val.cardTemplates.map((card1, ind) => {
                                   return (
                                     <>
-                                      <div className="item">
+                                      <div className="item" style={{ textAlign: 'center' }}>
                                         <a
                                           data-fancybox={'#id' + index}
                                           href={'http://localhost:3001/assets/' + val.cardCategory + '/' + card1}
@@ -1249,37 +1223,62 @@ const Home = () => {
                                       </div>
                                     </>
                                   )
-                                })}
-                              </OwlCarousel>
-                            )}
-                          </Fancybox>
-                        </div>
-                        <div className="modal-footer justify-content-between">
-                          <div className="d-flex align-items-center">
-                            <div className="price">
-                              <strong>
-                                <span>₹{val.cardSalePrice}</span>
-                              </strong>
-                              <del>₹{val.cardTotalPrice}</del>
-                            </div>
+                                })
+                              ) : (
+                                <OwlCarousel className="owl-carousel owl-theme wedding-carousel" options={options2}>
+                                  {val.cardTemplates.map((card1, ind) => {
+                                    return (
+                                      <>
+                                        <div className="item">
+                                          <a
+                                            data-fancybox={'#id' + index}
+                                            href={'http://localhost:3001/assets/' + val.cardCategory + '/' + card1}
+                                          >
+                                            <img
+                                              src={'http://localhost:3001/assets/' + val.cardCategory + '/' + card1}
+                                              className="img-fluid"
+                                              alt="Invitations"
+                                              style={{
+                                                maxWidth: '300px',
+                                                margin: 'auto'
+                                              }}
+                                            />
+                                          </a>
+                                        </div>
+                                      </>
+                                    )
+                                  })}
+                                </OwlCarousel>
+                              )}
+                            </Fancybox>
                           </div>
-                          <div>
-                            <button
-                              className="btn btn-primary"
-                              data-bs-dismiss="modal"
-                              onClick={() => EditCard(val.id)}
-                            >
-                              Try This Card
-                            </button>
+                          <div className="modal-footer justify-content-between">
+                            <div className="d-flex align-items-center">
+                              <div className="price">
+                                <strong>
+                                  <span>₹{val.cardSalePrice}</span>
+                                </strong>
+                                <del>₹{val.cardTotalPrice}</del>
+                              </div>
+                            </div>
+                            <div>
+                              <button
+                                className="btn btn-primary"
+                                data-bs-dismiss="modal"
+                                onClick={() => EditCard(val.id)}
+                              >
+                                Try This Card
+                              </button>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </>
-              )
-            }
-          })}
+                  </>
+                )
+              }
+            })}
+          </Carousel1>
         </div>
 
         <div className="my-4">
@@ -1436,84 +1435,61 @@ const Home = () => {
         </div>
 
         <div className="row">
-          {casedetail?.map((val, index) => {
-            if (val.cardCategory === 'MissYouInvitation') {
-              return (
-                <>
-                  <div className="col-md-3">
-                    <div className="wedding-box">
-                      <a href={'#id' + index} data-bs-toggle="modal">
-                        <img
-                          src={'http://localhost:3001/assets/' + val.cardCategory + '/' + val.cardTemplates[0]}
-                          className="img-fluid"
-                        />
-                      </a>
-                      <div className="inner">
-                        <div className="triangle-right"></div>
-                        <h4>{val.noOfPages}</h4>
+          <Carousel1 responsive={responsive}>
+            {casedetail?.map((val, index) => {
+              if (val.cardCategory === 'MissYouInvitation') {
+                return (
+                  <>
+                    <div className="col-md-3">
+                      <div className="wedding-box">
+                        <a href={'#id' + index} data-bs-toggle="modal">
+                          <img
+                            src={'http://localhost:3001/assets/' + val.cardCategory + '/' + val.cardTemplates[0]}
+                            className="img-fluid"
+                          />
+                        </a>
+                        <div className="inner">
+                          <div className="triangle-right"></div>
+                          <h4>{val.noOfPages}</h4>
 
-                        {val.noOfPages === 1 ? <p>Page</p> : <p>Pages</p>}
-                      </div>
-                      <div className="price">
-                        <strong>
-                          <span>₹{val.cardSalePrice}</span>
-                        </strong>
-                        <del>₹{val.cardTotalPrice}</del>
+                          {val.noOfPages === 1 ? <p>Page</p> : <p>Pages</p>}
+                        </div>
+                        <div className="price">
+                          <strong>
+                            <span>₹{val.cardSalePrice}</span>
+                          </strong>
+                          <del>₹{val.cardTotalPrice}</del>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div
-                    className="modal fade"
-                    id={'id' + index}
-                    data-bs-backdrop="static"
-                    data-bs-keyboard="false"
-                    aria-labelledby="staticBackdropLabel"
-                    aria-hidden="true"
-                  >
-                    <div className="modal-dialog">
-                      <div className="modal-content">
-                        <div className="modal-header">
-                          <button type="button" className="btn" data-bs-dismiss="modal" aria-label="Close">
-                            <FontAwesomeIcon icon={faArrowLeft} />
-                            &nbsp;Back
-                          </button>
-                          {/*<a href="#" style={{ textDecoration: 'none' }}>*/}
-                          {/*  <FontAwesomeIcon icon={faShareNodes} />*/}
-                          {/*  &nbsp;Share*/}
-                          {/*</a>*/}
-                        </div>
-                        <div className="modal-body">
-                          <Fancybox>
-                            {val.noOfPages === 1 ? (
-                              val.cardTemplates.map((card1, ind) => {
-                                return (
-                                  <>
-                                    <div className="item" style={{ textAlign: 'center' }}>
-                                      <a
-                                        data-fancybox={'#id' + index}
-                                        href={'http://localhost:3001/assets/' + val.cardCategory + '/' + card1}
-                                      >
-                                        <img
-                                          src={'http://localhost:3001/assets/' + val.cardCategory + '/' + card1}
-                                          className="img-fluid"
-                                          alt="Invitations"
-                                          style={{
-                                            maxWidth: '300px',
-                                            margin: 'auto'
-                                          }}
-                                        />
-                                      </a>
-                                    </div>
-                                  </>
-                                )
-                              })
-                            ) : (
-                              <OwlCarousel className="owl-carousel owl-theme wedding-carousel" options={options2}>
-                                {val.cardTemplates.map((card1, ind) => {
+                    <div
+                      className="modal fade"
+                      id={'id' + index}
+                      data-bs-backdrop="static"
+                      data-bs-keyboard="false"
+                      aria-labelledby="staticBackdropLabel"
+                      aria-hidden="true"
+                    >
+                      <div className="modal-dialog">
+                        <div className="modal-content">
+                          <div className="modal-header">
+                            <button type="button" className="btn" data-bs-dismiss="modal" aria-label="Close">
+                              <FontAwesomeIcon icon={faArrowLeft} />
+                              &nbsp;Back
+                            </button>
+                            {/*<a href="#" style={{ textDecoration: 'none' }}>*/}
+                            {/*  <FontAwesomeIcon icon={faShareNodes} />*/}
+                            {/*  &nbsp;Share*/}
+                            {/*</a>*/}
+                          </div>
+                          <div className="modal-body">
+                            <Fancybox>
+                              {val.noOfPages === 1 ? (
+                                val.cardTemplates.map((card1, ind) => {
                                   return (
                                     <>
-                                      <div className="item">
+                                      <div className="item" style={{ textAlign: 'center' }}>
                                         <a
                                           data-fancybox={'#id' + index}
                                           href={'http://localhost:3001/assets/' + val.cardCategory + '/' + card1}
@@ -1531,37 +1507,62 @@ const Home = () => {
                                       </div>
                                     </>
                                   )
-                                })}
-                              </OwlCarousel>
-                            )}
-                          </Fancybox>
-                        </div>
-                        <div className="modal-footer justify-content-between">
-                          <div className="d-flex align-items-center">
-                            <div className="price">
-                              <strong>
-                                <span>₹{val.cardSalePrice}</span>
-                              </strong>
-                              <del>₹{val.cardTotalPrice}</del>
-                            </div>
+                                })
+                              ) : (
+                                <OwlCarousel className="owl-carousel owl-theme wedding-carousel" options={options2}>
+                                  {val.cardTemplates.map((card1, ind) => {
+                                    return (
+                                      <>
+                                        <div className="item">
+                                          <a
+                                            data-fancybox={'#id' + index}
+                                            href={'http://localhost:3001/assets/' + val.cardCategory + '/' + card1}
+                                          >
+                                            <img
+                                              src={'http://localhost:3001/assets/' + val.cardCategory + '/' + card1}
+                                              className="img-fluid"
+                                              alt="Invitations"
+                                              style={{
+                                                maxWidth: '300px',
+                                                margin: 'auto'
+                                              }}
+                                            />
+                                          </a>
+                                        </div>
+                                      </>
+                                    )
+                                  })}
+                                </OwlCarousel>
+                              )}
+                            </Fancybox>
                           </div>
-                          <div>
-                            <button
-                              className="btn btn-primary"
-                              data-bs-dismiss="modal"
-                              onClick={() => EditCard(val.id)}
-                            >
-                              Try This Card
-                            </button>
+                          <div className="modal-footer justify-content-between">
+                            <div className="d-flex align-items-center">
+                              <div className="price">
+                                <strong>
+                                  <span>₹{val.cardSalePrice}</span>
+                                </strong>
+                                <del>₹{val.cardTotalPrice}</del>
+                              </div>
+                            </div>
+                            <div>
+                              <button
+                                className="btn btn-primary"
+                                data-bs-dismiss="modal"
+                                onClick={() => EditCard(val.id)}
+                              >
+                                Try This Card
+                              </button>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </>
-              )
-            }
-          })}
+                  </>
+                )
+              }
+            })}
+          </Carousel1>
         </div>
 
         <div className="my-4">
@@ -1576,84 +1577,61 @@ const Home = () => {
         </div>
 
         <div className="row">
-          {casedetail?.map((val, index) => {
-            if (val.cardCategory === 'GetWellInvitation') {
-              return (
-                <>
-                  <div className="col-md-3">
-                    <div className="wedding-box">
-                      <a href={'#id' + index} data-bs-toggle="modal">
-                        <img
-                          src={'http://localhost:3001/assets/' + val.cardCategory + '/' + val.cardTemplates[0]}
-                          className="img-fluid"
-                        />
-                      </a>
-                      <div className="inner">
-                        <div className="triangle-right"></div>
-                        <h4>{val.noOfPages}</h4>
+          <Carousel1 responsive={responsive}>
+            {casedetail?.map((val, index) => {
+              if (val.cardCategory === 'GetWellInvitation') {
+                return (
+                  <>
+                    <div className="col-md-3">
+                      <div className="wedding-box">
+                        <a href={'#id' + index} data-bs-toggle="modal">
+                          <img
+                            src={'http://localhost:3001/assets/' + val.cardCategory + '/' + val.cardTemplates[0]}
+                            className="img-fluid"
+                          />
+                        </a>
+                        <div className="inner">
+                          <div className="triangle-right"></div>
+                          <h4>{val.noOfPages}</h4>
 
-                        {val.noOfPages === 1 ? <p>Page</p> : <p>Pages</p>}
-                      </div>
-                      <div className="price">
-                        <strong>
-                          <span>₹{val.cardSalePrice}</span>
-                        </strong>
-                        <del>₹{val.cardTotalPrice}</del>
+                          {val.noOfPages === 1 ? <p>Page</p> : <p>Pages</p>}
+                        </div>
+                        <div className="price">
+                          <strong>
+                            <span>₹{val.cardSalePrice}</span>
+                          </strong>
+                          <del>₹{val.cardTotalPrice}</del>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div
-                    className="modal fade"
-                    id={'id' + index}
-                    data-bs-backdrop="static"
-                    data-bs-keyboard="false"
-                    aria-labelledby="staticBackdropLabel"
-                    aria-hidden="true"
-                  >
-                    <div className="modal-dialog">
-                      <div className="modal-content">
-                        <div className="modal-header">
-                          <button type="button" className="btn" data-bs-dismiss="modal" aria-label="Close">
-                            <FontAwesomeIcon icon={faArrowLeft} />
-                            &nbsp;Back
-                          </button>
-                          {/*<a href="#" style={{ textDecoration: 'none' }}>*/}
-                          {/*  <FontAwesomeIcon icon={faShareNodes} />*/}
-                          {/*  &nbsp;Share*/}
-                          {/*</a>*/}
-                        </div>
-                        <div className="modal-body">
-                          <Fancybox>
-                            {val.noOfPages === 1 ? (
-                              val.cardTemplates.map((card1, ind) => {
-                                return (
-                                  <>
-                                    <div className="item" style={{ textAlign: 'center' }}>
-                                      <a
-                                        data-fancybox={'#id' + index}
-                                        href={'http://localhost:3001/assets/' + val.cardCategory + '/' + card1}
-                                      >
-                                        <img
-                                          src={'http://localhost:3001/assets/' + val.cardCategory + '/' + card1}
-                                          className="img-fluid"
-                                          alt="Invitations"
-                                          style={{
-                                            maxWidth: '300px',
-                                            margin: 'auto'
-                                          }}
-                                        />
-                                      </a>
-                                    </div>
-                                  </>
-                                )
-                              })
-                            ) : (
-                              <OwlCarousel className="owl-carousel owl-theme wedding-carousel" options={options2}>
-                                {val.cardTemplates.map((card1, ind) => {
+                    <div
+                      className="modal fade"
+                      id={'id' + index}
+                      data-bs-backdrop="static"
+                      data-bs-keyboard="false"
+                      aria-labelledby="staticBackdropLabel"
+                      aria-hidden="true"
+                    >
+                      <div className="modal-dialog">
+                        <div className="modal-content">
+                          <div className="modal-header">
+                            <button type="button" className="btn" data-bs-dismiss="modal" aria-label="Close">
+                              <FontAwesomeIcon icon={faArrowLeft} />
+                              &nbsp;Back
+                            </button>
+                            {/*<a href="#" style={{ textDecoration: 'none' }}>*/}
+                            {/*  <FontAwesomeIcon icon={faShareNodes} />*/}
+                            {/*  &nbsp;Share*/}
+                            {/*</a>*/}
+                          </div>
+                          <div className="modal-body">
+                            <Fancybox>
+                              {val.noOfPages === 1 ? (
+                                val.cardTemplates.map((card1, ind) => {
                                   return (
                                     <>
-                                      <div className="item">
+                                      <div className="item" style={{ textAlign: 'center' }}>
                                         <a
                                           data-fancybox={'#id' + index}
                                           href={'http://localhost:3001/assets/' + val.cardCategory + '/' + card1}
@@ -1671,37 +1649,62 @@ const Home = () => {
                                       </div>
                                     </>
                                   )
-                                })}
-                              </OwlCarousel>
-                            )}
-                          </Fancybox>
-                        </div>
-                        <div className="modal-footer justify-content-between">
-                          <div className="d-flex align-items-center">
-                            <div className="price">
-                              <strong>
-                                <span>₹{val.cardSalePrice}</span>
-                              </strong>
-                              <del>₹{val.cardTotalPrice}</del>
-                            </div>
+                                })
+                              ) : (
+                                <OwlCarousel className="owl-carousel owl-theme wedding-carousel" options={options2}>
+                                  {val.cardTemplates.map((card1, ind) => {
+                                    return (
+                                      <>
+                                        <div className="item">
+                                          <a
+                                            data-fancybox={'#id' + index}
+                                            href={'http://localhost:3001/assets/' + val.cardCategory + '/' + card1}
+                                          >
+                                            <img
+                                              src={'http://localhost:3001/assets/' + val.cardCategory + '/' + card1}
+                                              className="img-fluid"
+                                              alt="Invitations"
+                                              style={{
+                                                maxWidth: '300px',
+                                                margin: 'auto'
+                                              }}
+                                            />
+                                          </a>
+                                        </div>
+                                      </>
+                                    )
+                                  })}
+                                </OwlCarousel>
+                              )}
+                            </Fancybox>
                           </div>
-                          <div>
-                            <button
-                              className="btn btn-primary"
-                              data-bs-dismiss="modal"
-                              onClick={() => EditCard(val.id)}
-                            >
-                              Try This Card
-                            </button>
+                          <div className="modal-footer justify-content-between">
+                            <div className="d-flex align-items-center">
+                              <div className="price">
+                                <strong>
+                                  <span>₹{val.cardSalePrice}</span>
+                                </strong>
+                                <del>₹{val.cardTotalPrice}</del>
+                              </div>
+                            </div>
+                            <div>
+                              <button
+                                className="btn btn-primary"
+                                data-bs-dismiss="modal"
+                                onClick={() => EditCard(val.id)}
+                              >
+                                Try This Card
+                              </button>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </>
-              )
-            }
-          })}
+                  </>
+                )
+              }
+            })}
+          </Carousel1>
         </div>
 
         <div className="my-4">
@@ -1716,84 +1719,61 @@ const Home = () => {
         </div>
 
         <div className="row">
-          {casedetail?.map((val, index) => {
-            if (val.cardCategory === 'BirthdayInvitation') {
-              return (
-                <>
-                  <div className="col-md-3">
-                    <div className="wedding-box">
-                      <a href={'#id' + index} data-bs-toggle="modal">
-                        <img
-                          src={'http://localhost:3001/assets/' + val.cardCategory + '/' + val.cardTemplates[0]}
-                          className="img-fluid"
-                        />
-                      </a>
-                      <div className="inner">
-                        <div className="triangle-right"></div>
-                        <h4>{val.noOfPages}</h4>
+          <Carousel1 responsive={responsive}>
+            {casedetail?.map((val, index) => {
+              if (val.cardCategory === 'BirthdayInvitation') {
+                return (
+                  <>
+                    <div className="col-md-3">
+                      <div className="wedding-box">
+                        <a href={'#id' + index} data-bs-toggle="modal">
+                          <img
+                            src={'http://localhost:3001/assets/' + val.cardCategory + '/' + val.cardTemplates[0]}
+                            className="img-fluid"
+                          />
+                        </a>
+                        <div className="inner">
+                          <div className="triangle-right"></div>
+                          <h4>{val.noOfPages}</h4>
 
-                        {val.noOfPages === 1 ? <p>Page</p> : <p>Pages</p>}
-                      </div>
-                      <div className="price">
-                        <strong>
-                          <span>₹{val.cardSalePrice}</span>
-                        </strong>
-                        <del>₹{val.cardTotalPrice}</del>
+                          {val.noOfPages === 1 ? <p>Page</p> : <p>Pages</p>}
+                        </div>
+                        <div className="price">
+                          <strong>
+                            <span>₹{val.cardSalePrice}</span>
+                          </strong>
+                          <del>₹{val.cardTotalPrice}</del>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div
-                    className="modal fade"
-                    id={'id' + index}
-                    data-bs-backdrop="static"
-                    data-bs-keyboard="false"
-                    aria-labelledby="staticBackdropLabel"
-                    aria-hidden="true"
-                  >
-                    <div className="modal-dialog">
-                      <div className="modal-content">
-                        <div className="modal-header">
-                          <button type="button" className="btn" data-bs-dismiss="modal" aria-label="Close">
-                            <FontAwesomeIcon icon={faArrowLeft} />
-                            &nbsp;Back
-                          </button>
-                          {/*<a href="#" style={{ textDecoration: 'none' }}>*/}
-                          {/*  <FontAwesomeIcon icon={faShareNodes} />*/}
-                          {/*  &nbsp;Share*/}
-                          {/*</a>*/}
-                        </div>
-                        <div className="modal-body">
-                          <Fancybox>
-                            {val.noOfPages === 1 ? (
-                              val.cardTemplates.map((card1, ind) => {
-                                return (
-                                  <>
-                                    <div className="item" style={{ textAlign: 'center' }}>
-                                      <a
-                                        data-fancybox={'#id' + index}
-                                        href={'http://localhost:3001/assets/' + val.cardCategory + '/' + card1}
-                                      >
-                                        <img
-                                          src={'http://localhost:3001/assets/' + val.cardCategory + '/' + card1}
-                                          className="img-fluid"
-                                          alt="Invitations"
-                                          style={{
-                                            maxWidth: '300px',
-                                            margin: 'auto'
-                                          }}
-                                        />
-                                      </a>
-                                    </div>
-                                  </>
-                                )
-                              })
-                            ) : (
-                              <OwlCarousel className="owl-carousel owl-theme wedding-carousel" options={options2}>
-                                {val.cardTemplates.map((card1, ind) => {
+                    <div
+                      className="modal fade"
+                      id={'id' + index}
+                      data-bs-backdrop="static"
+                      data-bs-keyboard="false"
+                      aria-labelledby="staticBackdropLabel"
+                      aria-hidden="true"
+                    >
+                      <div className="modal-dialog">
+                        <div className="modal-content">
+                          <div className="modal-header">
+                            <button type="button" className="btn" data-bs-dismiss="modal" aria-label="Close">
+                              <FontAwesomeIcon icon={faArrowLeft} />
+                              &nbsp;Back
+                            </button>
+                            {/*<a href="#" style={{ textDecoration: 'none' }}>*/}
+                            {/*  <FontAwesomeIcon icon={faShareNodes} />*/}
+                            {/*  &nbsp;Share*/}
+                            {/*</a>*/}
+                          </div>
+                          <div className="modal-body">
+                            <Fancybox>
+                              {val.noOfPages === 1 ? (
+                                val.cardTemplates.map((card1, ind) => {
                                   return (
                                     <>
-                                      <div className="item">
+                                      <div className="item" style={{ textAlign: 'center' }}>
                                         <a
                                           data-fancybox={'#id' + index}
                                           href={'http://localhost:3001/assets/' + val.cardCategory + '/' + card1}
@@ -1811,37 +1791,62 @@ const Home = () => {
                                       </div>
                                     </>
                                   )
-                                })}
-                              </OwlCarousel>
-                            )}
-                          </Fancybox>
-                        </div>
-                        <div className="modal-footer justify-content-between">
-                          <div className="d-flex align-items-center">
-                            <div className="price">
-                              <strong>
-                                <span>₹{val.cardSalePrice}</span>
-                              </strong>
-                              <del>₹{val.cardTotalPrice}</del>
-                            </div>
+                                })
+                              ) : (
+                                <OwlCarousel className="owl-carousel owl-theme wedding-carousel" options={options2}>
+                                  {val.cardTemplates.map((card1, ind) => {
+                                    return (
+                                      <>
+                                        <div className="item">
+                                          <a
+                                            data-fancybox={'#id' + index}
+                                            href={'http://localhost:3001/assets/' + val.cardCategory + '/' + card1}
+                                          >
+                                            <img
+                                              src={'http://localhost:3001/assets/' + val.cardCategory + '/' + card1}
+                                              className="img-fluid"
+                                              alt="Invitations"
+                                              style={{
+                                                maxWidth: '300px',
+                                                margin: 'auto'
+                                              }}
+                                            />
+                                          </a>
+                                        </div>
+                                      </>
+                                    )
+                                  })}
+                                </OwlCarousel>
+                              )}
+                            </Fancybox>
                           </div>
-                          <div>
-                            <button
-                              className="btn btn-primary"
-                              data-bs-dismiss="modal"
-                              onClick={() => EditCard(val.id)}
-                            >
-                              Try This Card
-                            </button>
+                          <div className="modal-footer justify-content-between">
+                            <div className="d-flex align-items-center">
+                              <div className="price">
+                                <strong>
+                                  <span>₹{val.cardSalePrice}</span>
+                                </strong>
+                                <del>₹{val.cardTotalPrice}</del>
+                              </div>
+                            </div>
+                            <div>
+                              <button
+                                className="btn btn-primary"
+                                data-bs-dismiss="modal"
+                                onClick={() => EditCard(val.id)}
+                              >
+                                Try This Card
+                              </button>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </>
-              )
-            }
-          })}
+                  </>
+                )
+              }
+            })}
+          </Carousel1>
         </div>
 
         <div className="my-4">
@@ -1856,84 +1861,61 @@ const Home = () => {
         </div>
 
         <div className="row">
-          {casedetail?.map((val, index) => {
-            if (val.cardCategory === 'BabyShowerInvitation') {
-              return (
-                <>
-                  <div className="col-md-3">
-                    <div className="wedding-box">
-                      <a href={'#id' + index} data-bs-toggle="modal">
-                        <img
-                          src={'http://localhost:3001/assets/' + val.cardCategory + '/' + val.cardTemplates[0]}
-                          className="img-fluid"
-                        />
-                      </a>
-                      <div className="inner">
-                        <div className="triangle-right"></div>
-                        <h4>{val.noOfPages}</h4>
+          <Carousel1 responsive={responsive}>
+            {casedetail?.map((val, index) => {
+              if (val.cardCategory === 'BabyShowerInvitation') {
+                return (
+                  <>
+                    <div className="col-md-3">
+                      <div className="wedding-box">
+                        <a href={'#id' + index} data-bs-toggle="modal">
+                          <img
+                            src={'http://localhost:3001/assets/' + val.cardCategory + '/' + val.cardTemplates[0]}
+                            className="img-fluid"
+                          />
+                        </a>
+                        <div className="inner">
+                          <div className="triangle-right"></div>
+                          <h4>{val.noOfPages}</h4>
 
-                        {val.noOfPages === 1 ? <p>Page</p> : <p>Pages</p>}
-                      </div>
-                      <div className="price">
-                        <strong>
-                          <span>₹{val.cardSalePrice}</span>
-                        </strong>
-                        <del>₹{val.cardTotalPrice}</del>
+                          {val.noOfPages === 1 ? <p>Page</p> : <p>Pages</p>}
+                        </div>
+                        <div className="price">
+                          <strong>
+                            <span>₹{val.cardSalePrice}</span>
+                          </strong>
+                          <del>₹{val.cardTotalPrice}</del>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div
-                    className="modal fade"
-                    id={'id' + index}
-                    data-bs-backdrop="static"
-                    data-bs-keyboard="false"
-                    aria-labelledby="staticBackdropLabel"
-                    aria-hidden="true"
-                  >
-                    <div className="modal-dialog">
-                      <div className="modal-content">
-                        <div className="modal-header">
-                          <button type="button" className="btn" data-bs-dismiss="modal" aria-label="Close">
-                            <FontAwesomeIcon icon={faArrowLeft} />
-                            &nbsp;Back
-                          </button>
-                          {/*<a href="#" style={{ textDecoration: 'none' }}>*/}
-                          {/*  <FontAwesomeIcon icon={faShareNodes} />*/}
-                          {/*  &nbsp;Share*/}
-                          {/*</a>*/}
-                        </div>
-                        <div className="modal-body">
-                          <Fancybox>
-                            {val.noOfPages === 1 ? (
-                              val.cardTemplates.map((card1, ind) => {
-                                return (
-                                  <>
-                                    <div className="item" style={{ textAlign: 'center' }}>
-                                      <a
-                                        data-fancybox={'#id' + index}
-                                        href={'http://localhost:3001/assets/' + val.cardCategory + '/' + card1}
-                                      >
-                                        <img
-                                          src={'http://localhost:3001/assets/' + val.cardCategory + '/' + card1}
-                                          className="img-fluid"
-                                          alt="Invitations"
-                                          style={{
-                                            maxWidth: '300px',
-                                            margin: 'auto'
-                                          }}
-                                        />
-                                      </a>
-                                    </div>
-                                  </>
-                                )
-                              })
-                            ) : (
-                              <OwlCarousel className="owl-carousel owl-theme wedding-carousel" options={options2}>
-                                {val.cardTemplates.map((card1, ind) => {
+                    <div
+                      className="modal fade"
+                      id={'id' + index}
+                      data-bs-backdrop="static"
+                      data-bs-keyboard="false"
+                      aria-labelledby="staticBackdropLabel"
+                      aria-hidden="true"
+                    >
+                      <div className="modal-dialog">
+                        <div className="modal-content">
+                          <div className="modal-header">
+                            <button type="button" className="btn" data-bs-dismiss="modal" aria-label="Close">
+                              <FontAwesomeIcon icon={faArrowLeft} />
+                              &nbsp;Back
+                            </button>
+                            {/*<a href="#" style={{ textDecoration: 'none' }}>*/}
+                            {/*  <FontAwesomeIcon icon={faShareNodes} />*/}
+                            {/*  &nbsp;Share*/}
+                            {/*</a>*/}
+                          </div>
+                          <div className="modal-body">
+                            <Fancybox>
+                              {val.noOfPages === 1 ? (
+                                val.cardTemplates.map((card1, ind) => {
                                   return (
                                     <>
-                                      <div className="item">
+                                      <div className="item" style={{ textAlign: 'center' }}>
                                         <a
                                           data-fancybox={'#id' + index}
                                           href={'http://localhost:3001/assets/' + val.cardCategory + '/' + card1}
@@ -1951,37 +1933,62 @@ const Home = () => {
                                       </div>
                                     </>
                                   )
-                                })}
-                              </OwlCarousel>
-                            )}
-                          </Fancybox>
-                        </div>
-                        <div className="modal-footer justify-content-between">
-                          <div className="d-flex align-items-center">
-                            <div className="price">
-                              <strong>
-                                <span>₹{val.cardSalePrice}</span>
-                              </strong>
-                              <del>₹{val.cardTotalPrice}</del>
-                            </div>
+                                })
+                              ) : (
+                                <OwlCarousel className="owl-carousel owl-theme wedding-carousel" options={options2}>
+                                  {val.cardTemplates.map((card1, ind) => {
+                                    return (
+                                      <>
+                                        <div className="item">
+                                          <a
+                                            data-fancybox={'#id' + index}
+                                            href={'http://localhost:3001/assets/' + val.cardCategory + '/' + card1}
+                                          >
+                                            <img
+                                              src={'http://localhost:3001/assets/' + val.cardCategory + '/' + card1}
+                                              className="img-fluid"
+                                              alt="Invitations"
+                                              style={{
+                                                maxWidth: '300px',
+                                                margin: 'auto'
+                                              }}
+                                            />
+                                          </a>
+                                        </div>
+                                      </>
+                                    )
+                                  })}
+                                </OwlCarousel>
+                              )}
+                            </Fancybox>
                           </div>
-                          <div>
-                            <button
-                              className="btn btn-primary"
-                              data-bs-dismiss="modal"
-                              onClick={() => EditCard(val.id)}
-                            >
-                              Try This Card
-                            </button>
+                          <div className="modal-footer justify-content-between">
+                            <div className="d-flex align-items-center">
+                              <div className="price">
+                                <strong>
+                                  <span>₹{val.cardSalePrice}</span>
+                                </strong>
+                                <del>₹{val.cardTotalPrice}</del>
+                              </div>
+                            </div>
+                            <div>
+                              <button
+                                className="btn btn-primary"
+                                data-bs-dismiss="modal"
+                                onClick={() => EditCard(val.id)}
+                              >
+                                Try This Card
+                              </button>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </>
-              )
-            }
-          })}
+                  </>
+                )
+              }
+            })}
+          </Carousel1>
         </div>
 
         <div className="my-4">
@@ -1996,84 +2003,61 @@ const Home = () => {
         </div>
 
         <div className="row">
-          {casedetail?.map((val, index) => {
-            if (val.cardCategory === 'EngagementInvitation') {
-              return (
-                <>
-                  <div className="col-md-3">
-                    <div className="wedding-box">
-                      <a href={'#id' + index} data-bs-toggle="modal">
-                        <img
-                          src={'http://localhost:3001/assets/' + val.cardCategory + '/' + val.cardTemplates[0]}
-                          className="img-fluid"
-                        />
-                      </a>
-                      <div className="inner">
-                        <div className="triangle-right"></div>
-                        <h4>{val.noOfPages}</h4>
+          <Carousel1 responsive={responsive}>
+            {casedetail?.map((val, index) => {
+              if (val.cardCategory === 'EngagementInvitation') {
+                return (
+                  <>
+                    <div className="col-md-3">
+                      <div className="wedding-box">
+                        <a href={'#id' + index} data-bs-toggle="modal">
+                          <img
+                            src={'http://localhost:3001/assets/' + val.cardCategory + '/' + val.cardTemplates[0]}
+                            className="img-fluid"
+                          />
+                        </a>
+                        <div className="inner">
+                          <div className="triangle-right"></div>
+                          <h4>{val.noOfPages}</h4>
 
-                        {val.noOfPages === 1 ? <p>Page</p> : <p>Pages</p>}
-                      </div>
-                      <div className="price">
-                        <strong>
-                          <span>₹{val.cardSalePrice}</span>
-                        </strong>
-                        <del>₹{val.cardTotalPrice}</del>
+                          {val.noOfPages === 1 ? <p>Page</p> : <p>Pages</p>}
+                        </div>
+                        <div className="price">
+                          <strong>
+                            <span>₹{val.cardSalePrice}</span>
+                          </strong>
+                          <del>₹{val.cardTotalPrice}</del>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div
-                    className="modal fade"
-                    id={'id' + index}
-                    data-bs-backdrop="static"
-                    data-bs-keyboard="false"
-                    aria-labelledby="staticBackdropLabel"
-                    aria-hidden="true"
-                  >
-                    <div className="modal-dialog">
-                      <div className="modal-content">
-                        <div className="modal-header">
-                          <button type="button" className="btn" data-bs-dismiss="modal" aria-label="Close">
-                            <FontAwesomeIcon icon={faArrowLeft} />
-                            &nbsp;Back
-                          </button>
-                          {/*<a href="#" style={{ textDecoration: 'none' }}>*/}
-                          {/*  <FontAwesomeIcon icon={faShareNodes} />*/}
-                          {/*  &nbsp;Share*/}
-                          {/*</a>*/}
-                        </div>
-                        <div className="modal-body">
-                          <Fancybox>
-                            {val.noOfPages === 1 ? (
-                              val.cardTemplates.map((card1, ind) => {
-                                return (
-                                  <>
-                                    <div className="item" style={{ textAlign: 'center' }}>
-                                      <a
-                                        data-fancybox={'#id' + index}
-                                        href={'http://localhost:3001/assets/' + val.cardCategory + '/' + card1}
-                                      >
-                                        <img
-                                          src={'http://localhost:3001/assets/' + val.cardCategory + '/' + card1}
-                                          className="img-fluid"
-                                          alt="Invitations"
-                                          style={{
-                                            maxWidth: '300px',
-                                            margin: 'auto'
-                                          }}
-                                        />
-                                      </a>
-                                    </div>
-                                  </>
-                                )
-                              })
-                            ) : (
-                              <OwlCarousel className="owl-carousel owl-theme wedding-carousel" options={options2}>
-                                {val.cardTemplates.map((card1, ind) => {
+                    <div
+                      className="modal fade"
+                      id={'id' + index}
+                      data-bs-backdrop="static"
+                      data-bs-keyboard="false"
+                      aria-labelledby="staticBackdropLabel"
+                      aria-hidden="true"
+                    >
+                      <div className="modal-dialog">
+                        <div className="modal-content">
+                          <div className="modal-header">
+                            <button type="button" className="btn" data-bs-dismiss="modal" aria-label="Close">
+                              <FontAwesomeIcon icon={faArrowLeft} />
+                              &nbsp;Back
+                            </button>
+                            {/*<a href="#" style={{ textDecoration: 'none' }}>*/}
+                            {/*  <FontAwesomeIcon icon={faShareNodes} />*/}
+                            {/*  &nbsp;Share*/}
+                            {/*</a>*/}
+                          </div>
+                          <div className="modal-body">
+                            <Fancybox>
+                              {val.noOfPages === 1 ? (
+                                val.cardTemplates.map((card1, ind) => {
                                   return (
                                     <>
-                                      <div className="item">
+                                      <div className="item" style={{ textAlign: 'center' }}>
                                         <a
                                           data-fancybox={'#id' + index}
                                           href={'http://localhost:3001/assets/' + val.cardCategory + '/' + card1}
@@ -2091,37 +2075,62 @@ const Home = () => {
                                       </div>
                                     </>
                                   )
-                                })}
-                              </OwlCarousel>
-                            )}
-                          </Fancybox>
-                        </div>
-                        <div className="modal-footer justify-content-between">
-                          <div className="d-flex align-items-center">
-                            <div className="price">
-                              <strong>
-                                <span>₹{val.cardSalePrice}</span>
-                              </strong>
-                              <del>₹{val.cardTotalPrice}</del>
-                            </div>
+                                })
+                              ) : (
+                                <OwlCarousel className="owl-carousel owl-theme wedding-carousel" options={options2}>
+                                  {val.cardTemplates.map((card1, ind) => {
+                                    return (
+                                      <>
+                                        <div className="item">
+                                          <a
+                                            data-fancybox={'#id' + index}
+                                            href={'http://localhost:3001/assets/' + val.cardCategory + '/' + card1}
+                                          >
+                                            <img
+                                              src={'http://localhost:3001/assets/' + val.cardCategory + '/' + card1}
+                                              className="img-fluid"
+                                              alt="Invitations"
+                                              style={{
+                                                maxWidth: '300px',
+                                                margin: 'auto'
+                                              }}
+                                            />
+                                          </a>
+                                        </div>
+                                      </>
+                                    )
+                                  })}
+                                </OwlCarousel>
+                              )}
+                            </Fancybox>
                           </div>
-                          <div>
-                            <button
-                              className="btn btn-primary"
-                              data-bs-dismiss="modal"
-                              onClick={() => EditCard(val.id)}
-                            >
-                              Try This Card
-                            </button>
+                          <div className="modal-footer justify-content-between">
+                            <div className="d-flex align-items-center">
+                              <div className="price">
+                                <strong>
+                                  <span>₹{val.cardSalePrice}</span>
+                                </strong>
+                                <del>₹{val.cardTotalPrice}</del>
+                              </div>
+                            </div>
+                            <div>
+                              <button
+                                className="btn btn-primary"
+                                data-bs-dismiss="modal"
+                                onClick={() => EditCard(val.id)}
+                              >
+                                Try This Card
+                              </button>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </>
-              )
-            }
-          })}
+                  </>
+                )
+              }
+            })}
+          </Carousel1>
         </div>
 
         <div className="my-4">
@@ -2136,84 +2145,61 @@ const Home = () => {
         </div>
 
         <div className="row">
-          {casedetail?.map((val, index) => {
-            if (val.cardCategory === 'ReceptionInvitation') {
-              return (
-                <>
-                  <div className="col-md-3">
-                    <div className="wedding-box">
-                      <a href={'#id' + index} data-bs-toggle="modal">
-                        <img
-                          src={'http://localhost:3001/assets/' + val.cardCategory + '/' + val.cardTemplates[0]}
-                          className="img-fluid"
-                        />
-                      </a>
-                      <div className="inner">
-                        <div className="triangle-right"></div>
-                        <h4>{val.noOfPages}</h4>
+          <Carousel1 responsive={responsive}>
+            {casedetail?.map((val, index) => {
+              if (val.cardCategory === 'ReceptionInvitation') {
+                return (
+                  <>
+                    <div className="col-md-3">
+                      <div className="wedding-box">
+                        <a href={'#id' + index} data-bs-toggle="modal">
+                          <img
+                            src={'http://localhost:3001/assets/' + val.cardCategory + '/' + val.cardTemplates[0]}
+                            className="img-fluid"
+                          />
+                        </a>
+                        <div className="inner">
+                          <div className="triangle-right"></div>
+                          <h4>{val.noOfPages}</h4>
 
-                        {val.noOfPages === 1 ? <p>Page</p> : <p>Pages</p>}
-                      </div>
-                      <div className="price">
-                        <strong>
-                          <span>₹{val.cardSalePrice}</span>
-                        </strong>
-                        <del>₹{val.cardTotalPrice}</del>
+                          {val.noOfPages === 1 ? <p>Page</p> : <p>Pages</p>}
+                        </div>
+                        <div className="price">
+                          <strong>
+                            <span>₹{val.cardSalePrice}</span>
+                          </strong>
+                          <del>₹{val.cardTotalPrice}</del>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div
-                    className="modal fade"
-                    id={'id' + index}
-                    data-bs-backdrop="static"
-                    data-bs-keyboard="false"
-                    aria-labelledby="staticBackdropLabel"
-                    aria-hidden="true"
-                  >
-                    <div className="modal-dialog">
-                      <div className="modal-content">
-                        <div className="modal-header">
-                          <button type="button" className="btn" data-bs-dismiss="modal" aria-label="Close">
-                            <FontAwesomeIcon icon={faArrowLeft} />
-                            &nbsp;Back
-                          </button>
-                          {/*<a href="#" style={{ textDecoration: 'none' }}>*/}
-                          {/*  <FontAwesomeIcon icon={faShareNodes} />*/}
-                          {/*  &nbsp;Share*/}
-                          {/*</a>*/}
-                        </div>
-                        <div className="modal-body">
-                          <Fancybox>
-                            {val.noOfPages === 1 ? (
-                              val.cardTemplates.map((card1, ind) => {
-                                return (
-                                  <>
-                                    <div className="item" style={{ textAlign: 'center' }}>
-                                      <a
-                                        data-fancybox={'#id' + index}
-                                        href={'http://localhost:3001/assets/' + val.cardCategory + '/' + card1}
-                                      >
-                                        <img
-                                          src={'http://localhost:3001/assets/' + val.cardCategory + '/' + card1}
-                                          className="img-fluid"
-                                          alt="Invitations"
-                                          style={{
-                                            maxWidth: '300px',
-                                            margin: 'auto'
-                                          }}
-                                        />
-                                      </a>
-                                    </div>
-                                  </>
-                                )
-                              })
-                            ) : (
-                              <OwlCarousel className="owl-carousel owl-theme wedding-carousel" options={options2}>
-                                {val.cardTemplates.map((card1, ind) => {
+                    <div
+                      className="modal fade"
+                      id={'id' + index}
+                      data-bs-backdrop="static"
+                      data-bs-keyboard="false"
+                      aria-labelledby="staticBackdropLabel"
+                      aria-hidden="true"
+                    >
+                      <div className="modal-dialog">
+                        <div className="modal-content">
+                          <div className="modal-header">
+                            <button type="button" className="btn" data-bs-dismiss="modal" aria-label="Close">
+                              <FontAwesomeIcon icon={faArrowLeft} />
+                              &nbsp;Back
+                            </button>
+                            {/*<a href="#" style={{ textDecoration: 'none' }}>*/}
+                            {/*  <FontAwesomeIcon icon={faShareNodes} />*/}
+                            {/*  &nbsp;Share*/}
+                            {/*</a>*/}
+                          </div>
+                          <div className="modal-body">
+                            <Fancybox>
+                              {val.noOfPages === 1 ? (
+                                val.cardTemplates.map((card1, ind) => {
                                   return (
                                     <>
-                                      <div className="item">
+                                      <div className="item" style={{ textAlign: 'center' }}>
                                         <a
                                           data-fancybox={'#id' + index}
                                           href={'http://localhost:3001/assets/' + val.cardCategory + '/' + card1}
@@ -2231,70 +2217,98 @@ const Home = () => {
                                       </div>
                                     </>
                                   )
-                                })}
-                              </OwlCarousel>
-                            )}
-                          </Fancybox>
-                        </div>
-                        <div className="modal-footer justify-content-between">
-                          <div className="d-flex align-items-center">
-                            <div className="price">
-                              <strong>
-                                <span>₹{val.cardSalePrice}</span>
-                              </strong>
-                              <del>₹{val.cardTotalPrice}</del>
-                            </div>
+                                })
+                              ) : (
+                                <OwlCarousel className="owl-carousel owl-theme wedding-carousel" options={options2}>
+                                  {val.cardTemplates.map((card1, ind) => {
+                                    return (
+                                      <>
+                                        <div className="item">
+                                          <a
+                                            data-fancybox={'#id' + index}
+                                            href={'http://localhost:3001/assets/' + val.cardCategory + '/' + card1}
+                                          >
+                                            <img
+                                              src={'http://localhost:3001/assets/' + val.cardCategory + '/' + card1}
+                                              className="img-fluid"
+                                              alt="Invitations"
+                                              style={{
+                                                maxWidth: '300px',
+                                                margin: 'auto'
+                                              }}
+                                            />
+                                          </a>
+                                        </div>
+                                      </>
+                                    )
+                                  })}
+                                </OwlCarousel>
+                              )}
+                            </Fancybox>
                           </div>
-                          <div>
-                            <button
-                              className="btn btn-primary"
-                              data-bs-dismiss="modal"
-                              onClick={() => EditCard(val.id)}
-                            >
-                              Try This Card
-                            </button>
+                          <div className="modal-footer justify-content-between">
+                            <div className="d-flex align-items-center">
+                              <div className="price">
+                                <strong>
+                                  <span>₹{val.cardSalePrice}</span>
+                                </strong>
+                                <del>₹{val.cardTotalPrice}</del>
+                              </div>
+                            </div>
+                            <div>
+                              <button
+                                className="btn btn-primary"
+                                data-bs-dismiss="modal"
+                                onClick={() => EditCard(val.id)}
+                              >
+                                Try This Card
+                              </button>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </>
-              )
-            }
-          })}
+                  </>
+                )
+              }
+            })}
+          </Carousel1>
         </div>
 
-        <div className="card shadow p-5 mb-5">
-          <div className="row">
-            <div className="col-md-12 text-center">
-              <h3>Customized Card</h3>
-              <hr />
-            </div>
-            <div className="col-md-6">
-              <p>
-                <strong>Looking for a Designer for a Customised e-card?</strong>
-              </p>
-              <ul>
-                <li>We've got you covered!</li>
-                <li>You're Special & your Wedding card needs to be Special too</li>
-              </ul>
-            </div>
-            <div className="col-md-6">
-              <p>
-                <strong>How it works?</strong>
-              </p>
-              <ul>
-                <li>Get a dedicated Designer for your Wedding/Engagement e-card.</li>
-                <li>Delivery within 3 working days.</li>
-                <li>Flexible editing & customer support</li>
-              </ul>
-            </div>
-            <div className="col-md-12 text-center">
-              <a href="#cardmodal" data-bs-toggle="modal" className="btn btn-primary">
-                Buy Now
-              </a>
-            </div>
-          </div>
+        {/*<div className="card shadow p-5 mb-5">*/}
+        {/*  <div className="row">*/}
+        {/*    <div className="col-md-12 text-center">*/}
+        {/*      <h3>Customized Card</h3>*/}
+        {/*      <hr />*/}
+        {/*    </div>*/}
+        {/*    <div className="col-md-6">*/}
+        {/*      <p>*/}
+        {/*        <strong>Looking for a Designer for a Customised e-card?</strong>*/}
+        {/*      </p>*/}
+        {/*      <ul>*/}
+        {/*        <li>We've got you covered!</li>*/}
+        {/*        <li>You're Special & your Wedding card needs to be Special too</li>*/}
+        {/*      </ul>*/}
+        {/*    </div>*/}
+        {/*    <div className="col-md-6">*/}
+        {/*      <p>*/}
+        {/*        <strong>How it works?</strong>*/}
+        {/*      </p>*/}
+        {/*      <ul>*/}
+        {/*        <li>Get a dedicated Designer for your Wedding/Engagement e-card.</li>*/}
+        {/*        <li>Delivery within 3 working days.</li>*/}
+        {/*        <li>Flexible editing & customer support</li>*/}
+        {/*      </ul>*/}
+        {/*    </div>*/}
+        {/*    <div className="col-md-12 text-center">*/}
+        {/*      <a href="#cardmodal" data-bs-toggle="modal" className="btn btn-primary">*/}
+        {/*        Buy Now*/}
+        {/*      </a>*/}
+        {/*    </div>*/}
+        {/*  </div>*/}
+        {/*</div>*/}
+        <div id="CustomizeCard">
+          <CustomizedCard />
         </div>
       </div>
 
@@ -2303,76 +2317,76 @@ const Home = () => {
       {/* Modal */}
 
       {/* Modal 2 */}
-      <div className="modal fade" id="cardmodal" tabindex="-1" aria-labelledby="cardmodalLabel" aria-hidden="true">
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="cardmodalLabel">
-                Customized Your Card
-              </h5>
-              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div className="modal-body">
-              {/*<form method="post">*/}
-              <div className="form-group mb-3">
-                <input
-                  type="text"
-                  name="name"
-                  className="form-control"
-                  placeholder="Name"
-                  onChange={handleInputs}
-                  value={customizeCardData.name}
-                />
-              </div>
-              <div className="form-group mb-3">
-                <input
-                  type="text"
-                  name="phoneNumber"
-                  className="form-control"
-                  placeholder="Phone"
-                  onChange={handleInputs}
-                  value={customizeCardData.phoneNumber}
-                />
-              </div>
-              <div className="form-group mb-3">
-                <input
-                  type="email"
-                  name="email"
-                  className="form-control"
-                  placeholder="Email"
-                  onChange={handleInputs}
-                  value={customizeCardData.email}
-                />
-              </div>
-              <div className="form-group mb-3">
-                <input
-                  type="text"
-                  name="event"
-                  className="form-control"
-                  placeholder="Event"
-                  onChange={handleInputs}
-                  value={customizeCardData.event}
-                />
-              </div>
-              <div className="form-group mb-3">
-                <textarea
-                  name="description"
-                  className="form-control"
-                  placeholder="Description"
-                  onChange={handleInputs}
-                  value={customizeCardData.description}
-                ></textarea>
-              </div>
-              <div className="form-group">
-                <button className="btn btn-primary form-control" onClick={CustomizedInformation}>
-                  Submit
-                </button>
-              </div>
-              {/*</form>*/}
-            </div>
-          </div>
-        </div>
-      </div>
+      {/*<div className="modal fade" id="cardmodal" tabIndex="-1" aria-labelledby="cardmodalLabel" aria-hidden="true">*/}
+      {/*  <div className="modal-dialog">*/}
+      {/*    <div className="modal-content">*/}
+      {/*      <div className="modal-header">*/}
+      {/*        <h5 className="modal-title" id="cardmodalLabel">*/}
+      {/*          Customized Your Card*/}
+      {/*        </h5>*/}
+      {/*        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>*/}
+      {/*      </div>*/}
+      {/*      <div className="modal-body">*/}
+      {/*        /!*<form method="post">*!/*/}
+      {/*        <div className="form-group mb-3">*/}
+      {/*          <input*/}
+      {/*            type="text"*/}
+      {/*            name="name"*/}
+      {/*            className="form-control"*/}
+      {/*            placeholder="Name"*/}
+      {/*            onChange={handleInputs}*/}
+      {/*            value={customizeCardData.name}*/}
+      {/*          />*/}
+      {/*        </div>*/}
+      {/*        <div className="form-group mb-3">*/}
+      {/*          <input*/}
+      {/*            type="text"*/}
+      {/*            name="phoneNumber"*/}
+      {/*            className="form-control"*/}
+      {/*            placeholder="Phone"*/}
+      {/*            onChange={handleInputs}*/}
+      {/*            value={customizeCardData.phoneNumber}*/}
+      {/*          />*/}
+      {/*        </div>*/}
+      {/*        <div className="form-group mb-3">*/}
+      {/*          <input*/}
+      {/*            type="email"*/}
+      {/*            name="email"*/}
+      {/*            className="form-control"*/}
+      {/*            placeholder="Email"*/}
+      {/*            onChange={handleInputs}*/}
+      {/*            value={customizeCardData.email}*/}
+      {/*          />*/}
+      {/*        </div>*/}
+      {/*        <div className="form-group mb-3">*/}
+      {/*          <input*/}
+      {/*            type="text"*/}
+      {/*            name="event"*/}
+      {/*            className="form-control"*/}
+      {/*            placeholder="Event"*/}
+      {/*            onChange={handleInputs}*/}
+      {/*            value={customizeCardData.event}*/}
+      {/*          />*/}
+      {/*        </div>*/}
+      {/*        <div className="form-group mb-3">*/}
+      {/*          <textarea*/}
+      {/*            name="description"*/}
+      {/*            className="form-control"*/}
+      {/*            placeholder="Description"*/}
+      {/*            onChange={handleInputs}*/}
+      {/*            value={customizeCardData.description}*/}
+      {/*          ></textarea>*/}
+      {/*        </div>*/}
+      {/*        <div className="form-group">*/}
+      {/*          <button className="btn btn-primary form-control" onClick={CustomizedInformation}>*/}
+      {/*            Submit*/}
+      {/*          </button>*/}
+      {/*        </div>*/}
+      {/*        /!*</form>*!/*/}
+      {/*      </div>*/}
+      {/*    </div>*/}
+      {/*  </div>*/}
+      {/*</div>*/}
       <ScrollToTop />
       <Footer />
     </>

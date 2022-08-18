@@ -30,7 +30,7 @@ const DownloadCards = () => {
       })
 
       const data1 = await response.json()
-      // console.log(data1)
+
       setCardName(data1.cardNames)
       setCardData(data1)
 
@@ -107,23 +107,19 @@ const DownloadCards = () => {
 
   const imageUrls = cardname
 
-  //console.log(imageUrls)
-
   async function generatePdf(imageUrls: any) {
     let len = imageUrls.length
-    //console.log(len)
+
     for (const i of imageUrls) {
-      //console.log({i,imageUrls})
       let url = `http://localhost:3001/generated/${(cardData as any)?.cardCategory}/${i}`
-      // console.log({url})
+
       const image = await addImageProcess(url)
-      //console.log({image})
+
       doc.addImage(image, 'png', 0, 0, width, height)
       if (i !== imageUrls.length - 1) {
         doc.addPage()
       }
 
-      //console.log({doc})
       doc.deletePage(len + 1)
     }
     return doc
@@ -131,39 +127,14 @@ const DownloadCards = () => {
 
   async function savePdf() {
     const multiPng = await generatePdf(imageUrls)
-    //console.log(multiPng)
-    // generate dataURLString
-    multiPng.output('dataurlstring', { filename: 'Card.pdf' })
-    //console.log(dataURLString);
 
-    // save PDF (blocked in iFrame in chrome)
+    multiPng.output('dataurlstring', { filename: 'Card.pdf' })
+
     // @ts-ignore
     multiPng.output('save', 'Card.pdf')
   }
 
-  // const generatePdfFromImages = (images) => {
-  //   // Default export is A4 paper, portrait, using millimeters for units.
-  //
-  //
-  //   // We let the images add all pages,
-  //   // therefore the first default page can be removed.
-  //   doc.deletePage(1);
-  //
-  // cardname?.forEach((image) => {
-  //
-  //     doc.addPage();
-  //     doc.addImage(
-  //         image
-  //     );
-  //   });
-  //
-  //   // Creates a PDF and opens it in a new browser tab.
-  //   const pdfURL = doc.output("bloburl");
-  //   window.open(pdfURL, "_blank");
-  // };
-
   let redirectTo = `/preview?id=${id2}`
-  // if(paymentStatus==='Success') {
 
   if (!cardname || !paymentStatus || !cardData) {
     return null
@@ -209,8 +180,6 @@ const DownloadCards = () => {
             })
           ) : (
             <OwlCarousel className="owl-carousel owl-theme wedding-carousel" options={options}>
-              {/*         <Pdf targetRef={componentRef} filename="code-example.pdf" options={options} scale={0.8}>*/}{' '}
-              {/*  {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}*/} {/*</Pdf>*/} {/*<div>*/}{' '}
               {(cardname as any)?.map((val: any, index: number) => {
                 return (
                   <>
@@ -228,7 +197,6 @@ const DownloadCards = () => {
                   </>
                 )
               })}{' '}
-              {/*</div>*/}
             </OwlCarousel>
           )}
 
